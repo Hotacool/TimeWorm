@@ -10,6 +10,8 @@
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
 
+#import "FLEXManager.h"
+
 @interface AppDelegate ()
 
 @end
@@ -23,6 +25,7 @@
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
     DDLogWarn(@"Hello world!");
+    [[FLEXManager sharedManager] showExplorer];
     return YES;
 }
 
