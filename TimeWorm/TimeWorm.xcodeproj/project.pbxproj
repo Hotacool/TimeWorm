@@ -8,6 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		48330CCC88D944C07B70CA10 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E9D1892B717A92451E2E4C /* libPods.a */; };
+		FA0E00031D7528AC0080759D /* TWBaseSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00021D7528AC0080759D /* TWBaseSprite.m */; };
+		FA0E00061D752B100080759D /* HeroSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00051D752B100080759D /* HeroSprite.m */; };
+		FA0E000D1D7558300080759D /* TWCommandCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E000C1D7558300080759D /* TWCommandCenter.m */; };
+		FA0E00231D755F0E0080759D /* TWBaseCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00221D755F0E0080759D /* TWBaseCommand.m */; };
+		FA0E00261D7565030080759D /* TWCommandHomeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00251D7565030080759D /* TWCommandHomeScene.m */; };
+		FA0E00291D756DEB0080759D /* TWCommandCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00281D756DEB0080759D /* TWCommandCommon.m */; };
+		FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFB51D73DA310080759D /* FAImageView.m */; };
+		FA0EFFBE1D73DA310080759D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0EFFB61D73DA310080759D /* FontAwesome.ttf */; };
+		FA0EFFBF1D73DA310080759D /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFB81D73DA310080759D /* NSString+FontAwesome.m */; };
+		FA0EFFC01D73DA310080759D /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFBA1D73DA310080759D /* UIFont+FontAwesome.m */; };
+		FA0EFFC11D73DA310080759D /* MozTopAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFBC1D73DA310080759D /* MozTopAlertView.m */; };
+		FA0EFFC81D7408650080759D /* OLImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFC41D7408650080759D /* OLImage.m */; };
+		FA0EFFC91D7408650080759D /* OLImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFC61D7408650080759D /* OLImageView.m */; };
+		FA0EFFCD1D7409410080759D /* 思考.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0EFFCB1D7409410080759D /* 思考.gif */; };
+		FA0EFFCE1D7409410080759D /* 鼓掌.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0EFFCC1D7409410080759D /* 鼓掌.gif */; };
+		FA0EFFD71D741B7E0080759D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFD61D741B7E0080759D /* HomeViewController.m */; };
+		FA0EFFDA1D741CA60080759D /* TWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFD91D741CA60080759D /* TWBaseViewController.m */; };
+		FA0EFFDD1D741CE40080759D /* TWBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFDC1D741CE40080759D /* TWBaseViewModel.m */; };
+		FA0EFFE01D7420020080759D /* HomeViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFDF1D7420020080759D /* HomeViewControllerModel.m */; };
+		FA0EFFFE1D7527720080759D /* HomeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFFB1D7527720080759D /* HomeScene.m */; };
+		FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFFD1D7527720080759D /* TWBaseScene.m */; };
 		FA8006A01D7041A30071571C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA80069F1D7041A30071571C /* main.m */; };
 		FA8006A31D7041A30071571C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8006A21D7041A30071571C /* AppDelegate.m */; };
 		FA8006A61D7041A30071571C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8006A51D7041A30071571C /* ViewController.m */; };
@@ -20,6 +41,47 @@
 		2C8A815190FEAA1C510054AE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		641F3ABE0873D5EF4AFF6CAA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F3E9D1892B717A92451E2E4C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA0E00011D7528AC0080759D /* TWBaseSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBaseSprite.h; sourceTree = "<group>"; };
+		FA0E00021D7528AC0080759D /* TWBaseSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWBaseSprite.m; sourceTree = "<group>"; };
+		FA0E00041D752B100080759D /* HeroSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroSprite.h; sourceTree = "<group>"; };
+		FA0E00051D752B100080759D /* HeroSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroSprite.m; sourceTree = "<group>"; };
+		FA0E000B1D7558300080759D /* TWCommandCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCommandCenter.h; sourceTree = "<group>"; };
+		FA0E000C1D7558300080759D /* TWCommandCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWCommandCenter.m; sourceTree = "<group>"; };
+		FA0E00201D7558FB0080759D /* TWHelp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWHelp.h; sourceTree = "<group>"; };
+		FA0E00211D755F0E0080759D /* TWBaseCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBaseCommand.h; sourceTree = "<group>"; };
+		FA0E00221D755F0E0080759D /* TWBaseCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWBaseCommand.m; sourceTree = "<group>"; };
+		FA0E00241D7565030080759D /* TWCommandHomeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCommandHomeScene.h; sourceTree = "<group>"; };
+		FA0E00251D7565030080759D /* TWCommandHomeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWCommandHomeScene.m; sourceTree = "<group>"; };
+		FA0E00271D756DEB0080759D /* TWCommandCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCommandCommon.h; sourceTree = "<group>"; };
+		FA0E00281D756DEB0080759D /* TWCommandCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWCommandCommon.m; sourceTree = "<group>"; };
+		FA0EFFB41D73DA310080759D /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
+		FA0EFFB51D73DA310080759D /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
+		FA0EFFB61D73DA310080759D /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		FA0EFFB71D73DA310080759D /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		FA0EFFB81D73DA310080759D /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		FA0EFFB91D73DA310080759D /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
+		FA0EFFBA1D73DA310080759D /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		FA0EFFBB1D73DA310080759D /* MozTopAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MozTopAlertView.h; sourceTree = "<group>"; };
+		FA0EFFBC1D73DA310080759D /* MozTopAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MozTopAlertView.m; sourceTree = "<group>"; };
+		FA0EFFC31D7408650080759D /* OLImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLImage.h; sourceTree = "<group>"; };
+		FA0EFFC41D7408650080759D /* OLImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLImage.m; sourceTree = "<group>"; };
+		FA0EFFC51D7408650080759D /* OLImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLImageView.h; sourceTree = "<group>"; };
+		FA0EFFC61D7408650080759D /* OLImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLImageView.m; sourceTree = "<group>"; };
+		FA0EFFC71D7408650080759D /* OLImageViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLImageViewDelegate.h; sourceTree = "<group>"; };
+		FA0EFFCB1D7409410080759D /* 思考.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "思考.gif"; sourceTree = "<group>"; };
+		FA0EFFCC1D7409410080759D /* 鼓掌.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "鼓掌.gif"; sourceTree = "<group>"; };
+		FA0EFFD51D741B7E0080759D /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		FA0EFFD61D741B7E0080759D /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		FA0EFFD81D741CA60080759D /* TWBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBaseViewController.h; sourceTree = "<group>"; };
+		FA0EFFD91D741CA60080759D /* TWBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWBaseViewController.m; sourceTree = "<group>"; };
+		FA0EFFDB1D741CE40080759D /* TWBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBaseViewModel.h; sourceTree = "<group>"; };
+		FA0EFFDC1D741CE40080759D /* TWBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWBaseViewModel.m; sourceTree = "<group>"; };
+		FA0EFFDE1D7420020080759D /* HomeViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewControllerModel.h; sourceTree = "<group>"; };
+		FA0EFFDF1D7420020080759D /* HomeViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewControllerModel.m; sourceTree = "<group>"; };
+		FA0EFFFA1D7527720080759D /* HomeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScene.h; sourceTree = "<group>"; };
+		FA0EFFFB1D7527720080759D /* HomeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScene.m; sourceTree = "<group>"; };
+		FA0EFFFC1D7527720080759D /* TWBaseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBaseScene.h; sourceTree = "<group>"; };
+		FA0EFFFD1D7527720080759D /* TWBaseScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWBaseScene.m; sourceTree = "<group>"; };
 		FA80069B1D7041A30071571C /* TimeWorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeWorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA80069F1D7041A30071571C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FA8006A11D7041A30071571C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -62,9 +124,143 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA0E00001D7527B80080759D /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				FA0E00011D7528AC0080759D /* TWBaseSprite.h */,
+				FA0E00021D7528AC0080759D /* TWBaseSprite.m */,
+				FA0E00041D752B100080759D /* HeroSprite.h */,
+				FA0E00051D752B100080759D /* HeroSprite.m */,
+			);
+			path = Sprite;
+			sourceTree = "<group>";
+		};
+		FA0E000A1D7558220080759D /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				FA0E000B1D7558300080759D /* TWCommandCenter.h */,
+				FA0E000C1D7558300080759D /* TWCommandCenter.m */,
+				FA0E00211D755F0E0080759D /* TWBaseCommand.h */,
+				FA0E00221D755F0E0080759D /* TWBaseCommand.m */,
+				FA0E00271D756DEB0080759D /* TWCommandCommon.h */,
+				FA0E00281D756DEB0080759D /* TWCommandCommon.m */,
+				FA0E00241D7565030080759D /* TWCommandHomeScene.h */,
+				FA0E00251D7565030080759D /* TWCommandHomeScene.m */,
+			);
+			path = Command;
+			sourceTree = "<group>";
+		};
+		FA0EFFB21D73DA310080759D /* TopAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				FA0EFFB31D73DA310080759D /* fontawesome */,
+				FA0EFFBB1D73DA310080759D /* MozTopAlertView.h */,
+				FA0EFFBC1D73DA310080759D /* MozTopAlertView.m */,
+			);
+			path = TopAlertView;
+			sourceTree = "<group>";
+		};
+		FA0EFFB31D73DA310080759D /* fontawesome */ = {
+			isa = PBXGroup;
+			children = (
+				FA0EFFB41D73DA310080759D /* FAImageView.h */,
+				FA0EFFB51D73DA310080759D /* FAImageView.m */,
+				FA0EFFB61D73DA310080759D /* FontAwesome.ttf */,
+				FA0EFFB71D73DA310080759D /* NSString+FontAwesome.h */,
+				FA0EFFB81D73DA310080759D /* NSString+FontAwesome.m */,
+				FA0EFFB91D73DA310080759D /* UIFont+FontAwesome.h */,
+				FA0EFFBA1D73DA310080759D /* UIFont+FontAwesome.m */,
+			);
+			path = fontawesome;
+			sourceTree = "<group>";
+		};
+		FA0EFFC21D7408650080759D /* OLGif */ = {
+			isa = PBXGroup;
+			children = (
+				FA0EFFC31D7408650080759D /* OLImage.h */,
+				FA0EFFC41D7408650080759D /* OLImage.m */,
+				FA0EFFC51D7408650080759D /* OLImageView.h */,
+				FA0EFFC61D7408650080759D /* OLImageView.m */,
+				FA0EFFC71D7408650080759D /* OLImageViewDelegate.h */,
+			);
+			path = OLGif;
+			sourceTree = "<group>";
+		};
+		FA0EFFCA1D7409410080759D /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FA0EFFCB1D7409410080759D /* 思考.gif */,
+				FA0EFFCC1D7409410080759D /* 鼓掌.gif */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		FA0EFFCF1D7418E00080759D /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				FA0E000A1D7558220080759D /* Command */,
+				FA0EFFD01D7418E00080759D /* Model */,
+				FA0EFFD11D7418E00080759D /* View */,
+				FA0EFFD21D7418E00080759D /* ViewController */,
+				FA0EFFD31D7418E00080759D /* ViewModel */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		FA0EFFD01D7418E00080759D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA0EFFD11D7418E00080759D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA0E00001D7527B80080759D /* Sprite */,
+				FA0EFFF91D7527720080759D /* Scene */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA0EFFD21D7418E00080759D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA0EFFD81D741CA60080759D /* TWBaseViewController.h */,
+				FA0EFFD91D741CA60080759D /* TWBaseViewController.m */,
+				FA0EFFD51D741B7E0080759D /* HomeViewController.h */,
+				FA0EFFD61D741B7E0080759D /* HomeViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FA0EFFD31D7418E00080759D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FA0EFFDB1D741CE40080759D /* TWBaseViewModel.h */,
+				FA0EFFDC1D741CE40080759D /* TWBaseViewModel.m */,
+				FA0EFFDE1D7420020080759D /* HomeViewControllerModel.h */,
+				FA0EFFDF1D7420020080759D /* HomeViewControllerModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FA0EFFF91D7527720080759D /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				FA0EFFFA1D7527720080759D /* HomeScene.h */,
+				FA0EFFFB1D7527720080759D /* HomeScene.m */,
+				FA0EFFFC1D7527720080759D /* TWBaseScene.h */,
+				FA0EFFFD1D7527720080759D /* TWBaseScene.m */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 		FA8006921D7041A30071571C = {
 			isa = PBXGroup;
 			children = (
+				FA0EFFCF1D7418E00080759D /* Class */,
+				FA0EFFCA1D7409410080759D /* Resource */,
 				FA8006B61D7049CE0071571C /* Commons */,
 				FA80069D1D7041A30071571C /* TimeWorm */,
 				FA80069C1D7041A30071571C /* Products */,
@@ -109,6 +305,9 @@
 		FA8006B61D7049CE0071571C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				FA0EFFC21D7408650080759D /* OLGif */,
+				FA0EFFB21D73DA310080759D /* TopAlertView */,
+				FA0E00201D7558FB0080759D /* TWHelp.h */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -174,9 +373,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0EFFCD1D7409410080759D /* 思考.gif in Resources */,
 				FA8006AE1D7041A30071571C /* LaunchScreen.storyboard in Resources */,
 				FA8006AB1D7041A30071571C /* Assets.xcassets in Resources */,
+				FA0EFFCE1D7409410080759D /* 鼓掌.gif in Resources */,
 				FA8006A91D7041A30071571C /* Main.storyboard in Resources */,
+				FA0EFFBE1D73DA310080759D /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,9 +437,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0E00061D752B100080759D /* HeroSprite.m in Sources */,
+				FA0E000D1D7558300080759D /* TWCommandCenter.m in Sources */,
+				FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */,
+				FA0EFFBF1D73DA310080759D /* NSString+FontAwesome.m in Sources */,
+				FA0E00261D7565030080759D /* TWCommandHomeScene.m in Sources */,
 				FA8006A61D7041A30071571C /* ViewController.m in Sources */,
+				FA0EFFC81D7408650080759D /* OLImage.m in Sources */,
+				FA0E00291D756DEB0080759D /* TWCommandCommon.m in Sources */,
+				FA0E00231D755F0E0080759D /* TWBaseCommand.m in Sources */,
+				FA0EFFD71D741B7E0080759D /* HomeViewController.m in Sources */,
+				FA0EFFC11D73DA310080759D /* MozTopAlertView.m in Sources */,
+				FA0E00031D7528AC0080759D /* TWBaseSprite.m in Sources */,
+				FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */,
 				FA8006A31D7041A30071571C /* AppDelegate.m in Sources */,
+				FA0EFFFE1D7527720080759D /* HomeScene.m in Sources */,
+				FA0EFFDA1D741CA60080759D /* TWBaseViewController.m in Sources */,
 				FA8006A01D7041A30071571C /* main.m in Sources */,
+				FA0EFFC91D7408650080759D /* OLImageView.m in Sources */,
+				FA0EFFE01D7420020080759D /* HomeViewControllerModel.m in Sources */,
+				FA0EFFDD1D741CE40080759D /* TWBaseViewModel.m in Sources */,
+				FA0EFFC01D73DA310080759D /* UIFont+FontAwesome.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

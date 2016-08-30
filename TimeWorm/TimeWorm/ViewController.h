@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OLImageView.h"
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet OLImageView *imageView;
 
 @end
 

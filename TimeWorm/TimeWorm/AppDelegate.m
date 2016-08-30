@@ -7,10 +7,13 @@
 //
 
 #import "AppDelegate.h"
-#import "DDASLLogger.h"
 #import "DDTTYLogger.h"
-
 #import "FLEXManager.h"
+
+#import "HomeViewController.h"
+
+#import "TWCommandHomeScene.h"
+#import "TWCommandCommon.h"
 
 @interface AppDelegate ()
 
@@ -19,13 +22,32 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
+- (void)config {
+    //ddlog
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
-    DDLogWarn(@"Hello world!");
+    //flex
     [[FLEXManager sharedManager] showExplorer];
+}
+
+- (void)loadInterface {
+    HomeViewController *homeVC = [[HomeViewController alloc] init];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = homeVC;
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+}
+
+- (void)loadCommands {
+    [TWCommandCenter loadCommad:[TWCommandHomeScene new]] ;
+    [TWCommandCenter loadCommad:[TWCommandCommon new]] ;
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    [self config];
+    [self loadCommands];
+    [self loadInterface];
     return YES;
 }
 
