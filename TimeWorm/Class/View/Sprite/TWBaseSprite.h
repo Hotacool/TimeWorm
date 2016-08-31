@@ -12,6 +12,7 @@
 @interface TWAction : NSObject
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, strong) OLImage* action;
+- (instancetype)initWithKey:(NSString*)key action:(OLImage*)action ;
 @end
 
 @interface TWBaseSprite : NSObject
@@ -23,6 +24,7 @@
 
 - (instancetype)initWithSize:(CGSize)size position:(CGPoint)position ;
 - (void)addAction:(NSString*)key withAction:(TWAction*)action ;
+- (void)addAction:(TWAction*)action;
 - (void)performAction:(NSString*)key withEnd:(void(^)(void)) block ;
 - (void)performAction:(NSString*)key withLoopCount:(NSUInteger)count end:(void(^)(void)) block ;
 - (void)stopCurrentAction;

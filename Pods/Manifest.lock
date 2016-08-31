@@ -11,6 +11,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - JZMultiChoicesCircleButton (0.1.6)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -23,12 +24,14 @@ DEPENDENCIES:
   - CocoaLumberjack
   - FLEX
   - FMDB
+  - JZMultiChoicesCircleButton
   - ReactiveCocoa (~> 2.5)
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
   FLEX: ba80ea13d2c784e85e616137fd4eff164781e364
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  JZMultiChoicesCircleButton: d103e32deff7a89a1d366f2009c61588794fd15b
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
 
 COCOAPODS: 0.39.0

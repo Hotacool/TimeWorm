@@ -10,6 +10,13 @@
 
 const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
 @implementation TWAction
+- (instancetype)initWithKey:(NSString *)key action:(OLImage *)action {
+    if (self = [super init]) {
+        _key = key;
+        _action = action;
+    }
+    return self;
+}
 @end
 
 @interface TWBaseSprite () {
@@ -65,6 +72,12 @@ const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
 - (void)addAction:(NSString *)key withAction:(TWAction *)action {
     if (key && action) {
         [self.actions setObject:action forKey:key];
+    }
+}
+
+- (void)addAction:(TWAction *)action {
+    if (action.key) {
+        [self addAction:action.key withAction:action];
     }
 }
 

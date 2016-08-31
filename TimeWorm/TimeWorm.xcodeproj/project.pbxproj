@@ -14,6 +14,8 @@
 		FA0E00231D755F0E0080759D /* TWBaseCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00221D755F0E0080759D /* TWBaseCommand.m */; };
 		FA0E00261D7565030080759D /* TWCommandHomeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00251D7565030080759D /* TWCommandHomeScene.m */; };
 		FA0E00291D756DEB0080759D /* TWCommandCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00281D756DEB0080759D /* TWCommandCommon.m */; };
+		FA0E00611D766C8B0080759D /* QBFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00601D766C8B0080759D /* QBFlatButton.m */; };
+		FA0E00A51D76CFD70080759D /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00A41D76CFD70080759D /* images.xcassets */; };
 		FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFB51D73DA310080759D /* FAImageView.m */; };
 		FA0EFFBE1D73DA310080759D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0EFFB61D73DA310080759D /* FontAwesome.ttf */; };
 		FA0EFFBF1D73DA310080759D /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFB81D73DA310080759D /* NSString+FontAwesome.m */; };
@@ -54,6 +56,9 @@
 		FA0E00251D7565030080759D /* TWCommandHomeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWCommandHomeScene.m; sourceTree = "<group>"; };
 		FA0E00271D756DEB0080759D /* TWCommandCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCommandCommon.h; sourceTree = "<group>"; };
 		FA0E00281D756DEB0080759D /* TWCommandCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWCommandCommon.m; sourceTree = "<group>"; };
+		FA0E005F1D766C8B0080759D /* QBFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBFlatButton.h; sourceTree = "<group>"; };
+		FA0E00601D766C8B0080759D /* QBFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBFlatButton.m; sourceTree = "<group>"; };
+		FA0E00A41D76CFD70080759D /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		FA0EFFB41D73DA310080759D /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
 		FA0EFFB51D73DA310080759D /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
 		FA0EFFB61D73DA310080759D /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -148,6 +153,15 @@
 				FA0E00251D7565030080759D /* TWCommandHomeScene.m */,
 			);
 			path = Command;
+			sourceTree = "<group>";
+		};
+		FA0E005E1D766C8B0080759D /* QBFlatButton */ = {
+			isa = PBXGroup;
+			children = (
+				FA0E005F1D766C8B0080759D /* QBFlatButton.h */,
+				FA0E00601D766C8B0080759D /* QBFlatButton.m */,
+			);
+			path = QBFlatButton;
 			sourceTree = "<group>";
 		};
 		FA0EFFB21D73DA310080759D /* TopAlertView */ = {
@@ -260,9 +274,9 @@
 			isa = PBXGroup;
 			children = (
 				FA0EFFCF1D7418E00080759D /* Class */,
-				FA0EFFCA1D7409410080759D /* Resource */,
 				FA8006B61D7049CE0071571C /* Commons */,
 				FA80069D1D7041A30071571C /* TimeWorm */,
+				FA0EFFCA1D7409410080759D /* Resource */,
 				FA80069C1D7041A30071571C /* Products */,
 				405C84A9F5603A937EF21438 /* Pods */,
 				8AF54076D375D4C9826D42F4 /* Frameworks */,
@@ -286,6 +300,7 @@
 				FA8006A51D7041A30071571C /* ViewController.m */,
 				FA8006A71D7041A30071571C /* Main.storyboard */,
 				FA8006AA1D7041A30071571C /* Assets.xcassets */,
+				FA0E00A41D76CFD70080759D /* images.xcassets */,
 				FA8006AC1D7041A30071571C /* LaunchScreen.storyboard */,
 				FA8006AF1D7041A30071571C /* Info.plist */,
 				FA80069E1D7041A30071571C /* Supporting Files */,
@@ -305,6 +320,7 @@
 		FA8006B61D7049CE0071571C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				FA0E005E1D766C8B0080759D /* QBFlatButton */,
 				FA0EFFC21D7408650080759D /* OLGif */,
 				FA0EFFB21D73DA310080759D /* TopAlertView */,
 				FA0E00201D7558FB0080759D /* TWHelp.h */,
@@ -374,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA0EFFCD1D7409410080759D /* 思考.gif in Resources */,
+				FA0E00A51D76CFD70080759D /* images.xcassets in Resources */,
 				FA8006AE1D7041A30071571C /* LaunchScreen.storyboard in Resources */,
 				FA8006AB1D7041A30071571C /* Assets.xcassets in Resources */,
 				FA0EFFCE1D7409410080759D /* 鼓掌.gif in Resources */,
@@ -454,6 +471,7 @@
 				FA0EFFFE1D7527720080759D /* HomeScene.m in Sources */,
 				FA0EFFDA1D741CA60080759D /* TWBaseViewController.m in Sources */,
 				FA8006A01D7041A30071571C /* main.m in Sources */,
+				FA0E00611D766C8B0080759D /* QBFlatButton.m in Sources */,
 				FA0EFFC91D7408650080759D /* OLImageView.m in Sources */,
 				FA0EFFE01D7420020080759D /* HomeViewControllerModel.m in Sources */,
 				FA0EFFDD1D741CE40080759D /* TWBaseViewModel.m in Sources */,

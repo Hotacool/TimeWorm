@@ -12,15 +12,21 @@
 
 - (instancetype)initWithSize:(CGSize)size position:(CGPoint)position {
     if (self = [super initWithSize:size position:position]) {
-        TWAction *action0 = [TWAction new];
-        action0.key = @"think";
-        action0.action = (OLImage*)[OLImage imageNamed:@"思考"];
-        [self addAction:action0.key withAction:action0];
+        [self setUpActions];
     }
     return self;
 }
 
+- (void)setUpActions {
+    [self addAction:[[TWAction alloc] initWithKey:@"think" action:(OLImage*)[OLImage imageNamed:@"思考"]]];
+    [self addAction:[[TWAction alloc] initWithKey:@"applaud" action:(OLImage*)[OLImage imageNamed:@"鼓掌"]]];
+}
+
 - (void)think {
     [self performAction:@"think" withLoopCount:5 end:nil];
+}
+
+- (void)applaud {
+    [self performAction:@"applaud" withLoopCount:2 end:nil];
 }
 @end

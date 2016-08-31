@@ -9,6 +9,8 @@
 #import "HomeViewController.h"
 #import "HomeViewControllerModel.h"
 #import "HomeScene.h"
+#import "QBFlatButton.h"
+#import "JZMultiChoicesCircleButton.h"
 
 typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
     TWHomeVCDirectionNone = 0,
@@ -24,6 +26,9 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, assign) TWHomeVCDirection direction;
 @property (nonatomic, assign) TWHomeVCDirection activeDirection;
+
+@property (nonatomic, strong) TWBaseScene *currentScene;
+@property (nonatomic, strong) JZMultiChoicesCircleButton *menuBtn;
 @end
 
 @implementation HomeViewController
@@ -72,16 +77,26 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor greenColor];
-    DDLogInfo(self.title);
+    self.view.backgroundColor = RGB_HEX(0xC3F8C8);
     _panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
     _panGesture.delegate = self;
     [self.view addGestureRecognizer:_panGesture];
     
-    HomeScene *scene = [[HomeScene alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    scene.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:scene];
+    self.currentScene = [[HomeScene alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.view addSubview:self.currentScene];
+    
+    [self.view addSubview:self.menuBtn];
+    [self.menuBtn addObserver:self forKeyPath:@"isTouchDown" options:NSKeyValueObservingOptionNew context:nil];
+}
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if (object == self.menuBtn) {
+        if (self.menuBtn.isTouchDown) {
+            [self.view removeGestureRecognizer:_panGesture];
+        } else {
+            [self.view addGestureRecognizer:_panGesture];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -89,7 +104,62 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
     // Dispose of any resources that can be recreated.
 }
 
+- (JZMultiChoicesCircleButton *)menuBtn {
+    if (!_menuBtn) {
+        NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"MarkRound"],nil];
+        NSArray *TextArray = [NSArray arrayWithObjects: [NSString stringWithFormat:@"Send"],[NSString stringWithFormat:@"Complete"],[NSString stringWithFormat:@"Calender"],[NSString stringWithFormat:@"Mark"], nil];
+        NSArray *TargetArray = [NSArray arrayWithObjects:[NSString stringWithFormat:@"ButtonOne"],[NSString stringWithFormat:@"ButtonTwo"],[NSString stringWithFormat:@"ButtonThree"],[NSString stringWithFormat:@"ButtonFour"] ,nil];
+        _menuBtn = [[JZMultiChoicesCircleButton alloc] initWithCenterPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - 100 )
+                                                                ButtonIcon:[UIImage imageNamed:@"send"]
+                                                               SmallRadius:30.0f
+                                                                 BigRadius:100
+                                                              ButtonNumber:4
+                                                                ButtonIcon:IconArray
+                                                                ButtonText:TextArray
+                                                              ButtonTarget:TargetArray
+                                                               UseParallex:YES
+                                                         ParallaxParameter:100
+                                                     RespondViewController:self];
+    }
+    return _menuBtn;
+}
+
+- (void)startGame:(UIButton*)sender {
+    DDLogInfo(@"%s", __func__);
+    
+}
+
+- (void)doStartGameAnimationWithPoint:(CGPoint)point {
+    UIBezierPath* origionPath = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(point.x , point.y, 0, 0)];
+    
+    CGFloat X = [UIScreen mainScreen].bounds.size.width - point.x;
+    CGFloat Y = [UIScreen mainScreen].bounds.size.height - point.y;
+    CGFloat radius = sqrtf(X * X + Y * Y);
+    UIBezierPath* finalPath = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(CGRectMake(point.x , point.y, 0, 0), -radius, -radius)];
+    
+    CAShapeLayer* layer = [CAShapeLayer layer];
+    layer.path = finalPath.CGPath;
+    layer.fillColor = [UIColor yellowColor].CGColor;
+//    self.view.layer.mask = layer;
+    [self.view.layer addSublayer:layer];
+    
+    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"path"];
+    animation.delegate = self;
+    animation.fromValue = (__bridge id _Nullable)(origionPath.CGPath);
+    animation.toValue = (__bridge id _Nullable)(finalPath.CGPath);
+    animation.duration = 0.25;
+    [layer addAnimation:animation forKey:@"path"];
+}
+
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+//    self.view.layer.mask = nil;
+    
+}
+
 - (void)handlePanGesture:(UIPanGestureRecognizer*)recongnizer {
+    if (self.menuBtn.isTouchDown) {
+        return;
+    }
     CGPoint translation = [recongnizer translationInView: self.view];
     if (recongnizer.state == UIGestureRecognizerStateBegan) {
         self.direction = TWHomeVCDirectionNone;
@@ -247,6 +317,24 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
         [ctrl.view removeFromSuperview];
         [ctrl removeFromParentViewController];
     }];
+}
+
+#pragma mark -- menu btn clicked
+- (void)ButtonOne
+{
+    NSLog(@"BUtton 1 Seleted");
+}
+- (void)ButtonTwo
+{
+    NSLog(@"BUtton 2 Seleted");
+}
+- (void)ButtonThree
+{
+    NSLog(@"BUtton 3 Seleted");
+}
+- (void)ButtonFour
+{
+    NSLog(@"BUtton 4 Seleted");
 }
 
 #pragma mark -- command action
