@@ -10,6 +10,7 @@
 
 @interface JZMultiChoicesCircleButton : UIView
 
+@property (nonatomic, strong) NSString *title;
 @property (nonatomic,strong) NSNumber *CircleRadius;
 @property (nonatomic,strong) UIColor *CircleColor;
 @property (nonatomic,strong) UIViewController *ResponderUIVC;
@@ -29,6 +30,6 @@
 
 - (void)SuccessCallBackWithMessage:(NSString *)String;
 - (void)FailedCallBackWithMessage:(NSString *)String;
-
+- (void)completeWithMessage:(NSString*)message;
 
 @end

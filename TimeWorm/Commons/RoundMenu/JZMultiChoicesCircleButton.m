@@ -8,6 +8,8 @@
 
 #import "JZMultiChoicesCircleButton.h"
 #import <QuartzCore/QuartzCore.h>
+#import "OLImageView.h"
+#import "OLImage.h"
 
 @interface UIView ()
 
@@ -28,6 +30,7 @@
 
 @property (nonatomic) UIImageView *CallbackIcon;
 @property (nonatomic) UILabel *CallbackMessage;
+@property (nonatomic) UIImageView *loadingImageView;
 
 @property (nonatomic) CGFloat FullPara;
 @property (nonatomic) NSNumber *MidiumPara;
@@ -36,12 +39,14 @@
 @end
 
 
-@implementation JZMultiChoicesCircleButton
+@implementation JZMultiChoicesCircleButton {
+    UIImageView *_loadingImageView;
+}
 
 @synthesize CircleColor,SmallRadius,BigRadius,CenterPoint,ParallexParameter;
 @synthesize SmallButton,BackgroundView,IconImage,IconArray,label,InfoArray,ButtonTargetArray;
 @synthesize isTouchDown,Parallex,isPerformingTouchUpInsideAnimation;
-@synthesize CallbackMessage,CallbackIcon;
+@synthesize CallbackMessage,CallbackIcon,loadingImageView;
 @synthesize FullPara,MidiumPara,SmallPara;
 @synthesize ResponderUIVC;
 
@@ -118,7 +123,7 @@
     
     label = [[CATextLayer alloc] init];
     [label setFontSize:9.0f];
-    [label setString:[NSString stringWithFormat:@"Choose:"]];
+    [label setString:self.title?:[NSString stringWithFormat:@"Choose:"]];
     label.fontSize = 40;
     label.font = (__bridge CFTypeRef)@"ArialMT";
     label.alignmentMode = kCAAlignmentCenter;
@@ -175,6 +180,9 @@
     CallbackMessage.textAlignment = NSTextAlignmentCenter;
     [CallbackMessage setFrame:CGRectMake((SmallButton.frame.size.width - SmallRadius/2)/2, (SmallButton.frame.size.height - SmallRadius/4)/2+ 6, SmallRadius/2, SmallRadius/4)];
     [SmallButton addSubview: CallbackMessage];
+    //loading image
+    loadingImageView = [[OLImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    loadingImageView.center = CGPointMake(APPCONFIG_UI_SCREEN_FWIDTH/2, APPCONFIG_UI_SCREEN_FHEIGHT/2);
     
     FullPara = self.frame.size.height/SmallRadius;
     MidiumPara = [SmallButton.layer valueForKeyPath:@"transform.scale"];
@@ -184,6 +192,12 @@
     return self;
 }
 
+- (void)setTitle:(NSString *)title {
+    _title = title;
+    if (title) {
+        [label setString:title];
+    }
+}
 
 - (void)TouchDown
 {
@@ -318,7 +332,7 @@
     }
     else
     {
-        [label setString:@"Choose:"];
+        [label setString:self.title?:[NSString stringWithFormat:@"Choose:"]];
     }
     
 }
@@ -416,6 +430,7 @@
 - (void)TouchUpInsideAnimation
 {
     self.isPerformingTouchUpInsideAnimation = YES;
+    SmallButton.enabled = NO;
 
     for (UIImageView *Icon in IconArray)
     {
@@ -454,7 +469,10 @@
     __weak JZMultiChoicesCircleButton *weakSelf = self;
     [CATransaction setCompletionBlock:^
      {
-         weakSelf.isPerformingTouchUpInsideAnimation = NO;
+         if (weakSelf.isPerformingTouchUpInsideAnimation) {
+             weakSelf.isPerformingTouchUpInsideAnimation = NO;
+             [weakSelf addLoadingViewWithImage:[OLImage imageNamed:@"跳舞"]];
+         }
      }];
     [SmallButton.layer addAnimation:animGroup forKey:@"ButtonScaleAnimation"];
     [CATransaction commit];
@@ -471,6 +489,36 @@
     }
     
     
+}
+
+- (void)completeWithMessage:(NSString*)message {
+    if (self.isPerformingTouchUpInsideAnimation) {
+        self.isPerformingTouchUpInsideAnimation = NO;
+    }
+    [self addLoadingViewWithImage:[OLImage imageNamed:@"高兴"]];
+    
+    CABasicAnimation *ButtonScaleSmallCABasicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    ButtonScaleSmallCABasicAnimation.duration = 0.2f;
+    ButtonScaleSmallCABasicAnimation.autoreverses = NO;
+    ButtonScaleSmallCABasicAnimation.fromValue = @(FullPara);
+    ButtonScaleSmallCABasicAnimation.toValue = SmallPara;
+    ButtonScaleSmallCABasicAnimation.fillMode = kCAFillModeForwards;
+    ButtonScaleSmallCABasicAnimation.removedOnCompletion = NO;
+    ButtonScaleSmallCABasicAnimation.beginTime = 0.0f;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(900 *NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        [self removeLoadingViewImage];
+        [CATransaction begin];
+        [CATransaction setCompletionBlock:^{
+            [UIView animateWithDuration:0.1 animations:^(void){ [CallbackIcon setAlpha:0.0]; } completion:^(BOOL finished){}];
+            [UIView animateWithDuration:0.1 animations:^(void){ CallbackMessage.alpha = 0.0;  } completion:^(BOOL finished){}];
+            [SmallButton setImage:IconImage forState:UIControlStateNormal];
+            SmallButton.enabled = YES;
+            [UIView animateWithDuration:0.1 animations:^(void){ [SmallButton.imageView setAlpha:1.0]; } completion:^(BOOL finished){}];
+        }];
+        [SmallButton.layer addAnimation:ButtonScaleSmallCABasicAnimation forKey:@"ButtonScaleAnimation"];
+        [CATransaction commit];
+    });
 }
 
 - (void)SuccessCallBackWithMessage:(NSString *)String
@@ -629,5 +677,19 @@ CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, float disZ)
     [SmallButton setImage:IconImage forState:UIControlStateNormal];
     [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ [SmallButton.imageView setAlpha:1.0]; } completion:^(BOOL finished){}];
     
+}
+
+- (void)addLoadingViewWithImage:(UIImage *)image {
+    if (![self.loadingImageView superview]) {
+        [[UIApplication sharedApplication].keyWindow addSubview:self.loadingImageView];
+    }
+    [self.loadingImageView setImage:image];
+}
+
+- (void)removeLoadingViewImage {
+    if ([self.loadingImageView superview]) {
+        [self.loadingImageView stopAnimating];
+        [self.loadingImageView removeFromSuperview];
+    }
 }
 @end

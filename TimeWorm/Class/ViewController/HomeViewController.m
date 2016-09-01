@@ -11,6 +11,7 @@
 #import "HomeScene.h"
 #import "QBFlatButton.h"
 #import "JZMultiChoicesCircleButton.h"
+#import "OLImageView.h"
 
 typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
     TWHomeVCDirectionNone = 0,
@@ -107,8 +108,17 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
 - (JZMultiChoicesCircleButton *)menuBtn {
     if (!_menuBtn) {
         NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"MarkRound"],nil];
-        NSArray *TextArray = [NSArray arrayWithObjects: [NSString stringWithFormat:@"Send"],[NSString stringWithFormat:@"Complete"],[NSString stringWithFormat:@"Calender"],[NSString stringWithFormat:@"Mark"], nil];
-        NSArray *TargetArray = [NSArray arrayWithObjects:[NSString stringWithFormat:@"ButtonOne"],[NSString stringWithFormat:@"ButtonTwo"],[NSString stringWithFormat:@"ButtonThree"],[NSString stringWithFormat:@"ButtonFour"] ,nil];
+        NSArray *TextArray = [NSArray arrayWithObjects:
+                              NSLocalizedString(@"menuBtn2", @""),
+                              NSLocalizedString(@"menuBtn4", @""),
+                              NSLocalizedString(@"menuBtn3", @""),
+                              NSLocalizedString(@"menuBtn1", @""), nil];
+        NSArray *TargetArray = [NSArray arrayWithObjects:
+                                [NSString stringWithFormat:@"ButtonTwo"],
+                                [NSString stringWithFormat:@"ButtonThree"],
+                                [NSString stringWithFormat:@"ButtonFour"] ,
+                                [NSString stringWithFormat:@"ButtonOne"],
+                                nil];
         _menuBtn = [[JZMultiChoicesCircleButton alloc] initWithCenterPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - 100 )
                                                                 ButtonIcon:[UIImage imageNamed:@"send"]
                                                                SmallRadius:30.0f
@@ -120,6 +130,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
                                                                UseParallex:YES
                                                          ParallaxParameter:100
                                                      RespondViewController:self];
+        _menuBtn.title = NSLocalizedString(@"menuBtn", @"");
     }
     return _menuBtn;
 }
@@ -320,21 +331,29 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
 }
 
 #pragma mark -- menu btn clicked
-- (void)ButtonOne
-{
+- (void)ButtonOne {
     NSLog(@"BUtton 1 Seleted");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.menuBtn completeWithMessage:@"Start"];
+    });
 }
-- (void)ButtonTwo
-{
+- (void)ButtonTwo {
     NSLog(@"BUtton 2 Seleted");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.menuBtn completeWithMessage:@"Start"];
+    });
 }
-- (void)ButtonThree
-{
+- (void)ButtonThree {
     NSLog(@"BUtton 3 Seleted");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.menuBtn completeWithMessage:@"Start"];
+    });
 }
-- (void)ButtonFour
-{
+- (void)ButtonFour {
     NSLog(@"BUtton 4 Seleted");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.menuBtn completeWithMessage:@"Start"];
+    });
 }
 
 #pragma mark -- command action

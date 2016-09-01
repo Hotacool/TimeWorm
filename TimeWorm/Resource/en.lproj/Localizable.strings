@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  TimeWorm
+
+  Created by macbook on 16/9/1.
+  Copyright © 2016年 Hotacool. All rights reserved.
+*/
+"menuBtn"  = "Choose";
+"menuBtn1" = "Work";
+"menuBtn2" = "Relax";
+"menuBtn3" = "Timer";
+"menuBtn4" = "Edit";
