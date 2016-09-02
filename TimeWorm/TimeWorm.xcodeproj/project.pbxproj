@@ -23,16 +23,18 @@
 		FA0E010E1D77F5C80080759D /* bingo.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FA1D77F5C80080759D /* bingo.gif */; };
 		FA0E010F1D77F5C80080759D /* hi.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FB1D77F5C80080759D /* hi.gif */; };
 		FA0E01101D77F5C80080759D /* OK.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FC1D77F5C80080759D /* OK.gif */; };
-		FA0E01111D77F5C80080759D /* 哭.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FD1D77F5C80080759D /* 哭.gif */; };
+		FA0E01111D77F5C80080759D /* cry.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FD1D77F5C80080759D /* cry.gif */; };
 		FA0E01131D77F5C80080759D /* 喝水.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FF1D77F5C80080759D /* 喝水.gif */; };
 		FA0E01141D77F5C80080759D /* 害羞.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01001D77F5C80080759D /* 害羞.gif */; };
 		FA0E01151D77F5C80080759D /* 怕.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01011D77F5C80080759D /* 怕.gif */; };
 		FA0E01161D77F5C80080759D /* 思考.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01021D77F5C80080759D /* 思考.gif */; };
-		FA0E01171D77F5C80080759D /* 惊.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01031D77F5C80080759D /* 惊.gif */; };
+		FA0E01171D77F5C80080759D /* surprise.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01031D77F5C80080759D /* surprise.gif */; };
 		FA0E01191D77F5C80080759D /* 舌头.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01051D77F5C80080759D /* 舌头.gif */; };
 		FA0E011A1D77F5C80080759D /* 跳舞.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01061D77F5C80080759D /* 跳舞.gif */; };
 		FA0E011E1D77F5C80080759D /* 高兴.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E010A1D77F5C80080759D /* 高兴.gif */; };
 		FA0E01211D77F5C80080759D /* 鼓掌.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E010D1D77F5C80080759D /* 鼓掌.gif */; };
+		FA0E01241D783B1F0080759D /* HomeSceneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E01231D783B1F0080759D /* HomeSceneModel.m */; };
+		FA0E01271D7924DB0080759D /* WorkScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E01261D7924DB0080759D /* WorkScene.m */; };
 		FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFB51D73DA310080759D /* FAImageView.m */; };
 		FA0EFFBE1D73DA310080759D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0EFFB61D73DA310080759D /* FontAwesome.ttf */; };
 		FA0EFFBF1D73DA310080759D /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFB81D73DA310080759D /* NSString+FontAwesome.m */; };
@@ -86,16 +88,20 @@
 		FA0E00FA1D77F5C80080759D /* bingo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bingo.gif; sourceTree = "<group>"; };
 		FA0E00FB1D77F5C80080759D /* hi.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hi.gif; sourceTree = "<group>"; };
 		FA0E00FC1D77F5C80080759D /* OK.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = OK.gif; sourceTree = "<group>"; };
-		FA0E00FD1D77F5C80080759D /* 哭.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "哭.gif"; sourceTree = "<group>"; };
+		FA0E00FD1D77F5C80080759D /* cry.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = cry.gif; sourceTree = "<group>"; };
 		FA0E00FF1D77F5C80080759D /* 喝水.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "喝水.gif"; sourceTree = "<group>"; };
 		FA0E01001D77F5C80080759D /* 害羞.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "害羞.gif"; sourceTree = "<group>"; };
 		FA0E01011D77F5C80080759D /* 怕.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "怕.gif"; sourceTree = "<group>"; };
 		FA0E01021D77F5C80080759D /* 思考.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "思考.gif"; sourceTree = "<group>"; };
-		FA0E01031D77F5C80080759D /* 惊.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "惊.gif"; sourceTree = "<group>"; };
+		FA0E01031D77F5C80080759D /* surprise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = surprise.gif; sourceTree = "<group>"; };
 		FA0E01051D77F5C80080759D /* 舌头.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "舌头.gif"; sourceTree = "<group>"; };
 		FA0E01061D77F5C80080759D /* 跳舞.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "跳舞.gif"; sourceTree = "<group>"; };
 		FA0E010A1D77F5C80080759D /* 高兴.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "高兴.gif"; sourceTree = "<group>"; };
 		FA0E010D1D77F5C80080759D /* 鼓掌.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "鼓掌.gif"; sourceTree = "<group>"; };
+		FA0E01221D783B1F0080759D /* HomeSceneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSceneModel.h; sourceTree = "<group>"; };
+		FA0E01231D783B1F0080759D /* HomeSceneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSceneModel.m; sourceTree = "<group>"; };
+		FA0E01251D7924DB0080759D /* WorkScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkScene.h; sourceTree = "<group>"; };
+		FA0E01261D7924DB0080759D /* WorkScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkScene.m; sourceTree = "<group>"; };
 		FA0EFFB41D73DA310080759D /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
 		FA0EFFB51D73DA310080759D /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
 		FA0EFFB61D73DA310080759D /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -214,12 +220,12 @@
 				FA0E00FA1D77F5C80080759D /* bingo.gif */,
 				FA0E00FB1D77F5C80080759D /* hi.gif */,
 				FA0E00FC1D77F5C80080759D /* OK.gif */,
-				FA0E00FD1D77F5C80080759D /* 哭.gif */,
+				FA0E00FD1D77F5C80080759D /* cry.gif */,
 				FA0E00FF1D77F5C80080759D /* 喝水.gif */,
 				FA0E01001D77F5C80080759D /* 害羞.gif */,
 				FA0E01011D77F5C80080759D /* 怕.gif */,
 				FA0E01021D77F5C80080759D /* 思考.gif */,
-				FA0E01031D77F5C80080759D /* 惊.gif */,
+				FA0E01031D77F5C80080759D /* surprise.gif */,
 				FA0E01051D77F5C80080759D /* 舌头.gif */,
 				FA0E01061D77F5C80080759D /* 跳舞.gif */,
 				FA0E010A1D77F5C80080759D /* 高兴.gif */,
@@ -320,6 +326,8 @@
 				FA0EFFDC1D741CE40080759D /* TWBaseViewModel.m */,
 				FA0EFFDE1D7420020080759D /* HomeViewControllerModel.h */,
 				FA0EFFDF1D7420020080759D /* HomeViewControllerModel.m */,
+				FA0E01221D783B1F0080759D /* HomeSceneModel.h */,
+				FA0E01231D783B1F0080759D /* HomeSceneModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -327,10 +335,12 @@
 		FA0EFFF91D7527720080759D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				FA0EFFFA1D7527720080759D /* HomeScene.h */,
-				FA0EFFFB1D7527720080759D /* HomeScene.m */,
 				FA0EFFFC1D7527720080759D /* TWBaseScene.h */,
 				FA0EFFFD1D7527720080759D /* TWBaseScene.m */,
+				FA0EFFFA1D7527720080759D /* HomeScene.h */,
+				FA0EFFFB1D7527720080759D /* HomeScene.m */,
+				FA0E01251D7924DB0080759D /* WorkScene.h */,
+				FA0E01261D7924DB0080759D /* WorkScene.m */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -460,7 +470,7 @@
 				FA0E011E1D77F5C80080759D /* 高兴.gif in Resources */,
 				FA0E00A51D76CFD70080759D /* images.xcassets in Resources */,
 				FA8006AE1D7041A30071571C /* LaunchScreen.storyboard in Resources */,
-				FA0E01171D77F5C80080759D /* 惊.gif in Resources */,
+				FA0E01171D77F5C80080759D /* surprise.gif in Resources */,
 				FA0E01131D77F5C80080759D /* 喝水.gif in Resources */,
 				FA0E01101D77F5C80080759D /* OK.gif in Resources */,
 				FA0E01141D77F5C80080759D /* 害羞.gif in Resources */,
@@ -470,7 +480,7 @@
 				FA0E01161D77F5C80080759D /* 思考.gif in Resources */,
 				FA0E01191D77F5C80080759D /* 舌头.gif in Resources */,
 				FA0E00DD1D76DEF30080759D /* icon.png in Resources */,
-				FA0E01111D77F5C80080759D /* 哭.gif in Resources */,
+				FA0E01111D77F5C80080759D /* cry.gif in Resources */,
 				FA0E010F1D77F5C80080759D /* hi.gif in Resources */,
 				FA0E00F11D77C2420080759D /* Localizable.strings in Resources */,
 				FA8006A91D7041A30071571C /* Main.storyboard in Resources */,
@@ -547,6 +557,7 @@
 				FA0E00291D756DEB0080759D /* TWCommandCommon.m in Sources */,
 				FA0E00231D755F0E0080759D /* TWBaseCommand.m in Sources */,
 				FA0EFFD71D741B7E0080759D /* HomeViewController.m in Sources */,
+				FA0E01241D783B1F0080759D /* HomeSceneModel.m in Sources */,
 				FA0EFFC11D73DA310080759D /* MozTopAlertView.m in Sources */,
 				FA0E00031D7528AC0080759D /* TWBaseSprite.m in Sources */,
 				FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */,
@@ -557,6 +568,7 @@
 				FA0E00611D766C8B0080759D /* QBFlatButton.m in Sources */,
 				FA0EFFC91D7408650080759D /* OLImageView.m in Sources */,
 				FA0EFFE01D7420020080759D /* HomeViewControllerModel.m in Sources */,
+				FA0E01271D7924DB0080759D /* WorkScene.m in Sources */,
 				FA0EFFDD1D741CE40080759D /* TWBaseViewModel.m in Sources */,
 				FA0EFFC01D73DA310080759D /* UIFont+FontAwesome.m in Sources */,
 			);

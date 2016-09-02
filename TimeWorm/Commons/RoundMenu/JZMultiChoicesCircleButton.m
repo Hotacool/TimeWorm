@@ -23,7 +23,7 @@
 @property (nonatomic) NSMutableArray* IconArray;
 @property (nonatomic) NSMutableArray* InfoArray;
 @property (nonatomic) NSMutableArray* ButtonTargetArray;
-@property (nonatomic, readwrite) BOOL isTouchDown;
+@property (nonatomic) BOOL isTouchDown;
 @property (nonatomic) BOOL Parallex;
 @property (nonatomic) BOOL isPerformingTouchUpInsideAnimation;
 @property (nonatomic) CATextLayer* label;
@@ -211,6 +211,7 @@
         [label setForegroundColor:[[UIColor colorWithWhite:1.0 alpha:1.0]CGColor]];
     }
     self.isTouchDown = YES;
+    self.isActive = YES;
     
 }
 
@@ -414,6 +415,7 @@
         }
     }
     self.isTouchDown = NO;
+    self.isActive = isTouchUpInsideButton;
     
 }
 - (void)TouchUpOutside
@@ -425,6 +427,7 @@
         [label setForegroundColor:[[UIColor colorWithWhite:1.0 alpha:0.0]CGColor]];
     }
     self.isTouchDown = NO;
+    self.isActive = NO;
 }
 
 - (void)TouchUpInsideAnimation
@@ -508,12 +511,14 @@
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(900 *NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
         [self removeLoadingViewImage];
+        SBWS(weakSelf)
         [CATransaction begin];
         [CATransaction setCompletionBlock:^{
             [UIView animateWithDuration:0.1 animations:^(void){ [CallbackIcon setAlpha:0.0]; } completion:^(BOOL finished){}];
             [UIView animateWithDuration:0.1 animations:^(void){ CallbackMessage.alpha = 0.0;  } completion:^(BOOL finished){}];
             [SmallButton setImage:IconImage forState:UIControlStateNormal];
             SmallButton.enabled = YES;
+            weakSelf.isActive = NO;
             [UIView animateWithDuration:0.1 animations:^(void){ [SmallButton.imageView setAlpha:1.0]; } completion:^(BOOL finished){}];
         }];
         [SmallButton.layer addAnimation:ButtonScaleSmallCABasicAnimation forKey:@"ButtonScaleAnimation"];

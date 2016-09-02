@@ -8,6 +8,13 @@
 
 #import "HomeScene.h"
 #import "HeroSprite.h"
+#import "HomeSceneModel.h"
+
+@interface HomeScene ()
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
+@property (nonatomic, strong) HomeSceneModel *hsm;
+@end
 
 @implementation HomeScene {
     HeroSprite *hero;
@@ -15,16 +22,27 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if ([super initWithFrame:frame]) {
-        hero = [[HeroSprite alloc] initWithSize:CGSizeMake(200, 200) position:CGPointMake(frame.size.width/2, frame.size.height/2)];
-        [self addSprite:hero];
+        _hsm = (HomeSceneModel*)self.viewModel;
+        [_hsm addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
+        [_hsm addObserver:self forKeyPath:@"shiftDirection" options:NSKeyValueObservingOptionNew context:nil];
+        //attatch command
+        [_hsm attatchCommand:YES];
         
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        button.titleLabel.text = @"think";
-        button.backgroundColor = [UIColor yellowColor];
-        [self addSubview:button];
-        [button addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        hero = [[HeroSprite alloc] initWithSize:CGSizeMake(200, 200) position:CGPointMake(frame.size.width/2, frame.size.height/2 - 50)];
+        [self addSprite:hero];
+        //启动timer
+        [self timerFire:nil];
+        //add tap gesture
+        [self addGestureRecognizer:self.tapGesture];
+        
     }
     return self;
+}
+
+- (void)dealloc {
+    if (self.hsm) {
+        [self.hsm attatchCommand:NO];
+    }
 }
 
 - (void)addSprite:(TWBaseSprite *)sprite {
@@ -32,9 +50,82 @@
     [self.contentLayer addSublayer:hero.contentLayer];
 }
 
-- (void)clicked:(id)sender {
-    DDLogInfo(@"clicked");
-    [hero think];
-    [TWCommandCenter doActionWithCommand:@"selectScene"];
+- (UITapGestureRecognizer *)tapGesture {
+    if (!_tapGesture) {
+        _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizer:)];
+    }
+    return _tapGesture;
+}
+
+- (void)tapGestureRecognizer:(UITapGestureRecognizer*)tapGesture {
+    DDLogInfo(@"%s", __func__);
+    if (self.hsm.state==HomeSceneModelStateNone) {
+        self.hsm.state = HomeSceneModelStateWaiting;
+    } else {
+        self.hsm.state = HomeSceneModelStateNone;
+    }
+}
+
+- (void)timerFire:(NSTimer*)timer {
+    [self setTimerPause];
+    [hero doRandomActionWithLoopCount:5];
+    _timer = [NSTimer timerWithTimeInterval:10 target:self selector:@selector(timerFire:) userInfo:nil repeats:NO];
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+}
+- (void)setTimerPause {
+    if (_timer&&_timer.isValid) {
+        [_timer invalidate];
+        _timer = nil;
+    }
+}
+
+#pragma mark -- KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"state"]) {
+        switch (self.hsm.state) {
+            case HomeSceneModelStateNone: {
+                [self timerFire:nil];
+                break;
+            }
+            case HomeSceneModelStateWaiting: {
+                [self setTimerPause];
+                [hero performAction:@"surprise" withLoopCount:2 end:nil];
+                break;
+            }
+        }
+    } else if ([keyPath isEqualToString:@"shiftDirection"]) {
+        [self shiftHeroWithDirection:self.hsm.shiftDirection];
+    }
+}
+
+#pragma mark -- API
+- (void)shiftHeroWithDirection:(NSUInteger)direction {
+    DDLogInfo(@"%s, %lu",__func__, (unsigned long)direction);
+    CGPoint point = hero.position;
+    switch (direction) {
+//        case 1: {
+//            point.y -= 100;
+//            [hero setPosition:point];
+//            break;
+//        }
+//        case 2: {
+//            point.y += 100;
+//            [hero setPosition:point];
+//            break;
+//        }
+        case 3: {
+            point.x -= 100;
+            [hero setPosition:point];
+            break;
+        }
+        case 4: {
+            point.x += 100;
+            [hero setPosition:point];
+            break;
+        }
+        default:
+            break;
+    }
+    
 }
 @end

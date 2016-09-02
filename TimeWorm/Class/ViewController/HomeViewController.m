@@ -8,18 +8,9 @@
 
 #import "HomeViewController.h"
 #import "HomeViewControllerModel.h"
-#import "HomeScene.h"
 #import "QBFlatButton.h"
 #import "JZMultiChoicesCircleButton.h"
 #import "OLImageView.h"
-
-typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
-    TWHomeVCDirectionNone = 0,
-    TWHomeVCDirectionUp,
-    TWHomeVCDirectionDown,
-    TWHomeVCDirectionLeft,
-    TWHomeVCDirectionRight
-};
 
 @interface HomeViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) HomeViewControllerModel *hvm;
@@ -37,67 +28,32 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
 - (instancetype)init {
     if (self = [super init]) {
         self.hvm = (HomeViewControllerModel*)self.viewModel;
+        [self.hvm addObserver:self forKeyPath:@"scene" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
 
-- (NSMutableDictionary *)viewControllerDic {
-    if (!_viewControllerDic) {
-        _viewControllerDic = [NSMutableDictionary dictionaryWithCapacity:4];
-        for (int i = 1; i <= 4; i++) {
-            UIViewController *ctrl = [[UIViewController alloc] init];
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 200, 200)];
-            label.center = ctrl.view.center;
-            label.backgroundColor = [UIColor yellowColor];
-            label.text = [@"viewController_" stringByAppendingFormat:@"%d",i];
-            [ctrl.view addSubview:label];
-            [_viewControllerDic setObject:ctrl forKey:@(i)];
-        }
-    }
-    return _viewControllerDic;
-}
-
-- (UIViewController*)viewControllerAtDirection:(TWHomeVCDirection)direction {
-    UIViewController *ret;
-    if (direction > 0&&self.viewControllerDic.count >= direction) {
-        ret = self.viewControllerDic[@(direction)];
-    }
-    return ret;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [TWCommandCenter attache2Center:self];
+    [self.hvm attatchCommand:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [TWCommandCenter deattach:self];
+    [self.hvm attatchCommand:NO];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = RGB_HEX(0xC3F8C8);
-    _panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-    _panGesture.delegate = self;
-    [self.view addGestureRecognizer:_panGesture];
-    
-    self.currentScene = [[HomeScene alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    [self.view addSubview:self.currentScene];
-    
+    //加载切换page手势
+    [self loadSwitchVCPanGesture];
+    //加载场景
+    [self loadScene];
+    //加载菜单按钮
     [self.view addSubview:self.menuBtn];
-    [self.menuBtn addObserver:self forKeyPath:@"isTouchDown" options:NSKeyValueObservingOptionNew context:nil];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if (object == self.menuBtn) {
-        if (self.menuBtn.isTouchDown) {
-            [self.view removeGestureRecognizer:_panGesture];
-        } else {
-            [self.view addGestureRecognizer:_panGesture];
-        }
-    }
+    [self.menuBtn addObserver:self forKeyPath:@"isActive" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,6 +61,19 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -- Scene load
+- (void)loadScene {
+    if (self.currentScene == self.hvm.currentScene) {
+        return;
+    }
+    if ([self.currentScene superview]) {
+        [self.currentScene removeFromSuperview];
+    }
+    self.currentScene = self.hvm.currentScene;
+    [self.view insertSubview:self.currentScene atIndex:0];
+}
+
+#pragma mark -- ui components
 - (JZMultiChoicesCircleButton *)menuBtn {
     if (!_menuBtn) {
         NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"MarkRound"],nil];
@@ -134,41 +103,53 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
     }
     return _menuBtn;
 }
-
-- (void)startGame:(UIButton*)sender {
-    DDLogInfo(@"%s", __func__);
-    
+//Pages
+- (NSMutableDictionary *)viewControllerDic {
+    if (!_viewControllerDic) {
+        _viewControllerDic = [NSMutableDictionary dictionaryWithCapacity:4];
+        for (int i = 1; i <= 4; i++) {
+            UIViewController *ctrl = [[UIViewController alloc] init];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 200, 200)];
+            label.center = ctrl.view.center;
+            label.backgroundColor = [UIColor yellowColor];
+            label.text = [@"viewController_" stringByAppendingFormat:@"%d",i];
+            [ctrl.view addSubview:label];
+            ctrl.view.backgroundColor = RGB_HEX(0xC3F8C8);
+            [_viewControllerDic setObject:ctrl forKey:@(i)];
+        }
+    }
+    return _viewControllerDic;
 }
-
-- (void)doStartGameAnimationWithPoint:(CGPoint)point {
-    UIBezierPath* origionPath = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(point.x , point.y, 0, 0)];
-    
-    CGFloat X = [UIScreen mainScreen].bounds.size.width - point.x;
-    CGFloat Y = [UIScreen mainScreen].bounds.size.height - point.y;
-    CGFloat radius = sqrtf(X * X + Y * Y);
-    UIBezierPath* finalPath = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(CGRectMake(point.x , point.y, 0, 0), -radius, -radius)];
-    
-    CAShapeLayer* layer = [CAShapeLayer layer];
-    layer.path = finalPath.CGPath;
-    layer.fillColor = [UIColor yellowColor].CGColor;
-//    self.view.layer.mask = layer;
-    [self.view.layer addSublayer:layer];
-    
-    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"path"];
-    animation.delegate = self;
-    animation.fromValue = (__bridge id _Nullable)(origionPath.CGPath);
-    animation.toValue = (__bridge id _Nullable)(finalPath.CGPath);
-    animation.duration = 0.25;
-    [layer addAnimation:animation forKey:@"path"];
+- (UIViewController*)viewControllerAtDirection:(TWHomeVCDirection)direction {
+    UIViewController *ret;
+    if (direction > 0&&self.viewControllerDic.count >= direction) {
+        ret = self.viewControllerDic[@(direction)];
+    }
+    return ret;
 }
-
--(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-//    self.view.layer.mask = nil;
-    
+#pragma mark -- KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if (object == self.menuBtn) {
+        if (self.menuBtn.isActive) {
+            [self.view removeGestureRecognizer:_panGesture];
+        } else {
+            [self.view addGestureRecognizer:_panGesture];
+        }
+    } else if (object == self.hvm) {
+        if ([keyPath isEqualToString:@"scene"]) {
+            [self loadScene];
+        }
+    }
+}
+#pragma mark -- viewController panGesture
+- (void)loadSwitchVCPanGesture {
+    _panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    _panGesture.delegate = self;
+    [self.view addGestureRecognizer:_panGesture];
 }
 
 - (void)handlePanGesture:(UIPanGestureRecognizer*)recongnizer {
-    if (self.menuBtn.isTouchDown) {
+    if (self.menuBtn.isActive) {
         return;
     }
     CGPoint translation = [recongnizer translationInView: self.view];
@@ -180,7 +161,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
         [self switchViewController];
     } else if (recongnizer.state == UIGestureRecognizerStateEnded) {
         // now tell the camera to stop
-        DDLogInfo(@"stop");
+//        DDLogInfo(@"stop");
     }
 }
 
@@ -225,7 +206,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
 }
 
 - (void)switchViewController {
-    DDLogInfo(@"direction: %lu", (unsigned long)self.direction);
+//    DDLogInfo(@"direction: %lu", (unsigned long)self.direction);
     CGRect rect = [UIScreen mainScreen].bounds;
     if (self.activeDirection == self.direction) {
         return;
@@ -236,6 +217,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
             if (self.activeDirection == TWHomeVCDirectionDown) {
                 [self resetView2CenterWithDirection:self.activeDirection];
                 self.activeDirection = TWHomeVCDirectionNone;
+                [self.hvm postSwitchVCCommandWithDirection:self.direction];
             } else if (self.activeDirection == TWHomeVCDirectionNone) {
                 self.activeDirection = self.direction;
                 ctrl = self.viewControllerDic[@(self.direction)];
@@ -248,6 +230,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
                     self.view.frame = CGRectMake(0, rect.size.height - HomeViewRemainderLength, rect.size.width, rect.size.height);
                 } completion:^(BOOL finished) {
                 }];
+                [self.hvm postSwitchVCCommandWithDirection:self.direction];
             }
             break;
         }
@@ -256,6 +239,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
                 self.activeDirection = TWHomeVCDirectionNone;
                 [self resetView2CenterWithDirection:self.activeDirection];
                 self.activeDirection = TWHomeVCDirectionNone;
+                [self.hvm postSwitchVCCommandWithDirection:self.direction];
             } else if (self.activeDirection == TWHomeVCDirectionNone) {
                 self.activeDirection = self.direction;
                 ctrl = self.viewControllerDic[@(self.direction)];
@@ -268,6 +252,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
                     self.view.frame = CGRectMake(0, HomeViewRemainderLength - rect.size.height, rect.size.width, rect.size.height);
                 } completion:^(BOOL finished) {
                 }];
+                [self.hvm postSwitchVCCommandWithDirection:self.direction];
             }
             break;
         }
@@ -276,6 +261,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
                 self.activeDirection = TWHomeVCDirectionNone;
                 [self resetView2CenterWithDirection:self.activeDirection];
                 self.activeDirection = TWHomeVCDirectionNone;
+                [self.hvm postSwitchVCCommandWithDirection:self.direction];
             } else if (self.activeDirection == TWHomeVCDirectionNone) {
                 self.activeDirection = self.direction;
                 ctrl = self.viewControllerDic[@(self.direction)];
@@ -288,6 +274,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
                     self.view.frame = CGRectMake(HomeViewRemainderLength, 0, rect.size.width, rect.size.height);
                 } completion:^(BOOL finished) {
                 }];
+                [self.hvm postSwitchVCCommandWithDirection:self.direction];
             }
             break;
         }
@@ -296,6 +283,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
                 self.activeDirection = TWHomeVCDirectionNone;
                 [self resetView2CenterWithDirection:self.activeDirection];
                 self.activeDirection = TWHomeVCDirectionNone;
+                [self.hvm postSwitchVCCommandWithDirection:self.direction];
             } else if (self.activeDirection == TWHomeVCDirectionNone) {
                 self.activeDirection = self.direction;
                 ctrl = self.viewControllerDic[@(self.direction)];
@@ -308,7 +296,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
                     self.view.frame = CGRectMake(HomeViewRemainderLength - rect.size.width, 0, rect.size.width, rect.size.height);
                 } completion:^(BOOL finished) {
                 }];
-
+                [self.hvm postSwitchVCCommandWithDirection:self.direction];
             }
             break;
         }
@@ -329,10 +317,11 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
         [ctrl removeFromParentViewController];
     }];
 }
-
 #pragma mark -- menu btn clicked
 - (void)ButtonOne {
     NSLog(@"BUtton 1 Seleted");
+    [self.hvm switchScene:TWHomeVCSceneWork];
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.menuBtn completeWithMessage:@"Start"];
     });
@@ -354,10 +343,5 @@ typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.menuBtn completeWithMessage:@"Start"];
     });
-}
-
-#pragma mark -- command action
-- (void)response2selectScene {
-    DDLogInfo(@"%s", __func__);
 }
 @end

@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "TWBaseSprite.h"
+#import "TWBaseViewModel.h"
 
-@interface TWBaseScene : UIView
+@interface TWBaseScene : UIView {
+    TWBaseViewModel *_viewModel;
+}
 
 @property (nonatomic, strong, readonly) CALayer *contentLayer;
 @property (nonatomic, strong)  UIImage *backgroundImage;
 @property (nonatomic, strong, readonly) NSMutableArray<__kindof TWBaseSprite*> *sprites;
+@property (nonatomic, strong, readonly) TWBaseViewModel *viewModel;
 
 - (void)addSprite:(TWBaseSprite*)sprite ;
 @end

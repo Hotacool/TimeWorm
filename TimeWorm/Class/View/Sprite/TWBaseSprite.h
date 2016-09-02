@@ -29,6 +29,8 @@
 - (void)performAction:(NSString*)key withLoopCount:(NSUInteger)count end:(void(^)(void)) block ;
 - (void)stopCurrentAction;
 - (void)showDefaultImage ;
+- (void)showDefaultAction ;
 - (void)setSize:(CGSize)size ;
 - (void)setPosition:(CGPoint)position ;
+- (NSString *)doRandomActionWithLoopCount:(NSUInteger)count;
 @end

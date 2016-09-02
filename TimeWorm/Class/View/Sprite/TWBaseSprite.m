@@ -95,6 +95,25 @@ const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
     [self performAction:key withEnd:block];
 }
 
+- (NSString *)doRandomActionWithLoopCount:(NSUInteger)count {
+    NSString *actionKey;
+    if (self.actions.allKeys.count > 1) {
+        do {
+            int rdIdx = [self getRandomNumber:0 to:(int)self.actions.count];
+            actionKey = self.actions.allKeys[rdIdx];
+        } while ([actionKey isEqualToString:self.performAction]);
+        [self performAction:actionKey withLoopCount:count end:nil];
+    } else if (self.actions.allKeys.count == 1) {
+        actionKey = self.actions.allKeys.firstObject;
+        [self performAction:actionKey withLoopCount:count end:nil];
+    }
+    return actionKey;
+}
+
+-(int)getRandomNumber:(int)from to:(int)to {
+    return (int)(from + (arc4random() % (to-from)));
+}
+
 - (void)stopCurrentAction {
     if (self.activeAction) {
         [self stopAnimating];
@@ -103,8 +122,15 @@ const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
 
 - (void)showDefaultImage {
     if (self.actions&&self.actions.count>0) {
-        self.contentLayer.contents = (__bridge id _Nullable)(((TWAction*)self.actions.allValues[0]).action.CGImage);
+        self.performAction = self.actions.allKeys[0];
+        [self initializeAnimation];
         [self.contentLayer setNeedsDisplay];
+    }
+}
+
+- (void)showDefaultAction {
+    if (self.actions&&self.actions.count>0) {
+        [self performAction:self.actions.allKeys[0] withEnd:nil];
     }
 }
 
@@ -190,7 +216,8 @@ const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
         self.accumulator -= animatedImage.frameDurations[self.currentFrameIndex];
         if (++self.currentFrameIndex >= [animatedImage.images count] && ![animatedImage isPartial]) {
             if (--self.loopCountdown == 0) {
-                [self stopAnimating];
+//                [self stopAnimating];
+                [self showDefaultAction];
                 return;
             }
             self.currentFrameIndex = 0;

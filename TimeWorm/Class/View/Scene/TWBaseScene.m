@@ -37,6 +37,14 @@
 
 }
 
+- (TWBaseViewModel *)viewModel {
+    if (!_viewModel) {
+        NSString *viewModelClassStr = [NSStringFromClass([self class]) stringByAppendingString:@"Model"];
+        _viewModel = [NSClassFromString(viewModelClassStr) new];
+    }
+    return _viewModel;
+}
+
 - (void)addSprite:(TWBaseSprite *)sprite {
     if (sprite) {
         if ([self.sprites containsObject:sprite]) {

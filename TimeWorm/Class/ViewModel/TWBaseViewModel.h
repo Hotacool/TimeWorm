@@ -12,4 +12,5 @@
 
 @property (nonatomic, strong, readonly) NSString *title;
 
+- (void)attatchCommand:(BOOL)y ;
 @end

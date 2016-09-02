@@ -14,7 +14,7 @@
 @property (nonatomic,strong) NSNumber *CircleRadius;
 @property (nonatomic,strong) UIColor *CircleColor;
 @property (nonatomic,strong) UIViewController *ResponderUIVC;
-@property (nonatomic) BOOL isTouchDown;
+@property (nonatomic) BOOL isActive;
 
 - (instancetype)initWithCenterPoint:(CGPoint)Point
                          ButtonIcon:(UIImage*)Icon

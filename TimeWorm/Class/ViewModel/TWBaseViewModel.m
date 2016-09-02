@@ -10,4 +10,11 @@
 
 @implementation TWBaseViewModel
 
+- (void)attatchCommand:(BOOL)y {
+    if (y) {
+        [TWCommandCenter attache2Center:self];
+    } else {
+        [TWCommandCenter deattach:self];
+    }
+}
 @end

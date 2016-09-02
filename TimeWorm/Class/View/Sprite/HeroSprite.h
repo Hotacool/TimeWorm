@@ -11,4 +11,9 @@
 @interface HeroSprite : TWBaseSprite
 
 - (void)think;
+- (void)applaud ;
+- (void)shy;
+- (void)drink;
+- (void)surprise;
+- (void)lie;
 @end

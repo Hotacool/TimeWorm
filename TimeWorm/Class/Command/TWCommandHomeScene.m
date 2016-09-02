@@ -12,7 +12,11 @@
 
 - (NSArray<NSString *> *)commands {
     return @[HomeSceneCommand_think
-             ,HomeSceneCommand_laugh];
+             ,HomeSceneCommand_laugh
+             ,HomeSceneCommand_upShift
+             ,HomeSceneCommand_downShift
+             ,HomeSceneCommand_leftShift
+             ,HomeSceneCommand_rightShift];
 }
 
 - (void)doActionWithCommand:(NSString *)command withCompleteBlock:(void (^)(id))complete {
