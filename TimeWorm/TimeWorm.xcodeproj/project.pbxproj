@@ -35,6 +35,9 @@
 		FA0E01211D77F5C80080759D /* 鼓掌.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E010D1D77F5C80080759D /* 鼓掌.gif */; };
 		FA0E01241D783B1F0080759D /* HomeSceneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E01231D783B1F0080759D /* HomeSceneModel.m */; };
 		FA0E01271D7924DB0080759D /* WorkScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E01261D7924DB0080759D /* WorkScene.m */; };
+		FA0E012B1D7954330080759D /* WorkSceneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E012A1D7954330080759D /* WorkSceneModel.m */; };
+		FA0E012F1D795A730080759D /* CCDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E012E1D795A730080759D /* CCDateView.m */; };
+		FA0E01321D7963170080759D /* HACClockTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E01311D7963170080759D /* HACClockTimer.m */; };
 		FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFB51D73DA310080759D /* FAImageView.m */; };
 		FA0EFFBE1D73DA310080759D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0EFFB61D73DA310080759D /* FontAwesome.ttf */; };
 		FA0EFFBF1D73DA310080759D /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFB81D73DA310080759D /* NSString+FontAwesome.m */; };
@@ -102,6 +105,12 @@
 		FA0E01231D783B1F0080759D /* HomeSceneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSceneModel.m; sourceTree = "<group>"; };
 		FA0E01251D7924DB0080759D /* WorkScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkScene.h; sourceTree = "<group>"; };
 		FA0E01261D7924DB0080759D /* WorkScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkScene.m; sourceTree = "<group>"; };
+		FA0E01291D7954330080759D /* WorkSceneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkSceneModel.h; sourceTree = "<group>"; };
+		FA0E012A1D7954330080759D /* WorkSceneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkSceneModel.m; sourceTree = "<group>"; };
+		FA0E012D1D795A730080759D /* CCDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDateView.h; sourceTree = "<group>"; };
+		FA0E012E1D795A730080759D /* CCDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDateView.m; sourceTree = "<group>"; };
+		FA0E01301D7963170080759D /* HACClockTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACClockTimer.h; sourceTree = "<group>"; };
+		FA0E01311D7963170080759D /* HACClockTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACClockTimer.m; sourceTree = "<group>"; };
 		FA0EFFB41D73DA310080759D /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
 		FA0EFFB51D73DA310080759D /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
 		FA0EFFB61D73DA310080759D /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -234,6 +243,17 @@
 			path = gifs;
 			sourceTree = "<group>";
 		};
+		FA0E012C1D795A730080759D /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				FA0E012D1D795A730080759D /* CCDateView.h */,
+				FA0E012E1D795A730080759D /* CCDateView.m */,
+				FA0E01301D7963170080759D /* HACClockTimer.h */,
+				FA0E01311D7963170080759D /* HACClockTimer.m */,
+			);
+			path = Clock;
+			sourceTree = "<group>";
+		};
 		FA0EFFB21D73DA310080759D /* TopAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +348,8 @@
 				FA0EFFDF1D7420020080759D /* HomeViewControllerModel.m */,
 				FA0E01221D783B1F0080759D /* HomeSceneModel.h */,
 				FA0E01231D783B1F0080759D /* HomeSceneModel.m */,
+				FA0E01291D7954330080759D /* WorkSceneModel.h */,
+				FA0E012A1D7954330080759D /* WorkSceneModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -396,6 +418,7 @@
 		FA8006B61D7049CE0071571C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				FA0E012C1D795A730080759D /* Clock */,
 				FA0E00F51D77F1B20080759D /* RoundMenu */,
 				FA0E005E1D766C8B0080759D /* QBFlatButton */,
 				FA0EFFC21D7408650080759D /* OLGif */,
@@ -548,6 +571,7 @@
 			files = (
 				FA0E00061D752B100080759D /* HeroSprite.m in Sources */,
 				FA0E000D1D7558300080759D /* TWCommandCenter.m in Sources */,
+				FA0E012F1D795A730080759D /* CCDateView.m in Sources */,
 				FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */,
 				FA0EFFBF1D73DA310080759D /* NSString+FontAwesome.m in Sources */,
 				FA0E00261D7565030080759D /* TWCommandHomeScene.m in Sources */,
@@ -556,6 +580,7 @@
 				FA0EFFC81D7408650080759D /* OLImage.m in Sources */,
 				FA0E00291D756DEB0080759D /* TWCommandCommon.m in Sources */,
 				FA0E00231D755F0E0080759D /* TWBaseCommand.m in Sources */,
+				FA0E01321D7963170080759D /* HACClockTimer.m in Sources */,
 				FA0EFFD71D741B7E0080759D /* HomeViewController.m in Sources */,
 				FA0E01241D783B1F0080759D /* HomeSceneModel.m in Sources */,
 				FA0EFFC11D73DA310080759D /* MozTopAlertView.m in Sources */,
@@ -567,6 +592,7 @@
 				FA8006A01D7041A30071571C /* main.m in Sources */,
 				FA0E00611D766C8B0080759D /* QBFlatButton.m in Sources */,
 				FA0EFFC91D7408650080759D /* OLImageView.m in Sources */,
+				FA0E012B1D7954330080759D /* WorkSceneModel.m in Sources */,
 				FA0EFFE01D7420020080759D /* HomeViewControllerModel.m in Sources */,
 				FA0E01271D7924DB0080759D /* WorkScene.m in Sources */,
 				FA0EFFDD1D741CE40080759D /* TWBaseViewModel.m in Sources */,

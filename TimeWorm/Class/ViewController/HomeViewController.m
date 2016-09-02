@@ -12,6 +12,7 @@
 #import "JZMultiChoicesCircleButton.h"
 #import "OLImageView.h"
 
+
 @interface HomeViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) HomeViewControllerModel *hvm;
 @property (nonatomic, strong) NSMutableDictionary *viewControllerDic;
@@ -63,9 +64,6 @@
 
 #pragma mark -- Scene load
 - (void)loadScene {
-    if (self.currentScene == self.hvm.currentScene) {
-        return;
-    }
     if ([self.currentScene superview]) {
         [self.currentScene removeFromSuperview];
     }
@@ -74,6 +72,28 @@
 }
 
 #pragma mark -- ui components
+- (void)loadUIComponents {
+    switch (self.hvm.scene) {
+        case TWHomeVCSceneHome: {
+            [self.view addSubview:self.menuBtn];
+            break;
+        }
+        case TWHomeVCSceneWork: {
+            break;
+        }
+        case TWHomeVCSceneRelax: {
+            
+            break;
+        }
+        case TWHomeVCSceneTimer: {
+            
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 - (JZMultiChoicesCircleButton *)menuBtn {
     if (!_menuBtn) {
         NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"MarkRound"],nil];
@@ -137,7 +157,12 @@
         }
     } else if (object == self.hvm) {
         if ([keyPath isEqualToString:@"scene"]) {
-            [self loadScene];
+            if (self.currentScene == self.hvm.currentScene) {
+                return;
+            } else {
+                [self loadScene];
+                [self loadUIComponents];
+            }
         }
     }
 }
