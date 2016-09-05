@@ -5,6 +5,7 @@
 //  Created by Fincher Justin on 15/11/3.
 //  Copyright © 2015年 Fincher Justin. All rights reserved.
 //
+//  modified by Hatacool. All rights reserved.
 
 #import "JZMultiChoicesCircleButton.h"
 #import <QuartzCore/QuartzCore.h>

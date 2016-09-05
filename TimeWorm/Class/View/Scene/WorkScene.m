@@ -11,7 +11,7 @@
 #import "WorkSceneModel.h"
 #import "HACClockTimer.h"
 
-#import "PopupViewController1.h"
+#import "TWClockSetting.h"
 #import <STPopup/STPopup.h>
 #import <pop/POP.h>
 
@@ -113,7 +113,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 }
 
 - (void)clockClicked:(id)sender {
-    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:[PopupViewController1 new]];
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:[TWClockSetting new]];
     popupController.containerView.layer.cornerRadius = 4;
     popupController.transitionStyle = STPopupTransitionStyleFade;
     [popupController presentInViewController:self.ctrl];

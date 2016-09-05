@@ -32,6 +32,8 @@
 #define WBlue RGB(100, 190, 250)
 #define LBlue RGB(175, 235, 230)
 
+#define HFont(x) [UIFont systemFontOfSize:x]
+
 /** 弱引用自己 */
 #define SBWS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 // UI 界面大小
@@ -71,4 +73,5 @@ return z##_shared_obj_name_;                   \
 
 #import "TWCommandCenter.h"
 #import "TWUtility.h"
+#import "UIView+HACUtils.h"
 #endif /* TWHelp_h */
