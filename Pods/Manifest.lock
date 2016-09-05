@@ -12,6 +12,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - pop (1.0.9)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -19,19 +20,24 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - STPopup (1.8.0)
 
 DEPENDENCIES:
   - CocoaLumberjack
   - DateTools
   - FLEX
   - FMDB
+  - pop (~> 1.0)
   - ReactiveCocoa (~> 2.5)
+  - STPopup
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   FLEX: ba80ea13d2c784e85e616137fd4eff164781e364
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  STPopup: af630a85628e4226ffcbda5caaead0d99aed13a8
 
 COCOAPODS: 0.39.0

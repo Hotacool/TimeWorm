@@ -26,6 +26,11 @@
 /** 色值 RGB **/
 #define RGB(r, g, b) RGB_A(r, g, b, 1)
 #define RGB_HEX(__h__) RGB((__h__ >> 16) & 0xFF, (__h__ >> 8) & 0xFF, __h__ & 0xFF)
+/** 默认色值 **/
+#define WPink RGB(250, 150, 194)
+#define WPurple RGB(220, 197, 250)
+#define WBlue RGB(100, 190, 250)
+#define LBlue RGB(175, 235, 230)
 
 /** 弱引用自己 */
 #define SBWS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
@@ -65,5 +70,5 @@ return z##_shared_obj_name_;                   \
 }
 
 #import "TWCommandCenter.h"
-
+#import "TWUtility.h"
 #endif /* TWHelp_h */

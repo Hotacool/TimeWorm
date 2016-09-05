@@ -34,6 +34,13 @@
         [self timerFire:nil];
         //add tap gesture
         [self addGestureRecognizer:self.tapGesture];
+        //渐变背景
+        [self.layer insertSublayer:[TWUtility getCAGradientLayerWithFrame:self.bounds
+                                                                   colors:@[(__bridge id)WPink.CGColor, (__bridge id)WPurple.CGColor]
+                                                                locations:@[@(0.5f), @(1.0f)]
+                                                               startPoint:CGPointMake(0.5, 0)
+                                                                 endPoint:CGPointMake(0.5, 1)]
+                           atIndex:0];
         
     }
     return self;

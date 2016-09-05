@@ -61,6 +61,9 @@ HAC_SINGLETON_IMPLEMENT(TWCommandCenter);
     }];
 }
 
++ (void)doActionWithCommand:(NSString *)command object:(NSObject *)obj {
+}
+
 - (void)response2ObserverWithCommand:(NSString*)commandStr {
     NSMutableArray *arr = [TWCommandCenter sharedTWCommandCenter]->observers;
     [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

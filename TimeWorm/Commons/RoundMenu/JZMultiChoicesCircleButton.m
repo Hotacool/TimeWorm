@@ -82,7 +82,7 @@
                        ButtonTarget:(NSArray *)TargetArray
                         UseParallex:(BOOL)isParallex
                   ParallaxParameter:(CGFloat)ParallexPara
-              RespondViewController:(UIViewController *)VC
+              RespondViewController:(UIResponder *)VC
 {
     self = [self initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -492,6 +492,21 @@
     }
     
     
+}
+
+- (void)setImageArray:(NSArray *)imageArray andTextArray:(NSArray *)textArray {
+    if (imageArray&&imageArray.count==IconArray.count) {
+        [IconArray removeAllObjects];
+        [IconArray addObjectsFromArray:imageArray];
+    } else {
+        DDLogWarn(@"cannot set image array for obj: %@", imageArray);
+    }
+    if (textArray&&textArray.count==InfoArray.count) {
+        [InfoArray removeAllObjects];
+        [InfoArray addObjectsFromArray:textArray];
+    } else {
+        DDLogWarn(@"cannot set text array for obj: %@", textArray);
+    }
 }
 
 - (void)completeWithMessage:(NSString*)message {

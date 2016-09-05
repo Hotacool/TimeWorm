@@ -5,6 +5,7 @@
 //  Created by Fincher Justin on 15/11/3.
 //  Copyright © 2015年 Fincher Justin. All rights reserved.
 //
+//  modified by Hotacool. All rights reserved.
 
 #import <UIKit/UIKit.h>
 
@@ -13,7 +14,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic,strong) NSNumber *CircleRadius;
 @property (nonatomic,strong) UIColor *CircleColor;
-@property (nonatomic,strong) UIViewController *ResponderUIVC;
+@property (nonatomic,strong) UIResponder *ResponderUIVC;
 @property (nonatomic) BOOL isActive;
 
 - (instancetype)initWithCenterPoint:(CGPoint)Point
@@ -26,10 +27,13 @@
                        ButtonTarget:(NSArray *)TargetArray
                         UseParallex:(BOOL)isParallex
                   ParallaxParameter:(CGFloat)Parallex
-              RespondViewController:(UIViewController *)VC;
+              RespondViewController:(UIResponder *)VC;
 
 - (void)SuccessCallBackWithMessage:(NSString *)String;
 - (void)FailedCallBackWithMessage:(NSString *)String;
+
 - (void)completeWithMessage:(NSString*)message;
+- (void)setImageArray:(NSArray*)imageArray andTextArray:(NSArray*)textArray ;
+
 
 @end

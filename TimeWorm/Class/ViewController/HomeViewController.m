@@ -68,6 +68,7 @@
         [self.currentScene removeFromSuperview];
     }
     self.currentScene = self.hvm.currentScene;
+    self.currentScene.ctrl = self;
     [self.view insertSubview:self.currentScene atIndex:0];
 }
 
@@ -75,10 +76,21 @@
 - (void)loadUIComponents {
     switch (self.hvm.scene) {
         case TWHomeVCSceneHome: {
-            [self.view addSubview:self.menuBtn];
+            NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"MarkRound"],nil];
+            NSArray *TextArray = [NSArray arrayWithObjects:
+                                  NSLocalizedString(@"menuBtn2", @""),
+                                  NSLocalizedString(@"menuBtn4", @""),
+                                  NSLocalizedString(@"menuBtn3", @""),
+                                  NSLocalizedString(@"menuBtn1", @""), nil];
+            [self.menuBtn setImageArray:IconArray andTextArray:TextArray];
             break;
         }
         case TWHomeVCSceneWork: {
+            [self.menuBtn setImageArray:nil
+                           andTextArray:@[NSLocalizedString(@"wMenuBtn2", @"")
+                                                           ,NSLocalizedString(@"wMenuBtn4", @"")
+                                                           ,NSLocalizedString(@"wMenuBtn3", @"")
+                                                           ,NSLocalizedString(@"wMenuBtn1", @"")]];
             break;
         }
         case TWHomeVCSceneRelax: {

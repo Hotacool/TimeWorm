@@ -10,3 +10,8 @@
 "menuBtn2" = "放松";
 "menuBtn3" = "定时器";
 "menuBtn4" = "编辑";
+
+"wMenuBtn1" = "暂停";
+"wMenuBtn2" = "事件";
+"wMenuBtn3" = "停止";
+"wMenuBtn4" = "重置";

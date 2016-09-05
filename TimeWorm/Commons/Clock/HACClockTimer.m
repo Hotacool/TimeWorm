@@ -79,6 +79,7 @@
         [view.layer setContentsRect:CGRectMake(0, 0, 1.0f/11.0f, 1.0)];
         [view.layer setContentsGravity:kCAGravityResizeAspect];
         [view.layer setMagnificationFilter:kCAFilterNearest];
+        view.userInteractionEnabled = NO;
     }
 }
 
@@ -92,6 +93,7 @@
         [view.layer setContentsRect:CGRectMake(10.0f/11.0f, 0, 1.0f/11.0f, 1.0)];
         [view.layer setContentsGravity:kCAGravityResizeAspect];
         [view.layer setMagnificationFilter:kCAFilterNearest];
+        view.userInteractionEnabled = NO;
     }
 }
 

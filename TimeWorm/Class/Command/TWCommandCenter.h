@@ -20,4 +20,5 @@ HAC_SINGLETON_DEFINE(TWCommandCenter)
 
 + (void)loadCommad:(TWBaseCommand*)command;
 + (void)doActionWithCommand:(NSString *)command;
++ (void)doActionWithCommand:(NSString *)command object:(NSObject*)obj ;
 @end

@@ -5,6 +5,7 @@
 //  Created by macbook on 16/9/2.
 //  Copyright © 2016年 Hotacool. All rights reserved.
 //
+#import "QBFlatButton.h"
 
 @interface HACClockDate : NSObject
 @property (nonatomic, assign) NSUInteger hour;
@@ -17,7 +18,7 @@
 - (NSUInteger)remainderSeconds ;
 @end
 
-@interface HACClockTimer : UIView
+@interface HACClockTimer : QBFlatButton
 - (void)setClockDate:(HACClockDate*)date ;
 - (void)setCLockDefaultDate:(HACClockDate*)date ;
 @end
