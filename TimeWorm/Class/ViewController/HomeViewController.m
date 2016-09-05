@@ -70,6 +70,7 @@
     self.currentScene = self.hvm.currentScene;
     self.currentScene.ctrl = self;
     [self.view insertSubview:self.currentScene atIndex:0];
+    [self.currentScene show];
 }
 
 #pragma mark -- ui components
@@ -116,8 +117,8 @@
                               NSLocalizedString(@"menuBtn1", @""), nil];
         NSArray *TargetArray = [NSArray arrayWithObjects:
                                 [NSString stringWithFormat:@"ButtonTwo"],
-                                [NSString stringWithFormat:@"ButtonThree"],
-                                [NSString stringWithFormat:@"ButtonFour"] ,
+                                [NSString stringWithFormat:@"ButtonFour"],
+                                [NSString stringWithFormat:@"ButtonThree"] ,
                                 [NSString stringWithFormat:@"ButtonOne"],
                                 nil];
         _menuBtn = [[JZMultiChoicesCircleButton alloc] initWithCenterPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - 100 )
@@ -358,7 +359,6 @@
 - (void)ButtonOne {
     NSLog(@"BUtton 1 Seleted");
     [self.hvm switchScene:TWHomeVCSceneWork];
-    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.menuBtn completeWithMessage:@"Start"];
     });
@@ -376,8 +376,26 @@
     });
 }
 - (void)ButtonFour {
+    switch (self.hvm.scene) {
+        case TWHomeVCSceneHome: {
+            
+            break;
+        }
+        case TWHomeVCSceneWork: {
+            [self.hvm switchScene:TWHomeVCSceneHome];
+            break;
+        }
+        case TWHomeVCSceneTimer: {
+            
+            break;
+        }
+        case TWHomeVCSceneRelax: {
+            
+            break;
+        }
+    }
     NSLog(@"BUtton 4 Seleted");
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.menuBtn completeWithMessage:@"Start"];
     });
 }

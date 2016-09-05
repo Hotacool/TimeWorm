@@ -13,5 +13,9 @@
 
 "wMenuBtn1" = "暂停";
 "wMenuBtn2" = "事件";
-"wMenuBtn3" = "停止";
-"wMenuBtn4" = "重置";
+"wMenuBtn3" = "重置";
+"wMenuBtn4" = "停止";
+
+"cstart" = "开始";
+"cstop"  = "停止";
+"cpause" = "暂停";

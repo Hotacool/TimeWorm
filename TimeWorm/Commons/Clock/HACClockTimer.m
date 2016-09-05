@@ -138,21 +138,21 @@
         
         CGFloat originX = self.frame.size.width - labelW*labelCount - 5;
         UILabel *label1=[[UILabel alloc]initWithFrame:CGRectMake(originX, labelY, labelW, labelH)];
-        label1.text=@"Work";
+        label1.text=NSLocalizedString(@"cstart", @"");
         label1.textColor=[UIColor whiteColor];
         label1.textAlignment=NSTextAlignmentCenter;
         [self addSubview:label1];
         
         CGFloat label2X=CGRectGetMaxX(label1.frame);
         UILabel *label2=[[UILabel alloc]initWithFrame:CGRectMake(label2X, labelY, labelW, labelH)];
-        label2.text=@"Relax";
+        label2.text=NSLocalizedString(@"cpause", @"");
         label2.textColor=[UIColor whiteColor];
         label2.textAlignment=NSTextAlignmentCenter;
         [self addSubview:label2];
         
         CGFloat label3X=CGRectGetMaxX(label2.frame);
         UILabel *label3=[[UILabel alloc]initWithFrame:CGRectMake(label3X, labelY, labelW, labelH)];
-        label3.text=@"Timer";
+        label3.text=NSLocalizedString(@"cstop", @"");
         label3.textColor=[UIColor whiteColor];
         label3.textAlignment=NSTextAlignmentCenter;
         [self addSubview:label3];

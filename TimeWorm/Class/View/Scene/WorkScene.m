@@ -40,14 +40,16 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
     return self;
 }
 
-- (void)setUIComponents {
-    hero = [[HeroSprite alloc] initWithSize:CGSizeMake(200, 200) position:CGPointMake(self.frame.size.width/2, self.frame.size.height/2 - 50)];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+- (void)show {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self addSprite:hero];
         [hero doRandomActionWithLoopCount:5];
         [self showClock];
     });
+}
+
+- (void)setUIComponents {
+    hero = [[HeroSprite alloc] initWithSize:CGSizeMake(200, 200) position:CGPointMake(self.frame.size.width/2, self.frame.size.height/2 - 50)];
     
     //渐变背景
     [self.layer insertSublayer:[TWUtility getCAGradientLayerWithFrame:self.bounds
@@ -119,6 +121,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 //clean
 - (void)removeFromSuperview {
     [hero stopCurrentAction];
+    [hero removeFromScene];
     [self.clock removeFromSuperview];
     [super removeFromSuperview];
 }

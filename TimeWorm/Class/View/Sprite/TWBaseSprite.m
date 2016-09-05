@@ -7,6 +7,7 @@
 //
 
 #import "TWBaseSprite.h"
+#import "TWBaseScene.h"
 
 const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
 @implementation TWAction
@@ -132,6 +133,11 @@ const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
     if (self.actions&&self.actions.count>0) {
         [self performAction:self.actions.allKeys[0] withEnd:nil];
     }
+}
+
+- (void)removeFromScene {
+    [self.contentLayer removeFromSuperlayer];
+    [self.scene removeSprite:self];
 }
 
 #pragma mark - perform animation

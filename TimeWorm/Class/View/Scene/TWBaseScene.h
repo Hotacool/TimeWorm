@@ -21,4 +21,9 @@
 @property (nonatomic, weak) UIViewController *ctrl;
 
 - (void)addSprite:(TWBaseSprite*)sprite ;
+- (void)removeSprite:(TWBaseSprite*)sprite ;
+/**
+ *  显示（addSubview）
+ */
+- (void)show ;
 @end

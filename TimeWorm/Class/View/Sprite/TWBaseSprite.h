@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "OLImage.h"
 
+@class TWBaseScene;
+
 @interface TWAction : NSObject
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, strong) OLImage* action;
@@ -21,6 +23,7 @@
 @property (nonatomic, strong, readonly) NSMutableDictionary<NSString *,TWAction *> *actions;
 @property (nonatomic, strong, readonly) NSString *performAction;
 @property (nonatomic, strong, readonly) CALayer *contentLayer;
+@property (nonatomic, weak) TWBaseScene *scene;
 
 - (instancetype)initWithSize:(CGSize)size position:(CGPoint)position ;
 - (void)addAction:(NSString*)key withAction:(TWAction*)action ;
@@ -33,4 +36,5 @@
 - (void)setSize:(CGSize)size ;
 - (void)setPosition:(CGPoint)position ;
 - (NSString *)doRandomActionWithLoopCount:(NSUInteger)count;
+- (void)removeFromScene ;
 @end

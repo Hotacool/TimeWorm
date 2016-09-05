@@ -55,6 +55,16 @@
     }
 }
 
+- (void)removeSprite:(TWBaseSprite *)sprite {
+    if (sprite) {
+        if ([self.sprites containsObject:sprite]) {
+            [self.sprites removeObject:sprite];
+        } else {
+            DDLogWarn(@"sprites has no sprite: %@", sprite);
+        }
+    }
+}
+
 - (CALayer *)contentLayer {
     return self.layer;
 }

@@ -29,9 +29,6 @@
         [_hsm attatchCommand:YES];
         
         hero = [[HeroSprite alloc] initWithSize:CGSizeMake(200, 200) position:CGPointMake(frame.size.width/2, frame.size.height/2 - 50)];
-        [self addSprite:hero];
-        //启动timer
-        [self timerFire:nil];
         //add tap gesture
         [self addGestureRecognizer:self.tapGesture];
         //渐变背景
@@ -44,6 +41,17 @@
         
     }
     return self;
+}
+
+- (void)show {
+    [self addSprite:hero];
+    //启动timer
+    [self timerFire:nil];
+}
+
+- (void)removeFromSuperview {
+    [hero removeFromScene];
+    [super removeFromSuperview];
 }
 
 - (void)dealloc {

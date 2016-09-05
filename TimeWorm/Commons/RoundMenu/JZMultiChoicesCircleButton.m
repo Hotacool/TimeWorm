@@ -496,8 +496,9 @@
 
 - (void)setImageArray:(NSArray *)imageArray andTextArray:(NSArray *)textArray {
     if (imageArray&&imageArray.count==IconArray.count) {
-        [IconArray removeAllObjects];
-        [IconArray addObjectsFromArray:imageArray];
+        [IconArray enumerateObjectsUsingBlock:^(UIImageView *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.image = imageArray[idx];
+        }];
     } else {
         DDLogWarn(@"cannot set image array for obj: %@", imageArray);
     }
