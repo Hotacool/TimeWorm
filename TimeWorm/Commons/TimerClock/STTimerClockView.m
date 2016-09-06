@@ -5,6 +5,7 @@
 //  Created by zhenlintie on 15/7/29.
 //  Copyright (c) 2015年 sTeven. All rights reserved.
 //
+//  modified by Hotacool. All rights reserved.
 
 #import "STTimerClockView.h"
 #import "STTimerRulerView.h"
@@ -18,6 +19,8 @@
 @property (strong, nonatomic) UIImageView *degreeBg;
 @property (strong, nonatomic) UIImageView *number60;
 @property (strong, nonatomic) UIImageView *number15;
+
+@property (nonatomic, strong, readwrite) QBFlatButton *timeBtn;
 @property (strong, nonatomic) UILabel *timeLabel;
 
 @property (strong, nonatomic) STTimerRulerView *rulerView;
@@ -28,7 +31,6 @@
 
 @implementation STTimerClockView{
     NSInteger _leftSecond;
-    NSInteger _leftTime;
     
     BOOL _canUpdateTimeDown;
     BOOL _pause;
@@ -38,7 +40,6 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]){
         _leftSecond = 0;
-        _leftTime = 0;
         _canUpdateTimeDown = YES;
         _pause = NO;
     }
@@ -64,14 +65,21 @@
     [self addSubview:self.number15];
     [self addSubview:self.number60];
     
-    self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
+    self.timeBtn = [[QBFlatButton alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+    self.timeBtn.faceColor = Hmorange;
+    self.timeBtn.sideColor = HmorangeD;
+    self.timeBtn.radius = 6.0;
+    self.timeBtn.margin = 7.0;
+    self.timeBtn.depth = 6.0;
+    self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 200, 20)];
     self.timeLabel.textColor = RGB(172, 89, 89);
     self.timeLabel.font = HFont(23);
     self.timeLabel.textAlignment = NSTextAlignmentCenter;
-    self.timeLabel.text = @"00:00.00";
-    [self addSubview:self.timeLabel];
+    self.timeLabel.text = @"00:00";
+    [self.timeBtn addSubview:self.timeLabel];
+    [self addSubview:self.timeBtn];
     
-    self.rulerView = [[STTimerRulerView alloc] initWithFrame:CGRectMake(self.width-73, 44, 70, self.height-44)];
+    self.rulerView = [[STTimerRulerView alloc] initWithFrame:CGRectMake(self.width-73, 20, 70, self.height-20)];
     self.rulerView.delegate = self;
     [self addSubview:self.rulerView];
 }
@@ -91,7 +99,7 @@
     self.number15.right = self.clockPannel.right-38;
     self.number15.top = self.clockPannel.center.y-self.number15.height/2;
     
-    self.timeLabel.center = CGPointMake(self.clockPannel.center.x, self.clockPannel.bottom+45);
+    self.timeBtn.center = CGPointMake(self.clockPannel.center.x, self.clockPannel.bottom+45-10);
     
     POPLayerSetTranslationX(self.handShadow.layer, 2);
     
@@ -124,15 +132,11 @@
 #pragma mark - time
 
 - (void)timeDown{
+    _leftSecond--;
     
-    _leftTime--;
+    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld",_leftSecond/60,_leftSecond%60];
     
-    NSInteger second = _leftSecond;
-    
-    _leftSecond = _leftTime/100;
-    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld.%02ld",_leftSecond/60,_leftSecond%60,_leftTime%100];
-    
-    if (_canUpdateTimeDown && second!=_leftSecond){
+    if (_canUpdateTimeDown){
         [self.rulerView setSecond:_leftSecond];
         [self updateHandWithSecond:_leftSecond];
     }
@@ -148,7 +152,7 @@
 }
 
 - (void)startTime{
-    _timer = [NSTimer timerWithTimeInterval:1/100.0 target:self selector:@selector(timeDown) userInfo:nil repeats:YES];
+    _timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(timeDown) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
 
@@ -156,14 +160,13 @@
 
 - (void)slideToSecond:(NSInteger)second{
     [self stopTime];
-    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:00.00",second/60];
+    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:00",second/60];
     [self updateHandWithSecond:second];
 }
 
 - (void)didBeginAtMinute:(NSInteger)minute{
     _leftSecond = minute*60;
-    _leftTime = _leftSecond*100;
-    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:00.00",minute];
+    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:00",minute];
     
     [@[self.hand, self.handShadow] rotateFrom:[self angleOfHandBySecond:_leftSecond] to:M_PI*2*(minute/60.0) duration:0.2 timingFumction:0 completion:nil];
     if (minute > 0 && !_pause){

@@ -19,7 +19,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.title = @"计时器";
+        self.title = NSLocalizedString(@"Time Set", @"");
         self.contentSizeInPopup = CGSizeMake(300, 400);
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
     }
@@ -29,10 +29,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ClockSetMore", @"") style:UIBarButtonItemStylePlain target:self action:@selector(nextBtnDidTap)];
-    
+    self.view.backgroundColor = Haqua;
     self.clockView = [[STTimerClockView alloc] initWithFrame:CGRectMake(0, 0, self.contentSizeInPopup.width, self.contentSizeInPopup.height)];
-    
     [self.view addSubview:self.clockView];
+    [self.clockView.timeBtn addTarget:self action:@selector(setClockTime:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewDidLayoutSubviews{
@@ -64,4 +64,8 @@
 //    [self.popupController pushViewController:[PopupViewController3 new] animated:YES];
 }
 
+- (void)setClockTime:(id)sender {
+    sfuc
+    
+}
 @end

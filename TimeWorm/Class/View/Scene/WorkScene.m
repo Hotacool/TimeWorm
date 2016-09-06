@@ -80,8 +80,8 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 - (HACClockTimer *)clock {
     if (!_clock) {
         _clock = [[HACClockTimer alloc]initWithFrame:CGRectMake(0, -200, self.frame.size.width-50, 130)];
-        _clock.faceColor = [UIColor colorWithRed:243.0/255.0 green:152.0/255.0 blue:0 alpha:1.0];
-        _clock.sideColor = [UIColor colorWithRed:170.0/255.0 green:105.0/255.0 blue:0 alpha:1.0];
+        _clock.faceColor = Hmorange;
+        _clock.sideColor = HmorangeD;
         _clock.radius = 6.0;
         _clock.margin = 7.0;
         _clock.depth = 6.0;
@@ -113,6 +113,12 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 }
 
 - (void)clockClicked:(id)sender {
+    [STPopupNavigationBar appearance].barTintColor = Hdarkgray;
+    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
+    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
+    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18],
+                                                               NSForegroundColorAttributeName: [UIColor whiteColor] };
+    
     STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:[TWClockSetting new]];
     popupController.containerView.layer.cornerRadius = 4;
     popupController.transitionStyle = STPopupTransitionStyleFade;

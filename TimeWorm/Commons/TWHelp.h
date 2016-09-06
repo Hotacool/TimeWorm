@@ -32,6 +32,34 @@
 #define WBlue RGB(100, 190, 250)
 #define LBlue RGB(175, 235, 230)
 
+#define Hgrapefruit   RGB_HEX(0xED5565)
+#define HgrapefruitD  RGB_HEX(0xDA4453)
+#define Hbittersweet  RGB_HEX(0xFC6E51)
+#define HbittersweetD RGB_HEX(0xE9573F)
+#define Hsunflower    RGB_HEX(0xFFCE54)
+#define HsunflowerD   RGB_HEX(0xF6BB42)
+#define Hgrass        RGB_HEX(0xA0D468)
+#define HgrassD       RGB_HEX(0x8CC152)
+#define Hmint         RGB_HEX(0x48CFAD)
+#define HmintD        RGB_HEX(0x37BC98)
+#define Haqua         RGB_HEX(0x4FC1E9)
+#define HaquaD        RGB_HEX(0x3BAFDA)
+#define Hbluejeans    RGB_HEX(0x5D9CEC)
+#define HbluejeansD   RGB_HEX(0x4A89DC)
+#define Hlavander     RGB_HEX(0xAC92EC)
+#define HlavanderD    RGB_HEX(0x967ADC)
+#define Hpinkrose     RGB_HEX(0xEC87C0)
+#define HpinkroseD    RGB_HEX(0xD770AD)
+#define Hlightgray    RGB_HEX(0xF5F7FA)
+#define HlightgrayD   RGB_HEX(0xE6E9ED)
+#define Hmediumgray   RGB_HEX(0xCCD1D9)
+#define HmediumgrayD  RGB_HEX(0xAAB2BD)
+#define Hdarkgray     RGB_HEX(0x656D78)
+#define HdarkgrayD    RGB_HEX(0x434A54)
+#define Hmorange      RGB(243,152,0)
+#define HmorangeD     RGB(170,105,0)
+
+/** 字体大小 **/
 #define HFont(x) [UIFont systemFontOfSize:x]
 
 /** 弱引用自己 */
@@ -70,6 +98,8 @@ z##_shared_obj_name_ = [[self alloc] init];\
 });                                            \
 return z##_shared_obj_name_;                   \
 }
+
+#define sfuc DDLogInfo(@"%s", __func__);
 
 #import "TWCommandCenter.h"
 #import "TWUtility.h"
