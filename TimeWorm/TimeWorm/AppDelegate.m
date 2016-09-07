@@ -13,7 +13,9 @@
 #import "HomeViewController.h"
 
 #import "TWCommandHomeScene.h"
+#import "TWCommandWorkScene.h"
 #import "TWCommandCommon.h"
+#import "TWDBManager.h"
 
 @interface AppDelegate ()
 
@@ -41,6 +43,11 @@
 - (void)loadCommands {
     [TWCommandCenter loadCommad:[TWCommandHomeScene new]] ;
     [TWCommandCenter loadCommad:[TWCommandCommon new]] ;
+    [TWCommandCenter loadCommad:[TWCommandWorkScene new]];
+}
+
+- (void)loadDB {
+    [TWDBManager initializeDB];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -48,6 +55,7 @@
     [self config];
     [self loadCommands];
     [self loadInterface];
+    [self loadDB];
     return YES;
 }
 

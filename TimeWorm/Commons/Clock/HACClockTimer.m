@@ -20,6 +20,13 @@
     return self;
 }
 
+- (void)updateWithHour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second weekday:(NSUInteger)weekday {
+    self.hour = hour;
+    self.minute = minute;
+    self.second = second;
+    self.weekday = weekday;
+}
+
 - (void)reduce {
     int r = (int)self.second - 1;
     if (r<0) {

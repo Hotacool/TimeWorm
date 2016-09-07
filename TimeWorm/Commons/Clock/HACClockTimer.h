@@ -14,6 +14,7 @@
 @property (nonatomic, assign) NSUInteger weekday;
 
 - (instancetype)initWithHour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second weekday:(NSUInteger)weekday;
+- (void)updateWithHour:(NSUInteger)hour minute:(NSUInteger)minute second:(NSUInteger)second weekday:(NSUInteger)weekday;
 - (void)reduce ;
 - (NSUInteger)remainderSeconds ;
 @end

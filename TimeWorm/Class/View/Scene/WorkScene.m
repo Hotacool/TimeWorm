@@ -10,13 +10,14 @@
 #import "HeroSprite.h"
 #import "WorkSceneModel.h"
 #import "HACClockTimer.h"
+#import "TWModelTimer.h"
 
 #import "TWClockSetting.h"
 #import <STPopup/STPopup.h>
 #import <pop/POP.h>
 
 static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
-@interface WorkScene ()
+@interface WorkScene () <TWTimerObserver>
 @property (nonatomic, strong) WorkSceneModel *wsm;
 @property (nonatomic, strong) HACClockTimer *clock;
 @end
@@ -24,7 +25,6 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 @implementation WorkScene {
     HeroSprite *hero;
     HACClockDate *date;
-    NSTimer *tickTimer;
 }
 
 - (void)dealloc {
@@ -34,6 +34,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         _wsm = (WorkSceneModel *)self.viewModel;
+        [_wsm addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
         [_wsm attatchCommand:YES];
         [self setUIComponents];
     }
@@ -41,10 +42,13 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 }
 
 - (void)show {
+    [self.wsm setState:WorkSceneModelStateNone];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self addSprite:hero];
         [hero doRandomActionWithLoopCount:5];
         [self showClock];
+        //自动启动
+        [self startTimer];
     });
 }
 
@@ -86,29 +90,17 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
         _clock.margin = 7.0;
         _clock.depth = 6.0;
         [_clock addTarget:self action:@selector(clockClicked:) forControlEvents:UIControlEventTouchUpInside];
-        
         [_clock setCLockDefaultDate:[[HACClockDate alloc] initWithHour:0 minute:0 second:0 weekday:1]];
-        [self startTickTimer];
     }
     return _clock;
 }
 
-- (void)startTickTimer {
-    tickTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                 target:self
-                                               selector:@selector(tick)
-                                               userInfo:nil
-                                                repeats:YES];
-    
-    [[NSRunLoop mainRunLoop] addTimer:tickTimer forMode:NSRunLoopCommonModes];
-}
-
-
-- (void)tick {
+- (void)tickTime {
     if (!date) {
-        date = [[HACClockDate alloc] initWithHour:0 minute:1 second:55 weekday:1];
+        date = [[HACClockDate alloc] initWithHour:0 minute:[TWTimer currentTimer].seconds/60 second:[TWTimer currentTimer].seconds%60 weekday:1];
+    } else{
+        [date updateWithHour:0 minute:[TWTimer currentTimer].seconds/60 second:[TWTimer currentTimer].seconds%60 weekday:1];
     }
-    [date reduce];
     [self.clock setClockDate:date];
 }
 
@@ -128,7 +120,46 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 - (void)removeFromSuperview {
     [hero stopCurrentAction];
     [hero removeFromScene];
+    [TWTimer removeObserverFromTimer:self];
     [self.clock removeFromSuperview];
     [super removeFromSuperview];
+}
+#pragma mark -- timer
+- (void)startTimer {
+    //TWTimer
+    [TWTimer createTimerWithName:@"biubiubiu" seconds:100];
+    [TWTimer attatchObserver2Timer:self];
+    [TWTimer activeTimer:[TWTimer currentTimer]];
+    
+    [self.wsm setState:WorkSceneModelStateWorking];
+}
+#pragma mark -- KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"state"]) {
+        switch (self.wsm.state) {
+            case WorkSceneModelStateNone: {
+                
+                break;
+            }
+            case WorkSceneModelStateWorking: {
+                
+                break;
+            }
+            case WorkSceneModelStatePause: {
+                [TWTimer pauseTimer:[TWTimer currentTimer]];
+                [hero performAction:@"applaud" withEnd:nil];
+                break;
+            }
+            case WorkSceneModelStateEvent: {
+                [hero performAction:@"applaud" withEnd:nil];
+                break;
+            }
+            case WorkSceneModelStateReset: {
+                [TWTimer activeTimer:[TWTimer currentTimer]];
+                [hero performAction:@"think" withEnd:nil];
+                break;
+            }
+        }
+    }
 }
 @end

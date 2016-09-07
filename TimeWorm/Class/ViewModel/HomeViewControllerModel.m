@@ -66,6 +66,88 @@
     }
 }
 
+- (void)postMenuClickCommandWithBtnIndex:(NSUInteger)index {
+    switch (index) {
+        case 1: {
+            switch (self.scene) {
+                case TWHomeVCSceneHome: {
+                    [self switchScene:TWHomeVCSceneWork];
+                    break;
+                }
+                case TWHomeVCSceneWork: {
+                    [TWCommandCenter doActionWithCommand:@"workScenePause"];
+                    break;
+                }
+                case TWHomeVCSceneTimer: {
+                    break;
+                }
+                case TWHomeVCSceneRelax: {
+                    break;
+                }
+            }
+            break;
+        }
+        case 2: {
+            switch (self.scene) {
+                case TWHomeVCSceneHome: {
+                    [self switchScene:TWHomeVCSceneWork];
+                    break;
+                }
+                case TWHomeVCSceneWork: {
+                    [TWCommandCenter doActionWithCommand:@"workSceneEvent"];
+                    break;
+                }
+                case TWHomeVCSceneTimer: {
+                    break;
+                }
+                case TWHomeVCSceneRelax: {
+                    break;
+                }
+            }
+            break;
+        }
+        case 3: {
+            switch (self.scene) {
+                case TWHomeVCSceneHome: {
+                    [self switchScene:TWHomeVCSceneWork];
+                    break;
+                }
+                case TWHomeVCSceneWork: {
+                    [TWCommandCenter doActionWithCommand:@"workSceneReset"];
+                    break;
+                }
+                case TWHomeVCSceneTimer: {
+                    break;
+                }
+                case TWHomeVCSceneRelax: {
+                    break;
+                }
+            }
+            break;
+        }
+        case 4: {
+            switch (self.scene) {
+                case TWHomeVCSceneHome: {
+                    break;
+                }
+                case TWHomeVCSceneWork: {
+                    [self switchScene:TWHomeVCSceneHome];
+                    break;
+                }
+                case TWHomeVCSceneTimer: {
+                    
+                    break;
+                }
+                case TWHomeVCSceneRelax: {
+                    
+                    break;
+                }
+            }
+            break;
+        }
+    }
+}
+
 - (void)switchScene:(TWHomeVCScene)scene {
     if (self.scene == scene) {
         return;

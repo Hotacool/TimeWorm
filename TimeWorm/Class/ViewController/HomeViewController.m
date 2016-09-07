@@ -358,43 +358,26 @@
 #pragma mark -- menu btn clicked
 - (void)ButtonOne {
     NSLog(@"BUtton 1 Seleted");
-    [self.hvm switchScene:TWHomeVCSceneWork];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.menuBtn completeWithMessage:@"Start"];
-    });
+    [self.hvm postMenuClickCommandWithBtnIndex:1];
+    [self.menuBtn completeWithMessage:@"Start"];
 }
 - (void)ButtonTwo {
     NSLog(@"BUtton 2 Seleted");
+    [self.hvm postMenuClickCommandWithBtnIndex:2];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.menuBtn completeWithMessage:@"Start"];
     });
 }
 - (void)ButtonThree {
     NSLog(@"BUtton 3 Seleted");
+    [self.hvm postMenuClickCommandWithBtnIndex:3];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.menuBtn completeWithMessage:@"Start"];
     });
 }
 - (void)ButtonFour {
-    switch (self.hvm.scene) {
-        case TWHomeVCSceneHome: {
-            
-            break;
-        }
-        case TWHomeVCSceneWork: {
-            [self.hvm switchScene:TWHomeVCSceneHome];
-            break;
-        }
-        case TWHomeVCSceneTimer: {
-            
-            break;
-        }
-        case TWHomeVCSceneRelax: {
-            
-            break;
-        }
-    }
     NSLog(@"BUtton 4 Seleted");
+    [self.hvm postMenuClickCommandWithBtnIndex:4];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.menuBtn completeWithMessage:@"Start"];
     });

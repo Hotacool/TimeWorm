@@ -8,6 +8,13 @@
 
 #import "TWBaseViewModel.h"
 
+typedef  NS_ENUM(NSUInteger, WorkSceneModelState) {
+    WorkSceneModelStateNone = 0,
+    WorkSceneModelStateWorking,
+    WorkSceneModelStatePause,
+    WorkSceneModelStateEvent,
+    WorkSceneModelStateReset
+};
 @interface WorkSceneModel : TWBaseViewModel
-
+@property (nonatomic, assign) WorkSceneModelState state;
 @end

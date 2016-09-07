@@ -142,6 +142,11 @@
 		FA8C53C31D7D72C000F96ED5 /* timer_ruler_i6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8C53771D7D72C000F96ED5 /* timer_ruler_i6@2x.png */; };
 		FA8C53C61D7DC79D00F96ED5 /* timer_ruler_i6p@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8C53C51D7DC79D00F96ED5 /* timer_ruler_i6p@3x.png */; };
 		FA8C53CA1D7DC97700F96ED5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8C53C91D7DC97700F96ED5 /* icon.png */; };
+		FA8C54DE1D7FC53400F96ED5 /* TWDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54DD1D7FC53400F96ED5 /* TWDBManager.m */; };
+		FA8C54E11D7FE4B600F96ED5 /* db_initialize.sql in Resources */ = {isa = PBXBuildFile; fileRef = FA8C54E01D7FE4B600F96ED5 /* db_initialize.sql */; };
+		FA8C54E41D7FEAD300F96ED5 /* TWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54E31D7FEAD300F96ED5 /* TWModel.m */; };
+		FA8C54E71D7FEE3B00F96ED5 /* TWModelTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54E61D7FEE3B00F96ED5 /* TWModelTimer.m */; };
+		FA8C54EA1D8016EB00F96ED5 /* TWCommandWorkScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54E91D8016EB00F96ED5 /* TWCommandWorkScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -327,6 +332,15 @@
 		FA8C53771D7D72C000F96ED5 /* timer_ruler_i6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timer_ruler_i6@2x.png"; sourceTree = "<group>"; };
 		FA8C53C51D7DC79D00F96ED5 /* timer_ruler_i6p@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timer_ruler_i6p@3x.png"; sourceTree = "<group>"; };
 		FA8C53C91D7DC97700F96ED5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Resource/icon.png; sourceTree = SOURCE_ROOT; };
+		FA8C54DC1D7FC53400F96ED5 /* TWDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWDBManager.h; sourceTree = "<group>"; };
+		FA8C54DD1D7FC53400F96ED5 /* TWDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWDBManager.m; sourceTree = "<group>"; };
+		FA8C54E01D7FE4B600F96ED5 /* db_initialize.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = db_initialize.sql; sourceTree = "<group>"; };
+		FA8C54E21D7FEAD300F96ED5 /* TWModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWModel.h; sourceTree = "<group>"; };
+		FA8C54E31D7FEAD300F96ED5 /* TWModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWModel.m; sourceTree = "<group>"; };
+		FA8C54E51D7FEE3B00F96ED5 /* TWModelTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWModelTimer.h; sourceTree = "<group>"; };
+		FA8C54E61D7FEE3B00F96ED5 /* TWModelTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWModelTimer.m; sourceTree = "<group>"; };
+		FA8C54E81D8016EB00F96ED5 /* TWCommandWorkScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCommandWorkScene.h; sourceTree = "<group>"; };
+		FA8C54E91D8016EB00F96ED5 /* TWCommandWorkScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWCommandWorkScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,6 +394,8 @@
 				FA0E00281D756DEB0080759D /* TWCommandCommon.m */,
 				FA0E00241D7565030080759D /* TWCommandHomeScene.h */,
 				FA0E00251D7565030080759D /* TWCommandHomeScene.m */,
+				FA8C54E81D8016EB00F96ED5 /* TWCommandWorkScene.h */,
+				FA8C54E91D8016EB00F96ED5 /* TWCommandWorkScene.m */,
 			);
 			path = Command;
 			sourceTree = "<group>";
@@ -472,6 +488,7 @@
 		FA0EFFCA1D7409410080759D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FA8C54DF1D7FE4B600F96ED5 /* sql */,
 				FA8C532C1D7D72C000F96ED5 /* TimerClock */,
 				FA0E00F91D77F5C80080759D /* gifs */,
 				FA0E00EC1D77C0AE0080759D /* InfoPlist.strings */,
@@ -495,6 +512,12 @@
 		FA0EFFD01D7418E00080759D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA8C54DC1D7FC53400F96ED5 /* TWDBManager.h */,
+				FA8C54DD1D7FC53400F96ED5 /* TWDBManager.m */,
+				FA8C54E21D7FEAD300F96ED5 /* TWModel.h */,
+				FA8C54E31D7FEAD300F96ED5 /* TWModel.m */,
+				FA8C54E51D7FEE3B00F96ED5 /* TWModelTimer.h */,
+				FA8C54E61D7FEE3B00F96ED5 /* TWModelTimer.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -733,6 +756,14 @@
 			path = TimerClock;
 			sourceTree = "<group>";
 		};
+		FA8C54DF1D7FE4B600F96ED5 /* sql */ = {
+			isa = PBXGroup;
+			children = (
+				FA8C54E01D7FE4B600F96ED5 /* db_initialize.sql */,
+			);
+			path = sql;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -861,6 +892,7 @@
 				FA8C53841D7D72C000F96ED5 /* loop_0001@2x.png in Resources */,
 				FA0E01111D77F5C80080759D /* cry.gif in Resources */,
 				FA0E010F1D77F5C80080759D /* hi.gif in Resources */,
+				FA8C54E11D7FE4B600F96ED5 /* db_initialize.sql in Resources */,
 				FA8C53C01D7D72C000F96ED5 /* minute_hand_i6@2x.png in Resources */,
 				FA8C53921D7D72C000F96ED5 /* loop_0008@2x.png in Resources */,
 				FA8C53BE1D7D72C000F96ED5 /* loop_0030@2x.png in Resources */,
@@ -950,15 +982,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA8C54DE1D7FC53400F96ED5 /* TWDBManager.m in Sources */,
 				FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */,
 				FA0E00061D752B100080759D /* HeroSprite.m in Sources */,
 				FA0E000D1D7558300080759D /* TWCommandCenter.m in Sources */,
 				FA0E012F1D795A730080759D /* CCDateView.m in Sources */,
 				FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */,
 				FA0EFFBF1D73DA310080759D /* NSString+FontAwesome.m in Sources */,
+				FA8C54EA1D8016EB00F96ED5 /* TWCommandWorkScene.m in Sources */,
 				FA8C53281D7D6E0100F96ED5 /* STClockView.m in Sources */,
 				FA0E00261D7565030080759D /* TWCommandHomeScene.m in Sources */,
 				FA8006A61D7041A30071571C /* ViewController.m in Sources */,
+				FA8C54E41D7FEAD300F96ED5 /* TWModel.m in Sources */,
 				FA8C532B1D7D6EA900F96ED5 /* STTimerClockView.m in Sources */,
 				FA0E00F81D77F1B20080759D /* JZMultiChoicesCircleButton.m in Sources */,
 				FA0EFFC81D7408650080759D /* OLImage.m in Sources */,
@@ -970,6 +1005,7 @@
 				FA0E01241D783B1F0080759D /* HomeSceneModel.m in Sources */,
 				FA0EFFC11D73DA310080759D /* MozTopAlertView.m in Sources */,
 				FA0E00031D7528AC0080759D /* TWBaseSprite.m in Sources */,
+				FA8C54E71D7FEE3B00F96ED5 /* TWModelTimer.m in Sources */,
 				FA8C53251D7D6D2900F96ED5 /* UIView+STAnimation.m in Sources */,
 				FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */,
 				FA8C53131D7AB53A00F96ED5 /* PopupViewController3.m in Sources */,

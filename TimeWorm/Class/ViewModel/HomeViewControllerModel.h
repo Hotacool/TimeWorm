@@ -34,6 +34,7 @@ static const CGFloat HomeViewAnimationDuration = 0.4f;
 @property (nonatomic, strong, readonly) TWBaseScene *currentScene;
 
 - (void)postSwitchVCCommandWithDirection:(TWHomeVCDirection)direction ;
+- (void)postMenuClickCommandWithBtnIndex:(NSUInteger)index ;
 - (void)switchScene:(TWHomeVCScene)scene ;
 - (void)switchScene:(TWHomeVCScene)scene withCompleteBlock:(void(^)(void))complete;
 @end
