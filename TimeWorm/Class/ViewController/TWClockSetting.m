@@ -47,6 +47,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self.clockView bindCurrentTimer];
     [self.clockView transitionToShow:nil];
 }
 

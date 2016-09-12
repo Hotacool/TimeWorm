@@ -24,3 +24,9 @@
 "ClockSetMore" = "More Info";
 "Time Set" = "Time Set";
 
+"Event Set" = "Event Set";
+"done" = "Done";
+// information
+"pause" = "pause";
+"reset the timer" = "reset the timer.";
+"work start" = "Work Start";

@@ -135,11 +135,6 @@ const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
     }
 }
 
-- (void)removeFromScene {
-    [self.contentLayer removeFromSuperlayer];
-    [self.scene removeSprite:self];
-}
-
 #pragma mark - perform animation
 - (BOOL)isAnimating {
     return (self.displayLink && !self.displayLink.isPaused);

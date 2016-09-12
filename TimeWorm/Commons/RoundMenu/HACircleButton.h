@@ -1,21 +1,21 @@
 //
-//  JZMultiChoicesCircleButton.h
-//  JZMultiChoicesCircleButton
+//  HACircleButton.h
+//  TimeWorm
 //
-//  Created by Fincher Justin on 15/11/3.
-//  Copyright © 2015年 Fincher Justin. All rights reserved.
+//  Created by macbook on 16/9/8.
+//  Copyright © 2016年 Hotacool. All rights reserved.
 //
-//  modified by Hotacool. All rights reserved.
 
 #import <UIKit/UIKit.h>
 
-@interface JZMultiChoicesCircleButton : UIView
-
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic,strong) NSNumber *CircleRadius;
-@property (nonatomic,strong) UIColor *CircleColor;
-@property (nonatomic,strong) UIResponder *ResponderUIVC;
-@property (nonatomic) BOOL isActive;
+@interface HACircleButton : UIView
+@property (nonatomic, strong) NSString    *title;
+@property (nonatomic,strong ) NSNumber    *CircleRadius;
+@property (nonatomic,strong ) UIColor     *CircleColor;
+@property (nonatomic,strong ) UIResponder *ResponderUIVC;
+//每个按钮touchUpInside 的动画效果
+@property (nonatomic, strong) NSMutableArray *transitionAniOffArr;
+@property (nonatomic        ) BOOL        isActive;
 
 - (instancetype)initWithCenterPoint:(CGPoint)Point
                          ButtonIcon:(UIImage*)Icon
@@ -29,11 +29,7 @@
                   ParallaxParameter:(CGFloat)Parallex
               RespondViewController:(UIResponder *)VC;
 
-- (void)SuccessCallBackWithMessage:(NSString *)String;
-- (void)FailedCallBackWithMessage:(NSString *)String;
-
 - (void)completeWithMessage:(NSString*)message;
 - (void)setImageArray:(NSArray*)imageArray andTextArray:(NSArray*)textArray ;
-
 
 @end

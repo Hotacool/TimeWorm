@@ -101,6 +101,11 @@
                  completion:nil];
 }
 
+- (void)animateToSecond:(NSInteger)second {
+    _second = second;
+    [self animateToShow];
+}
+
 - (void)resetRuler{
     _second = 0;
     [_rulerView positionTo:CGPointMake(_rulerView.center.x, _rulerView.height/2-[self rulerHeight])

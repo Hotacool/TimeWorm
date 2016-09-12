@@ -76,6 +76,16 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
     }
 }
 
++ (void)resetTimer:(TWModelTimer*)timer {
+    if (timer.state&TWTimerStateEnd) {
+        DDLogInfo(@"timer has already been ended.");
+    } else {
+        [[TWTimer sharedTWTimer] stopTime];
+        timer.state = TWTimerStateCancel;
+        [TWTimer sharedTWTimer].curTimer = nil;
+    }
+}
+
 + (void)attatchObserver2Timer:(id<TWTimerObserver>)observer timer:(TWModelTimer *)timer {
     NSMutableArray *arr = [TWTimer sharedTWTimer].observers;
     if (![arr containsObject:observer]) {

@@ -13,4 +13,6 @@
 @interface STTimerClockView : STClockView
 
 @property (nonatomic, strong, readonly) QBFlatButton *timeBtn;
+
+- (void)bindCurrentTimer;
 @end

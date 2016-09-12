@@ -11,15 +11,14 @@
 #import "WorkSceneModel.h"
 #import "HACClockTimer.h"
 #import "TWModelTimer.h"
-
-#import "TWClockSetting.h"
-#import <STPopup/STPopup.h>
+#import "STPopupController+HAC.h"
 #import <pop/POP.h>
 
 static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 @interface WorkScene () <TWTimerObserver>
 @property (nonatomic, strong) WorkSceneModel *wsm;
 @property (nonatomic, strong) HACClockTimer *clock;
+
 @end
 
 @implementation WorkScene {
@@ -28,7 +27,10 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 }
 
 - (void)dealloc {
-    [self.wsm attatchCommand:NO];
+    if (self.wsm) {
+        [self.wsm attatchCommand:NO];
+        [self.wsm removeObserver:self forKeyPath:@"state"];
+    }
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -53,7 +55,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 }
 
 - (void)setUIComponents {
-    hero = [[HeroSprite alloc] initWithSize:CGSizeMake(200, 200) position:CGPointMake(self.frame.size.width/2, self.frame.size.height/2 - 50)];
+    hero = [[HeroSprite alloc] initWithSize:CGSizeMake(200, 200) position:CGPointMake(self.frame.size.width/2, self.frame.size.height/2 - 20)];
     
     //渐变背景
     [self.layer insertSublayer:[TWUtility getCAGradientLayerWithFrame:self.bounds
@@ -66,7 +68,6 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 
 - (void)addSprite:(TWBaseSprite *)sprite {
     [super addSprite:sprite];
-    [self.contentLayer addSublayer:hero.contentLayer];
 }
 
 - (void)showClock {
@@ -75,7 +76,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
     }
     POPSpringAnimation *ani = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
     ani.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.frame.size.width/2, -self.clock.frame.size.height/2)];
-    ani.toValue = [NSValue valueWithCGPoint:CGPointMake(self.frame.size.width/2, self.clock.frame.size.height/2+APPCONFIG_UI_STATUSBAR_HEIGHT)];
+    ani.toValue = [NSValue valueWithCGPoint:CGPointMake(self.frame.size.width/2, self.clock.frame.size.height/2+APPCONFIG_UI_STATUSBAR_HEIGHT + APPCONFIG_UI_TOOLBAR_HEIGHT)];
     ani.springSpeed = 6;
     ani.springBounciness = 16;
     [self.clock pop_addAnimation:ani forKey:WorkSceneClockAniCenter];
@@ -105,23 +106,12 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 }
 
 - (void)clockClicked:(id)sender {
-    [STPopupNavigationBar appearance].barTintColor = Hdarkgray;
-    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
-    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
-    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18],
-                                                               NSForegroundColorAttributeName: [UIColor whiteColor] };
-    
-    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:[TWClockSetting new]];
-    popupController.containerView.layer.cornerRadius = 4;
-    popupController.transitionStyle = STPopupTransitionStyleFade;
-    [popupController presentInViewController:self.ctrl];
+    [STPopupController popupViewControllerName:@"TWClockSetting" inViewController:self.ctrl];
 }
 //clean
 - (void)removeFromSuperview {
-    [hero stopCurrentAction];
-    [hero removeFromScene];
     [TWTimer removeObserverFromTimer:self];
-    [self.clock removeFromSuperview];
+    [MozTopAlertView hideFromWindow];
     [super removeFromSuperview];
 }
 #pragma mark -- timer
@@ -142,20 +132,29 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
                 break;
             }
             case WorkSceneModelStateWorking: {
-                
+                [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"work start", @"") doText:@"OK" doBlock:^{
+                    [MozTopAlertView hideFromWindow];
+                }];
                 break;
             }
             case WorkSceneModelStatePause: {
                 [TWTimer pauseTimer:[TWTimer currentTimer]];
                 [hero performAction:@"applaud" withEnd:nil];
+                [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"pause", @"") doText:@"OK" doBlock:^{
+                    [MozTopAlertView hideFromWindow];
+                }];
                 break;
             }
             case WorkSceneModelStateEvent: {
+                [TWTimer pauseTimer:[TWTimer currentTimer]];
                 [hero performAction:@"applaud" withEnd:nil];
+                [STPopupController popupViewControllerName:@"TWEventSetting" inViewController:self.ctrl];
                 break;
             }
             case WorkSceneModelStateReset: {
-                [TWTimer activeTimer:[TWTimer currentTimer]];
+                [TWTimer resetTimer:[TWTimer currentTimer]];
+                [self.clock setCLockDefaultDate:[[HACClockDate alloc] initWithHour:0 minute:0 second:0 weekday:1]];
+                [STPopupController popupViewControllerName:@"TWClockSetting" inViewController:self.ctrl];
                 [hero performAction:@"think" withEnd:nil];
                 break;
             }

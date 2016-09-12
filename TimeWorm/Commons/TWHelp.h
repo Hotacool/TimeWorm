@@ -104,4 +104,5 @@ return z##_shared_obj_name_;                   \
 #import "TWCommandCenter.h"
 #import "TWUtility.h"
 #import "UIView+HACUtils.h"
+#import "MozTopAlertView.h"
 #endif /* TWHelp_h */

@@ -50,19 +50,20 @@
 }
 
 - (void)removeFromSuperview {
-    [hero removeFromScene];
+    [MozTopAlertView hideFromWindow];
     [super removeFromSuperview];
 }
 
 - (void)dealloc {
     if (self.hsm) {
         [self.hsm attatchCommand:NO];
+        [self.hsm removeObserver:self forKeyPath:@"state"];
+        [self.hsm removeObserver:self forKeyPath:@"shiftDirection"];
     }
 }
 
 - (void)addSprite:(TWBaseSprite *)sprite {
     [super addSprite:sprite];
-    [self.contentLayer addSublayer:hero.contentLayer];
 }
 
 - (UITapGestureRecognizer *)tapGesture {

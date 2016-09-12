@@ -18,7 +18,6 @@
 		FA0E00A51D76CFD70080759D /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00A41D76CFD70080759D /* images.xcassets */; };
 		FA0E00EA1D77C0AE0080759D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00EC1D77C0AE0080759D /* InfoPlist.strings */; };
 		FA0E00F11D77C2420080759D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00F31D77C2420080759D /* Localizable.strings */; };
-		FA0E00F81D77F1B20080759D /* JZMultiChoicesCircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00F71D77F1B20080759D /* JZMultiChoicesCircleButton.m */; };
 		FA0E010E1D77F5C80080759D /* bingo.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FA1D77F5C80080759D /* bingo.gif */; };
 		FA0E010F1D77F5C80080759D /* hi.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FB1D77F5C80080759D /* hi.gif */; };
 		FA0E01101D77F5C80080759D /* OK.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FC1D77F5C80080759D /* OK.gif */; };
@@ -147,6 +146,10 @@
 		FA8C54E41D7FEAD300F96ED5 /* TWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54E31D7FEAD300F96ED5 /* TWModel.m */; };
 		FA8C54E71D7FEE3B00F96ED5 /* TWModelTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54E61D7FEE3B00F96ED5 /* TWModelTimer.m */; };
 		FA8C54EA1D8016EB00F96ED5 /* TWCommandWorkScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54E91D8016EB00F96ED5 /* TWCommandWorkScene.m */; };
+		FA8C54FB1D81547800F96ED5 /* HACircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54FA1D81547800F96ED5 /* HACircleButton.m */; };
+		FABBBC181D82AC3F004365F4 /* HACWordsBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC171D82AC3F004365F4 /* HACWordsBoard.m */; };
+		FABBBC2E1D867EC1004365F4 /* TWEventSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC2D1D867EC1004365F4 /* TWEventSetting.m */; };
+		FABBBC311D86A65A004365F4 /* STPopupController+HAC.m in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC301D86A65A004365F4 /* STPopupController+HAC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,8 +178,6 @@
 		FA0E00ED1D77C0B70080759D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		FA0E00F21D77C2420080759D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA0E00F41D77C2430080759D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		FA0E00F61D77F1B20080759D /* JZMultiChoicesCircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZMultiChoicesCircleButton.h; sourceTree = "<group>"; };
-		FA0E00F71D77F1B20080759D /* JZMultiChoicesCircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZMultiChoicesCircleButton.m; sourceTree = "<group>"; };
 		FA0E00FA1D77F5C80080759D /* bingo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bingo.gif; sourceTree = "<group>"; };
 		FA0E00FB1D77F5C80080759D /* hi.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hi.gif; sourceTree = "<group>"; };
 		FA0E00FC1D77F5C80080759D /* OK.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = OK.gif; sourceTree = "<group>"; };
@@ -341,6 +342,14 @@
 		FA8C54E61D7FEE3B00F96ED5 /* TWModelTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWModelTimer.m; sourceTree = "<group>"; };
 		FA8C54E81D8016EB00F96ED5 /* TWCommandWorkScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCommandWorkScene.h; sourceTree = "<group>"; };
 		FA8C54E91D8016EB00F96ED5 /* TWCommandWorkScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWCommandWorkScene.m; sourceTree = "<group>"; };
+		FA8C54F91D81547800F96ED5 /* HACircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACircleButton.h; sourceTree = "<group>"; };
+		FA8C54FA1D81547800F96ED5 /* HACircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACircleButton.m; sourceTree = "<group>"; };
+		FABBBC161D82AC3F004365F4 /* HACWordsBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACWordsBoard.h; sourceTree = "<group>"; };
+		FABBBC171D82AC3F004365F4 /* HACWordsBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACWordsBoard.m; sourceTree = "<group>"; };
+		FABBBC2C1D867EC1004365F4 /* TWEventSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEventSetting.h; sourceTree = "<group>"; };
+		FABBBC2D1D867EC1004365F4 /* TWEventSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEventSetting.m; sourceTree = "<group>"; };
+		FABBBC2F1D86A65A004365F4 /* STPopupController+HAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STPopupController+HAC.h"; sourceTree = "<group>"; };
+		FABBBC301D86A65A004365F4 /* STPopupController+HAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STPopupController+HAC.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,8 +421,8 @@
 		FA0E00F51D77F1B20080759D /* RoundMenu */ = {
 			isa = PBXGroup;
 			children = (
-				FA0E00F61D77F1B20080759D /* JZMultiChoicesCircleButton.h */,
-				FA0E00F71D77F1B20080759D /* JZMultiChoicesCircleButton.m */,
+				FA8C54F91D81547800F96ED5 /* HACircleButton.h */,
+				FA8C54FA1D81547800F96ED5 /* HACircleButton.m */,
 			);
 			path = RoundMenu;
 			sourceTree = "<group>";
@@ -541,6 +550,8 @@
 				FA0EFFD61D741B7E0080759D /* HomeViewController.m */,
 				FA8C53191D7D613800F96ED5 /* TWClockSetting.h */,
 				FA8C531A1D7D613800F96ED5 /* TWClockSetting.m */,
+				FABBBC2C1D867EC1004365F4 /* TWEventSetting.h */,
+				FABBBC2D1D867EC1004365F4 /* TWEventSetting.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -624,6 +635,7 @@
 		FA8006B61D7049CE0071571C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				FABBBC151D82ABB9004365F4 /* XXX */,
 				FA8C531C1D7D69CC00F96ED5 /* TimerClock */,
 				FA8C53141D7D078D00F96ED5 /* Utility */,
 				FA0E012C1D795A730080759D /* Clock */,
@@ -654,6 +666,8 @@
 				FA8C53161D7D07C000F96ED5 /* TWUtility.m */,
 				FA8C53201D7D6B5400F96ED5 /* UIView+HACUtils.h */,
 				FA8C53211D7D6B5400F96ED5 /* UIView+HACUtils.m */,
+				FABBBC2F1D86A65A004365F4 /* STPopupController+HAC.h */,
+				FABBBC301D86A65A004365F4 /* STPopupController+HAC.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -762,6 +776,15 @@
 				FA8C54E01D7FE4B600F96ED5 /* db_initialize.sql */,
 			);
 			path = sql;
+			sourceTree = "<group>";
+		};
+		FABBBC151D82ABB9004365F4 /* XXX */ = {
+			isa = PBXGroup;
+			children = (
+				FABBBC161D82AC3F004365F4 /* HACWordsBoard.h */,
+				FABBBC171D82AC3F004365F4 /* HACWordsBoard.m */,
+			);
+			path = XXX;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -985,6 +1008,7 @@
 				FA8C54DE1D7FC53400F96ED5 /* TWDBManager.m in Sources */,
 				FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */,
 				FA0E00061D752B100080759D /* HeroSprite.m in Sources */,
+				FABBBC181D82AC3F004365F4 /* HACWordsBoard.m in Sources */,
 				FA0E000D1D7558300080759D /* TWCommandCenter.m in Sources */,
 				FA0E012F1D795A730080759D /* CCDateView.m in Sources */,
 				FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */,
@@ -995,9 +1019,9 @@
 				FA8006A61D7041A30071571C /* ViewController.m in Sources */,
 				FA8C54E41D7FEAD300F96ED5 /* TWModel.m in Sources */,
 				FA8C532B1D7D6EA900F96ED5 /* STTimerClockView.m in Sources */,
-				FA0E00F81D77F1B20080759D /* JZMultiChoicesCircleButton.m in Sources */,
 				FA0EFFC81D7408650080759D /* OLImage.m in Sources */,
 				FA0E00291D756DEB0080759D /* TWCommandCommon.m in Sources */,
+				FABBBC2E1D867EC1004365F4 /* TWEventSetting.m in Sources */,
 				FA0E00231D755F0E0080759D /* TWBaseCommand.m in Sources */,
 				FA0E01321D7963170080759D /* HACClockTimer.m in Sources */,
 				FA8C53111D7AB53A00F96ED5 /* PopupViewController1.m in Sources */,
@@ -1008,6 +1032,7 @@
 				FA8C54E71D7FEE3B00F96ED5 /* TWModelTimer.m in Sources */,
 				FA8C53251D7D6D2900F96ED5 /* UIView+STAnimation.m in Sources */,
 				FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */,
+				FA8C54FB1D81547800F96ED5 /* HACircleButton.m in Sources */,
 				FA8C53131D7AB53A00F96ED5 /* PopupViewController3.m in Sources */,
 				FA8006A31D7041A30071571C /* AppDelegate.m in Sources */,
 				FA0EFFFE1D7527720080759D /* HomeScene.m in Sources */,
@@ -1020,6 +1045,7 @@
 				FA0EFFE01D7420020080759D /* HomeViewControllerModel.m in Sources */,
 				FA8C53221D7D6B5400F96ED5 /* UIView+HACUtils.m in Sources */,
 				FA8C53171D7D07C000F96ED5 /* TWUtility.m in Sources */,
+				FABBBC311D86A65A004365F4 /* STPopupController+HAC.m in Sources */,
 				FA0E01271D7924DB0080759D /* WorkScene.m in Sources */,
 				FA0EFFDD1D741CE40080759D /* TWBaseViewModel.m in Sources */,
 				FA0EFFC01D73DA310080759D /* UIFont+FontAwesome.m in Sources */,

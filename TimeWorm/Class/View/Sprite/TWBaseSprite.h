@@ -36,5 +36,4 @@
 - (void)setSize:(CGSize)size ;
 - (void)setPosition:(CGPoint)position ;
 - (NSString *)doRandomActionWithLoopCount:(NSUInteger)count;
-- (void)removeFromScene ;
 @end

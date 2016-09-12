@@ -1,19 +1,18 @@
 //
-//  JZMultiChoicesCircleButton.m
-//  JZMultiChoicesCircleButton
+//  HACircleButton.m
+//  TimeWorm
 //
-//  Created by Fincher Justin on 15/11/3.
-//  Copyright © 2015年 Fincher Justin. All rights reserved.
+//  Created by macbook on 16/9/8.
+//  Copyright © 2016年 Hotacool. All rights reserved.
 //
-//  modified by Hatacool. All rights reserved.
 
-#import "JZMultiChoicesCircleButton.h"
+#import "HACircleButton.h"
 #import <QuartzCore/QuartzCore.h>
 #import "OLImageView.h"
 #import "OLImage.h"
+#import <pop/POP.h>
 
-@interface UIView ()
-
+@interface HACircleButton ()
 @property (nonatomic) UIButton *SmallButton;
 @property (nonatomic) UIView *BackgroundView;
 @property (nonatomic) CGFloat SmallRadius;
@@ -39,9 +38,9 @@
 
 @end
 
-
-@implementation JZMultiChoicesCircleButton {
+@implementation HACircleButton {
     UIImageView *_loadingImageView;
+    int indexTouchUpInsideButton;
 }
 
 @synthesize CircleColor,SmallRadius,BigRadius,CenterPoint,ParallexParameter;
@@ -50,15 +49,6 @@
 @synthesize CallbackMessage,CallbackIcon,loadingImageView;
 @synthesize FullPara,MidiumPara,SmallPara;
 @synthesize ResponderUIVC;
-
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
- */
-
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -164,10 +154,7 @@
     CallbackIcon = [[UIImageView alloc] initWithFrame:CGRectMake((SmallButton.frame.size.width - BigRadius)/2, (SmallButton.frame.size.height - BigRadius)/2, BigRadius, BigRadius)];
     CallbackIcon.layer.transform = CATransform3DMakeScale(UnFullFactor, UnFullFactor, 1.0f);
     
-    NSString *bundlePath = [[NSBundle bundleForClass:[JZMultiChoicesCircleButton class]]
-                            pathForResource:@"JZMultiChoicesCircleButton" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-    CallbackIcon.image = [UIImage imageNamed:@"CallbackSuccess" inBundle:bundle compatibleWithTraitCollection:nil];
+    CallbackIcon.image = [UIImage imageNamed:@"CallbackSuccess"];
     
     [CallbackIcon setAlpha:0.0f];
     [SmallButton addSubview:CallbackIcon];
@@ -219,7 +206,9 @@
 - (void)TouchDownAnimation
 {
     
-    [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ [SmallButton.imageView setAlpha:0.0]; } completion:^(BOOL finished){ if (finished) { [SmallButton setImage:nil forState:UIControlStateNormal];}}];
+    [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ [SmallButton.imageView setAlpha:0.0]; } completion:^(BOOL finished){ if (finished) {
+        [SmallButton setImage:nil forState:UIControlStateNormal];
+    }}];
     
     CABasicAnimation *ButtonScaleBigCABasicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     ButtonScaleBigCABasicAnimation.duration = 0.1f;
@@ -349,7 +338,7 @@
     [label setForegroundColor:[[UIColor colorWithWhite:1.0 alpha:0.0]CGColor]];
     
     BOOL isTouchUpInsideButton = NO;
-    int indexTouchUpInsideButton = 0;
+    indexTouchUpInsideButton = 0;
     int count = 0;
     
     if (isTouchDown)
@@ -397,8 +386,11 @@
         
         if (isTouchUpInsideButton)
         {
-            [self TouchUpInsideAnimation];
-            
+            if ([self needShowTransitionAni]) {
+                [self TouchUpInsideAnimation];
+            } else {
+                [self TouchUpInsideAnimationWithoutTransition];
+            }
             if ([ButtonTargetArray[indexTouchUpInsideButton] isKindOfClass:[NSString class]])
             {
                 if (ResponderUIVC)
@@ -435,7 +427,7 @@
 {
     self.isPerformingTouchUpInsideAnimation = YES;
     SmallButton.enabled = NO;
-
+    
     for (UIImageView *Icon in IconArray)
     {
         [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ Icon.alpha = 0.0f; } completion:^(BOOL finished){if (finished) {[Icon setHidden:YES];}}];
@@ -470,7 +462,7 @@
     animGroup.fillMode = kCAFillModeForwards;
     
     [CATransaction begin];
-    __weak JZMultiChoicesCircleButton *weakSelf = self;
+    SBWS(weakSelf)
     [CATransaction setCompletionBlock:^
      {
          if (weakSelf.isPerformingTouchUpInsideAnimation) {
@@ -512,6 +504,9 @@
 }
 
 - (void)completeWithMessage:(NSString*)message {
+    if (![self needShowTransitionAni]) {
+        return;
+    }
     if (self.isPerformingTouchUpInsideAnimation) {
         self.isPerformingTouchUpInsideAnimation = NO;
     }
@@ -543,12 +538,148 @@
     });
 }
 
+CATransform3D CATransform3DMakePerspective(CGPoint center, float disZ)
+{
+    CATransform3D transToCenter = CATransform3DMakeTranslation(-center.x, -center.y, 0);
+    CATransform3D transBack = CATransform3DMakeTranslation(center.x, center.y, 0);
+    CATransform3D scale = CATransform3DIdentity;
+    scale.m34 = -1.0f/disZ;
+    return CATransform3DConcat(CATransform3DConcat(transToCenter, scale), transBack);
+}
+
+CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, float disZ)
+{
+    return CATransform3DConcat(t, CATransform3DMakePerspective(center, disZ));
+}
+
+- (void)TouchUpAnimation
+{
+    for (UIImageView *Icon in IconArray)
+    {
+        [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ Icon.alpha = 0.0f; } completion:^(BOOL finished){if (finished) {[Icon setHidden:YES];}}];
+    }
+    
+    CABasicAnimation *ButtonScaleSmallCABasicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    ButtonScaleSmallCABasicAnimation.duration = 0.2f;
+    ButtonScaleSmallCABasicAnimation.autoreverses = NO;
+    ButtonScaleSmallCABasicAnimation.toValue = [NSNumber numberWithFloat:1.0f];
+    ButtonScaleSmallCABasicAnimation.fromValue = [NSNumber numberWithFloat:BigRadius / SmallRadius];
+    ButtonScaleSmallCABasicAnimation.fillMode = kCAFillModeForwards;
+    ButtonScaleSmallCABasicAnimation.removedOnCompletion = NO;
+    
+    [SmallButton.layer addAnimation:ButtonScaleSmallCABasicAnimation forKey:@"ButtonScaleSmallCABasicAnimation"];
+    
+    CABasicAnimation *BackgroundViewScaleSmallCABasicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    BackgroundViewScaleSmallCABasicAnimation.duration = 0.1f;
+    BackgroundViewScaleSmallCABasicAnimation.autoreverses = NO;
+    BackgroundViewScaleSmallCABasicAnimation.toValue = [NSNumber numberWithFloat:1.0f];
+    BackgroundViewScaleSmallCABasicAnimation.fromValue = [NSNumber numberWithFloat:self.frame.size.height / SmallRadius];
+    BackgroundViewScaleSmallCABasicAnimation.fillMode = kCAFillModeForwards;
+    BackgroundViewScaleSmallCABasicAnimation.removedOnCompletion = NO;
+    
+    [BackgroundView.layer addAnimation:BackgroundViewScaleSmallCABasicAnimation forKey:@"BackgroundViewScaleSmallCABasicAnimation"];
+    
+    CATransform3D Rotate = CATransform3DConcat(CATransform3DMakeRotation(0, 0, 1, 0), CATransform3DMakeRotation(0, 1, 0, 0));
+    if (Parallex)
+    {
+        SmallButton.layer.transform = CATransform3DPerspect(Rotate, CGPointMake(0, 0), BigRadius+ParallexParameter);
+    }
+    else
+    {
+        //Do nothing ^_^
+    }
+    
+    
+    [SmallButton setImage:IconImage forState:UIControlStateNormal];
+    [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ [SmallButton.imageView setAlpha:1.0]; } completion:^(BOOL finished){}];
+    
+}
+
+- (void)TouchUpInsideAnimationWithoutTransition
+{
+    for (UIImageView *Icon in IconArray)
+    {
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ Icon.alpha = 0.0f; } completion:^(BOOL finished){if (finished) {[Icon setHidden:YES];}}];
+    }
+    
+    CABasicAnimation *ButtonScaleSmallCABasicAnimation1 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    ButtonScaleSmallCABasicAnimation1.duration = 0.2f;
+    ButtonScaleSmallCABasicAnimation1.beginTime = 0.0f;
+    ButtonScaleSmallCABasicAnimation1.autoreverses = NO;
+    ButtonScaleSmallCABasicAnimation1.toValue = [NSNumber numberWithFloat:1.2 * BigRadius / SmallRadius];
+    ButtonScaleSmallCABasicAnimation1.fromValue = [NSNumber numberWithFloat:BigRadius / SmallRadius];
+    ButtonScaleSmallCABasicAnimation1.fillMode = kCAFillModeForwards;
+    ButtonScaleSmallCABasicAnimation1.removedOnCompletion = NO;
+    
+    CABasicAnimation *ButtonScaleSmallCABasicAnimation2 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    ButtonScaleSmallCABasicAnimation2.duration = 0.1f;
+    ButtonScaleSmallCABasicAnimation2.beginTime = 0.2f;
+    ButtonScaleSmallCABasicAnimation2.autoreverses = NO;
+    ButtonScaleSmallCABasicAnimation2.toValue = [NSNumber numberWithFloat:1.0f];
+    ButtonScaleSmallCABasicAnimation2.fillMode = kCAFillModeForwards;
+    ButtonScaleSmallCABasicAnimation2.removedOnCompletion = NO;
+    
+    CAAnimationGroup *animGroup = [CAAnimationGroup animation];
+    animGroup.animations = [NSArray arrayWithObjects:ButtonScaleSmallCABasicAnimation1,ButtonScaleSmallCABasicAnimation2, nil];
+    animGroup.duration = 0.3f;
+    animGroup.removedOnCompletion = NO;
+    animGroup.autoreverses = NO;
+    animGroup.fillMode = kCAFillModeForwards;
+    
+    
+    CABasicAnimation *BackgroundViewScaleSmallCABasicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    BackgroundViewScaleSmallCABasicAnimation.duration = 0.1f;
+    BackgroundViewScaleSmallCABasicAnimation.autoreverses = NO;
+    BackgroundViewScaleSmallCABasicAnimation.toValue = [NSNumber numberWithFloat:1.0f];
+    BackgroundViewScaleSmallCABasicAnimation.fromValue = [NSNumber numberWithFloat:self.frame.size.height / SmallRadius];
+    BackgroundViewScaleSmallCABasicAnimation.fillMode = kCAFillModeForwards;
+    BackgroundViewScaleSmallCABasicAnimation.removedOnCompletion = NO;
+    
+    
+    [CATransaction begin];
+    SBWS(weakSelf)
+    [CATransaction setCompletionBlock:^{
+         DDLogInfo(@"complete.");
+        UIImage * replaceImag = [[ (UIImageView*)IconArray[indexTouchUpInsideButton] image] copy];
+         [SmallButton setImage:replaceImag forState:UIControlStateNormal];
+         SmallButton.enabled = YES;
+         weakSelf.isActive = NO;
+        [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ [SmallButton.imageView setAlpha:1.0]; } completion:^(BOOL finished){}];
+     }];
+    [SmallButton.layer addAnimation:animGroup forKey:@"ButtonScaleSmallCABasicAnimationxxx"];
+    [BackgroundView.layer addAnimation:BackgroundViewScaleSmallCABasicAnimation forKey:@"BackgroundViewScaleSmallCABasicAnimation"];
+    [CATransaction commit];
+    
+    CATransform3D Rotate = CATransform3DConcat(CATransform3DMakeRotation(0, 0, 1, 0), CATransform3DMakeRotation(0, 1, 0, 0));
+    if (Parallex)
+    {
+        SmallButton.layer.transform = CATransform3DPerspect(Rotate, CGPointMake(0, 0), BigRadius+ParallexParameter);
+    }
+    else
+    {
+        //Do nothing ^_^
+    }
+    
+}
+
+- (void)addLoadingViewWithImage:(UIImage *)image {
+    if (![self.loadingImageView superview]) {
+        [[UIApplication sharedApplication].keyWindow addSubview:self.loadingImageView];
+    }
+    [self.loadingImageView setImage:image];
+}
+
+- (void)removeLoadingViewImage {
+    if ([self.loadingImageView superview]) {
+        [self.loadingImageView stopAnimating];
+        [self.loadingImageView removeFromSuperview];
+    }
+}
+
+#pragma mark -- nouse
 - (void)SuccessCallBackWithMessage:(NSString *)String
 {
-    NSString *bundlePath = [[NSBundle bundleForClass:[JZMultiChoicesCircleButton class]]
-                            pathForResource:@"JZMultiChoicesCircleButton" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-    CallbackIcon.image = [UIImage imageNamed:@"CallbackSuccess" inBundle:bundle compatibleWithTraitCollection:nil];
+    CallbackIcon.image = [UIImage imageNamed:@"CallbackSuccess"];
     CallbackMessage.text = String;
     [UIView animateWithDuration:0.3 animations:^(void){ CallbackMessage.alpha = 1.0; } completion:^(BOOL finished){}];
     [UIView animateWithDuration:0.3 animations:^(void){ [CallbackIcon setAlpha:1.0]; } completion:^(BOOL finished){}];
@@ -594,10 +725,7 @@
 }
 - (void)FailedCallBackWithMessage:(NSString *)String
 {
-    NSString *bundlePath = [[NSBundle bundleForClass:[JZMultiChoicesCircleButton class]]
-                            pathForResource:@"JZMultiChoicesCircleButton" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-    CallbackIcon.image = [UIImage imageNamed:@"CallbackWrong" inBundle:bundle compatibleWithTraitCollection:nil];
+    CallbackIcon.image = [UIImage imageNamed:@"CallbackWrong"];
     CallbackMessage.text = String;
     [UIView animateWithDuration:0.3 animations:^(void){ [CallbackMessage setAlpha:1.0]; } completion:^(BOOL finished){}];
     [UIView animateWithDuration:0.3 animations:^(void){ [CallbackIcon setAlpha:1.0]; } completion:^(BOOL finished){}];
@@ -643,75 +771,17 @@
     
 }
 
-CATransform3D CATransform3DMakePerspective(CGPoint center, float disZ)
-{
-    CATransform3D transToCenter = CATransform3DMakeTranslation(-center.x, -center.y, 0);
-    CATransform3D transBack = CATransform3DMakeTranslation(center.x, center.y, 0);
-    CATransform3D scale = CATransform3DIdentity;
-    scale.m34 = -1.0f/disZ;
-    return CATransform3DConcat(CATransform3DConcat(transToCenter, scale), transBack);
+- (BOOL)needShowTransitionAni {
+    BOOL ret = YES;
+    if (self.transitionAniOffArr&&self.transitionAniOffArr.count>indexTouchUpInsideButton) {
+        BOOL transitionAniOff = [self.transitionAniOffArr[indexTouchUpInsideButton] boolValue];
+        if (transitionAniOff) {
+            ret = NO;
+        } else {
+        }
+    } else {
+    }
+    return ret;
 }
 
-CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, float disZ)
-{
-    return CATransform3DConcat(t, CATransform3DMakePerspective(center, disZ));
-}
-
-
-- (void)TouchUpAnimation
-{
-    for (UIImageView *Icon in IconArray)
-    {
-        [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ Icon.alpha = 0.0f; } completion:^(BOOL finished){if (finished) {[Icon setHidden:YES];}}];
-    }
-    
-    CABasicAnimation *ButtonScaleSmallCABasicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    ButtonScaleSmallCABasicAnimation.duration = 0.2f;
-    ButtonScaleSmallCABasicAnimation.autoreverses = NO;
-    ButtonScaleSmallCABasicAnimation.toValue = [NSNumber numberWithFloat:1.0f];
-    ButtonScaleSmallCABasicAnimation.fromValue = [NSNumber numberWithFloat:BigRadius / SmallRadius];
-    ButtonScaleSmallCABasicAnimation.fillMode = kCAFillModeForwards;
-    ButtonScaleSmallCABasicAnimation.removedOnCompletion = NO;
-    
-    [SmallButton.layer addAnimation:ButtonScaleSmallCABasicAnimation forKey:@"ButtonScaleSmallCABasicAnimation"];
-    
-    CABasicAnimation *BackgroundViewScaleSmallCABasicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    BackgroundViewScaleSmallCABasicAnimation.duration = 0.1f;
-    BackgroundViewScaleSmallCABasicAnimation.autoreverses = NO;
-    BackgroundViewScaleSmallCABasicAnimation.toValue = [NSNumber numberWithFloat:1.0f];
-    BackgroundViewScaleSmallCABasicAnimation.fromValue = [NSNumber numberWithFloat:self.frame.size.height / SmallRadius];
-    BackgroundViewScaleSmallCABasicAnimation.fillMode = kCAFillModeForwards;
-    BackgroundViewScaleSmallCABasicAnimation.removedOnCompletion = NO;
-    
-    [BackgroundView.layer addAnimation:BackgroundViewScaleSmallCABasicAnimation forKey:@"BackgroundViewScaleSmallCABasicAnimation"];
-    
-    CATransform3D Rotate = CATransform3DConcat(CATransform3DMakeRotation(0, 0, 1, 0), CATransform3DMakeRotation(0, 1, 0, 0));
-    if (Parallex)
-    {
-        SmallButton.layer.transform = CATransform3DPerspect(Rotate, CGPointMake(0, 0), BigRadius+ParallexParameter);
-    }
-    else
-    {
-        //Do nothing ^_^
-    }
-    
-    
-    [SmallButton setImage:IconImage forState:UIControlStateNormal];
-    [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ [SmallButton.imageView setAlpha:1.0]; } completion:^(BOOL finished){}];
-    
-}
-
-- (void)addLoadingViewWithImage:(UIImage *)image {
-    if (![self.loadingImageView superview]) {
-        [[UIApplication sharedApplication].keyWindow addSubview:self.loadingImageView];
-    }
-    [self.loadingImageView setImage:image];
-}
-
-- (void)removeLoadingViewImage {
-    if ([self.loadingImageView superview]) {
-        [self.loadingImageView stopAnimating];
-        [self.loadingImageView removeFromSuperview];
-    }
-}
 @end

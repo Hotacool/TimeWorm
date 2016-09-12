@@ -22,3 +22,10 @@
 
 "ClockSetMore" = "更多信息";
 "Time Set" = "时间设置";
+
+"Event Set" = "事件设置";
+"done" = "完成";
+// information
+"pause" = "暂停";
+"reset the timer" = "重置计时器";
+"work start" = "工作开始";

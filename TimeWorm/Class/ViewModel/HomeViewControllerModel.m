@@ -25,13 +25,9 @@
     if (self = [super init]) {
         _title = @"Home";
         _scene = TWHomeVCSceneHome;
+        _currentScene = [self createScene:_scene];
     }
     return self;
-}
-
-- (TWBaseScene *)currentScene {
-    _currentScene = [self createScene:self.scene];
-    return _currentScene;
 }
 
 - (NSMutableDictionary<NSNumber *,TWBaseScene *> *)sceneDic {
@@ -152,8 +148,8 @@
     if (self.scene == scene) {
         return;
     }
+    _currentScene = [self createScene:scene];
     self.scene = scene;
-    [self createScene:scene];
 }
 
 - (void)switchScene:(TWHomeVCScene)scene withCompleteBlock:(void (^)(void))complete {
@@ -183,7 +179,9 @@
                 break;
             }
         }
-        [self.sceneDic setObject:ret forKey:@(scene)];
+        if (/* DISABLES CODE */ (0)) {
+            [self.sceneDic setObject:ret forKey:@(scene)];
+        }
     }
     return ret;
 }

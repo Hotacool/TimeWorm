@@ -9,9 +9,9 @@
 #import "HomeViewController.h"
 #import "HomeViewControllerModel.h"
 #import "QBFlatButton.h"
-#import "JZMultiChoicesCircleButton.h"
+#import "HACircleButton.h"
 #import "OLImageView.h"
-
+#import <STPopup/STPopup.h>
 
 @interface HomeViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) HomeViewControllerModel *hvm;
@@ -21,7 +21,7 @@
 @property (nonatomic, assign) TWHomeVCDirection activeDirection;
 
 @property (nonatomic, strong) TWBaseScene *currentScene;
-@property (nonatomic, strong) JZMultiChoicesCircleButton *menuBtn;
+@property (nonatomic, strong) HACircleButton *menuBtn;
 @end
 
 @implementation HomeViewController
@@ -52,6 +52,8 @@
     [self loadSwitchVCPanGesture];
     //加载场景
     [self loadScene];
+    //初始化弹出界面navigationBar
+    [self popupViewNavigationBarInit];
     //加载菜单按钮
     [self.view addSubview:self.menuBtn];
     [self.menuBtn addObserver:self forKeyPath:@"isActive" options:NSKeyValueObservingOptionNew context:nil];
@@ -77,13 +79,17 @@
 - (void)loadUIComponents {
     switch (self.hvm.scene) {
         case TWHomeVCSceneHome: {
-            NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"MarkRound"],nil];
+            NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"MarkRound"],nil];
             NSArray *TextArray = [NSArray arrayWithObjects:
                                   NSLocalizedString(@"menuBtn2", @""),
                                   NSLocalizedString(@"menuBtn4", @""),
                                   NSLocalizedString(@"menuBtn3", @""),
                                   NSLocalizedString(@"menuBtn1", @""), nil];
             [self.menuBtn setImageArray:IconArray andTextArray:TextArray];
+            [self.menuBtn setTransitionAniOffArr:@[@(NO)
+                                                   ,@(NO)
+                                                   ,@(NO)
+                                                   ,@(NO)]];
             break;
         }
         case TWHomeVCSceneWork: {
@@ -92,14 +98,16 @@
                                                            ,NSLocalizedString(@"wMenuBtn4", @"")
                                                            ,NSLocalizedString(@"wMenuBtn3", @"")
                                                            ,NSLocalizedString(@"wMenuBtn1", @"")]];
+            [self.menuBtn setTransitionAniOffArr:@[@(YES)
+                                                   ,@(NO)
+                                                   ,@(YES)
+                                                   ,@(YES)]];
             break;
         }
         case TWHomeVCSceneRelax: {
-            
             break;
         }
         case TWHomeVCSceneTimer: {
-            
             break;
         }
         default:
@@ -107,7 +115,7 @@
     }
 }
 
-- (JZMultiChoicesCircleButton *)menuBtn {
+- (HACircleButton *)menuBtn {
     if (!_menuBtn) {
         NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"MarkRound"],nil];
         NSArray *TextArray = [NSArray arrayWithObjects:
@@ -121,7 +129,7 @@
                                 [NSString stringWithFormat:@"ButtonThree"] ,
                                 [NSString stringWithFormat:@"ButtonOne"],
                                 nil];
-        _menuBtn = [[JZMultiChoicesCircleButton alloc] initWithCenterPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - 100 )
+        _menuBtn = [[HACircleButton alloc] initWithCenterPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - 100 )
                                                                 ButtonIcon:[UIImage imageNamed:@"send"]
                                                                SmallRadius:30.0f
                                                                  BigRadius:100
@@ -136,6 +144,15 @@
     }
     return _menuBtn;
 }
+
+- (void)popupViewNavigationBarInit {
+    [STPopupNavigationBar appearance].barTintColor = Hdarkgray;
+    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
+    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
+    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18],
+                                                               NSForegroundColorAttributeName: [UIColor whiteColor] };
+}
+
 //Pages
 - (NSMutableDictionary *)viewControllerDic {
     if (!_viewControllerDic) {
@@ -358,28 +375,22 @@
 #pragma mark -- menu btn clicked
 - (void)ButtonOne {
     NSLog(@"BUtton 1 Seleted");
-    [self.hvm postMenuClickCommandWithBtnIndex:1];
     [self.menuBtn completeWithMessage:@"Start"];
+    [self.hvm postMenuClickCommandWithBtnIndex:1];
 }
 - (void)ButtonTwo {
     NSLog(@"BUtton 2 Seleted");
+    [self.menuBtn completeWithMessage:@"Start"];
     [self.hvm postMenuClickCommandWithBtnIndex:2];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.menuBtn completeWithMessage:@"Start"];
-    });
 }
 - (void)ButtonThree {
     NSLog(@"BUtton 3 Seleted");
+    [self.menuBtn completeWithMessage:@"Start"];
     [self.hvm postMenuClickCommandWithBtnIndex:3];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.menuBtn completeWithMessage:@"Start"];
-    });
 }
 - (void)ButtonFour {
     NSLog(@"BUtton 4 Seleted");
+    [self.menuBtn completeWithMessage:@"Start"];
     [self.hvm postMenuClickCommandWithBtnIndex:4];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 *NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.menuBtn completeWithMessage:@"Start"];
-    });
 }
 @end

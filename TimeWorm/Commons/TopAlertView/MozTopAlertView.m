@@ -23,6 +23,7 @@ sizeWithAttributes:@{NSFontAttributeName:font}] : CGSizeZero;
 #define FlatGreenDark hsb(145, 78, 68)
 #define FlatOrangeDark hsb(24, 100, 83)
 #define FlatRedDark hsb(6, 78, 75)
+#define MKeyWindow [UIApplication sharedApplication].keyWindow
 
 @interface MozTopAlertView (){
     UILabel *leftIcon;
@@ -99,6 +100,14 @@ sizeWithAttributes:@{NSFontAttributeName:font}] : CGSizeZero;
     [parentView addSubview:alertView];
     [alertView show];
     return alertView;
+}
+
++ (void)showOnWindowWithType:(MozAlertType)type text:(NSString *)text doText:(NSString *)doText doBlock:(dispatch_block_t)doBlock {
+    [self showWithType:type text:text doText:doText doBlock:doBlock parentView:MKeyWindow];
+}
+
++ (void)hideFromWindow {
+    [self hideViewWithParentView:MKeyWindow];
 }
 
 - (instancetype)initWithType:(MozAlertType)type text:(NSString*)text doText:(NSString*)doText// parentView:(UIView*)parentView

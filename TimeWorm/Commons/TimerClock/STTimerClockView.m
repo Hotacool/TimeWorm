@@ -153,6 +153,11 @@
     [TWTimer attatchObserver2Timer:self];
     [TWTimer activeTimer:[TWTimer currentTimer]];
 }
+- (void)bindCurrentTimer {
+    [TWTimer attatchObserver2Timer:self];
+    _leftSecond = [TWTimer currentTimer].seconds;
+    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld",_leftSecond/60,_leftSecond%60];
+}
 
 #pragma mark - ruler delegate
 
@@ -193,7 +198,7 @@
 }
 - (void)transitionToShow:(void(^)())completion{
     _canUpdateTimeDown = NO;
-    [_rulerView animateToShow];
+    [_rulerView animateToSecond:_leftSecond];
     [self.rulerView alphaTo:1 duration:0.1 completion:nil];
     [[self animatedAlphaItems] alphaTo:1 duration:STCLOCK_ALPHA_ANIMATION_DURATION completion:nil];
     [@[self.hand, self.handShadow] rotateFrom:_handAngleBeforeShow to:[self angleOfHandBySecond:_leftSecond] duration:0.5 timingFumction:STCustomEaseOut completion:^(BOOL finished) {

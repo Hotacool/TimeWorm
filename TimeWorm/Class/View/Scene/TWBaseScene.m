@@ -51,6 +51,7 @@
             DDLogWarn(@"sprites already has a sprite: %@", sprite);
         } else {
             [self.sprites addObject:sprite];
+            [self.contentLayer addSublayer:sprite.contentLayer];
         }
     }
 }
@@ -59,6 +60,7 @@
     if (sprite) {
         if ([self.sprites containsObject:sprite]) {
             [self.sprites removeObject:sprite];
+            [sprite.contentLayer removeFromSuperlayer];
         } else {
             DDLogWarn(@"sprites has no sprite: %@", sprite);
         }

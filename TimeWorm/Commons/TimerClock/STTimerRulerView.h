@@ -26,6 +26,7 @@
 
 - (void)animateToShow;
 - (void)animateToHide;
+- (void)animateToSecond:(NSInteger)second;
 
 - (void)resetRuler;
 
