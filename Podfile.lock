@@ -20,7 +20,6 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - Reveal-SDK (2)
   - STPopup (1.8.0)
 
 DEPENDENCIES:
@@ -30,7 +29,6 @@ DEPENDENCIES:
   - FMDB
   - pop (~> 1.0)
   - ReactiveCocoa (~> 2.5)
-  - Reveal-SDK
   - STPopup
 
 SPEC CHECKSUMS:
@@ -40,7 +38,6 @@ SPEC CHECKSUMS:
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  Reveal-SDK: 4d36a47c7091843eee525b72219e005b90bbac0b
   STPopup: af630a85628e4226ffcbda5caaead0d99aed13a8
 
 COCOAPODS: 0.39.0

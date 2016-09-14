@@ -24,7 +24,9 @@
 @property (nonatomic, strong) HACircleButton *menuBtn;
 @end
 
-@implementation HomeViewController
+@implementation HomeViewController {
+    NSArray *menuTextArray;
+}
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -64,6 +66,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -- API
+- (void)changeMenuButtonText:(NSString*)val atIndex:(NSUInteger)index {
+    if (menuTextArray&&val) {
+        if (menuTextArray.count > index) {
+            NSMutableArray *tmp = [NSMutableArray arrayWithArray:menuTextArray];
+            [tmp replaceObjectAtIndex:index withObject:val];
+            menuTextArray = tmp;
+            [self.menuBtn setImageArray:nil andTextArray:menuTextArray];
+        }
+    }
+}
+
 #pragma mark -- Scene load
 - (void)loadScene {
     if ([self.currentScene superview]) {
@@ -80,12 +94,12 @@
     switch (self.hvm.scene) {
         case TWHomeVCSceneHome: {
             NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"MarkRound"],nil];
-            NSArray *TextArray = [NSArray arrayWithObjects:
+            menuTextArray = [NSArray arrayWithObjects:
                                   NSLocalizedString(@"menuBtn2", @""),
                                   NSLocalizedString(@"menuBtn4", @""),
                                   NSLocalizedString(@"menuBtn3", @""),
                                   NSLocalizedString(@"menuBtn1", @""), nil];
-            [self.menuBtn setImageArray:IconArray andTextArray:TextArray];
+            [self.menuBtn setImageArray:IconArray andTextArray:menuTextArray];
             [self.menuBtn setTransitionAniOffArr:@[@(NO)
                                                    ,@(NO)
                                                    ,@(NO)
@@ -93,11 +107,12 @@
             break;
         }
         case TWHomeVCSceneWork: {
+            menuTextArray = @[NSLocalizedString(@"wMenuBtn2", @"")
+                              ,NSLocalizedString(@"wMenuBtn4", @"")
+                              ,NSLocalizedString(@"wMenuBtn3", @"")
+                              ,NSLocalizedString(@"wMenuBtn1", @"")];
             [self.menuBtn setImageArray:nil
-                           andTextArray:@[NSLocalizedString(@"wMenuBtn2", @"")
-                                                           ,NSLocalizedString(@"wMenuBtn4", @"")
-                                                           ,NSLocalizedString(@"wMenuBtn3", @"")
-                                                           ,NSLocalizedString(@"wMenuBtn1", @"")]];
+                           andTextArray:menuTextArray];
             [self.menuBtn setTransitionAniOffArr:@[@(YES)
                                                    ,@(NO)
                                                    ,@(YES)
@@ -118,11 +133,11 @@
 - (HACircleButton *)menuBtn {
     if (!_menuBtn) {
         NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"MarkRound"],nil];
-        NSArray *TextArray = [NSArray arrayWithObjects:
-                              NSLocalizedString(@"menuBtn2", @""),
-                              NSLocalizedString(@"menuBtn4", @""),
-                              NSLocalizedString(@"menuBtn3", @""),
-                              NSLocalizedString(@"menuBtn1", @""), nil];
+        menuTextArray = [NSArray arrayWithObjects:
+                         NSLocalizedString(@"menuBtn2", @""),
+                         NSLocalizedString(@"menuBtn4", @""),
+                         NSLocalizedString(@"menuBtn3", @""),
+                         NSLocalizedString(@"menuBtn1", @""), nil];
         NSArray *TargetArray = [NSArray arrayWithObjects:
                                 [NSString stringWithFormat:@"ButtonTwo"],
                                 [NSString stringWithFormat:@"ButtonFour"],
@@ -135,7 +150,7 @@
                                                                  BigRadius:100
                                                               ButtonNumber:4
                                                                 ButtonIcon:IconArray
-                                                                ButtonText:TextArray
+                                                                ButtonText:menuTextArray
                                                               ButtonTarget:TargetArray
                                                                UseParallex:YES
                                                          ParallaxParameter:100

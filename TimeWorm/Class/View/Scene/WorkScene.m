@@ -13,6 +13,7 @@
 #import "TWModelTimer.h"
 #import "STPopupController+HAC.h"
 #import <pop/POP.h>
+#import "HomeViewController.h"
 
 static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 @interface WorkScene () <TWTimerObserver>
@@ -111,6 +112,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 //clean
 - (void)removeFromSuperview {
     [TWTimer removeObserverFromTimer:self];
+    [TWTimer cancelTimer:[TWTimer currentTimer]];
     [MozTopAlertView hideFromWindow];
     [super removeFromSuperview];
 }
@@ -119,8 +121,6 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
     //TWTimer
     [TWTimer createTimerWithName:@"biubiubiu" seconds:100];
     [TWTimer attatchObserver2Timer:self];
-    [TWTimer activeTimer:[TWTimer currentTimer]];
-    
     [self.wsm setState:WorkSceneModelStateWorking];
 }
 #pragma mark -- KVO
@@ -128,32 +128,33 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
     if ([keyPath isEqualToString:@"state"]) {
         switch (self.wsm.state) {
             case WorkSceneModelStateNone: {
-                
                 break;
             }
             case WorkSceneModelStateWorking: {
-                [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"work start", @"") doText:@"OK" doBlock:^{
-                    [MozTopAlertView hideFromWindow];
-                }];
+                [TWTimer activeTimer:[TWTimer currentTimer]];
+                [hero performAction:@"think" withEnd:nil];
+                [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
+                [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"work start", @"") doText:nil doBlock:nil];
                 break;
             }
             case WorkSceneModelStatePause: {
                 [TWTimer pauseTimer:[TWTimer currentTimer]];
                 [hero performAction:@"applaud" withEnd:nil];
-                [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"pause", @"") doText:@"OK" doBlock:^{
-                    [MozTopAlertView hideFromWindow];
-                }];
+                [(HomeViewController*)self.ctrl changeMenuButtonText:@"继续" atIndex:3];
+                [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"pause", @"") doText:nil doBlock:nil];
                 break;
             }
             case WorkSceneModelStateEvent: {
                 [TWTimer pauseTimer:[TWTimer currentTimer]];
                 [hero performAction:@"applaud" withEnd:nil];
+                [(HomeViewController*)self.ctrl changeMenuButtonText:@"继续" atIndex:3];
                 [STPopupController popupViewControllerName:@"TWEventSetting" inViewController:self.ctrl];
                 break;
             }
             case WorkSceneModelStateReset: {
                 [TWTimer resetTimer:[TWTimer currentTimer]];
                 [self.clock setCLockDefaultDate:[[HACClockDate alloc] initWithHour:0 minute:0 second:0 weekday:1]];
+                [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
                 [STPopupController popupViewControllerName:@"TWClockSetting" inViewController:self.ctrl];
                 [hero performAction:@"think" withEnd:nil];
                 break;

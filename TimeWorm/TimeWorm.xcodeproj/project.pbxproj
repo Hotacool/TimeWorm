@@ -150,6 +150,7 @@
 		FABBBC181D82AC3F004365F4 /* HACWordsBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC171D82AC3F004365F4 /* HACWordsBoard.m */; };
 		FABBBC2E1D867EC1004365F4 /* TWEventSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC2D1D867EC1004365F4 /* TWEventSetting.m */; };
 		FABBBC311D86A65A004365F4 /* STPopupController+HAC.m in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC301D86A65A004365F4 /* STPopupController+HAC.m */; };
+		FAFD31CD1D89407A00091C3B /* TWMoreInfoPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFD31CC1D89407A00091C3B /* TWMoreInfoPage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -350,6 +351,8 @@
 		FABBBC2D1D867EC1004365F4 /* TWEventSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEventSetting.m; sourceTree = "<group>"; };
 		FABBBC2F1D86A65A004365F4 /* STPopupController+HAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STPopupController+HAC.h"; sourceTree = "<group>"; };
 		FABBBC301D86A65A004365F4 /* STPopupController+HAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STPopupController+HAC.m"; sourceTree = "<group>"; };
+		FAFD31CB1D89407A00091C3B /* TWMoreInfoPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMoreInfoPage.h; sourceTree = "<group>"; };
+		FAFD31CC1D89407A00091C3B /* TWMoreInfoPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMoreInfoPage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -550,6 +553,8 @@
 				FA0EFFD61D741B7E0080759D /* HomeViewController.m */,
 				FA8C53191D7D613800F96ED5 /* TWClockSetting.h */,
 				FA8C531A1D7D613800F96ED5 /* TWClockSetting.m */,
+				FAFD31CB1D89407A00091C3B /* TWMoreInfoPage.h */,
+				FAFD31CC1D89407A00091C3B /* TWMoreInfoPage.m */,
 				FABBBC2C1D867EC1004365F4 /* TWEventSetting.h */,
 				FABBBC2D1D867EC1004365F4 /* TWEventSetting.m */,
 			);
@@ -1030,6 +1035,7 @@
 				FA0EFFC11D73DA310080759D /* MozTopAlertView.m in Sources */,
 				FA0E00031D7528AC0080759D /* TWBaseSprite.m in Sources */,
 				FA8C54E71D7FEE3B00F96ED5 /* TWModelTimer.m in Sources */,
+				FAFD31CD1D89407A00091C3B /* TWMoreInfoPage.m in Sources */,
 				FA8C53251D7D6D2900F96ED5 /* UIView+STAnimation.m in Sources */,
 				FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */,
 				FA8C54FB1D81547800F96ED5 /* HACircleButton.m in Sources */,

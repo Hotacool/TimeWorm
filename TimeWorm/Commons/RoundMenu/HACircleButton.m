@@ -640,8 +640,7 @@ CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, float disZ)
     SBWS(weakSelf)
     [CATransaction setCompletionBlock:^{
          DDLogInfo(@"complete.");
-        UIImage * replaceImag = [[ (UIImageView*)IconArray[indexTouchUpInsideButton] image] copy];
-         [SmallButton setImage:replaceImag forState:UIControlStateNormal];
+         [SmallButton setImage:IconImage forState:UIControlStateNormal];
          SmallButton.enabled = YES;
          weakSelf.isActive = NO;
         [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ [SmallButton.imageView setAlpha:1.0]; } completion:^(BOOL finished){}];

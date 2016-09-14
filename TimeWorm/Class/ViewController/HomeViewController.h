@@ -10,4 +10,5 @@
 
 @interface HomeViewController : TWBaseViewController
 
+- (void)changeMenuButtonText:(NSString*)val atIndex:(NSUInteger)index;
 @end

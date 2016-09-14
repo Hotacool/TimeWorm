@@ -9,6 +9,7 @@
 #import "TWClockSetting.h"
 #import <STPopup/STPopup.h>
 #import "STTimerClockView.h"
+#import "TWMoreInfoPage.h"
 
 @interface TWClockSetting ()
 
@@ -62,7 +63,7 @@
 }
 
 - (void)nextBtnDidTap {
-//    [self.popupController pushViewController:[PopupViewController3 new] animated:YES];
+    [self.popupController pushViewController:[TWMoreInfoPage new] animated:YES];
 }
 
 - (void)setClockTime:(id)sender {
