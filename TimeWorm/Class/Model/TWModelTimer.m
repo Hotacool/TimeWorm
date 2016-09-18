@@ -7,6 +7,7 @@
 //
 
 #import "TWModelTimer.h"
+#import "TWDBManager.h"
 
 @implementation TWModelTimer
 
@@ -136,5 +137,31 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
         self.curTimer.state = TWTimerStateEnd;
         [self stopTime];
     }
+}
+#pragma mark -- db ope
+- (BOOL)insertNewTimer:(TWModelTimer*)timer {
+    BOOL __block ret = NO;
+    [[TWDBManager dbQueue] inDatabase:^(FMDatabase *db) {
+        ret = [db executeUpdate:@"INSERT INTO TWTimer VALUES (:name,:information,:seconds,:startDate,:state)"
+               , timer.name
+               ,timer.information
+               , timer.seconds
+               , timer.startDate
+               , @(timer.state)];
+    }];
+    return ret;
+}
+
+- (BOOL)updateTimer:(TWModelTimer*)timer {
+    BOOL __block ret = NO;
+    [[TWDBManager dbQueue] inDatabase:^(FMDatabase *db) {
+        ret = [db executeUpdate:@"INSERT INTO TWTimer VALUES (:name,:information,:seconds,:startDate,:state)"
+               , timer.name
+               ,timer.information
+               , timer.seconds
+               , timer.startDate
+               , @(timer.state)];
+    }];
+    return ret;
 }
 @end

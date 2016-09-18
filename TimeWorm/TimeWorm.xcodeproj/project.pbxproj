@@ -55,8 +55,6 @@
 		FA8006A91D7041A30071571C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8006A71D7041A30071571C /* Main.storyboard */; };
 		FA8006AB1D7041A30071571C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8006AA1D7041A30071571C /* Assets.xcassets */; };
 		FA8006AE1D7041A30071571C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8006AC1D7041A30071571C /* LaunchScreen.storyboard */; };
-		FA8C53111D7AB53A00F96ED5 /* PopupViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C530C1D7AB53A00F96ED5 /* PopupViewController1.m */; };
-		FA8C53131D7AB53A00F96ED5 /* PopupViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C53101D7AB53A00F96ED5 /* PopupViewController3.m */; };
 		FA8C53171D7D07C000F96ED5 /* TWUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C53161D7D07C000F96ED5 /* TWUtility.m */; };
 		FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C531A1D7D613800F96ED5 /* TWClockSetting.m */; };
 		FA8C531F1D7D6A7900F96ED5 /* STTimerRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C531E1D7D6A7900F96ED5 /* STTimerRulerView.m */; };
@@ -239,10 +237,6 @@
 		FA8006AD1D7041A30071571C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8006AF1D7041A30071571C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA8006B51D7043930071571C /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		FA8C530B1D7AB53A00F96ED5 /* PopupViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupViewController1.h; sourceTree = "<group>"; };
-		FA8C530C1D7AB53A00F96ED5 /* PopupViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupViewController1.m; sourceTree = "<group>"; };
-		FA8C530F1D7AB53A00F96ED5 /* PopupViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupViewController3.h; sourceTree = "<group>"; };
-		FA8C53101D7AB53A00F96ED5 /* PopupViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupViewController3.m; sourceTree = "<group>"; };
 		FA8C53151D7D07C000F96ED5 /* TWUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWUtility.h; sourceTree = "<group>"; };
 		FA8C53161D7D07C000F96ED5 /* TWUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWUtility.m; sourceTree = "<group>"; };
 		FA8C53191D7D613800F96ED5 /* TWClockSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWClockSetting.h; sourceTree = "<group>"; };
@@ -546,7 +540,6 @@
 		FA0EFFD21D7418E00080759D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				FA8C530A1D7AB53A00F96ED5 /* vcs */,
 				FA0EFFD81D741CA60080759D /* TWBaseViewController.h */,
 				FA0EFFD91D741CA60080759D /* TWBaseViewController.m */,
 				FA0EFFD51D741B7E0080759D /* HomeViewController.h */,
@@ -651,17 +644,6 @@
 				FA0E00201D7558FB0080759D /* TWHelp.h */,
 			);
 			path = Commons;
-			sourceTree = "<group>";
-		};
-		FA8C530A1D7AB53A00F96ED5 /* vcs */ = {
-			isa = PBXGroup;
-			children = (
-				FA8C530B1D7AB53A00F96ED5 /* PopupViewController1.h */,
-				FA8C530C1D7AB53A00F96ED5 /* PopupViewController1.m */,
-				FA8C530F1D7AB53A00F96ED5 /* PopupViewController3.h */,
-				FA8C53101D7AB53A00F96ED5 /* PopupViewController3.m */,
-			);
-			path = vcs;
 			sourceTree = "<group>";
 		};
 		FA8C53141D7D078D00F96ED5 /* Utility */ = {
@@ -1029,7 +1011,6 @@
 				FABBBC2E1D867EC1004365F4 /* TWEventSetting.m in Sources */,
 				FA0E00231D755F0E0080759D /* TWBaseCommand.m in Sources */,
 				FA0E01321D7963170080759D /* HACClockTimer.m in Sources */,
-				FA8C53111D7AB53A00F96ED5 /* PopupViewController1.m in Sources */,
 				FA0EFFD71D741B7E0080759D /* HomeViewController.m in Sources */,
 				FA0E01241D783B1F0080759D /* HomeSceneModel.m in Sources */,
 				FA0EFFC11D73DA310080759D /* MozTopAlertView.m in Sources */,
@@ -1039,7 +1020,6 @@
 				FA8C53251D7D6D2900F96ED5 /* UIView+STAnimation.m in Sources */,
 				FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */,
 				FA8C54FB1D81547800F96ED5 /* HACircleButton.m in Sources */,
-				FA8C53131D7AB53A00F96ED5 /* PopupViewController3.m in Sources */,
 				FA8006A31D7041A30071571C /* AppDelegate.m in Sources */,
 				FA0EFFFE1D7527720080759D /* HomeScene.m in Sources */,
 				FA8C531F1D7D6A7900F96ED5 /* STTimerRulerView.m in Sources */,

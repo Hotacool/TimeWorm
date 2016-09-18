@@ -10,8 +10,9 @@
 #import <STPopup/STPopup.h>
 #import "STTimerClockView.h"
 #import "TWMoreInfoPage.h"
+#import "TWModelTimer.h"
 
-@interface TWClockSetting ()
+@interface TWClockSetting () <STClockViewDelegate, TWTimerObserver>
 
 @property (strong, nonatomic) STTimerClockView *clockView;
 @end
@@ -31,9 +32,7 @@
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ClockSetMore", @"") style:UIBarButtonItemStylePlain target:self action:@selector(nextBtnDidTap)];
     self.view.backgroundColor = Haqua;
-    self.clockView = [[STTimerClockView alloc] initWithFrame:CGRectMake(0, 0, self.contentSizeInPopup.width, self.contentSizeInPopup.height)];
     [self.view addSubview:self.clockView];
-    [self.clockView.timeBtn addTarget:self action:@selector(setClockTime:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewDidLayoutSubviews{
@@ -48,12 +47,14 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.clockView bindCurrentTimer];
+    [TWTimer attatchObserver2Timer:self];
+    [self.clockView setClockSeconds:[TWTimer currentTimer].seconds];
     [self.clockView transitionToShow:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [TWTimer removeObserverFromTimer:self];
     [self.clockView transitionToHide:nil];
 }
 
@@ -66,8 +67,27 @@
     [self.popupController pushViewController:[TWMoreInfoPage new] animated:YES];
 }
 
-- (void)setClockTime:(id)sender {
-    sfuc
-    
+- (STTimerClockView *)clockView {
+    if (!_clockView) {
+        _clockView = [[STTimerClockView alloc] initWithFrame:CGRectMake(0, 0, self.contentSizeInPopup.width, self.contentSizeInPopup.height)];
+        _clockView.delegate = self;
+    }
+    return _clockView;
+}
+
+#pragma mark -- STClockViewDelegate
+- (void)clockView:(STClockView *)clockView startTimerWithSeconds:(NSUInteger)seconds {
+    [TWTimer createTimerWithName:@"clockTimer" seconds:(int)seconds];
+    [TWTimer activeTimer:[TWTimer currentTimer]];
+
+}
+
+- (void)stopTimerOfClockView:(STClockView *)clockView {
+    [TWTimer cancelTimer:[TWTimer currentTimer]];
+}
+
+#pragma mark -- Timer
+- (void)tickTime {
+    [self.clockView tickTime];
 }
 @end

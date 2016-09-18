@@ -18,6 +18,7 @@ typedef NS_OPTIONS(NSUInteger, TWTimerState) {
 @interface TWModelTimer : TWModel
 @property (nonatomic, assign) int ID;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *information;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *fireDate;
 @property (nonatomic, assign) int seconds;

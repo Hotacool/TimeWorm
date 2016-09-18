@@ -33,4 +33,7 @@
     self.state = WorkSceneModelStateReset;
     isPause = NO;
 }
+
+#pragma mark -- DB Ope
+
 @end

@@ -20,6 +20,7 @@ static FMDatabaseQueue* dbqueue;
     dispatch_once(&onceToken, ^{
         NSString *documentPath	= [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         NSString *databasePath	= [documentPath stringByAppendingPathComponent:CORE_DATABASE_NAME];
+        DDLogInfo(@"databasePath: %@", databasePath);
         dbqueue = [FMDatabaseQueue databaseQueueWithPath:databasePath];
     }) ;
     return dbqueue;

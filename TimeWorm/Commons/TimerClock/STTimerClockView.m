@@ -9,9 +9,8 @@
 
 #import "STTimerClockView.h"
 #import "STTimerRulerView.h"
-#import "TWModelTimer.h"
 
-@interface STTimerClockView () <STTimerRulerViewDelegate, TWTimerObserver>
+@interface STTimerClockView () <STTimerRulerViewDelegate>
 
 @property (strong, nonatomic) UIImageView *blackCenter;
 @property (strong, nonatomic) UIImageView *redCenter;
@@ -145,17 +144,19 @@
 }
 
 - (void)stopTime{
-    [TWTimer cancelTimer:[TWTimer currentTimer]];
+    if ([self.delegate respondsToSelector:@selector(stopTimerOfClockView:)]) {
+        [self.delegate stopTimerOfClockView:self];
+    }
 }
 
 - (void)startTime{
-    [TWTimer createTimerWithName:@"clockTimer" seconds:(int)_leftSecond];
-    [TWTimer attatchObserver2Timer:self];
-    [TWTimer activeTimer:[TWTimer currentTimer]];
+    if ([self.delegate respondsToSelector:@selector(clockView:startTimerWithSeconds:)]) {
+        [self.delegate clockView:self startTimerWithSeconds:_leftSecond];
+    }
 }
-- (void)bindCurrentTimer {
-    [TWTimer attatchObserver2Timer:self];
-    _leftSecond = [TWTimer currentTimer].seconds;
+
+- (void)setClockSeconds:(NSUInteger)seconds {
+    _leftSecond = seconds;
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld",_leftSecond/60,_leftSecond%60];
 }
 
@@ -185,8 +186,6 @@
 }
 
 - (void)transitionToHide:(void(^)())completion{
-    [TWTimer removeObserverFromTimer:self];
-    
     _canUpdateTimeDown = NO;
     [_rulerView animateToHide];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

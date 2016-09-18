@@ -10,9 +10,20 @@
 #import "STClockView.h"
 #import "QBFlatButton.h"
 
+@class STClockView;
+@protocol STClockViewDelegate <NSObject>
+
+- (void)clockView:(STClockView*)clockView startTimerWithSeconds:(NSUInteger)seconds ;
+
+- (void)stopTimerOfClockView:(STClockView*)clockView ;
+
+@end
+
 @interface STTimerClockView : STClockView
 
+@property (nonatomic, weak) id<STClockViewDelegate> delegate;
 @property (nonatomic, strong, readonly) QBFlatButton *timeBtn;
 
-- (void)bindCurrentTimer;
+- (void)setClockSeconds:(NSUInteger)seconds ;
+- (void)tickTime ;
 @end
