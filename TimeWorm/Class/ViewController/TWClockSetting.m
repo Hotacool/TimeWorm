@@ -10,7 +10,7 @@
 #import <STPopup/STPopup.h>
 #import "STTimerClockView.h"
 #import "TWMoreInfoPage.h"
-#import "TWModelTimer.h"
+#import "TWTimer.h"
 
 @interface TWClockSetting () <STClockViewDelegate, TWTimerObserver>
 
@@ -48,7 +48,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [TWTimer attatchObserver2Timer:self];
-    [self.clockView setClockSeconds:[TWTimer currentTimer].seconds];
+    [self.clockView setClockSeconds:[TWTimer currentTimer].remainderSeconds];
     [self.clockView transitionToShow:nil];
 }
 

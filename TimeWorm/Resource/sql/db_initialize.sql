@@ -5,7 +5,8 @@ CREATE TABLE `TWTimer` (
 	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	'name'			TEXT,
 	'information'	TEXT,
-	`seconds`	integer NOT NULL,
+	`allSec`	integer NOT NULL,
+	`rmdSec`	integer NOT NULL,
 	`startDate`	TIMESTAMP NOT NULL,
 	`fireDate`	TIMESTAMP,
 	`state`	integer

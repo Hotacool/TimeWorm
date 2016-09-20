@@ -10,7 +10,7 @@
 #import "HeroSprite.h"
 #import "WorkSceneModel.h"
 #import "HACClockTimer.h"
-#import "TWModelTimer.h"
+#import "TWTimer.h"
 #import "STPopupController+HAC.h"
 #import <pop/POP.h>
 #import "HomeViewController.h"
@@ -99,9 +99,9 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 
 - (void)tickTime {
     if (!date) {
-        date = [[HACClockDate alloc] initWithHour:0 minute:[TWTimer currentTimer].seconds/60 second:[TWTimer currentTimer].seconds%60 weekday:1];
+        date = [[HACClockDate alloc] initWithHour:0 minute:[TWTimer currentTimer].remainderSeconds/60 second:[TWTimer currentTimer].remainderSeconds%60 weekday:1];
     } else{
-        [date updateWithHour:0 minute:[TWTimer currentTimer].seconds/60 second:[TWTimer currentTimer].seconds%60 weekday:1];
+        [date updateWithHour:0 minute:[TWTimer currentTimer].remainderSeconds/60 second:[TWTimer currentTimer].remainderSeconds%60 weekday:1];
     }
     [self.clock setClockDate:date];
 }
@@ -120,6 +120,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 - (void)startTimer {
     //TWTimer
     [TWTimer createTimerWithName:@"biubiubiu" seconds:100];
+    [TWTimer currentTimer].information = @"testtesttesttesttest";
     [TWTimer attatchObserver2Timer:self];
     [self.wsm setState:WorkSceneModelStateWorking];
 }
