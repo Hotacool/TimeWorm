@@ -55,6 +55,9 @@ typedef NS_ENUM(NSInteger, MKTagStyle) {
 @property(nonatomic, assign) CGFloat tagFontSize; // default is 12
 @property(nonatomic) UIEdgeInsets padding; // container inner spacing, default is {10, 10, 10, 10}
 @property(nonatomic) UIEdgeInsets tagTextPadding; // tag text inner spaces, default is {3, 5, 3, 5}
+@property (nonatomic, strong) NSString *placeHolder;
+@property (nonatomic, assign) NSUInteger maxTagsNum;
+@property (nonatomic, assign) NSUInteger maxWordsNum;
 
 @property(nonatomic, assign) id<MKTagViewDelegate> delegate;
 
@@ -73,5 +76,8 @@ typedef NS_ENUM(NSInteger, MKTagStyle) {
 // you can monitor viewcontroller's view's tab event, call this function, and auto add the editing tag
 - (void)autoAddEdtingTag;
 - (NSArray *)allTags;
+
+//tool method
+
 
 @end

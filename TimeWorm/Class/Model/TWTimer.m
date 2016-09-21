@@ -40,10 +40,10 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
     return newTimer;
 }
 
-+ (void)activeTimer:(TWModelTimer*)timer {
++ (BOOL)activeTimer:(TWModelTimer*)timer {
     if (timer!=[TWTimer sharedTWTimer].curTimer) {
         DDLogError(@"暂只支持同时存在一个timer.");
-        return;
+        return NO;
     }
     if ((timer.state&TWTimerStateSilent)
         ||(timer.state&TWTimerStatePause)) {
@@ -53,24 +53,28 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
         timer.startDate = [NSDate date];
         //db save
         [[self sharedTWTimer] updateTimer:timer];
+        return YES;
     } else {
         DDLogWarn(@"cannot active timer for state: %lu", (unsigned long)timer.state);
     }
+    return NO;
 }
 
-+ (void)pauseTimer:(TWModelTimer*)timer {
++ (BOOL)pauseTimer:(TWModelTimer*)timer {
     if (timer.state&TWTimerStateFlow) {
         DDLogInfo(@"pause timer: %@", timer);
         [[TWTimer sharedTWTimer] stopTime];
         timer.state = TWTimerStatePause;
         //db save
         [[self sharedTWTimer] updateTimer:timer];
+        return YES;
     } else {
         DDLogWarn(@"cannot pause timer for state: %lu", (unsigned long)timer.state);
     }
+    return NO;
 }
 
-+ (void)cancelTimer:(TWModelTimer*)timer {
++ (BOOL)cancelTimer:(TWModelTimer*)timer {
     if ((timer.state&TWTimerStateFlow)
         ||(timer.state&TWTimerStatePause)
         ||(timer.state&TWTimerStateSilent)) {
@@ -79,40 +83,48 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
         timer.state = TWTimerStateCancel;
         //db save
         [[self sharedTWTimer] updateTimer:timer];
+        return YES;
     } else {
         DDLogWarn(@"cannot cancel timer for state: %lu", (unsigned long)timer.state);
     }
+    return NO;
 }
 
-+ (void)resetTimer:(TWModelTimer*)timer {
++ (BOOL)resetTimer:(TWModelTimer*)timer {
     if (timer.state&TWTimerStateEnd) {
         DDLogInfo(@"timer has already been ended.");
     } else {
         [self cancelTimer:timer];
         [TWTimer sharedTWTimer].curTimer = nil;
+        return YES;
     }
+    return NO;
 }
 
-+ (void)updateTimer:(TWModelTimer*)timer {
++ (BOOL)updateTimer:(TWModelTimer*)timer {
     if ((timer.state&TWTimerStateFlow)
         ||(timer.state&TWTimerStatePause)
         ||(timer.state&TWTimerStateSilent)) {
         DDLogInfo(@"update timer: %@", timer);
         [[self sharedTWTimer] updateTimer:timer];
+        return YES;
     } else {
         DDLogWarn(@"cannot update timer for state: %lu", timer.state);
     }
+    return NO;
 }
 
-+ (void)endTimer:(TWModelTimer*)timer {
++ (BOOL)endTimer:(TWModelTimer*)timer {
     if (timer.state&TWTimerStateFlow) {
         DDLogInfo(@"end timer: %@", timer);
         timer.state = TWTimerStateEnd;
         timer.fireDate = [NSDate date];
         [[self sharedTWTimer] updateTimer:timer];
+        return YES;
     } else {
         DDLogWarn(@"cannot end timer for state: %lu", timer.state);
     }
+    return NO;
 }
 
 + (void)attatchObserver2Timer:(id<TWTimerObserver>)observer timer:(TWModelTimer *)timer {

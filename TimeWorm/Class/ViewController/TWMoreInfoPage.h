@@ -7,7 +7,9 @@
 //
 
 #import "TWBaseViewController.h"
+#import "TWModelTimer.h"
 
 @interface TWMoreInfoPage : TWBaseViewController
 
+- (void)bindTimer:(TWModelTimer*)timer;
 @end

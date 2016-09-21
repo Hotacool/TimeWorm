@@ -11,7 +11,6 @@
 
 #define kMKDefaultColor [UIColor colorWithRed:0.38 green:0.72 blue:0.91 alpha:1]
 #define kMKTextColor [UIColor colorWithRed:0.65 green:0.65 blue:0.65 alpha:1]
-#define MAX_STARWORDS_LENGTH 10
 
 @interface MKTagView()<UITextFieldDelegate, MKTagViewDelegate>
 
@@ -27,12 +26,28 @@
     self.padding = UIEdgeInsetsMake(10, 10, 10, 10);
     self.tagTextPadding = UIEdgeInsetsMake(3, 5, 3, 5);
     
+    self.placeHolder = @"输入标签";
+    self.maxTagsNum = INT_MAX;
+    self.maxWordsNum = INT_MAX;
+    
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self
                                                                        action:@selector(autoAddEdtingTag)]];
     return self;
 }
 
+- (void)setPlaceHolder:(NSString *)placeHolder {
+    _placeHolder = placeHolder;
+    MKTagItem *label = self.subviews.lastObject;
+    if (label) {
+        label.label.placeholder = _placeHolder;
+        [label sizeToFit];
+    }
+}
+
 - (void)addTag:(NSString *)tag {
+    if ([self allTags].count >= self.maxTagsNum) {
+        return;
+    }
     if([self isEmptyString:tag]) {
         return;
     }
@@ -53,6 +68,9 @@
 }
 
 - (void)addTags:(NSArray *)tags {
+    if ([self allTags].count + tags.count > self.maxTagsNum) {
+        return;
+    }
     for(NSString *tag in tags) {
         [self addTag:tag];
     }
@@ -61,6 +79,9 @@
 - (void)removeTag:(NSString *)tagString {
     for(MKTagLabel *tag in self.subviews) {
         if([self stringIsEquals:tag.text to:tagString]) {
+            if ([self allTags].count <= self.maxTagsNum+1) {
+                self.subviews.lastObject.hidden = NO;
+            }
             [tag removeFromSuperview];
             [self.delegate mkTagView:self onRemove:tag];
         }
@@ -120,8 +141,8 @@
         MKTagItem *v = [self.subviews lastObject];
         if(!v || v.style != MKTagStyleEditing) {
             // if has no edit style tag, add one
-            MKTagItem *label = [self createTagWithStyle:MKTagStyleEditing tag:@"输入标签"];
-            label.label.placeholder = @"输入标签";
+            MKTagItem *label = [self createTagWithStyle:MKTagStyleEditing tag:self.placeHolder];
+            label.label.placeholder = self.placeHolder;
             label.text = nil;
             [self addSubview:label];
             [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textFieldEditChanged:)
@@ -156,6 +177,12 @@
     CGFloat x = self.padding.left;
     CGRect frame;
     for(UIView *tag in self.subviews) {
+        if (tag == [self.subviews lastObject]) {
+            if ([self allTags].count >= self.maxTagsNum) {
+                tag.hidden = YES;
+                break;
+            }
+        }
         frame = tag.frame;
         frame.origin.x = x;
         frame.origin.y = y;
@@ -341,9 +368,9 @@
         // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
         if (!position)
         {
-            if (toBeString.length > MAX_STARWORDS_LENGTH)
+            if (toBeString.length > self.maxWordsNum)
             {
-                textField.text = [toBeString substringToIndex:MAX_STARWORDS_LENGTH];
+                textField.text = [toBeString substringToIndex:self.maxWordsNum];
             }
         }
         
@@ -351,16 +378,16 @@
     // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
     else
     {
-        if (toBeString.length > MAX_STARWORDS_LENGTH)
+        if (toBeString.length > self.maxWordsNum)
         {
-            NSRange rangeIndex = [toBeString rangeOfComposedCharacterSequenceAtIndex:MAX_STARWORDS_LENGTH];
+            NSRange rangeIndex = [toBeString rangeOfComposedCharacterSequenceAtIndex:self.maxWordsNum];
             if (rangeIndex.length == 1)
             {
-                textField.text = [toBeString substringToIndex:MAX_STARWORDS_LENGTH];
+                textField.text = [toBeString substringToIndex:self.maxWordsNum];
             }
             else
             {
-                NSRange rangeRange = [toBeString rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, MAX_STARWORDS_LENGTH)];
+                NSRange rangeRange = [toBeString rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, self.maxWordsNum)];
                 textField.text = [toBeString substringWithRange:rangeRange];
             }
         }

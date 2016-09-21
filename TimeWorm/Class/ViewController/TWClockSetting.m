@@ -11,19 +11,23 @@
 #import "STTimerClockView.h"
 #import "TWMoreInfoPage.h"
 #import "TWTimer.h"
+#import "TWEvent.h"
 
 @interface TWClockSetting () <STClockViewDelegate, TWTimerObserver>
 
 @property (strong, nonatomic) STTimerClockView *clockView;
 @end
 
-@implementation TWClockSetting
+@implementation TWClockSetting {
+    TWModelTimer *curTimer;
+}
 
 - (instancetype)init {
     if (self = [super init]) {
         self.title = NSLocalizedString(@"Time Set", @"");
-        self.contentSizeInPopup = CGSizeMake(300, 400);
+        self.contentSizeInPopup = TWPopViewControllerSize;
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
+        curTimer = [TWTimer currentTimer];
     }
     return self;
 }
@@ -48,7 +52,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [TWTimer attatchObserver2Timer:self];
-    [self.clockView setClockSeconds:[TWTimer currentTimer].remainderSeconds];
+    [self.clockView setClockSeconds:curTimer.remainderSeconds];
     [self.clockView transitionToShow:nil];
 }
 
@@ -64,7 +68,13 @@
 }
 
 - (void)nextBtnDidTap {
-    [self.popupController pushViewController:[TWMoreInfoPage new] animated:YES];
+    if (!curTimer) {
+        [MozTopAlertView showOnWindowWithType:MozAlertTypeError text:NSLocalizedString(@"set a new Timer.", @"") doText:nil doBlock:nil];
+        return;
+    }
+    TWMoreInfoPage *morePage = [TWMoreInfoPage new];
+    [morePage bindTimer:curTimer];
+    [self.popupController pushViewController:morePage animated:YES];
 }
 
 - (STTimerClockView *)clockView {
@@ -75,15 +85,22 @@
     return _clockView;
 }
 
+- (void)bindTimer:(TWModelTimer *)timer {
+    curTimer = timer;
+}
+
 #pragma mark -- STClockViewDelegate
 - (void)clockView:(STClockView *)clockView startTimerWithSeconds:(NSUInteger)seconds {
-    [TWTimer createTimerWithName:@"clockTimer" seconds:(int)seconds];
-    [TWTimer activeTimer:[TWTimer currentTimer]];
+    curTimer = [TWTimer createTimerWithName:@"clockTimer" seconds:(int)seconds];
+    [TWTimer activeTimer:curTimer];
 
 }
 
 - (void)stopTimerOfClockView:(STClockView *)clockView {
-    [TWTimer cancelTimer:[TWTimer currentTimer]];
+    [TWTimer cancelTimer:curTimer];
+    if ([TWEvent currentEvent]&&![TWEvent currentEvent].stopDate) {
+        [TWEvent stopEvent:[TWEvent currentEvent]];
+    }
 }
 
 #pragma mark -- Timer

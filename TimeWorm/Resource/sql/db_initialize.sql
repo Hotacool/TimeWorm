@@ -15,7 +15,10 @@ CREATE TABLE TWEvent (
 	id integer primary key autoincrement,
 	'name'			TEXT,
 	'information'	TEXT,
-	'timerId'		integer,
-	'time'			TIMESTAMP,
+	'timerId'		integer NOT NULL,
+	`startDate`	TIMESTAMP NOT NULL,
+	`stopDate`	TIMESTAMP,
 	FOREIGN KEY(timerId) REFERENCES TWTimer(id)
 );
+##enable foreign key
+PRAGMA foreign_keys = ON;

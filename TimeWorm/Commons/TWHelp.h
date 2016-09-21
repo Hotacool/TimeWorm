@@ -101,6 +101,8 @@ return z##_shared_obj_name_;                   \
 
 #define sfuc DDLogInfo(@"%s", __func__);
 
+#define TWPopViewControllerSize CGSizeMake(300, 400)
+
 #import "TWCommandCenter.h"
 #import "TWUtility.h"
 #import "UIView+HACUtils.h"

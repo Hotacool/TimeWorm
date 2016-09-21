@@ -27,31 +27,31 @@
  *
  *  @param timer 目前只支持当前timer
  */
-+ (void)activeTimer:(TWModelTimer*)timer;
++ (BOOL)activeTimer:(TWModelTimer*)timer;
 /**
  *  暂停timer
  *
  *  @param timer 目前只支持当前timer
  */
-+ (void)pauseTimer:(TWModelTimer*)timer;
++ (BOOL)pauseTimer:(TWModelTimer*)timer;
 /**
  *  取消timer
  *
  *  @param timer 目前只支持当前timer
  */
-+ (void)cancelTimer:(TWModelTimer*)timer;
++ (BOOL)cancelTimer:(TWModelTimer*)timer;
 /**
  *  重置timer，当前timer设置为nil
  *
  *  @param timer 目前只支持当前timer
  */
-+ (void)resetTimer:(TWModelTimer*)timer ;
++ (BOOL)resetTimer:(TWModelTimer*)timer ;
 /**
  *  更新timer
  *
  *  @param timer 目前只支持当前timer
  */
-+ (void)updateTimer:(TWModelTimer*)timer ;
++ (BOOL)updateTimer:(TWModelTimer*)timer ;
 
 + (void)attatchObserver2Timer:(id<TWTimerObserver>)observer timer:(TWModelTimer*)timer ;
 

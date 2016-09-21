@@ -7,8 +7,9 @@
 //
 
 #import "TWBaseViewController.h"
+#import "TWModelTimer.h"
 
 @interface TWClockSetting : TWBaseViewController
 
-
+- (void)bindTimer:(TWModelTimer*)timer;
 @end

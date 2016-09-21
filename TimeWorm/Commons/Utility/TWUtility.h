@@ -11,4 +11,7 @@
 @interface TWUtility : NSObject
 
 + (CAGradientLayer*)getCAGradientLayerWithFrame:(CGRect)frame colors:(NSArray*)colors locations:(NSArray*)locs startPoint:(CGPoint)sP endPoint:(CGPoint)ep ;
+
++ (NSString*)transformTags2String:(NSArray<NSString*>*)tags ;
++ (NSArray<NSString*>*)transformString2Tags:(NSString*)str ;
 @end

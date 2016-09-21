@@ -12,30 +12,48 @@
 #import "MKTagItem.h"
 #import "QBFlatButton.h"
 #import "TWTagPage.h"
+#import "TWTextView.h"
+#import "TWTimer.h"
 
 static NSInteger TWEditorViewTag = 1;
-@interface TWMoreInfoPage () <MKTagViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface TWMoreInfoPage () <MKTagViewDelegate, UITableViewDelegate, UITableViewDataSource, TWTagPageDelegate>
 @property (nonatomic, strong) MKTagView *tagEditor;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) TWTextView *textView;
 @end
 
 @implementation TWMoreInfoPage {
-    CGFloat height;
+    NSArray *headerArr;
+    NSMutableArray *rowHeightArr;
+    NSMutableArray *headerHeightArr;
+    TWModelTimer *curTimer;
 }
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.title = @"Keyboard";
-        self.contentSizeInPopup = CGSizeMake(300, 400);
+        self.title = NSLocalizedString(@"ClockSetMore", @"");
+        self.contentSizeInPopup = TWPopViewControllerSize;
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
-        height = 44;
+        
+        headerArr = @[@"Title"
+                      , @"Information"];
+        rowHeightArr = [NSMutableArray arrayWithArray:@[@(44)
+                                                        ,@(150)]];
+        headerHeightArr = [NSMutableArray arrayWithArray:@[@(40)
+                                                           ,@(20)]];
     }
     return self;
 }
 
+- (void)bindTimer:(TWModelTimer *)timer {
+    curTimer = timer;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = Haqua;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"done", @"") style:UIBarButtonItemStylePlain target:self action:@selector(done)];
     [self.view addSubview:self.tableView];
 }
 
@@ -46,7 +64,7 @@ static NSInteger TWEditorViewTag = 1;
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.contentSizeInPopup.width, self.contentSizeInPopup.height) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(2, 0, self.contentSizeInPopup.width-4, self.contentSizeInPopup.height) style:UITableViewStyleGrouped];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -62,6 +80,9 @@ static NSInteger TWEditorViewTag = 1;
         _tagEditor = [[MKTagView alloc] init];
         _tagEditor.editable = YES;
         _tagEditor.delegate = self;
+        _tagEditor.maxTagsNum = 5;
+        _tagEditor.maxWordsNum = 15;
+        _tagEditor.placeHolder = @"输入标签(0/5)";
         _tagEditor.tag = TWEditorViewTag;
         _tagEditor.backgroundColor = [UIColor whiteColor];
         _tagEditor.frame = CGRectMake(0, 0, self.contentSizeInPopup.width-50, 0);
@@ -69,9 +90,30 @@ static NSInteger TWEditorViewTag = 1;
     return _tagEditor;
 }
 
+- (TWTextView *)textView {
+    if (!_textView) {
+        _textView = [[TWTextView alloc] initWithFrame:CGRectMake(0, 0, self.contentSizeInPopup.width, 150)];
+        _textView.placeHolder = @"最多输入100个字符";
+        _textView.maxWords = 100;
+    }
+    return _textView;
+}
+
+- (void)done {
+    DDLogInfo(@"save information...");
+    TWModelTimer *timer = curTimer;
+    timer.name = [TWUtility transformTags2String:[self.tagEditor allTags]];
+    timer.information = self.textView.text;
+    if (![TWTimer updateTimer:timer]) {
+        [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"Timer cannot be changed.", @"") doText:nil doBlock:nil];
+    } else {
+        [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"done", @"") doText:nil doBlock:nil];
+    }
+}
+
 #pragma mark - tableView
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return headerArr.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -89,49 +131,55 @@ static NSInteger TWEditorViewTag = 1;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tmpId];
         if (indexPath.section == 0) {
             cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            [self.tagEditor addTags:[TWUtility transformString2Tags:curTimer.name]];
             [cell.contentView addSubview:self.tagEditor];
         } else {
-            
+            [self.textView.textView setText:curTimer.information];
+            [cell.contentView addSubview:self.textView];
         }
     }
     return cell;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (section==0) {
-        return @"title";
-    }
-    return @"information";
+    return headerArr[section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==1) {
-        return 20;
-    }
-    return 40;
+    return [headerHeightArr[section] floatValue];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 1) {
-        return 100;
-    }
-    return height;
+    return [rowHeightArr[indexPath.section] floatValue];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
-        [self.popupController pushViewController:[TWTagPage new] animated:YES];
+        TWTagPage *tagPage = [TWTagPage new];
+        [tagPage setDefaultSelectedTags:[self.tagEditor allTags]];
+        [tagPage setMaxSelectedTagNumber:self.tagEditor.maxTagsNum];
+        [tagPage setTagsArr:[NSMutableArray arrayWithArray:@[@"哈哈哈"
+                                                            ,@"呵呵呵"
+                                                            ,@"嚯嚯嚯"
+                                                            ,@"咻咻咻"
+                                                            ,@"嘶嘶嘶"
+                                                            ,@"叭叭叭"
+                                                             ,@"噗噗噗"]]];
+        tagPage.delegate = self;
+        [self.popupController pushViewController:tagPage animated:YES];
     }
 }
 
 #pragma mark - delegate functions
 
 - (void)mkTagView:(MKTagView *)tagview sizeChange:(CGRect)newSize {
+    self.tagEditor.placeHolder = [NSString stringWithFormat:@"输入标签:(%lu/%lu)",[self.tagEditor allTags].count,self.tagEditor.maxTagsNum];
+    //修正cell height
     if (newSize.size.height > 44) {
-        height = 88;
-    } else {
-        height = 44;
+        [rowHeightArr replaceObjectAtIndex:0 withObject:@(newSize.size.height)];
+    } else if (newSize.size.height < 44) {
+        [rowHeightArr replaceObjectAtIndex:0 withObject:@(44)];
     }
     [self.tableView reloadData];
 }
@@ -140,5 +188,17 @@ static NSInteger TWEditorViewTag = 1;
 }
 
 - (void)mkTagView:(MKTagView *)tagview onRemove:(MKTagLabel *)tagLabel {
+}
+#pragma mark - TWTagPageDelegate
+- (void)tagPage:(TWTagPage *)tagPage addTag:(NSString *)tag {
+    if (tag&&tag.length>0) {
+        [self.tagEditor addTag:tag];
+    }
+}
+
+- (void)tagPage:(TWTagPage *)tagPage removeTag:(NSString *)tag {
+    if (tag&&tag.length>0) {
+        [self.tagEditor removeTag:tag];
+    }
 }
 @end
