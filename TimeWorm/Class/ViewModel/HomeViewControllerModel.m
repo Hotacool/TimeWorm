@@ -37,31 +37,6 @@
     return _sceneDic;
 }
 
-- (void)postSwitchVCCommandWithDirection:(TWHomeVCDirection)direction {
-    switch (direction) {
-        case TWHomeVCDirectionUp: {
-            [TWCommandCenter doActionWithCommand:@"upShift"];
-            break;
-        }
-        case TWHomeVCDirectionDown: {
-            [TWCommandCenter doActionWithCommand:@"downShift"];
-            break;
-        }
-        case TWHomeVCDirectionLeft: {
-            [TWCommandCenter doActionWithCommand:@"leftShift"];
-            break;
-        }
-        case TWHomeVCDirectionRight: {
-            [TWCommandCenter doActionWithCommand:@"rightShift"];
-            break;
-        }
-        case TWHomeVCDirectionNone: {
-            
-            break;
-        }
-    }
-}
-
 - (void)postMenuClickCommandWithBtnIndex:(NSUInteger)index {
     switch (index) {
         case 1: {

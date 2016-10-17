@@ -9,14 +9,6 @@
 #import "TWBaseViewModel.h"
 #import "TWBaseScene.h"
 
-typedef NS_ENUM(NSUInteger, TWHomeVCDirection) {
-    TWHomeVCDirectionNone = 0,
-    TWHomeVCDirectionUp,
-    TWHomeVCDirectionDown,
-    TWHomeVCDirectionLeft,
-    TWHomeVCDirectionRight
-};
-
 typedef NS_ENUM(NSUInteger, TWHomeVCScene) {
     TWHomeVCSceneHome = 0,
     TWHomeVCSceneWork,
@@ -33,7 +25,6 @@ static const CGFloat HomeViewAnimationDuration = 0.4f;
 @property (nonatomic, assign, readonly) TWHomeVCScene scene;
 @property (nonatomic, strong, readonly) TWBaseScene *currentScene;
 
-- (void)postSwitchVCCommandWithDirection:(TWHomeVCDirection)direction ;
 - (void)postMenuClickCommandWithBtnIndex:(NSUInteger)index ;
 - (void)switchScene:(TWHomeVCScene)scene ;
 - (void)switchScene:(TWHomeVCScene)scene withCompleteBlock:(void(^)(void))complete;

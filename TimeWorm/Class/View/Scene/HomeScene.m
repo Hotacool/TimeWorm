@@ -24,7 +24,6 @@
     if ([super initWithFrame:frame]) {
         _hsm = (HomeSceneModel*)self.viewModel;
         [_hsm addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
-        [_hsm addObserver:self forKeyPath:@"shiftDirection" options:NSKeyValueObservingOptionNew context:nil];
         //attatch command
         [_hsm attatchCommand:YES];
         
@@ -58,7 +57,6 @@
     if (self.hsm) {
         [self.hsm attatchCommand:NO];
         [self.hsm removeObserver:self forKeyPath:@"state"];
-        [self.hsm removeObserver:self forKeyPath:@"shiftDirection"];
     }
 }
 
@@ -109,39 +107,6 @@
                 break;
             }
         }
-    } else if ([keyPath isEqualToString:@"shiftDirection"]) {
-        [self shiftHeroWithDirection:self.hsm.shiftDirection];
     }
-}
-
-#pragma mark -- API
-- (void)shiftHeroWithDirection:(NSUInteger)direction {
-    DDLogInfo(@"%s, %lu",__func__, (unsigned long)direction);
-    CGPoint point = hero.position;
-    switch (direction) {
-//        case 1: {
-//            point.y -= 100;
-//            [hero setPosition:point];
-//            break;
-//        }
-//        case 2: {
-//            point.y += 100;
-//            [hero setPosition:point];
-//            break;
-//        }
-        case 3: {
-            point.x -= 100;
-            [hero setPosition:point];
-            break;
-        }
-        case 4: {
-            point.x += 100;
-            [hero setPosition:point];
-            break;
-        }
-        default:
-            break;
-    }
-    
 }
 @end

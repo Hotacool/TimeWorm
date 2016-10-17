@@ -45,25 +45,4 @@
         [self setValue:@(HomeSceneModelStateNone) forKey:@"state"];
     }
 }
-
-#pragma mark -- command action
-- (void)response2upShift {
-    DDLogInfo(@"%s", __func__);
-    self.shiftDirection = 1;
-}
-
-- (void)response2downShift {
-    DDLogInfo(@"%s", __func__);
-    self.shiftDirection = 2;
-}
-
-- (void)response2leftShift {
-    DDLogInfo(@"%s", __func__);
-    self.shiftDirection = 3;
-}
-
-- (void)response2rightShift {
-    DDLogInfo(@"%s", __func__);
-    self.shiftDirection = 4;
-}
 @end

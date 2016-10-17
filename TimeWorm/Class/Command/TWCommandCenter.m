@@ -24,13 +24,13 @@ HAC_SINGLETON_IMPLEMENT(TWCommandCenter);
 }
 
 + (BOOL)attache2Center:(id)observer {
-    BOOL ret;
+    BOOL ret = NO;
     if (observer) {
         NSMutableArray *arr = [TWCommandCenter sharedTWCommandCenter]->observers;
         if (![arr containsObject:observer]) {
             [arr addObject:observer];
-            ret = YES;
         }
+        ret = YES;
     }
     return ret;
 }

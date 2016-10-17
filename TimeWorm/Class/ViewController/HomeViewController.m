@@ -16,9 +16,6 @@
 @interface HomeViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) HomeViewControllerModel *hvm;
 @property (nonatomic, strong) NSMutableDictionary *viewControllerDic;
-@property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
-@property (nonatomic, assign) TWHomeVCDirection direction;
-@property (nonatomic, assign) TWHomeVCDirection activeDirection;
 
 @property (nonatomic, strong) TWBaseScene *currentScene;
 @property (nonatomic, strong) HACircleButton *menuBtn;
@@ -50,8 +47,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = RGB_HEX(0xC3F8C8);
-    //加载切换page手势
-    [self loadSwitchVCPanGesture];
     //加载场景
     [self loadScene];
     //初始化弹出界面navigationBar
@@ -185,21 +180,11 @@
     }
     return _viewControllerDic;
 }
-- (UIViewController*)viewControllerAtDirection:(TWHomeVCDirection)direction {
-    UIViewController *ret;
-    if (direction > 0&&self.viewControllerDic.count >= direction) {
-        ret = self.viewControllerDic[@(direction)];
-    }
-    return ret;
-}
+
 #pragma mark -- KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if (object == self.menuBtn) {
-        if (self.menuBtn.isActive) {
-            [self.view removeGestureRecognizer:_panGesture];
-        } else {
-            [self.view addGestureRecognizer:_panGesture];
-        }
+        
     } else if (object == self.hvm) {
         if ([keyPath isEqualToString:@"scene"]) {
             if (self.currentScene == self.hvm.currentScene) {
@@ -210,182 +195,6 @@
             }
         }
     }
-}
-#pragma mark -- viewController panGesture
-- (void)loadSwitchVCPanGesture {
-    _panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-    _panGesture.delegate = self;
-    [self.view addGestureRecognizer:_panGesture];
-}
-
-- (void)handlePanGesture:(UIPanGestureRecognizer*)recongnizer {
-    if (self.menuBtn.isActive) {
-        return;
-    }
-    CGPoint translation = [recongnizer translationInView: self.view];
-    if (recongnizer.state == UIGestureRecognizerStateBegan) {
-        self.direction = TWHomeVCDirectionNone;
-    } else if (recongnizer.state == UIGestureRecognizerStateChanged && self.direction == TWHomeVCDirectionNone) {
-        self.direction = [self determineDirectionIfNeeded:translation];
-        // ok, now initiate movement in the direction indicated by the user's gesture
-        [self switchViewController];
-    } else if (recongnizer.state == UIGestureRecognizerStateEnded) {
-        // now tell the camera to stop
-//        DDLogInfo(@"stop");
-    }
-}
-
-- (TWHomeVCDirection)determineDirectionIfNeeded:(CGPoint)translation {
-    TWHomeVCDirection direction = self.direction;
-    if (self.direction != TWHomeVCDirectionNone) {
-        return direction;
-    }
-    // determine if horizontal swipe only if you meet some minimum velocity
-    if (fabs(translation.x) > HomeGestureMinimumTranslation) {
-        BOOL gestureHorizontal = NO;
-        if (translation.y == 0.0 ) {
-            gestureHorizontal = YES;
-        } else {
-            gestureHorizontal = (fabs(translation.x / translation.y) > 5.0 );
-        }
-        
-        if (gestureHorizontal) {
-            if (translation.x > 0.0 ) {
-                return TWHomeVCDirectionLeft;
-            } else {
-                return TWHomeVCDirectionRight;
-            }
-        }
-    } else if (fabs(translation.y) > HomeGestureMinimumTranslation) {
-        // determine if vertical swipe only if you meet some minimum velocity
-        BOOL gestureVertical = NO;
-        if (translation.x == 0.0 ) {
-            gestureVertical = YES;
-        } else {
-            gestureVertical = (fabs(translation.y / translation.x) > 5.0 );
-        }
-        if (gestureVertical) {
-            if (translation.y > 0.0 ) {
-                return TWHomeVCDirectionUp;
-            } else {
-                return TWHomeVCDirectionDown;
-            }
-        }
-    }
-    return direction;
-}
-
-- (void)switchViewController {
-//    DDLogInfo(@"direction: %lu", (unsigned long)self.direction);
-    CGRect rect = [UIScreen mainScreen].bounds;
-    if (self.activeDirection == self.direction) {
-        return;
-    }
-    UIViewController *ctrl;
-    switch (self.direction) {
-        case TWHomeVCDirectionUp: {
-            if (self.activeDirection == TWHomeVCDirectionDown) {
-                [self resetView2CenterWithDirection:self.activeDirection];
-                self.activeDirection = TWHomeVCDirectionNone;
-                [self.hvm postSwitchVCCommandWithDirection:self.direction];
-            } else if (self.activeDirection == TWHomeVCDirectionNone) {
-                self.activeDirection = self.direction;
-                ctrl = self.viewControllerDic[@(self.direction)];
-                [self addChildViewController:ctrl];
-                [self.view addSubview:ctrl.view];
-                ctrl.view.frame = CGRectMake(0, -rect.size.height, rect.size.width, rect.size.height);
-                [ctrl didMoveToParentViewController:self];
-                
-                [UIView animateWithDuration:HomeViewAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                    self.view.frame = CGRectMake(0, rect.size.height - HomeViewRemainderLength, rect.size.width, rect.size.height);
-                } completion:^(BOOL finished) {
-                }];
-                [self.hvm postSwitchVCCommandWithDirection:self.direction];
-            }
-            break;
-        }
-        case TWHomeVCDirectionDown: {
-            if (self.activeDirection == TWHomeVCDirectionUp) {
-                self.activeDirection = TWHomeVCDirectionNone;
-                [self resetView2CenterWithDirection:self.activeDirection];
-                self.activeDirection = TWHomeVCDirectionNone;
-                [self.hvm postSwitchVCCommandWithDirection:self.direction];
-            } else if (self.activeDirection == TWHomeVCDirectionNone) {
-                self.activeDirection = self.direction;
-                ctrl = self.viewControllerDic[@(self.direction)];
-                [self addChildViewController:ctrl];
-                [self.view addSubview:ctrl.view];
-                ctrl.view.frame = CGRectMake(0, rect.size.height, rect.size.width, rect.size.height);
-                [ctrl didMoveToParentViewController:self];
-                
-                [UIView animateWithDuration:HomeViewAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                    self.view.frame = CGRectMake(0, HomeViewRemainderLength - rect.size.height, rect.size.width, rect.size.height);
-                } completion:^(BOOL finished) {
-                }];
-                [self.hvm postSwitchVCCommandWithDirection:self.direction];
-            }
-            break;
-        }
-        case TWHomeVCDirectionLeft: {
-            if (self.activeDirection == TWHomeVCDirectionRight) {
-                self.activeDirection = TWHomeVCDirectionNone;
-                [self resetView2CenterWithDirection:self.activeDirection];
-                self.activeDirection = TWHomeVCDirectionNone;
-                [self.hvm postSwitchVCCommandWithDirection:self.direction];
-            } else if (self.activeDirection == TWHomeVCDirectionNone) {
-                self.activeDirection = self.direction;
-                ctrl = self.viewControllerDic[@(self.direction)];
-                [self addChildViewController:ctrl];
-                [self.view addSubview:ctrl.view];
-                ctrl.view.frame = CGRectMake(-rect.size.width, 0, rect.size.width, rect.size.height);
-                [ctrl didMoveToParentViewController:self];
-                
-                [UIView animateWithDuration:HomeViewAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                    self.view.frame = CGRectMake(HomeViewRemainderLength, 0, rect.size.width, rect.size.height);
-                } completion:^(BOOL finished) {
-                }];
-                [self.hvm postSwitchVCCommandWithDirection:self.direction];
-            }
-            break;
-        }
-        case TWHomeVCDirectionRight: {
-            if (self.activeDirection == TWHomeVCDirectionLeft) {
-                self.activeDirection = TWHomeVCDirectionNone;
-                [self resetView2CenterWithDirection:self.activeDirection];
-                self.activeDirection = TWHomeVCDirectionNone;
-                [self.hvm postSwitchVCCommandWithDirection:self.direction];
-            } else if (self.activeDirection == TWHomeVCDirectionNone) {
-                self.activeDirection = self.direction;
-                ctrl = self.viewControllerDic[@(self.direction)];
-                [self addChildViewController:ctrl];
-                [self.view addSubview:ctrl.view];
-                ctrl.view.frame = CGRectMake(rect.size.width, 0, rect.size.width, rect.size.height);
-                [ctrl didMoveToParentViewController:self];
-                
-                [UIView animateWithDuration:HomeViewAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                    self.view.frame = CGRectMake(HomeViewRemainderLength - rect.size.width, 0, rect.size.width, rect.size.height);
-                } completion:^(BOOL finished) {
-                }];
-                [self.hvm postSwitchVCCommandWithDirection:self.direction];
-            }
-            break;
-        }
-        case TWHomeVCDirectionNone: {
-            break;
-        }
-    }
-}
-
-- (void)resetView2CenterWithDirection:(TWHomeVCDirection)direction {
-    CGRect rect = [UIScreen mainScreen].bounds;
-    UIViewController *ctrl = self.viewControllerDic[@(direction)];
-    [UIView animateWithDuration:HomeViewAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.view.frame = CGRectMake(0, 0, rect.size.width, rect.size.height);
-    } completion:^(BOOL finished) {
-        [ctrl willMoveToParentViewController:nil];
-        [ctrl.view removeFromSuperview];
-        [ctrl removeFromParentViewController];
-    }];
 }
 #pragma mark -- menu btn clicked
 - (void)ButtonOne {
