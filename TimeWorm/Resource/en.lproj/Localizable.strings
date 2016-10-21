@@ -9,8 +9,8 @@
 "menuBtn"  = "Choose";
 "menuBtn1" = "Work";
 "menuBtn2" = "Relax";
-"menuBtn3" = "Timer";
-"menuBtn4" = "Edit";
+"menuBtn3" = "Record";
+"menuBtn4" = "Set";
 //work scene menu
 "wMenuBtn1" = "Pause";
 "wMenuBtn2" = "Event";

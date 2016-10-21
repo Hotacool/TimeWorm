@@ -20,6 +20,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 @interface WorkScene () <TWTimerObserver>
 @property (nonatomic, strong) WorkSceneModel *wsm;
 @property (nonatomic, strong) HACClockTimer *clock;
+@property (nonatomic, strong) UIButton *event;
 
 @end
 
@@ -66,6 +67,8 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
                                                            startPoint:CGPointMake(0.5, 0)
                                                              endPoint:CGPointMake(0.5, 1)]
                        atIndex:0];
+    self.event.frame = CGRectMake(self.frame.size.width - 50, self.frame.size.height - 50, 50, 50);
+    [self addSubview:self.event];
 }
 
 - (void)addSprite:(TWBaseSprite *)sprite {
@@ -98,6 +101,15 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
     return _clock;
 }
 
+- (UIButton *)event {
+    if (!_event) {
+        _event = [[UIButton alloc] init];
+        [_event setImage:[UIImage imageNamed:@"CalenderRound"] forState:UIControlStateNormal];
+        [_event addTarget:self action:@selector(gotoEventList:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _event;
+}
+
 - (void)tickTime {
     if (!date) {
         date = [[HACClockDate alloc] initWithHour:0 minute:[TWTimer currentTimer].remainderSeconds/60 second:[TWTimer currentTimer].remainderSeconds%60 weekday:1];
@@ -105,6 +117,10 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
         [date updateWithHour:0 minute:[TWTimer currentTimer].remainderSeconds/60 second:[TWTimer currentTimer].remainderSeconds%60 weekday:1];
     }
     [self.clock setClockDate:date];
+}
+
+- (void)gotoEventList:(id)sender {
+    [STPopupController popupViewControllerName:@"TWEventList" inViewController:self.ctrl withStyle:STPopupTransitionStyleSlideVertical];
 }
 
 - (void)clockClicked:(id)sender {

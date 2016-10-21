@@ -15,7 +15,6 @@
 
 @interface HomeViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) HomeViewControllerModel *hvm;
-@property (nonatomic, strong) NSMutableDictionary *viewControllerDic;
 
 @property (nonatomic, strong) TWBaseScene *currentScene;
 @property (nonatomic, strong) HACircleButton *menuBtn;
@@ -161,24 +160,6 @@
     [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
     [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18],
                                                                NSForegroundColorAttributeName: [UIColor whiteColor] };
-}
-
-//Pages
-- (NSMutableDictionary *)viewControllerDic {
-    if (!_viewControllerDic) {
-        _viewControllerDic = [NSMutableDictionary dictionaryWithCapacity:4];
-        for (int i = 1; i <= 4; i++) {
-            UIViewController *ctrl = [[UIViewController alloc] init];
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 200, 200)];
-            label.center = ctrl.view.center;
-            label.backgroundColor = [UIColor yellowColor];
-            label.text = [@"viewController_" stringByAppendingFormat:@"%d",i];
-            [ctrl.view addSubview:label];
-            ctrl.view.backgroundColor = RGB_HEX(0xC3F8C8);
-            [_viewControllerDic setObject:ctrl forKey:@(i)];
-        }
-    }
-    return _viewControllerDic;
 }
 
 #pragma mark -- KVO

@@ -11,4 +11,5 @@
 @interface STPopupController (HAC)
 
 + (UIViewController*)popupViewControllerName:(NSString*)name inViewController:(UIViewController*)ctrl ;
++ (UIViewController *)popupViewControllerName:(NSString *)name inViewController:(UIViewController *)ctrl withStyle:(STPopupTransitionStyle)style ;
 @end

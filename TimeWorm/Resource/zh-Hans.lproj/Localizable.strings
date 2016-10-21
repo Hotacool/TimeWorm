@@ -8,8 +8,8 @@
 "menuBtn"  = "选择";
 "menuBtn1" = "工作";
 "menuBtn2" = "放松";
-"menuBtn3" = "定时器";
-"menuBtn4" = "编辑";
+"menuBtn3" = "记录";
+"menuBtn4" = "设定";
 
 "wMenuBtn1" = "暂停";
 "wMenuBtn2" = "事件";
