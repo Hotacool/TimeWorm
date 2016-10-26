@@ -52,6 +52,11 @@
 		FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFFD1D7527720080759D /* TWBaseScene.m */; };
 		FA4AE69F1D9263D400505B7E /* TWModelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4AE69E1D9263D400505B7E /* TWModelEvent.m */; };
 		FA4AE6A21D9264C800505B7E /* TWEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4AE6A11D9264C800505B7E /* TWEvent.m */; };
+		FA6A02031DC0A7120034201E /* CLWeeklyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */; };
+		FA6A02041DC0A7120034201E /* DailyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02001DC0A7120034201E /* DailyCalendarView.m */; };
+		FA6A02051DC0A7120034201E /* DayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02021DC0A7120034201E /* DayTitleLabel.m */; };
+		FA6A020A1DC0A9AB0034201E /* NSDate+CL.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02071DC0A9AB0034201E /* NSDate+CL.m */; };
+		FA6A020B1DC0A9AB0034201E /* NSDictionary+CL.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02091DC0A9AB0034201E /* NSDictionary+CL.m */; };
 		FA75D2C91D8FACD400E63CC9 /* TWTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA75D2C81D8FACD400E63CC9 /* TWTimer.m */; };
 		FA75D2E61D8FDB2F00E63CC9 /* TWTagPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA75D2E51D8FDB2F00E63CC9 /* TWTagPage.m */; };
 		FA75D3221D90077700E63CC9 /* MKTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA75D31F1D90077700E63CC9 /* MKTagItem.m */; };
@@ -239,6 +244,16 @@
 		FA4AE69E1D9263D400505B7E /* TWModelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWModelEvent.m; sourceTree = "<group>"; };
 		FA4AE6A01D9264C800505B7E /* TWEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEvent.h; sourceTree = "<group>"; };
 		FA4AE6A11D9264C800505B7E /* TWEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEvent.m; sourceTree = "<group>"; };
+		FA6A01FD1DC0A7120034201E /* CLWeeklyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLWeeklyCalendarView.h; sourceTree = "<group>"; };
+		FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLWeeklyCalendarView.m; sourceTree = "<group>"; };
+		FA6A01FF1DC0A7120034201E /* DailyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCalendarView.h; sourceTree = "<group>"; };
+		FA6A02001DC0A7120034201E /* DailyCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyCalendarView.m; sourceTree = "<group>"; };
+		FA6A02011DC0A7120034201E /* DayTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayTitleLabel.h; sourceTree = "<group>"; };
+		FA6A02021DC0A7120034201E /* DayTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayTitleLabel.m; sourceTree = "<group>"; };
+		FA6A02061DC0A9AB0034201E /* NSDate+CL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CL.h"; sourceTree = "<group>"; };
+		FA6A02071DC0A9AB0034201E /* NSDate+CL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CL.m"; sourceTree = "<group>"; };
+		FA6A02081DC0A9AB0034201E /* NSDictionary+CL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CL.h"; sourceTree = "<group>"; };
+		FA6A02091DC0A9AB0034201E /* NSDictionary+CL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CL.m"; sourceTree = "<group>"; };
 		FA75D2C71D8FACD400E63CC9 /* TWTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTimer.h; sourceTree = "<group>"; };
 		FA75D2C81D8FACD400E63CC9 /* TWTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTimer.m; sourceTree = "<group>"; };
 		FA75D2E41D8FDB2F00E63CC9 /* TWTagPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTagPage.h; sourceTree = "<group>"; };
@@ -620,6 +635,19 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
+		FA6A01FC1DC0A7120034201E /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				FA6A01FD1DC0A7120034201E /* CLWeeklyCalendarView.h */,
+				FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */,
+				FA6A01FF1DC0A7120034201E /* DailyCalendarView.h */,
+				FA6A02001DC0A7120034201E /* DailyCalendarView.m */,
+				FA6A02011DC0A7120034201E /* DayTitleLabel.h */,
+				FA6A02021DC0A7120034201E /* DayTitleLabel.m */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		FA75D31D1D90077700E63CC9 /* TagView */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +719,7 @@
 		FA8006B61D7049CE0071571C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				FA6A01FC1DC0A7120034201E /* Calendar */,
 				FA09359D1DB7655D00F9A61C /* FoldTableView */,
 				FA75D35E1D91295200E63CC9 /* TextView */,
 				FA75D31D1D90077700E63CC9 /* TagView */,
@@ -709,6 +738,10 @@
 		FA8C53141D7D078D00F96ED5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				FA6A02061DC0A9AB0034201E /* NSDate+CL.h */,
+				FA6A02071DC0A9AB0034201E /* NSDate+CL.m */,
+				FA6A02081DC0A9AB0034201E /* NSDictionary+CL.h */,
+				FA6A02091DC0A9AB0034201E /* NSDictionary+CL.m */,
 				FA8C53151D7D07C000F96ED5 /* TWUtility.h */,
 				FA8C53161D7D07C000F96ED5 /* TWUtility.m */,
 				FA8C53201D7D6B5400F96ED5 /* UIView+HACUtils.h */,
@@ -1045,11 +1078,13 @@
 			files = (
 				FA8C54DE1D7FC53400F96ED5 /* TWDBManager.m in Sources */,
 				FA4AE6A21D9264C800505B7E /* TWEvent.m in Sources */,
+				FA6A02041DC0A7120034201E /* DailyCalendarView.m in Sources */,
 				FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */,
 				FA0E00061D752B100080759D /* HeroSprite.m in Sources */,
 				FA0E000D1D7558300080759D /* TWCommandCenter.m in Sources */,
 				FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */,
 				FA0EFFBF1D73DA310080759D /* NSString+FontAwesome.m in Sources */,
+				FA6A02031DC0A7120034201E /* CLWeeklyCalendarView.m in Sources */,
 				FA75D2E61D8FDB2F00E63CC9 /* TWTagPage.m in Sources */,
 				FA8C54EA1D8016EB00F96ED5 /* TWCommandWorkScene.m in Sources */,
 				FA8C53281D7D6E0100F96ED5 /* STClockView.m in Sources */,
@@ -1061,16 +1096,19 @@
 				FA0E00291D756DEB0080759D /* TWCommandCommon.m in Sources */,
 				FABBBC2E1D867EC1004365F4 /* TWEventSetting.m in Sources */,
 				FA0E00231D755F0E0080759D /* TWBaseCommand.m in Sources */,
+				FA6A020B1DC0A9AB0034201E /* NSDictionary+CL.m in Sources */,
 				FA4AE69F1D9263D400505B7E /* TWModelEvent.m in Sources */,
 				FA0E01321D7963170080759D /* HACClockTimer.m in Sources */,
 				FA0EFFD71D741B7E0080759D /* HomeViewController.m in Sources */,
 				FA0E01241D783B1F0080759D /* HomeSceneModel.m in Sources */,
 				FA0EFFC11D73DA310080759D /* MozTopAlertView.m in Sources */,
+				FA6A020A1DC0A9AB0034201E /* NSDate+CL.m in Sources */,
 				FA0E00031D7528AC0080759D /* TWBaseSprite.m in Sources */,
 				FA8C54E71D7FEE3B00F96ED5 /* TWModelTimer.m in Sources */,
 				FA0BD4381DB7731D0060803F /* HACFoldTableView.m in Sources */,
 				FAFD31CD1D89407A00091C3B /* TWMoreInfoPage.m in Sources */,
 				FA8C53251D7D6D2900F96ED5 /* UIView+STAnimation.m in Sources */,
+				FA6A02051DC0A7120034201E /* DayTitleLabel.m in Sources */,
 				FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */,
 				FA8C54FB1D81547800F96ED5 /* HACircleButton.m in Sources */,
 				FA8006A31D7041A30071571C /* AppDelegate.m in Sources */,

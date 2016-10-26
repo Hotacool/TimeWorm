@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TWDBManager.h"
 
 @interface TWModel : NSObject
 
+- (instancetype)initWithFMResultSet:(FMResultSet*)resultSet ;
 @end

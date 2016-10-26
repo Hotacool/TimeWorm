@@ -20,6 +20,23 @@
     return gradientLayer;
 }
 
++ (UIImage *)gradientImageWithBounds:(CGRect)bounds colors:(NSArray *)colors {
+    CALayer * bgGradientLayer = [self gradientBGLayerForBounds:bounds colors:colors];
+    UIGraphicsBeginImageContext(bgGradientLayer.bounds.size);
+    [bgGradientLayer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage * bgAsImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return bgAsImage;
+}
+
++ (CALayer *)gradientBGLayerForBounds:(CGRect)bounds colors:(NSArray *)colors
+{
+    CAGradientLayer * gradientBG = [CAGradientLayer layer];
+    gradientBG.frame = bounds;
+    gradientBG.colors = colors;
+    return gradientBG;
+}
+
 #pragma mark -- tool method
 + (NSString*)transformTags2String:(NSArray<NSString*>*)tags {
     NSMutableString __block *ret;

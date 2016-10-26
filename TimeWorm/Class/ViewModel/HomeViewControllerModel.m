@@ -49,7 +49,7 @@
                     [TWCommandCenter doActionWithCommand:@"workScenePause"];
                     break;
                 }
-                case TWHomeVCSceneTimer: {
+                case TWHomeVCSceneRecord: {
                     break;
                 }
                 case TWHomeVCSceneRelax: {
@@ -61,14 +61,13 @@
         case 2: {
             switch (self.scene) {
                 case TWHomeVCSceneHome: {
-                    [self switchScene:TWHomeVCSceneWork];
                     break;
                 }
                 case TWHomeVCSceneWork: {
                     [TWCommandCenter doActionWithCommand:@"workSceneEvent"];
                     break;
                 }
-                case TWHomeVCSceneTimer: {
+                case TWHomeVCSceneRecord: {
                     break;
                 }
                 case TWHomeVCSceneRelax: {
@@ -80,14 +79,14 @@
         case 3: {
             switch (self.scene) {
                 case TWHomeVCSceneHome: {
-                    [self switchScene:TWHomeVCSceneWork];
+                    
                     break;
                 }
                 case TWHomeVCSceneWork: {
                     [TWCommandCenter doActionWithCommand:@"workSceneReset"];
                     break;
                 }
-                case TWHomeVCSceneTimer: {
+                case TWHomeVCSceneRecord: {
                     break;
                 }
                 case TWHomeVCSceneRelax: {
@@ -105,7 +104,7 @@
                     [self switchScene:TWHomeVCSceneHome];
                     break;
                 }
-                case TWHomeVCSceneTimer: {
+                case TWHomeVCSceneRecord: {
                     
                     break;
                 }
@@ -149,7 +148,7 @@
                 
                 break;
             }
-            case TWHomeVCSceneTimer: {
+            case TWHomeVCSceneRecord: {
                 
                 break;
             }

@@ -18,6 +18,7 @@ static const float HACFoldTableViewAniDuration = 0.5;
 @implementation HACFoldTableView {
     UIView *openCellContent;
     NSIndexPath *openCellIndexPath;
+    UIView *openDetailView;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -71,8 +72,8 @@ static const float HACFoldTableViewAniDuration = 0.5;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HACFoldTableViewCellID];
-    if ([self.dataSource respondsToSelector:@selector(tableView:cellContrentViewForRowAtIndexPath:)]) {
-        [cell addSubview:[self.dataSource tableView:self cellContrentViewForRowAtIndexPath:indexPath]];
+    if ([self.dataSource respondsToSelector:@selector(tableView:cell:forRowAtIndexPath:)]) {
+        [self.dataSource tableView:self cell:cell forRowAtIndexPath:indexPath];
     } else {
         //
     }
@@ -81,7 +82,11 @@ static const float HACFoldTableViewAniDuration = 0.5;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self openCellAtIndexPath:indexPath];
+    if ([self.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
+        [self.delegate tableView:self didSelectRowAtIndexPath:indexPath];
+    } else {
+        [self openCellAtIndexPath:indexPath];
+    }
 }
 
 - (void)tapGestureRecognize:(UITapGestureRecognizer*)tapGesture {
@@ -94,6 +99,9 @@ static const float HACFoldTableViewAniDuration = 0.5;
         DDLogError(@"openCellIndexPath: %@", openCellIndexPath);
         return;
     }
+    if ([self.delegate respondsToSelector:@selector(tableView:willOpenAtIndexPath:)]) {
+        [self.delegate tableView:self willOpenAtIndexPath:indexPath];
+    }
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     openCellContent = cell.contentView;
     openCellIndexPath = indexPath;
@@ -102,9 +110,21 @@ static const float HACFoldTableViewAniDuration = 0.5;
     openCellContent.backgroundColor = [UIColor lightGrayColor];
     [openCellContent addGestureRecognizer:self.tapGesture];
     [self addSubview:openCellContent];
+    
+    if ([self.dataSource respondsToSelector:@selector(tableView:detailForRowAtIndexPath:)]) {
+        openDetailView = [self.dataSource tableView:self detailForRowAtIndexPath:indexPath];
+        openDetailView.frame = CGRectMake(0, openCellContent.height, openDetailView.width, openDetailView.height);
+        [self insertSubview:openDetailView belowSubview:openCellContent];
+        openDetailView.alpha = 0;
+    }
     [UIView animateWithDuration:HACFoldTableViewAniDuration animations:^{
         openCellContent.frame = CGRectMake(0, 0, openCellContent.frame.size.width, openCellContent.frame.size.height);
         self.tableView.alpha = 0;
+        openDetailView.alpha = 1;
+    } completion:^(BOOL finished) {
+        if ([self.delegate respondsToSelector:@selector(tableView:didOpenAtIndexPath:)]) {
+            [self.delegate tableView:self didOpenAtIndexPath:indexPath];
+        }
     }];
 }
 - (void)foldCell {
@@ -113,19 +133,33 @@ static const float HACFoldTableViewAniDuration = 0.5;
         return;
     }
     if (openCellContent) {
+        if ([self.delegate respondsToSelector:@selector(tableView:willFoldAtIndexPath:)]) {
+            [self.delegate tableView:self willFoldAtIndexPath:openCellIndexPath];
+        }
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:openCellIndexPath];
         [UIView animateWithDuration:HACFoldTableViewAniDuration animations:^{
             openCellContent.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y - self.tableView.contentOffset.y, openCellContent.frame.size.width, openCellContent.frame.size.height);
             self.tableView.alpha = 1;
+            openDetailView.alpha = 0;
         } completion:^(BOOL finished) {
             [openCellContent removeFromSuperview];
             [cell addSubview:openCellContent];
             openCellContent.backgroundColor = self.tableView.backgroundColor;
             [openCellContent removeGestureRecognizer:self.tapGesture];
+            NSIndexPath *tmp = openCellIndexPath;
             openCellIndexPath = nil;
             openCellContent = nil;
+            [openDetailView removeFromSuperview];
+            openDetailView = nil;
+            if ([self.delegate respondsToSelector:@selector(tableView:didFoldAtIndexPath:)]) {
+                [self.delegate tableView:self didFoldAtIndexPath:tmp];
+            }
         }];
     }
+}
+
+- (void)reload {
+    [self.tableView reloadData];
 }
 
 @end

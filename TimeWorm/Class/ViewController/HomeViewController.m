@@ -116,7 +116,7 @@
         case TWHomeVCSceneRelax: {
             break;
         }
-        case TWHomeVCSceneTimer: {
+        case TWHomeVCSceneRecord: {
             break;
         }
         default:

@@ -7,7 +7,8 @@
 //
 
 #import "TWBaseViewController.h"
-
+#import "TWModelTimer.h"
 @interface TWEventList : TWBaseViewController
 
+- (void)bindTimer:(TWModelTimer *)timer;
 @end

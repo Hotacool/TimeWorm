@@ -10,6 +10,14 @@
 #import <objc/runtime.h>
 
 @implementation TWModel
+
+- (instancetype)initWithFMResultSet:(FMResultSet *)resultSet {
+    if (self = [self init]) {
+        //
+    }
+    return self;
+}
+
 - (NSString *)description {
     NSMutableString *ret = [NSMutableString stringWithString:NSStringFromClass([self class])];
     unsigned int outCount = 0;

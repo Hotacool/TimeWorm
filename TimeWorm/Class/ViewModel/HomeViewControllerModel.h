@@ -13,7 +13,7 @@ typedef NS_ENUM(NSUInteger, TWHomeVCScene) {
     TWHomeVCSceneHome = 0,
     TWHomeVCSceneWork,
     TWHomeVCSceneRelax,
-    TWHomeVCSceneTimer
+    TWHomeVCSceneRecord
 };
 
 static const CGFloat HomeGestureMinimumTranslation = 20.0;
