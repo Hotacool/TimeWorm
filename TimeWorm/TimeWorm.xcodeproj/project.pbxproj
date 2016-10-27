@@ -158,6 +158,7 @@
 		FA8C54E71D7FEE3B00F96ED5 /* TWModelTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54E61D7FEE3B00F96ED5 /* TWModelTimer.m */; };
 		FA8C54EA1D8016EB00F96ED5 /* TWCommandWorkScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54E91D8016EB00F96ED5 /* TWCommandWorkScene.m */; };
 		FA8C54FB1D81547800F96ED5 /* HACircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54FA1D81547800F96ED5 /* HACircleButton.m */; };
+		FAAA36781DC1A0FD001ABC6C /* RecordScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAA36771DC1A0FD001ABC6C /* RecordScene.m */; };
 		FABBBC2E1D867EC1004365F4 /* TWEventSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC2D1D867EC1004365F4 /* TWEventSetting.m */; };
 		FABBBC311D86A65A004365F4 /* STPopupController+HAC.m in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC301D86A65A004365F4 /* STPopupController+HAC.m */; };
 		FAFD31CD1D89407A00091C3B /* TWMoreInfoPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFD31CC1D89407A00091C3B /* TWMoreInfoPage.m */; };
@@ -377,6 +378,8 @@
 		FA8C54E91D8016EB00F96ED5 /* TWCommandWorkScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWCommandWorkScene.m; sourceTree = "<group>"; };
 		FA8C54F91D81547800F96ED5 /* HACircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACircleButton.h; sourceTree = "<group>"; };
 		FA8C54FA1D81547800F96ED5 /* HACircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACircleButton.m; sourceTree = "<group>"; };
+		FAAA36761DC1A0FD001ABC6C /* RecordScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordScene.h; sourceTree = "<group>"; };
+		FAAA36771DC1A0FD001ABC6C /* RecordScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordScene.m; sourceTree = "<group>"; };
 		FABBBC2C1D867EC1004365F4 /* TWEventSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEventSetting.h; sourceTree = "<group>"; };
 		FABBBC2D1D867EC1004365F4 /* TWEventSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEventSetting.m; sourceTree = "<group>"; };
 		FABBBC2F1D86A65A004365F4 /* STPopupController+HAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STPopupController+HAC.h"; sourceTree = "<group>"; };
@@ -631,6 +634,8 @@
 				FA0EFFFB1D7527720080759D /* HomeScene.m */,
 				FA0E01251D7924DB0080759D /* WorkScene.h */,
 				FA0E01261D7924DB0080759D /* WorkScene.m */,
+				FAAA36761DC1A0FD001ABC6C /* RecordScene.h */,
+				FAAA36771DC1A0FD001ABC6C /* RecordScene.m */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -1081,6 +1086,7 @@
 				FA6A02041DC0A7120034201E /* DailyCalendarView.m in Sources */,
 				FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */,
 				FA0E00061D752B100080759D /* HeroSprite.m in Sources */,
+				FAAA36781DC1A0FD001ABC6C /* RecordScene.m in Sources */,
 				FA0E000D1D7558300080759D /* TWCommandCenter.m in Sources */,
 				FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */,
 				FA0EFFBF1D73DA310080759D /* NSString+FontAwesome.m in Sources */,

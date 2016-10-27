@@ -9,6 +9,7 @@
 #import "HomeViewControllerModel.h"
 #import "HomeScene.h"
 #import "WorkScene.h"
+#import "RecordScene.h"
 
 @interface HomeViewControllerModel () {
     NSString *_title;
@@ -79,7 +80,7 @@
         case 3: {
             switch (self.scene) {
                 case TWHomeVCSceneHome: {
-                    
+                    [self switchScene:TWHomeVCSceneRecord];
                     break;
                 }
                 case TWHomeVCSceneWork: {
@@ -115,6 +116,9 @@
             }
             break;
         }
+        case 5: {
+            [self switchScene:TWHomeVCSceneHome];
+        }
     }
 }
 
@@ -145,11 +149,10 @@
                 break;
             }
             case TWHomeVCSceneRelax: {
-                
                 break;
             }
             case TWHomeVCSceneRecord: {
-                
+                ret = [[RecordScene alloc] initWithFrame:[UIScreen mainScreen].bounds];
                 break;
             }
         }

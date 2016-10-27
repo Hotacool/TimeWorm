@@ -12,6 +12,7 @@
 #import "HACircleButton.h"
 #import "OLImageView.h"
 #import <STPopup/STPopup.h>
+#import <pop/POP.h>
 
 @interface HomeViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) HomeViewControllerModel *hvm;
@@ -98,6 +99,7 @@
                                                    ,@(NO)
                                                    ,@(NO)
                                                    ,@(NO)]];
+            [self.menuBtn setMode:HACircleButtonModeMultiple];
             break;
         }
         case TWHomeVCSceneWork: {
@@ -111,12 +113,14 @@
                                                    ,@(NO)
                                                    ,@(YES)
                                                    ,@(YES)]];
+            [self.menuBtn setMode:HACircleButtonModeMultiple];
             break;
         }
         case TWHomeVCSceneRelax: {
             break;
         }
         case TWHomeVCSceneRecord: {
+            [self.menuBtn setMode:HACircleButtonModeSingle];
             break;
         }
         default:
@@ -173,6 +177,11 @@
             } else {
                 [self loadScene];
                 [self loadUIComponents];
+                if (self.hvm.scene == TWHomeVCSceneRecord) {
+                    [self raiseMenu:NO];
+                } else {
+                    [self raiseMenu:YES];
+                }
             }
         }
     }
@@ -197,5 +206,28 @@
     NSLog(@"BUtton 4 Seleted");
     [self.menuBtn completeWithMessage:@"Start"];
     [self.hvm postMenuClickCommandWithBtnIndex:4];
+}
+- (void)circleBttonTouchDown {
+    sfuc
+    [self.menuBtn completeWithMessage:@"Start"];
+    [self.hvm postMenuClickCommandWithBtnIndex:5];
+}
+#pragma mark - menu position animation
+- (void)raiseMenu:(BOOL)r {
+    if (r) {
+        POPSpringAnimation *ani = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+        ani.fromValue = [NSValue valueWithCGPoint:self.menuBtn.center];
+        ani.toValue = [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - 100)];
+        ani.springSpeed = 6;
+        ani.springBounciness = 16;
+        [self.menuBtn pop_addAnimation:ani forKey:@"raiseMenu"];
+    } else {
+        POPSpringAnimation *ani = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+        ani.fromValue = [NSValue valueWithCGPoint:self.menuBtn.center];
+        ani.toValue = [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - self.menuBtn.height/2 - 1)];
+        ani.springSpeed = 6;
+        ani.springBounciness = 16;
+        [self.menuBtn pop_addAnimation:ani forKey:@"raiseMenuDown"];
+    }
 }
 @end

@@ -53,6 +53,7 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    self.mode = HACircleButtonModeMultiple;
     return self;
 }
 
@@ -192,11 +193,13 @@
     if (self.isPerformingTouchUpInsideAnimation) {
         return;
     }
-    //NSLog(@"TouchDown");
+    
     if (!isTouchDown)
     {
-        [self TouchDownAnimation];
-        [label setForegroundColor:[[UIColor colorWithWhite:1.0 alpha:1.0]CGColor]];
+        if (self.mode == HACircleButtonModeMultiple) {
+            [self TouchDownAnimation];
+            [label setForegroundColor:[[UIColor colorWithWhite:1.0 alpha:1.0]CGColor]];
+        }
     }
     self.isTouchDown = YES;
     self.isActive = YES;
@@ -239,6 +242,9 @@
 }
 -(void)TouchDrag:(UIButton *)sender withEvent:(UIEvent *)event
 {
+    if (self.mode == HACircleButtonModeSingle) {
+        return;
+    }
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint Point = [touch locationInView:self];
     //NSLog(@"TouchDrag:%@", NSStringFromCGPoint(Point));
@@ -331,6 +337,19 @@
 
 - (void)TouchUpInside:(UIButton *)sender withEvent:(UIEvent *)event
 {
+    if (self.mode == HACircleButtonModeSingle) {
+        [SmallButton.imageView setAlpha:0.0];
+        [SmallButton setImage:nil forState:UIControlStateNormal];
+        [self TouchUpInsideAnimation];
+        if (ResponderUIVC) {
+            SEL selector = NSSelectorFromString(@"circleBttonTouchDown");
+            IMP imp = [ResponderUIVC methodForSelector:selector];
+            void (*func)(id, SEL) = (void *)imp;
+            func(ResponderUIVC, selector);
+        }
+        self.isTouchDown = NO;
+        return;
+    }
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint Point = [touch locationInView:self];
     //NSLog(@"TouchUpInside:%@", NSStringFromCGPoint(Point));
@@ -413,7 +432,9 @@
 }
 - (void)TouchUpOutside
 {
-    //NSLog(@"TouchUpOutside");
+    if (self.mode == HACircleButtonModeSingle) {
+        return;
+    }
     if (isTouchDown)
     {
         [self TouchUpAnimation];

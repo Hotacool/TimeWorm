@@ -47,12 +47,12 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
     }
     if ((timer.state&TWTimerStateSilent)
         ||(timer.state&TWTimerStatePause)) {
-        DDLogInfo(@"active timer: %@", timer);
         [[TWTimer sharedTWTimer] startTime];
         timer.state = TWTimerStateFlow;
         timer.startDate = [NSDate date];
         //db save
         [[self sharedTWTimer] updateTimer:timer];
+        DDLogInfo(@"active timer: %@", timer);
         return YES;
     } else {
         DDLogWarn(@"cannot active timer for state: %lu", (unsigned long)timer.state);
@@ -62,11 +62,11 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
 
 + (BOOL)pauseTimer:(TWModelTimer*)timer {
     if (timer.state&TWTimerStateFlow) {
-        DDLogInfo(@"pause timer: %@", timer);
         [[TWTimer sharedTWTimer] stopTime];
         timer.state = TWTimerStatePause;
         //db save
         [[self sharedTWTimer] updateTimer:timer];
+        DDLogInfo(@"pause timer: %@", timer);
         return YES;
     } else {
         DDLogWarn(@"cannot pause timer for state: %lu", (unsigned long)timer.state);

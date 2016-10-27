@@ -15,6 +15,7 @@
 #import "STPopupController+HAC.h"
 #import <pop/POP.h>
 #import "HomeViewController.h"
+#import "TWEventList.h"
 
 static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 @interface WorkScene () <TWTimerObserver>
@@ -120,7 +121,12 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 }
 
 - (void)gotoEventList:(id)sender {
-    [STPopupController popupViewControllerName:@"TWEventList" inViewController:self.ctrl withStyle:STPopupTransitionStyleSlideVertical];
+    TWEventList *ret = [TWEventList new];
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:ret];
+    popupController.containerView.layer.cornerRadius = 4;
+    popupController.transitionStyle = STPopupTransitionStyleSlideVertical;
+    [popupController presentInViewController:self.ctrl];
+    [ret bindTimer:[TWTimer currentTimer]];
 }
 
 - (void)clockClicked:(id)sender {

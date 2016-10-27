@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, HACircleButtonMode) {
+    HACircleButtonModeMultiple = 0,
+    HACircleButtonModeSingle
+};
+
 @interface HACircleButton : UIView
 @property (nonatomic, strong) NSString    *title;
 @property (nonatomic,strong ) NSNumber    *CircleRadius;
@@ -16,6 +21,7 @@
 //每个按钮touchUpInside 的动画效果
 @property (nonatomic, strong) NSMutableArray *transitionAniOffArr;
 @property (nonatomic        ) BOOL        isActive;
+@property (nonatomic, assign) HACircleButtonMode mode;
 
 - (instancetype)initWithCenterPoint:(CGPoint)Point
                          ButtonIcon:(UIImage*)Icon

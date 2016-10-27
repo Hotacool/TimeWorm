@@ -55,7 +55,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self bindTimer:[TWTimer currentTimer]];
 }
 
 - (void)didReceiveMemoryWarning {
