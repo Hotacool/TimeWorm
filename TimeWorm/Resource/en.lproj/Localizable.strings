@@ -30,3 +30,9 @@
 "pause" = "pause";
 "reset the timer" = "reset the timer.";
 "work start" = "Work Start";
+// set
+"Screen" = "Screen";
+"Default" = "Default";
+"Notification" = "Notification";
+"Account" = "Account";
+"About" = "About";

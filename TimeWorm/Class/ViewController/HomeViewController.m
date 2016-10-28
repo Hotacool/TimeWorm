@@ -53,6 +53,7 @@
     [self popupViewNavigationBarInit];
     //加载菜单按钮
     [self.view addSubview:self.menuBtn];
+    [self raiseMenu:YES];
     [self.menuBtn addObserver:self forKeyPath:@"isActive" options:NSKeyValueObservingOptionNew context:nil];
 }
 
@@ -117,9 +118,14 @@
             break;
         }
         case TWHomeVCSceneRelax: {
+            [self.menuBtn setMode:HACircleButtonModeSingle];
             break;
         }
         case TWHomeVCSceneRecord: {
+            [self.menuBtn setMode:HACircleButtonModeSingle];
+            break;
+        }
+        case TWHomeVCSceneSet: {
             [self.menuBtn setMode:HACircleButtonModeSingle];
             break;
         }
@@ -142,7 +148,7 @@
                                 [NSString stringWithFormat:@"ButtonThree"] ,
                                 [NSString stringWithFormat:@"ButtonOne"],
                                 nil];
-        _menuBtn = [[HACircleButton alloc] initWithCenterPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - 100 )
+        _menuBtn = [[HACircleButton alloc] initWithCenterPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height )
                                                                 ButtonIcon:[UIImage imageNamed:@"send"]
                                                                SmallRadius:30.0f
                                                                  BigRadius:100
@@ -177,7 +183,9 @@
             } else {
                 [self loadScene];
                 [self loadUIComponents];
-                if (self.hvm.scene == TWHomeVCSceneRecord) {
+                if (self.hvm.scene == TWHomeVCSceneRecord
+                    ||self.hvm.scene == TWHomeVCSceneSet
+                    ||self.hvm.scene == TWHomeVCSceneRelax) {
                     [self raiseMenu:NO];
                 } else {
                     [self raiseMenu:YES];
@@ -214,20 +222,22 @@
 }
 #pragma mark - menu position animation
 - (void)raiseMenu:(BOOL)r {
+    CGPoint toValue;
     if (r) {
-        POPSpringAnimation *ani = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
-        ani.fromValue = [NSValue valueWithCGPoint:self.menuBtn.center];
-        ani.toValue = [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - 100)];
-        ani.springSpeed = 6;
-        ani.springBounciness = 16;
-        [self.menuBtn pop_addAnimation:ani forKey:@"raiseMenu"];
+        toValue = CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - 100);
     } else {
-        POPSpringAnimation *ani = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
-        ani.fromValue = [NSValue valueWithCGPoint:self.menuBtn.center];
-        ani.toValue = [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - self.menuBtn.height/2 - 1)];
-        ani.springSpeed = 6;
-        ani.springBounciness = 16;
-        [self.menuBtn pop_addAnimation:ani forKey:@"raiseMenuDown"];
+        toValue = CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height - self.menuBtn.SmallButton.height/2 - 1);
     }
+    if (self.menuBtn.SmallButton.center.y == toValue.y) {
+        return;
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{        
+        POPSpringAnimation *ani = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+        ani.fromValue = [NSValue valueWithCGPoint:self.menuBtn.SmallButton.center];
+        ani.toValue = [NSValue valueWithCGPoint:toValue];
+        ani.springSpeed = 4;
+        ani.springBounciness = 8;
+        [self.menuBtn.SmallButton pop_addAnimation:ani forKey:[@"raiseMenu" stringByAppendingFormat:@"%d", r]];
+    });
 }
 @end

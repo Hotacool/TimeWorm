@@ -29,3 +29,9 @@
 "pause" = "暂停";
 "reset the timer" = "重置计时器";
 "work start" = "工作开始";
+// set
+"Screen" = "显示";
+"Default" = "默认";
+"Notification" = "消息";
+"Account" = "账户";
+"About" = "关于";

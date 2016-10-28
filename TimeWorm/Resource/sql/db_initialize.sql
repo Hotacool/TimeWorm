@@ -2,23 +2,36 @@ CREATE TABLE TWVersion (
 	version	integer NOT NULL primary key
 );
 CREATE TABLE `TWTimer` (
-	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`ID`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	'name'			TEXT,
 	'information'	TEXT,
-	`allSec`	integer NOT NULL,
-	`rmdSec`	integer NOT NULL,
+	`allSeconds`	integer NOT NULL,
+	`remainderSeconds`	integer NOT NULL,
 	`startDate`	TIMESTAMP NOT NULL,
 	`fireDate`	TIMESTAMP,
 	`state`	integer
 );
 CREATE TABLE TWEvent (
-	id integer primary key autoincrement,
+	ID integer primary key autoincrement,
 	'name'			TEXT,
 	'information'	TEXT,
 	'timerId'		integer NOT NULL,
 	`startDate`	TIMESTAMP NOT NULL,
 	`stopDate`	TIMESTAMP,
-	FOREIGN KEY(timerId) REFERENCES TWTimer(id)
+	FOREIGN KEY(timerId) REFERENCES TWTimer(ID)
 );
-##enable foreign key
+
+CREATE TABLE `TWSet` (
+	`ID`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`homeTheme`	integer,
+	`workTheme`	integer,
+	`relaxTheme`	integer,
+	`keepAwake`	boolean,
+	`defaultTimer`	integer default 15,
+	'defaultTimerName'	TEXT,
+	'defaultTimerInf'	TEXT,
+	`keepTimer`	boolean,
+	`isNotifyOn`	boolean
+);
+
 PRAGMA foreign_keys = ON;

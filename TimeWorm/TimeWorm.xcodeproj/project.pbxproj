@@ -50,6 +50,12 @@
 		FA0EFFE01D7420020080759D /* HomeViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFDF1D7420020080759D /* HomeViewControllerModel.m */; };
 		FA0EFFFE1D7527720080759D /* HomeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFFB1D7527720080759D /* HomeScene.m */; };
 		FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFFD1D7527720080759D /* TWBaseScene.m */; };
+		FA49AA181DC314DF00CCC990 /* SetScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA171DC314DF00CCC990 /* SetScene.m */; };
+		FA49AA1B1DC322CA00CCC990 /* RelaxScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA1A1DC322CA00CCC990 /* RelaxScene.m */; };
+		FA49AA1F1DC3266700CCC990 /* RS3DSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA1E1DC3266700CCC990 /* RS3DSegmentedControl.m */; };
+		FA49AA211DC326AC00CCC990 /* RS3DSegmentedControl.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA49AA201DC326AC00CCC990 /* RS3DSegmentedControl.bundle */; };
+		FA49AA241DC33F6800CCC990 /* TWModelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA231DC33F6800CCC990 /* TWModelSet.m */; };
+		FA49AA2A1DC3505600CCC990 /* TWSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA291DC3505600CCC990 /* TWSet.m */; };
 		FA4AE69F1D9263D400505B7E /* TWModelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4AE69E1D9263D400505B7E /* TWModelEvent.m */; };
 		FA4AE6A21D9264C800505B7E /* TWEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4AE6A11D9264C800505B7E /* TWEvent.m */; };
 		FA6A02031DC0A7120034201E /* CLWeeklyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */; };
@@ -241,6 +247,17 @@
 		FA0EFFFB1D7527720080759D /* HomeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScene.m; sourceTree = "<group>"; };
 		FA0EFFFC1D7527720080759D /* TWBaseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBaseScene.h; sourceTree = "<group>"; };
 		FA0EFFFD1D7527720080759D /* TWBaseScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWBaseScene.m; sourceTree = "<group>"; };
+		FA49AA161DC314DF00CCC990 /* SetScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetScene.h; sourceTree = "<group>"; };
+		FA49AA171DC314DF00CCC990 /* SetScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetScene.m; sourceTree = "<group>"; };
+		FA49AA191DC322CA00CCC990 /* RelaxScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelaxScene.h; sourceTree = "<group>"; };
+		FA49AA1A1DC322CA00CCC990 /* RelaxScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelaxScene.m; sourceTree = "<group>"; };
+		FA49AA1D1DC3266700CCC990 /* RS3DSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RS3DSegmentedControl.h; sourceTree = "<group>"; };
+		FA49AA1E1DC3266700CCC990 /* RS3DSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RS3DSegmentedControl.m; sourceTree = "<group>"; };
+		FA49AA201DC326AC00CCC990 /* RS3DSegmentedControl.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RS3DSegmentedControl.bundle; sourceTree = "<group>"; };
+		FA49AA221DC33F6800CCC990 /* TWModelSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWModelSet.h; sourceTree = "<group>"; };
+		FA49AA231DC33F6800CCC990 /* TWModelSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWModelSet.m; sourceTree = "<group>"; };
+		FA49AA281DC3505600CCC990 /* TWSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSet.h; sourceTree = "<group>"; };
+		FA49AA291DC3505600CCC990 /* TWSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSet.m; sourceTree = "<group>"; };
 		FA4AE69D1D9263D400505B7E /* TWModelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWModelEvent.h; sourceTree = "<group>"; };
 		FA4AE69E1D9263D400505B7E /* TWModelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWModelEvent.m; sourceTree = "<group>"; };
 		FA4AE6A01D9264C800505B7E /* TWEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEvent.h; sourceTree = "<group>"; };
@@ -540,6 +557,7 @@
 		FA0EFFCA1D7409410080759D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FA49AA201DC326AC00CCC990 /* RS3DSegmentedControl.bundle */,
 				FA8C54DF1D7FE4B600F96ED5 /* sql */,
 				FA8C532C1D7D72C000F96ED5 /* TimerClock */,
 				FA0E00F91D77F5C80080759D /* gifs */,
@@ -570,12 +588,16 @@
 				FA75D2C81D8FACD400E63CC9 /* TWTimer.m */,
 				FA4AE6A01D9264C800505B7E /* TWEvent.h */,
 				FA4AE6A11D9264C800505B7E /* TWEvent.m */,
+				FA49AA281DC3505600CCC990 /* TWSet.h */,
+				FA49AA291DC3505600CCC990 /* TWSet.m */,
 				FA8C54E21D7FEAD300F96ED5 /* TWModel.h */,
 				FA8C54E31D7FEAD300F96ED5 /* TWModel.m */,
 				FA8C54E51D7FEE3B00F96ED5 /* TWModelTimer.h */,
 				FA8C54E61D7FEE3B00F96ED5 /* TWModelTimer.m */,
 				FA4AE69D1D9263D400505B7E /* TWModelEvent.h */,
 				FA4AE69E1D9263D400505B7E /* TWModelEvent.m */,
+				FA49AA221DC33F6800CCC990 /* TWModelSet.h */,
+				FA49AA231DC33F6800CCC990 /* TWModelSet.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -636,8 +658,21 @@
 				FA0E01261D7924DB0080759D /* WorkScene.m */,
 				FAAA36761DC1A0FD001ABC6C /* RecordScene.h */,
 				FAAA36771DC1A0FD001ABC6C /* RecordScene.m */,
+				FA49AA161DC314DF00CCC990 /* SetScene.h */,
+				FA49AA171DC314DF00CCC990 /* SetScene.m */,
+				FA49AA191DC322CA00CCC990 /* RelaxScene.h */,
+				FA49AA1A1DC322CA00CCC990 /* RelaxScene.m */,
 			);
 			path = Scene;
+			sourceTree = "<group>";
+		};
+		FA49AA1C1DC3266700CCC990 /* RS3DSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				FA49AA1D1DC3266700CCC990 /* RS3DSegmentedControl.h */,
+				FA49AA1E1DC3266700CCC990 /* RS3DSegmentedControl.m */,
+			);
+			path = RS3DSegmentedControl;
 			sourceTree = "<group>";
 		};
 		FA6A01FC1DC0A7120034201E /* Calendar */ = {
@@ -724,6 +759,7 @@
 		FA8006B61D7049CE0071571C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				FA49AA1C1DC3266700CCC990 /* RS3DSegmentedControl */,
 				FA6A01FC1DC0A7120034201E /* Calendar */,
 				FA09359D1DB7655D00F9A61C /* FoldTableView */,
 				FA75D35E1D91295200E63CC9 /* TextView */,
@@ -1016,6 +1052,7 @@
 				FA0E01151D77F5C80080759D /* 怕.gif in Resources */,
 				FA8C53971D7D72C000F96ED5 /* loop_0010@3x.png in Resources */,
 				FA8C538F1D7D72C000F96ED5 /* loop_0006@3x.png in Resources */,
+				FA49AA211DC326AC00CCC990 /* RS3DSegmentedControl.bundle in Resources */,
 				FA8C53BD1D7D72C000F96ED5 /* loop_0029@3x.png in Resources */,
 				FA8C53791D7D72C000F96ED5 /* btn_play_normal@2x.png in Resources */,
 				FA8C53991D7D72C000F96ED5 /* loop_0011@3x.png in Resources */,
@@ -1091,7 +1128,9 @@
 				FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */,
 				FA0EFFBF1D73DA310080759D /* NSString+FontAwesome.m in Sources */,
 				FA6A02031DC0A7120034201E /* CLWeeklyCalendarView.m in Sources */,
+				FA49AA1F1DC3266700CCC990 /* RS3DSegmentedControl.m in Sources */,
 				FA75D2E61D8FDB2F00E63CC9 /* TWTagPage.m in Sources */,
+				FA49AA1B1DC322CA00CCC990 /* RelaxScene.m in Sources */,
 				FA8C54EA1D8016EB00F96ED5 /* TWCommandWorkScene.m in Sources */,
 				FA8C53281D7D6E0100F96ED5 /* STClockView.m in Sources */,
 				FA0E00261D7565030080759D /* TWCommandHomeScene.m in Sources */,
@@ -1104,6 +1143,7 @@
 				FA0E00231D755F0E0080759D /* TWBaseCommand.m in Sources */,
 				FA6A020B1DC0A9AB0034201E /* NSDictionary+CL.m in Sources */,
 				FA4AE69F1D9263D400505B7E /* TWModelEvent.m in Sources */,
+				FA49AA181DC314DF00CCC990 /* SetScene.m in Sources */,
 				FA0E01321D7963170080759D /* HACClockTimer.m in Sources */,
 				FA0EFFD71D741B7E0080759D /* HomeViewController.m in Sources */,
 				FA0E01241D783B1F0080759D /* HomeSceneModel.m in Sources */,
@@ -1121,6 +1161,8 @@
 				FA75D3231D90077700E63CC9 /* MKTagView.m in Sources */,
 				FA0EFFFE1D7527720080759D /* HomeScene.m in Sources */,
 				FA8C531F1D7D6A7900F96ED5 /* STTimerRulerView.m in Sources */,
+				FA49AA2A1DC3505600CCC990 /* TWSet.m in Sources */,
+				FA49AA241DC33F6800CCC990 /* TWModelSet.m in Sources */,
 				FA0BD4351DB772430060803F /* TWEventList.m in Sources */,
 				FA0EFFDA1D741CA60080759D /* TWBaseViewController.m in Sources */,
 				FA8006A01D7041A30071571C /* main.m in Sources */,

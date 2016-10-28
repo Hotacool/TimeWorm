@@ -181,7 +181,7 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
 - (void)insertNewTimer:(TWModelTimer*)timer {
     [[TWDBManager dbQueue] inDatabase:^(FMDatabase *db) {
         NSString *updateSql = [NSString stringWithFormat:
-                               @"INSERT INTO TWTimer('name','information','allSec', 'rmdSec','startDate','state') VALUES('%@','%@','%@','%@','%@','%@')"
+                               @"INSERT INTO TWTimer('name','information','allSeconds', 'remainderSeconds','startDate','state') VALUES('%@','%@','%@','%@','%@','%@')"
                                ,timer.name
                                ,timer.information
                                ,@(timer.allSeconds)
@@ -206,7 +206,7 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
 - (void)updateTimer:(TWModelTimer*)timer {
     [[TWDBManager dbQueue] inDatabase:^(FMDatabase *db) {
         NSString *updateSql = [NSString stringWithFormat:
-                               @"UPDATE 'TWTimer' SET 'name' = '%@', 'information'='%@', 'startDate'='%@', 'allSec'='%@', 'rmdSec'='%@', 'state'='%@', 'fireDate'='%@' WHERE id = '%@'"
+                               @"UPDATE 'TWTimer' SET 'name' = '%@', 'information'='%@', 'startDate'='%@', 'allSeconds'='%@', 'remainderSeconds'='%@', 'state'='%@', 'fireDate'='%@' WHERE id = '%@'"
                                , timer.name
                                , timer.information
                                , timer.startDate

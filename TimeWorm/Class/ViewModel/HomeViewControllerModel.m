@@ -10,6 +10,8 @@
 #import "HomeScene.h"
 #import "WorkScene.h"
 #import "RecordScene.h"
+#import "SetScene.h"
+#import "RelaxScene.h"
 
 @interface HomeViewControllerModel () {
     NSString *_title;
@@ -56,12 +58,16 @@
                 case TWHomeVCSceneRelax: {
                     break;
                 }
+                case TWHomeVCSceneSet: {
+                    break;
+                }
             }
             break;
         }
         case 2: {
             switch (self.scene) {
                 case TWHomeVCSceneHome: {
+                    [self switchScene:TWHomeVCSceneRelax];
                     break;
                 }
                 case TWHomeVCSceneWork: {
@@ -72,6 +78,9 @@
                     break;
                 }
                 case TWHomeVCSceneRelax: {
+                    break;
+                }
+                case TWHomeVCSceneSet: {
                     break;
                 }
             }
@@ -93,12 +102,16 @@
                 case TWHomeVCSceneRelax: {
                     break;
                 }
+                case TWHomeVCSceneSet: {
+                    break;
+                }
             }
             break;
         }
         case 4: {
             switch (self.scene) {
                 case TWHomeVCSceneHome: {
+                    [self switchScene:TWHomeVCSceneSet];
                     break;
                 }
                 case TWHomeVCSceneWork: {
@@ -111,6 +124,9 @@
                 }
                 case TWHomeVCSceneRelax: {
                     
+                    break;
+                }
+                case TWHomeVCSceneSet: {
                     break;
                 }
             }
@@ -149,12 +165,18 @@
                 break;
             }
             case TWHomeVCSceneRelax: {
+                ret = [[RelaxScene alloc] initWithFrame:[UIScreen mainScreen].bounds];
                 break;
             }
             case TWHomeVCSceneRecord: {
                 ret = [[RecordScene alloc] initWithFrame:[UIScreen mainScreen].bounds];
                 break;
             }
+            case TWHomeVCSceneSet: {
+                ret = [[SetScene alloc] initWithFrame:[UIScreen mainScreen].bounds];
+                break;
+            }
+                
         }
         if (/* DISABLES CODE */ (0)) {
             [self.sceneDic setObject:ret forKey:@(scene)];

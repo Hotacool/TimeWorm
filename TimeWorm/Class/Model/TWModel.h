@@ -12,4 +12,6 @@
 @interface TWModel : NSObject
 
 - (instancetype)initWithFMResultSet:(FMResultSet*)resultSet ;
+
+- (NSString*)createFullUpdateSql ;
 @end

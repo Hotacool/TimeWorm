@@ -22,6 +22,7 @@ typedef NS_ENUM(NSUInteger, HACircleButtonMode) {
 @property (nonatomic, strong) NSMutableArray *transitionAniOffArr;
 @property (nonatomic        ) BOOL        isActive;
 @property (nonatomic, assign) HACircleButtonMode mode;
+@property (nonatomic, readonly) UIButton *SmallButton;
 
 - (instancetype)initWithCenterPoint:(CGPoint)Point
                          ButtonIcon:(UIImage*)Icon

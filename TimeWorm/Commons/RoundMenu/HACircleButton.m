@@ -13,7 +13,7 @@
 #import <pop/POP.h>
 
 @interface HACircleButton ()
-@property (nonatomic) UIButton *SmallButton;
+@property (nonatomic, readwrite) UIButton *SmallButton;
 @property (nonatomic) UIView *BackgroundView;
 @property (nonatomic) CGFloat SmallRadius;
 @property (nonatomic) CGFloat BigRadius;
@@ -88,7 +88,7 @@
     self.ResponderUIVC = VC;
     
     BackgroundView = [[UIView alloc] initWithFrame:CGRectMake(Point.x - SRadius,Point.y - SRadius, SRadius * 2, SRadius * 2)];
-    BackgroundView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
+    BackgroundView.backgroundColor = [UIColor clearColor];
     BackgroundView.layer.cornerRadius = SRadius;
     [self addSubview:BackgroundView];
     
@@ -223,6 +223,7 @@
     
     [SmallButton.layer addAnimation:ButtonScaleBigCABasicAnimation forKey:@"ButtonScaleBigCABasicAnimation"];
     
+    BackgroundView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
     CABasicAnimation *BackgroundViewScaleBigCABasicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     BackgroundViewScaleBigCABasicAnimation.duration = 0.1f;
     BackgroundViewScaleBigCABasicAnimation.autoreverses = NO;
@@ -251,8 +252,8 @@
     
     //UP: XOffest = MAX MakeRotation (xoffest,1,0,0)
     //RIGHT: YOffest = MAX MakeRotation (yoffest,0,1,0)
-    CGFloat XOffest = Point.x - CenterPoint.x;
-    CGFloat YOffest = Point.y - CenterPoint.y;
+    CGFloat XOffest = Point.x - self.SmallButton.center.x;
+    CGFloat YOffest = Point.y - self.SmallButton.center.y;
     //NSLog(@"XOffest %f    YOffest %f",XOffest,YOffest);
     
     CGFloat XDegress = XOffest / self.frame.size.width;
@@ -294,10 +295,10 @@
         
         //NSLog(@"View'S position %@",NSStringFromCGPoint(self.layer.position));
         
-        CGFloat XOffest = (positionInView.x - self.CenterPoint.x)/SmallRadius*BigRadius;
-        CGFloat YOffest = (positionInView.y - self.CenterPoint.y)/SmallRadius*BigRadius;
+        CGFloat XOffest = (positionInView.x - self.SmallButton.center.x)/SmallRadius*BigRadius;
+        CGFloat YOffest = (positionInView.y - self.SmallButton.center.y)/SmallRadius*BigRadius;
         
-        CGRect IconCGRectinWorld = CGRectMake(self.CenterPoint.x + XOffest - (BigRadius + SmallRadius)/4, self.CenterPoint.y + YOffest - (BigRadius + SmallRadius)/4, (BigRadius + SmallRadius)/2, (BigRadius + SmallRadius)/2);
+        CGRect IconCGRectinWorld = CGRectMake(self.SmallButton.center.x + XOffest - (BigRadius + SmallRadius)/4, self.SmallButton.center.y + YOffest - (BigRadius + SmallRadius)/4, (BigRadius + SmallRadius)/2, (BigRadius + SmallRadius)/2);
         
         //UIView *DEBUGVIEW = [[UIView alloc] initWithFrame:IconCGRectinWorld];
         //DEBUGVIEW.backgroundColor = [UIColor blackColor];
@@ -386,10 +387,10 @@
             
             //NSLog(@"View'S position %@",NSStringFromCGPoint(self.layer.position));
             
-            CGFloat XOffest = (positionInView.x - self.CenterPoint.x)/SmallRadius*BigRadius;
-            CGFloat YOffest = (positionInView.y - self.CenterPoint.y)/SmallRadius*BigRadius;
+            CGFloat XOffest = (positionInView.x - self.SmallButton.center.x)/SmallRadius*BigRadius;
+            CGFloat YOffest = (positionInView.y - self.SmallButton.center.y)/SmallRadius*BigRadius;
             
-            CGRect IconCGRectinWorld = CGRectMake(self.CenterPoint.x + XOffest - (BigRadius + SmallRadius)/4, self.CenterPoint.y + YOffest - (BigRadius + SmallRadius)/4, (BigRadius + SmallRadius)/2, (BigRadius + SmallRadius)/2);
+            CGRect IconCGRectinWorld = CGRectMake(self.SmallButton.center.x + XOffest - (BigRadius + SmallRadius)/4, self.SmallButton.center.y + YOffest - (BigRadius + SmallRadius)/4, (BigRadius + SmallRadius)/2, (BigRadius + SmallRadius)/2);
             
             //UIView *DEBUGVIEW = [[UIView alloc] initWithFrame:IconCGRectinWorld];
             //DEBUGVIEW.backgroundColor = [UIColor blackColor];
@@ -462,7 +463,12 @@
     BackgroundViewScaleSmallCABasicAnimation.fillMode = kCAFillModeForwards;
     BackgroundViewScaleSmallCABasicAnimation.removedOnCompletion = NO;
     BackgroundViewScaleSmallCABasicAnimation.beginTime = 0.0f;
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        BackgroundView.backgroundColor = [UIColor clearColor];
+    }];
     [BackgroundView.layer addAnimation:BackgroundViewScaleSmallCABasicAnimation forKey:@"BackgroundViewScaleSmallCABasicAnimation"];
+    [CATransaction commit];
     
     CABasicAnimation *ButtonScaleFullCABasicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     ButtonScaleFullCABasicAnimation.duration = 0.2f;
@@ -597,8 +603,12 @@ CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, float disZ)
     BackgroundViewScaleSmallCABasicAnimation.fromValue = [NSNumber numberWithFloat:self.frame.size.height / SmallRadius];
     BackgroundViewScaleSmallCABasicAnimation.fillMode = kCAFillModeForwards;
     BackgroundViewScaleSmallCABasicAnimation.removedOnCompletion = NO;
-    
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        BackgroundView.backgroundColor = [UIColor clearColor];
+    }];
     [BackgroundView.layer addAnimation:BackgroundViewScaleSmallCABasicAnimation forKey:@"BackgroundViewScaleSmallCABasicAnimation"];
+    [CATransaction commit];
     
     CATransform3D Rotate = CATransform3DConcat(CATransform3DMakeRotation(0, 0, 1, 0), CATransform3DMakeRotation(0, 1, 0, 0));
     if (Parallex)
@@ -664,6 +674,7 @@ CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, float disZ)
          [SmallButton setImage:IconImage forState:UIControlStateNormal];
          SmallButton.enabled = YES;
          weakSelf.isActive = NO;
+        BackgroundView.backgroundColor = [UIColor clearColor];
         [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){ [SmallButton.imageView setAlpha:1.0]; } completion:^(BOOL finished){}];
      }];
     [SmallButton.layer addAnimation:animGroup forKey:@"ButtonScaleSmallCABasicAnimationxxx"];
