@@ -14,14 +14,17 @@ static NSString *const SetSceneSegmentAniCenter = @"RecordSceneCalendarAniCenter
 static NSString *const SetSceneSetTableAniCenter = @"RecordSceneTimerTableAniCenter";
 static NSString *const SetSceneSetTableID = @"RecordSceneTimerTableID";
 static const CGFloat SetSceneSegmentHeight = 80;
-@interface SetScene () <RS3DSegmentedControlDelegate, UITableViewDelegate, UITableViewDataSource>
+static const int SetSceneSegmentCount = 5;
+@interface SetScene () <RS3DSegmentedControlDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) RS3DSegmentedControl *segment;
-@property (nonatomic, strong) UITableView *setTable;
+@property (nonatomic, strong) UIScrollView *setScrollView;
 
 @end
 
 @implementation SetScene {
     NSMutableArray *sets;
+    NSMutableDictionary *subViewDic;
+    NSMutableArray *scrollSubViews;
     
 }
 
@@ -34,7 +37,8 @@ static const CGFloat SetSceneSegmentHeight = 80;
 }
 
 - (void)loadData {
-    
+    subViewDic = [NSMutableDictionary dictionaryWithCapacity:SetSceneSegmentCount];
+    scrollSubViews = [NSMutableArray arrayWithCapacity:3];
 }
 
 - (void)setUIComponents {
@@ -50,7 +54,7 @@ static const CGFloat SetSceneSegmentHeight = 80;
 - (void)show {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self showSegment];
-        [self showSetTable];
+        [self showSetScroll];
     });
 }
 
@@ -66,17 +70,17 @@ static const CGFloat SetSceneSegmentHeight = 80;
     [self.segment pop_addAnimation:ani forKey:SetSceneSegmentAniCenter];
 }
 
-- (void)showSetTable {
-    if (![self.setTable superview]) {
-        [self addSubview:self.setTable];
+- (void)showSetScroll {
+    if (![self.setScrollView superview]) {
+        [self addSubview:self.setScrollView];
     }
     CGFloat marginY = APPCONFIG_UI_STATUSBAR_HEIGHT + APPCONFIG_UI_TOOLBAR_HEIGHT + SetSceneSegmentHeight + 2;
     POPSpringAnimation *ani = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
-    ani.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.setTable.center.x, self.height+self.setTable.height/2)];
-    ani.toValue = [NSValue valueWithCGPoint:CGPointMake(self.setTable.center.x, marginY+self.setTable.height/2)];
+    ani.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.setScrollView.center.x, self.height+self.setScrollView.height/2)];
+    ani.toValue = [NSValue valueWithCGPoint:CGPointMake(self.setScrollView.center.x, marginY+self.setScrollView.height/2)];
     ani.springSpeed = 6;
     ani.springBounciness = 16;
-    [self.setTable pop_addAnimation:ani forKey:SetSceneSetTableAniCenter];
+    [self.setScrollView pop_addAnimation:ani forKey:SetSceneSetTableAniCenter];
 }
 
 - (RS3DSegmentedControl *)segment {
@@ -91,21 +95,30 @@ static const CGFloat SetSceneSegmentHeight = 80;
     return _segment;
 }
 
-- (UITableView *)setTable {
-    if (!_setTable) {
+- (UIScrollView *)setScrollView {
+    if (!_setScrollView) {
         CGFloat marginY = APPCONFIG_UI_STATUSBAR_HEIGHT + APPCONFIG_UI_TOOLBAR_HEIGHT + SetSceneSegmentHeight + 2;
-        _setTable = [[UITableView alloc] initWithFrame:CGRectMake(2, 0, self.width-4, self.height-marginY-2) style:UITableViewStylePlain];
-        _setTable.center = self.center;
-        _setTable.delegate = self;
-        _setTable.dataSource = self;
-        [_setTable registerClass:[UITableViewCell class] forCellReuseIdentifier:SetSceneSetTableID];
+        _setScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(2, 0, self.width-4, self.height-marginY-2)];
+        _setScrollView.pagingEnabled = YES;
+        _setScrollView.center = self.center;
+        _setScrollView.delegate = self;
+        //load content
+        int count = 3;
+        _setScrollView.contentSize = CGSizeMake(_setScrollView.width*count, _setScrollView.height);
+        [@[@4,@0,@1] enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIView *t = [self loadPageViewAtSegmentIndex:[obj intValue]];
+            t.frame = CGRectMake(idx*_setScrollView.width, 0, _setScrollView.width, _setScrollView.height);
+            [_setScrollView addSubview:t];
+            [scrollSubViews addObject:t];
+        }];
+        _setScrollView.contentOffset = CGPointMake(_setScrollView.width, 0);
     }
-    return _setTable;
+    return _setScrollView;
 }
 
 - (NSUInteger)numberOfSegmentsIn3DSegmentedControl:(RS3DSegmentedControl *)segmentedControl
 {
-    return 5;
+    return SetSceneSegmentCount;
 }
 
 - (NSString *)titleForSegmentAtIndex:(NSUInteger)segmentIndex segmentedControl:(RS3DSegmentedControl *)segmentedControl
@@ -130,25 +143,82 @@ static const CGFloat SetSceneSegmentHeight = 80;
 
 - (void)didSelectSegmentAtIndex:(NSUInteger)segmentIndex segmentedControl:(RS3DSegmentedControl *)segmentedControl
 {
-    
-}
-#pragma mark - table
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    UIView *t = scrollSubViews[1];
+    if (segmentIndex != t.tag) {
+        [scrollSubViews replaceObjectAtIndex:1 withObject:[self loadPageViewAtSegmentIndex:segmentIndex]];
+        [self scrollViewDidEndDecelerating:self.setScrollView];
+    }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SetSceneSetTableID];
-    cell.text = @"lll";
-    return cell;
+#pragma mark - scroll delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.setScrollView) {
+        //[self.segment setContentOffset:CGSizeMake(scrollView.contentOffset.x, scrollView.contentOffset.y)];
+    }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (scrollView == self.setScrollView) {
+        NSUInteger index = scrollView.contentOffset.x / scrollView.width;
+        UIView *t = scrollSubViews[index];
+        int previous = (int)t.tag - 1;
+        if (previous<0) {
+            previous += SetSceneSegmentCount;
+        }
+        int next = (int)t.tag + 1;
+        if (next>SetSceneSegmentCount-1) {
+            next -= SetSceneSegmentCount;
+        }
+        [scrollSubViews enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [obj removeFromSuperview];
+        }];
+        [@[[self loadPageViewAtSegmentIndex:previous]
+           ,t
+           ,[self loadPageViewAtSegmentIndex:next]] enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+               obj.frame = CGRectMake(idx*self.setScrollView.width, 0, self.setScrollView.width, self.setScrollView.height);
+               [scrollSubViews replaceObjectAtIndex:idx withObject:obj];
+               [self.setScrollView addSubview:obj];
+           }];
+        self.setScrollView.contentOffset = CGPointMake(_setScrollView.width, 0);
+        [self.segment setSelectedSegmentIndex:t.tag];
+    }
+}
+
+- (UIView*)loadPageViewAtSegmentIndex:(NSUInteger)index {
+    UIView *view;
+    if (!(view = [subViewDic objectForKey:@(index)])) {
+        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.setScrollView.width, self.setScrollView.height)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+        label.center = view.center;
+        [view addSubview:label];
+        label.text = [NSString stringWithFormat:@"page: %lu", index];
+        switch (index) {
+            case 0: {
+                view.backgroundColor = Hgrapefruit;
+                break;
+            }
+            case 1: {
+                view.backgroundColor = HgrapefruitD;
+                break;
+            }
+            case 2: {
+                view.backgroundColor = Hbittersweet;
+                break;
+            }
+            case 3: {
+                view.backgroundColor = HbittersweetD;
+                break;
+            }
+            case 4: {
+                view.backgroundColor = Hsunflower;
+                break;
+            }
+            default:
+                break;
+        }
+        view.tag = index;
+        [subViewDic setObject:view forKey:@(index)];
+    }
+    return view;
 }
 @end
