@@ -9,6 +9,7 @@
 #import "SetScene.h"
 #import "RS3DSegmentedControl.h"
 #import <pop/POP.h>
+#import "SetScreen.h"
 
 static NSString *const SetSceneSegmentAniCenter = @"RecordSceneCalendarAniCenter";
 static NSString *const SetSceneSetTableAniCenter = @"RecordSceneTimerTableAniCenter";
@@ -25,6 +26,7 @@ static const int SetSceneSegmentCount = 5;
     NSMutableArray *sets;
     NSMutableDictionary *subViewDic;
     NSMutableArray *scrollSubViews;
+    NSMutableArray *scrollSubViewCtrl;
     
 }
 
@@ -39,6 +41,7 @@ static const int SetSceneSegmentCount = 5;
 - (void)loadData {
     subViewDic = [NSMutableDictionary dictionaryWithCapacity:SetSceneSegmentCount];
     scrollSubViews = [NSMutableArray arrayWithCapacity:3];
+    scrollSubViewCtrl = [NSMutableArray arrayWithCapacity:5];
 }
 
 - (void)setUIComponents {
@@ -187,11 +190,17 @@ static const int SetSceneSegmentCount = 5;
 - (UIView*)loadPageViewAtSegmentIndex:(NSUInteger)index {
     UIView *view;
     if (!(view = [subViewDic objectForKey:@(index)])) {
-        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.setScrollView.width, self.setScrollView.height)];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        label.center = view.center;
-        [view addSubview:label];
-        label.text = [NSString stringWithFormat:@"page: %lu", index];
+        if (index == 0) {
+            UIViewController *ctrl = [SetScreen new];
+            [scrollSubViewCtrl addObject:ctrl];
+            view = ctrl.view;
+        } else {
+            view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.setScrollView.width, self.setScrollView.height)];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+            label.center = view.center;
+            [view addSubview:label];
+            label.text = [NSString stringWithFormat:@"page: %lu", index];
+        }
         switch (index) {
             case 0: {
                 view.backgroundColor = Hgrapefruit;

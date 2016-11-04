@@ -1,11 +1,14 @@
 platform :ios, '8.0'
-xcodeproj 'TimeWorm/TimeWorm.xcodeproj'
+project 'TimeWorm/TimeWorm.xcodeproj'
 
-pod 'CocoaLumberjack'
-pod 'FMDB'
-pod 'ReactiveCocoa', '~> 2.5'
-pod 'FLEX'
-pod 'DateTools'
-pod 'STPopup'
-pod 'pop', '~> 1.0'
-pod 'iCarousel'
+target 'TimeWorm' do
+	pod 'CocoaLumberjack'
+	pod 'FMDB'
+	pod 'ReactiveCocoa', '~> 2.5'
+	pod 'FLEX'
+	pod 'DateTools'
+	pod 'STPopup'
+	pod 'pop', '~> 1.0'
+	pod 'iCarousel'
+	pod 'Bohr'
+end

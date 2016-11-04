@@ -1,5 +1,0 @@
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CocoaLumberjack" "${PODS_ROOT}/Headers/Public/DateTools" "${PODS_ROOT}/Headers/Public/FLEX" "${PODS_ROOT}/Headers/Public/FMDB" "${PODS_ROOT}/Headers/Public/ReactiveCocoa" "${PODS_ROOT}/Headers/Public/STPopup" "${PODS_ROOT}/Headers/Public/iCarousel" "${PODS_ROOT}/Headers/Public/pop"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/CocoaLumberjack" -isystem "${PODS_ROOT}/Headers/Public/DateTools" -isystem "${PODS_ROOT}/Headers/Public/FLEX" -isystem "${PODS_ROOT}/Headers/Public/FMDB" -isystem "${PODS_ROOT}/Headers/Public/ReactiveCocoa" -isystem "${PODS_ROOT}/Headers/Public/STPopup" -isystem "${PODS_ROOT}/Headers/Public/iCarousel" -isystem "${PODS_ROOT}/Headers/Public/pop"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"CocoaLumberjack" -l"DateTools" -l"FLEX" -l"FMDB" -l"ReactiveCocoa" -l"STPopup" -l"c++" -l"iCarousel" -l"pop" -l"sqlite3" -l"z" -framework "CoreGraphics" -framework "Foundation" -framework "QuartzCore" -framework "UIKit"
-PODS_ROOT = ${SRCROOT}/../Pods

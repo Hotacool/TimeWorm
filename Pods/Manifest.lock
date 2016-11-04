@@ -1,4 +1,5 @@
 PODS:
+  - Bohr (3.0.0)
   - CocoaLumberjack (3.0.0):
     - CocoaLumberjack/Default (= 3.0.0)
     - CocoaLumberjack/Extensions (= 3.0.0)
@@ -24,6 +25,7 @@ PODS:
   - STPopup (1.8.1)
 
 DEPENDENCIES:
+  - Bohr
   - CocoaLumberjack
   - DateTools
   - FLEX
@@ -34,6 +36,7 @@ DEPENDENCIES:
   - STPopup
 
 SPEC CHECKSUMS:
+  Bohr: 17b150766e54e1fb8ff417d85b830c7caafa8b4a
   CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
@@ -43,4 +46,6 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   STPopup: 47e8ae53d348fa5f9be2d08d5c513ebe12ca758d
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 65e91dd2421c8ae45dd00dba8d26067673ce1a1d
+
+COCOAPODS: 1.1.1
