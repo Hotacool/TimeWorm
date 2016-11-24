@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0ACA595A0571E11FF194985B /* libPods-TimeWorm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D32D523FD9D5C012453596A /* libPods-TimeWorm.a */; };
-		48330CCC88D944C07B70CA10 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E9D1892B717A92451E2E4C /* libPods.a */; };
 		FA0BD4351DB772430060803F /* TWEventList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4341DB772430060803F /* TWEventList.m */; };
 		FA0BD4381DB7731D0060803F /* HACFoldTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4371DB7731D0060803F /* HACFoldTableView.m */; };
 		FA0E00031D7528AC0080759D /* TWBaseSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00021D7528AC0080759D /* TWBaseSprite.m */; };
@@ -75,6 +74,9 @@
 		FA8006A91D7041A30071571C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8006A71D7041A30071571C /* Main.storyboard */; };
 		FA8006AB1D7041A30071571C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8006AA1D7041A30071571C /* Assets.xcassets */; };
 		FA8006AE1D7041A30071571C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8006AC1D7041A30071571C /* LaunchScreen.storyboard */; };
+		FA85455A1DE6ECE400A71FC3 /* HACSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8545591DE6ECE400A71FC3 /* HACSwitchTableViewCell.m */; };
+		FA85455D1DE6F19700A71FC3 /* SetDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = FA85455C1DE6F19700A71FC3 /* SetDefault.m */; };
+		FA8545601DE6F1AE00A71FC3 /* SetNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FA85455F1DE6F1AE00A71FC3 /* SetNotification.m */; };
 		FA8C53171D7D07C000F96ED5 /* TWUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C53161D7D07C000F96ED5 /* TWUtility.m */; };
 		FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C531A1D7D613800F96ED5 /* TWClockSetting.m */; };
 		FA8C531F1D7D6A7900F96ED5 /* STTimerRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C531E1D7D6A7900F96ED5 /* STTimerRulerView.m */; };
@@ -299,6 +301,12 @@
 		FA8006AD1D7041A30071571C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8006AF1D7041A30071571C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA8006B51D7043930071571C /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		FA8545581DE6ECE400A71FC3 /* HACSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACSwitchTableViewCell.h; sourceTree = "<group>"; };
+		FA8545591DE6ECE400A71FC3 /* HACSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACSwitchTableViewCell.m; sourceTree = "<group>"; };
+		FA85455B1DE6F19700A71FC3 /* SetDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetDefault.h; sourceTree = "<group>"; };
+		FA85455C1DE6F19700A71FC3 /* SetDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetDefault.m; sourceTree = "<group>"; };
+		FA85455E1DE6F1AE00A71FC3 /* SetNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetNotification.h; sourceTree = "<group>"; };
+		FA85455F1DE6F1AE00A71FC3 /* SetNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetNotification.m; sourceTree = "<group>"; };
 		FA8C53151D7D07C000F96ED5 /* TWUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWUtility.h; sourceTree = "<group>"; };
 		FA8C53161D7D07C000F96ED5 /* TWUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWUtility.m; sourceTree = "<group>"; };
 		FA8C53191D7D613800F96ED5 /* TWClockSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWClockSetting.h; sourceTree = "<group>"; };
@@ -420,7 +428,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48330CCC88D944C07B70CA10 /* libPods.a in Frameworks */,
 				0ACA595A0571E11FF194985B /* libPods-TimeWorm.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -920,6 +927,8 @@
 			children = (
 				FAA68EC61DCC6F0E009F1DDC /* HACPickerTableViewCell.h */,
 				FAA68EC71DCC6F0E009F1DDC /* HACPickerTableViewCell.m */,
+				FA8545581DE6ECE400A71FC3 /* HACSwitchTableViewCell.h */,
+				FA8545591DE6ECE400A71FC3 /* HACSwitchTableViewCell.m */,
 			);
 			path = BohrExtentCell;
 			sourceTree = "<group>";
@@ -929,6 +938,10 @@
 			children = (
 				FAF4B0191DCC25A9007D545C /* SetScreen.h */,
 				FAF4B01A1DCC25A9007D545C /* SetScreen.m */,
+				FA85455B1DE6F19700A71FC3 /* SetDefault.h */,
+				FA85455C1DE6F19700A71FC3 /* SetDefault.m */,
+				FA85455E1DE6F1AE00A71FC3 /* SetNotification.h */,
+				FA85455F1DE6F1AE00A71FC3 /* SetNotification.m */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1201,11 +1214,14 @@
 				FA0BD4351DB772430060803F /* TWEventList.m in Sources */,
 				FA0EFFDA1D741CA60080759D /* TWBaseViewController.m in Sources */,
 				FA8006A01D7041A30071571C /* main.m in Sources */,
+				FA8545601DE6F1AE00A71FC3 /* SetNotification.m in Sources */,
 				FAF4B01B1DCC25A9007D545C /* SetScreen.m in Sources */,
 				FA75D3221D90077700E63CC9 /* MKTagItem.m in Sources */,
 				FA0E00611D766C8B0080759D /* QBFlatButton.m in Sources */,
+				FA85455A1DE6ECE400A71FC3 /* HACSwitchTableViewCell.m in Sources */,
 				FA0EFFC91D7408650080759D /* OLImageView.m in Sources */,
 				FA75D3611D9129D800E63CC9 /* TWTextView.m in Sources */,
+				FA85455D1DE6F19700A71FC3 /* SetDefault.m in Sources */,
 				FA0E012B1D7954330080759D /* WorkSceneModel.m in Sources */,
 				FA0EFFE01D7420020080759D /* HomeViewControllerModel.m in Sources */,
 				FA8C53221D7D6B5400F96ED5 /* UIView+HACUtils.m in Sources */,

@@ -16,23 +16,33 @@
 HAC_SINGLETON_IMPLEMENT(TWSet)
 
 + (BOOL)initializeTWSet {
-    BOOL ret = NO;
-    [[TWDBManager dbQueue] inDatabase:^(FMDatabase *db) {/*
-        NSString *updateSql = [NSString stringWithFormat:
-                               @"INSERT INTO TWTimer('name','information','allSeconds', 'remainderSeconds','startDate','state') VALUES('%@','%@','%@','%@','%@','%@')"
-                               ,timer.name
-                               ,timer.information
-                               ,@(timer.allSeconds)
-                               ,@(timer.remainderSeconds)
-                               ,timer.startDate
-                               ,@(timer.state)];
-        */
-        //ret = [db executeUpdate:updateSql];
-        if (ret) {
-            DDLogInfo(@"insert suucessed.");
+    BOOL __block ret = NO;
+    [[TWDBManager dbQueue] inDatabase:^(FMDatabase *db) {
+        FMResultSet *s = [db executeQuery:@"SELECT * FROM TWSet"];
+        if ([s next]) {
+            ret = YES;
+            [s close];
         } else {
-            DDLogError(@"insert failed!");
+            NSString *updateSql = [NSString stringWithFormat:
+                                   @"INSERT INTO TWSet('homeTheme','workTheme','relaxTheme', 'keepAwake','defaultTimer','defaultTimerName', 'defaultTimerInf', 'keepTimer', 'isNotifyOn') VALUES('%@','%@','%@','%@','%@','%@','%@','%@','%@')"
+                                   ,@0
+                                   ,@0
+                                   ,@0
+                                   ,@YES
+                                   ,@15
+                                   ,@"timer"
+                                   ,@"a new timer"
+                                   ,@YES
+                                   ,@YES];
+            
+            ret = [db executeUpdate:updateSql];
+            if (ret) {
+                DDLogInfo(@"insert suucessed.");
+            } else {
+                DDLogError(@"insert failed!");
+            }
         }
+        
     }];
     return ret;
 }
@@ -52,36 +62,35 @@ HAC_SINGLETON_IMPLEMENT(TWSet)
     return ret;
 }
 
-+ (BOOL)updateSet:(TWModelSet*)set {
-    BOOL ret = NO;
-    if (!set) {
-        return NO;
-    }
-    if ([self currentSet]) {
-/*        [[TWDBManager dbQueue] inDatabase:^(FMDatabase *db) {
-            NSString *updateSql = [NSString stringWithFormat:
-                                   @"UPDATE 'TWTimer' SET 'name' = '%@', 'information'='%@', 'startDate'='%@', 'allSeconds'='%@', 'remainderSeconds'='%@', 'state'='%@', 'fireDate'='%@' WHERE id = '%@'"
-                                   , timer.name
-                                   , timer.information
-                                   , timer.startDate
-                                   , @(timer.allSeconds)
-                                   , @(timer.remainderSeconds)
-                                   , @(timer.state)
-                                   , timer.fireDate?:@""
-                                   , @(timer.ID)];
-            BOOL ret = [db executeUpdate:updateSql];
-            if (ret) {
-                DDLogInfo(@"update successed.");
-            } else {
-                DDLogError(@"update failed!");
-            }
-        }];
-        */
-    } else {
-        
-    }
-    return ret;
-}
+//+ (BOOL)updateSet:(TWModelSet*)set {
+//    BOOL ret = NO;
+//    if (!set) {
+//        return NO;
+//    }
+//    if (![self currentSet]) {
+//        [self initializeTWSet];
+//    }
+//
+//    [[TWDBManager dbQueue] inDatabase:^(FMDatabase *db) {
+//        NSString *updateSql = [NSString stringWithFormat:
+//                               @"UPDATE 'TWSet' SET 'homeTheme' = '%@', 'workTheme'='%@', 'relaxTheme'='%@', 'keepAwake'='%@', 'defaultTimer'='%@', 'state'='%@', 'fireDate'='%@' WHERE id = '%@'"
+//                               , timer.name
+//                               , timer.information
+//                               , timer.startDate
+//                               , @(timer.allSeconds)
+//                               , @(timer.remainderSeconds)
+//                               , @(timer.state)
+//                               , timer.fireDate?:@""
+//                               , @(timer.ID)];
+//        BOOL ret = [db executeUpdate:updateSql];
+//        if (ret) {
+//            DDLogInfo(@"update successed.");
+//        } else {
+//            DDLogError(@"update failed!");
+//        }
+//    }];
+//    return ret;
+//}
 
 + (BOOL)updateSetColumn:(NSString*)column withObj:(id)obj {
     BOOL ret = NO;
@@ -98,6 +107,7 @@ HAC_SINGLETON_IMPLEMENT(TWSet)
             BOOL ret = [db executeUpdate:updateSql];
             if (ret) {
                 DDLogInfo(@"update successed.");
+                [TWSet sharedTWSet]->curSet = nil;
             } else {
                 DDLogError(@"update failed!");
             }

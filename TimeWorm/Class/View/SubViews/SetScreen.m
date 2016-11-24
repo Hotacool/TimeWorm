@@ -8,6 +8,8 @@
 
 #import "SetScreen.h"
 #import "HACPickerTableViewCell.h"
+#import "HACSwitchTableViewCell.h"
+#import "TWSet.h"
 
 @interface SetScreen ()
 
@@ -65,8 +67,9 @@
             };
             cell.selectActionBlk = ^(NSUInteger index) {
                 NSLog(@"select at: %ld", index);
+                [TWSet updateSetColumn:@"homeTheme" withObj:@(index)];
             };
-            [cell setSelectIndex:3];
+            [cell setSelectIndex:[TWSet currentSet].homeTheme];
         }]];
         
         [section addCell:[HACPickerTableViewCell cellWithTitle:@"工作" key:@"SW" handler:^(HACPickerTableViewCell * cell) {
@@ -103,8 +106,9 @@
             };
             cell.selectActionBlk = ^(NSUInteger index) {
                 NSLog(@"select at: %ld", index);
+                [TWSet updateSetColumn:@"workTheme" withObj:@(index)];
             };
-            [cell setSelectIndex:3];
+            [cell setSelectIndex:[TWSet currentSet].workTheme];
         }]];
         
         [section addCell:[HACPickerTableViewCell cellWithTitle:@"放松" key:@"SR" handler:^(HACPickerTableViewCell * cell) {
@@ -141,13 +145,20 @@
             };
             cell.selectActionBlk = ^(NSUInteger index) {
                 NSLog(@"select at: %ld", index);
+                [TWSet updateSetColumn:@"relaxTheme" withObj:@(index)];
             };
-            [cell setSelectIndex:3];
+            [cell setSelectIndex:[TWSet currentSet].relaxTheme];
         }]];
     }]];
     
     [self addSection:[BOTableViewSection sectionWithHeaderTitle:@"屏幕" handler:^(BOTableViewSection *section) {
-        [section addCell:[BOSwitchTableViewCell cellWithTitle:@"屏幕常亮" key:@"SL" handler:nil]];
+        [section addCell:[HACSwitchTableViewCell cellWithTitle:@"屏幕常亮" key:nil handler:^(HACSwitchTableViewCell * cell) {
+            cell.defaultSwitchValue = [TWSet currentSet].keepAwake;
+            cell.changeBlk = ^(BOOL isOn) {
+                NSLog(@"switch value: %d", isOn);
+                [TWSet updateSetColumn:@"keepAwake" withObj:@(isOn)];
+            };
+        }]];
     }]];
 
 }

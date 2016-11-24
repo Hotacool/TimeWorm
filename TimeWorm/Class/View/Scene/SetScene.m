@@ -10,6 +10,9 @@
 #import "RS3DSegmentedControl.h"
 #import <pop/POP.h>
 #import "SetScreen.h"
+#import "SetDefault.h"
+#import "SetNotification.h"
+#import "TWSet.h"
 
 static NSString *const SetSceneSegmentAniCenter = @"RecordSceneCalendarAniCenter";
 static NSString *const SetSceneSetTableAniCenter = @"RecordSceneTimerTableAniCenter";
@@ -39,6 +42,7 @@ static const int SetSceneSegmentCount = 5;
 }
 
 - (void)loadData {
+    [TWSet initializeTWSet];
     subViewDic = [NSMutableDictionary dictionaryWithCapacity:SetSceneSegmentCount];
     scrollSubViews = [NSMutableArray arrayWithCapacity:3];
     scrollSubViewCtrl = [NSMutableArray arrayWithCapacity:5];
@@ -194,7 +198,16 @@ static const int SetSceneSegmentCount = 5;
             UIViewController *ctrl = [SetScreen new];
             [scrollSubViewCtrl addObject:ctrl];
             view = ctrl.view;
-        } else {
+        } else if (index == 1) {
+            UIViewController *ctrl = [SetDefault new];
+            [scrollSubViewCtrl addObject:ctrl];
+            view = ctrl.view;
+        } else if (index == 2) {
+            UIViewController *ctrl = [SetNotification new];
+            [scrollSubViewCtrl addObject:ctrl];
+            view = ctrl.view;
+        }
+        else {
             view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.setScrollView.width, self.setScrollView.height)];
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
             label.center = view.center;

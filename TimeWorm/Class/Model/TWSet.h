@@ -10,9 +10,12 @@
 #import "TWModelSet.h"
 @interface TWSet : NSObject
 
+
++ (BOOL)initializeTWSet;
+
 + (TWModelSet*)currentSet ;
 
-+ (BOOL)updateSet:(TWModelSet*)set ;
+//+ (BOOL)updateSet:(TWModelSet*)set ;
 
 + (BOOL)updateSetColumn:(NSString*)column withObj:(id)obj ;
 @end
