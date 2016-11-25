@@ -18,7 +18,7 @@ static NSString *const SetSceneSegmentAniCenter = @"RecordSceneCalendarAniCenter
 static NSString *const SetSceneSetTableAniCenter = @"RecordSceneTimerTableAniCenter";
 static NSString *const SetSceneSetTableID = @"RecordSceneTimerTableID";
 static const CGFloat SetSceneSegmentHeight = 80;
-static const int SetSceneSegmentCount = 5;
+static const int SetSceneSegmentCount = 4;
 @interface SetScene () <RS3DSegmentedControlDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) RS3DSegmentedControl *segment;
 @property (nonatomic, strong) UIScrollView *setScrollView;
@@ -45,7 +45,7 @@ static const int SetSceneSegmentCount = 5;
     [TWSet initializeTWSet];
     subViewDic = [NSMutableDictionary dictionaryWithCapacity:SetSceneSegmentCount];
     scrollSubViews = [NSMutableArray arrayWithCapacity:3];
-    scrollSubViewCtrl = [NSMutableArray arrayWithCapacity:5];
+    scrollSubViewCtrl = [NSMutableArray arrayWithCapacity:SetSceneSegmentCount];
 }
 
 - (void)setUIComponents {
@@ -138,8 +138,6 @@ static const int SetSceneSegmentCount = 5;
         case 2:
             return NSLocalizedString(@"Notification", @"");
         case 3:
-            return NSLocalizedString(@"Account", @"");
-        case 4:
             return NSLocalizedString(@"About", @"");
             
         default:
@@ -208,35 +206,41 @@ static const int SetSceneSegmentCount = 5;
             view = ctrl.view;
         }
         else {
+            NSString *str = @"人生若只如初见，何事秋风悲画扇。\n等闲变却故人心，却道故人心易变。\n骊山语罢清宵半，泪雨霖铃终不怨。\n何如薄幸锦衣郎，比翼连枝当日愿。";
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
+            [attrStr addAttribute:NSFontAttributeName
+                            value:[UIFont systemFontOfSize:30.0f]
+                            range:NSMakeRange(0, 3)];
+            [attrStr addAttribute:NSForegroundColorAttributeName
+                            value:[UIColor redColor]
+                            range:NSMakeRange(17, 7)];
+            [attrStr addAttribute:NSUnderlineStyleAttributeName
+                            value:[NSNumber numberWithInteger:NSUnderlineStyleSingle]
+                            range:NSMakeRange(8, 7)];
+            NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
+            //行间距
+            paragraph.lineSpacing = 10;
+            //段落间距
+            paragraph.paragraphSpacing = 20;
+            //对齐方式
+            paragraph.alignment = NSTextAlignmentLeft;
+            //指定段落开始的缩进像素
+            paragraph.firstLineHeadIndent = 30;
+            //调整全部文字的缩进像素
+            paragraph.headIndent = 10;
+            [attrStr addAttribute:NSParagraphStyleAttributeName
+                            value:paragraph
+                            range:NSMakeRange(0, [str length])];
+            
+            
             view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.setScrollView.width, self.setScrollView.height)];
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, view.width, view.height)];
             label.center = view.center;
             [view addSubview:label];
-            label.text = [NSString stringWithFormat:@"page: %lu", index];
-        }
-        switch (index) {
-            case 0: {
-                view.backgroundColor = Hgrapefruit;
-                break;
-            }
-            case 1: {
-                view.backgroundColor = HgrapefruitD;
-                break;
-            }
-            case 2: {
-                view.backgroundColor = Hbittersweet;
-                break;
-            }
-            case 3: {
-                view.backgroundColor = HbittersweetD;
-                break;
-            }
-            case 4: {
-                view.backgroundColor = Hsunflower;
-                break;
-            }
-            default:
-                break;
+            label.textAlignment = NSTextAlignmentLeft;
+            label.numberOfLines = 0;
+            label.attributedText = attrStr;
+            view.backgroundColor = Hdarkgray;
         }
         view.tag = index;
         [subViewDic setObject:view forKey:@(index)];

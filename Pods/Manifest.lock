@@ -22,7 +22,7 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - STPopup (1.8.1)
+  - STPopup (1.8.2)
 
 DEPENDENCIES:
   - Bohr
@@ -44,7 +44,7 @@ SPEC CHECKSUMS:
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  STPopup: 47e8ae53d348fa5f9be2d08d5c513ebe12ca758d
+  STPopup: b69b3e7484ef7d2baec5f9ab2939f8a7bcdfe218
 
 PODFILE CHECKSUM: 65e91dd2421c8ae45dd00dba8d26067673ce1a1d
 

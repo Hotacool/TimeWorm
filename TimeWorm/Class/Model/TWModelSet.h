@@ -17,6 +17,7 @@
 @property (nonatomic, assign) int defaultTimer;
 @property (nonatomic, strong) NSString *defaultTimerName;
 @property (nonatomic, strong) NSString *defaultTimerInf;
+@property (nonatomic, strong) NSString *defaultEventName;
 @property (nonatomic, assign) BOOL keepTimer;
 @property (nonatomic, assign) BOOL isNotifyOn;
 @end

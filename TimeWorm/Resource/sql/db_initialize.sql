@@ -30,6 +30,7 @@ CREATE TABLE `TWSet` (
 	`defaultTimer`	integer default 15,
 	'defaultTimerName'	TEXT,
 	'defaultTimerInf'	TEXT,
+    'defaultEventName'	TEXT,
 	`keepTimer`	boolean,
 	`isNotifyOn`	boolean
 );

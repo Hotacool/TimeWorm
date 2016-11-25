@@ -77,6 +77,9 @@
 		FA85455A1DE6ECE400A71FC3 /* HACSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8545591DE6ECE400A71FC3 /* HACSwitchTableViewCell.m */; };
 		FA85455D1DE6F19700A71FC3 /* SetDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = FA85455C1DE6F19700A71FC3 /* SetDefault.m */; };
 		FA8545601DE6F1AE00A71FC3 /* SetNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FA85455F1DE6F1AE00A71FC3 /* SetNotification.m */; };
+		FA8545661DE7DA5E00A71FC3 /* HACStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8545651DE7DA5E00A71FC3 /* HACStepper.m */; };
+		FA8545691DE7E39C00A71FC3 /* HACStepperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8545681DE7E39C00A71FC3 /* HACStepperTableViewCell.m */; };
+		FA85456F1DE8163A00A71FC3 /* HACTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA85456E1DE8163A00A71FC3 /* HACTextTableViewCell.m */; };
 		FA8C53171D7D07C000F96ED5 /* TWUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C53161D7D07C000F96ED5 /* TWUtility.m */; };
 		FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C531A1D7D613800F96ED5 /* TWClockSetting.m */; };
 		FA8C531F1D7D6A7900F96ED5 /* STTimerRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C531E1D7D6A7900F96ED5 /* STTimerRulerView.m */; };
@@ -307,6 +310,12 @@
 		FA85455C1DE6F19700A71FC3 /* SetDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetDefault.m; sourceTree = "<group>"; };
 		FA85455E1DE6F1AE00A71FC3 /* SetNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetNotification.h; sourceTree = "<group>"; };
 		FA85455F1DE6F1AE00A71FC3 /* SetNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetNotification.m; sourceTree = "<group>"; };
+		FA8545641DE7DA5E00A71FC3 /* HACStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACStepper.h; sourceTree = "<group>"; };
+		FA8545651DE7DA5E00A71FC3 /* HACStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACStepper.m; sourceTree = "<group>"; };
+		FA8545671DE7E39C00A71FC3 /* HACStepperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACStepperTableViewCell.h; sourceTree = "<group>"; };
+		FA8545681DE7E39C00A71FC3 /* HACStepperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACStepperTableViewCell.m; sourceTree = "<group>"; };
+		FA85456D1DE8163A00A71FC3 /* HACTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACTextTableViewCell.h; sourceTree = "<group>"; };
+		FA85456E1DE8163A00A71FC3 /* HACTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACTextTableViewCell.m; sourceTree = "<group>"; };
 		FA8C53151D7D07C000F96ED5 /* TWUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWUtility.h; sourceTree = "<group>"; };
 		FA8C53161D7D07C000F96ED5 /* TWUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWUtility.m; sourceTree = "<group>"; };
 		FA8C53191D7D613800F96ED5 /* TWClockSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWClockSetting.h; sourceTree = "<group>"; };
@@ -781,6 +790,7 @@
 		FA8006B61D7049CE0071571C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				FA8545631DE7DA4300A71FC3 /* CommonView */,
 				FAA68EC51DCC6F0E009F1DDC /* BohrExtentCell */,
 				FA49AA1C1DC3266700CCC990 /* RS3DSegmentedControl */,
 				FA6A01FC1DC0A7120034201E /* Calendar */,
@@ -797,6 +807,15 @@
 				FA0E00201D7558FB0080759D /* TWHelp.h */,
 			);
 			path = Commons;
+			sourceTree = "<group>";
+		};
+		FA8545631DE7DA4300A71FC3 /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				FA8545641DE7DA5E00A71FC3 /* HACStepper.h */,
+				FA8545651DE7DA5E00A71FC3 /* HACStepper.m */,
+			);
+			path = CommonView;
 			sourceTree = "<group>";
 		};
 		FA8C53141D7D078D00F96ED5 /* Utility */ = {
@@ -929,6 +948,10 @@
 				FAA68EC71DCC6F0E009F1DDC /* HACPickerTableViewCell.m */,
 				FA8545581DE6ECE400A71FC3 /* HACSwitchTableViewCell.h */,
 				FA8545591DE6ECE400A71FC3 /* HACSwitchTableViewCell.m */,
+				FA8545671DE7E39C00A71FC3 /* HACStepperTableViewCell.h */,
+				FA8545681DE7E39C00A71FC3 /* HACStepperTableViewCell.m */,
+				FA85456D1DE8163A00A71FC3 /* HACTextTableViewCell.h */,
+				FA85456E1DE8163A00A71FC3 /* HACTextTableViewCell.m */,
 			);
 			path = BohrExtentCell;
 			sourceTree = "<group>";
@@ -1171,6 +1194,7 @@
 				FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */,
 				FA0E00061D752B100080759D /* HeroSprite.m in Sources */,
 				FAAA36781DC1A0FD001ABC6C /* RecordScene.m in Sources */,
+				FA8545691DE7E39C00A71FC3 /* HACStepperTableViewCell.m in Sources */,
 				FA0E000D1D7558300080759D /* TWCommandCenter.m in Sources */,
 				FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */,
 				FA0EFFBF1D73DA310080759D /* NSString+FontAwesome.m in Sources */,
@@ -1189,6 +1213,7 @@
 				FABBBC2E1D867EC1004365F4 /* TWEventSetting.m in Sources */,
 				FA0E00231D755F0E0080759D /* TWBaseCommand.m in Sources */,
 				FA6A020B1DC0A9AB0034201E /* NSDictionary+CL.m in Sources */,
+				FA85456F1DE8163A00A71FC3 /* HACTextTableViewCell.m in Sources */,
 				FA4AE69F1D9263D400505B7E /* TWModelEvent.m in Sources */,
 				FA49AA181DC314DF00CCC990 /* SetScene.m in Sources */,
 				FA0E01321D7963170080759D /* HACClockTimer.m in Sources */,
@@ -1212,6 +1237,7 @@
 				FA49AA2A1DC3505600CCC990 /* TWSet.m in Sources */,
 				FA49AA241DC33F6800CCC990 /* TWModelSet.m in Sources */,
 				FA0BD4351DB772430060803F /* TWEventList.m in Sources */,
+				FA8545661DE7DA5E00A71FC3 /* HACStepper.m in Sources */,
 				FA0EFFDA1D741CA60080759D /* TWBaseViewController.m in Sources */,
 				FA8006A01D7041A30071571C /* main.m in Sources */,
 				FA8545601DE6F1AE00A71FC3 /* SetNotification.m in Sources */,

@@ -24,7 +24,7 @@ HAC_SINGLETON_IMPLEMENT(TWSet)
             [s close];
         } else {
             NSString *updateSql = [NSString stringWithFormat:
-                                   @"INSERT INTO TWSet('homeTheme','workTheme','relaxTheme', 'keepAwake','defaultTimer','defaultTimerName', 'defaultTimerInf', 'keepTimer', 'isNotifyOn') VALUES('%@','%@','%@','%@','%@','%@','%@','%@','%@')"
+                                   @"INSERT INTO TWSet('homeTheme','workTheme','relaxTheme', 'keepAwake','defaultTimer','defaultTimerName', 'defaultTimerInf', 'defaultEventName', 'keepTimer', 'isNotifyOn') VALUES('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')"
                                    ,@0
                                    ,@0
                                    ,@0
@@ -32,6 +32,7 @@ HAC_SINGLETON_IMPLEMENT(TWSet)
                                    ,@15
                                    ,@"timer"
                                    ,@"a new timer"
+                                   ,@"event"
                                    ,@YES
                                    ,@YES];
             
