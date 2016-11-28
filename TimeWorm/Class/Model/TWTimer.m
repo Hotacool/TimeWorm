@@ -8,6 +8,7 @@
 
 #import "TWTimer.h"
 #import "TWDBManager.h"
+#import "TWSet.h"
 
 @interface TWTimer ()
 @property (nonatomic, strong) NSMutableArray<id<TWTimerObserver>> *observers;
@@ -38,6 +39,10 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
     
     [TWTimer sharedTWTimer].curTimer = newTimer;
     return newTimer;
+}
+
++ (TWModelTimer *)createDefaultTimer {
+    return [self createTimerWithName:[TWSet currentSet].defaultTimerName seconds:[TWSet currentSet].defaultTimer*60];
 }
 
 + (BOOL)activeTimer:(TWModelTimer*)timer {

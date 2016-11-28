@@ -22,6 +22,8 @@
 + (TWModelTimer*)currentTimer ;
 
 + (TWModelTimer*)createTimerWithName:(NSString*)name seconds:(int)seconds;
+
++ (TWModelTimer*)createDefaultTimer;
 /**
  *  激活timer
  *

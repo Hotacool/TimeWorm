@@ -10,15 +10,14 @@
 #import "HeroSprite.h"
 #import "WorkSceneModel.h"
 #import "HACClockTimer.h"
-#import "TWTimer.h"
-#import "TWEvent.h"
+#import "TWModelTimer.h"
 #import "STPopupController+HAC.h"
 #import <pop/POP.h>
 #import "HomeViewController.h"
 #import "TWEventList.h"
 
 static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
-@interface WorkScene () <TWTimerObserver>
+@interface WorkScene ()
 @property (nonatomic, strong) WorkSceneModel *wsm;
 @property (nonatomic, strong) HACClockTimer *clock;
 @property (nonatomic, strong) UIButton *event;
@@ -34,6 +33,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
     if (self.wsm) {
         [self.wsm attatchCommand:NO];
         [self.wsm removeObserver:self forKeyPath:@"state"];
+        [self.wsm removeObserver:self forKeyPath:@"remainderSeconds"];
     }
 }
 
@@ -41,6 +41,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
     if (self = [super initWithFrame:frame]) {
         _wsm = (WorkSceneModel *)self.viewModel;
         [_wsm addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
+        [_wsm addObserver:self forKeyPath:@"remainderSeconds" options:NSKeyValueObservingOptionNew context:nil];
         [_wsm attatchCommand:YES];
         [self setUIComponents];
     }
@@ -54,7 +55,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
         [hero doRandomActionWithLoopCount:5];
         [self showClock];
         //自动启动
-        [self startTimer];
+        [_wsm startTimer];
     });
 }
 
@@ -111,22 +112,13 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
     return _event;
 }
 
-- (void)tickTime {
-    if (!date) {
-        date = [[HACClockDate alloc] initWithHour:0 minute:[TWTimer currentTimer].remainderSeconds/60 second:[TWTimer currentTimer].remainderSeconds%60 weekday:1];
-    } else{
-        [date updateWithHour:0 minute:[TWTimer currentTimer].remainderSeconds/60 second:[TWTimer currentTimer].remainderSeconds%60 weekday:1];
-    }
-    [self.clock setClockDate:date];
-}
-
 - (void)gotoEventList:(id)sender {
     TWEventList *ret = [TWEventList new];
     STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:ret];
     popupController.containerView.layer.cornerRadius = 4;
     popupController.transitionStyle = STPopupTransitionStyleSlideVertical;
     [popupController presentInViewController:self.ctrl];
-    [ret bindTimer:[TWTimer currentTimer]];
+    [ret bindTimer:_wsm.currentTimer];
 }
 
 - (void)clockClicked:(id)sender {
@@ -134,22 +126,11 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 }
 //clean
 - (void)removeFromSuperview {
-    [TWTimer removeObserverFromTimer:self];
-    [TWTimer cancelTimer:[TWTimer currentTimer]];
-    if ([TWEvent currentEvent]&&![TWEvent currentEvent].stopDate) {
-        [TWEvent stopEvent:[TWEvent currentEvent]];
-    }
+    [_wsm clearData];
     [MozTopAlertView hideFromWindow];
     [super removeFromSuperview];
 }
-#pragma mark -- timer
-- (void)startTimer {
-    //TWTimer
-    [TWTimer createTimerWithName:@"biubiubiu" seconds:100];
-    [TWTimer currentTimer].information = @"testtesttesttesttest";
-    [TWTimer attatchObserver2Timer:self];
-    [self.wsm setState:WorkSceneModelStateWorking];
-}
+
 #pragma mark -- KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"state"]) {
@@ -158,40 +139,21 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
                 break;
             }
             case WorkSceneModelStateWorking: {
-                if ([TWTimer currentTimer].state&TWTimerStatePause) {
-                    //pause->restart，stop event(complete).
-                    [TWEvent stopEvent:[TWEvent currentEvent]];
-                }
-                [TWTimer activeTimer:[TWTimer currentTimer]];
                 [hero performAction:@"think" withEnd:nil];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"work start", @"") doText:nil doBlock:nil];
                 break;
             }
             case WorkSceneModelStatePause: {
-                if (!([TWTimer currentTimer].state&TWTimerStateFlow)) {
-                    return;
-                }
-                [TWTimer pauseTimer:[TWTimer currentTimer]];
-                [TWEvent createDefaultEventWithTimerId:[TWTimer currentTimer].ID];
                 [hero performAction:@"applaud" withEnd:nil];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"继续" atIndex:3];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"pause", @"") doText:nil doBlock:nil];
                 break;
             }
             case WorkSceneModelStateEvent: {
-                switch ([TWTimer currentTimer].state) {
-                    case TWTimerStateFlow: {
-                        [TWTimer pauseTimer:[TWTimer currentTimer]];
-                        [TWEvent createDefaultEventWithTimerId:[TWTimer currentTimer].ID];
-                        break;
-                    }
-                    case TWTimerStatePause: {
-                        break;
-                    }
-                    default:
-                        [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"create a new timer!", @"") doText:nil doBlock:nil];
-                        return;
+                if (_wsm.currentTimer.state != TWTimerStatePause) {
+                    [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"create a new timer", @"") doText:nil doBlock:nil];
+                    return;
                 }
                 [hero performAction:@"applaud" withEnd:nil];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"继续" atIndex:3];
@@ -199,11 +161,6 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
                 break;
             }
             case WorkSceneModelStateReset: {
-                [TWTimer resetTimer:[TWTimer currentTimer]];
-                if ([TWEvent currentEvent]&&![TWEvent currentEvent].stopDate) {
-                    //previous event not complete normally, stop it.
-                    [TWEvent stopEvent:[TWEvent currentEvent]];
-                }
                 [self.clock setCLockDefaultDate:[[HACClockDate alloc] initWithHour:0 minute:0 second:0 weekday:1]];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
                 [STPopupController popupViewControllerName:@"TWClockSetting" inViewController:self.ctrl];
@@ -211,6 +168,13 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
                 break;
             }
         }
+    } else if ([keyPath isEqualToString:@"remainderSeconds"]) {
+        if (!date) {
+            date = [[HACClockDate alloc] initWithHour:0 minute:_wsm.remainderSeconds/60 second:_wsm.remainderSeconds%60 weekday:1];
+        } else{
+            [date updateWithHour:0 minute:_wsm.remainderSeconds/60 second:_wsm.remainderSeconds%60 weekday:1];
+        }
+        [self.clock setClockDate:date];
     }
 }
 @end

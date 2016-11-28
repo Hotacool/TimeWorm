@@ -8,6 +8,7 @@
 
 #import "TWEvent.h"
 #import "TWDBManager.h"
+#import "TWSet.h"
 
 @interface TWEvent ()
 @property (nonatomic, strong) TWModelEvent *curEvent;
@@ -36,7 +37,7 @@ HAC_SINGLETON_IMPLEMENT(TWEvent)
     TWModelEvent *event = [TWModelEvent new];
     event.timerId = tid;
     event.startDate = [NSDate date];
-//    event.name = [NSString stringWithFormat:@"%@_Pause",[NSDate date]];
+    event.name = [TWSet currentSet].defaultEventName;
     return [self createEvent:event];
 }
 + (BOOL)updateEvent:(TWModelEvent*)event {

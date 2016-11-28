@@ -7,6 +7,7 @@
 //
 
 #import "TWBaseViewModel.h"
+#import "TWModelTimer.h"
 
 typedef  NS_ENUM(NSUInteger, WorkSceneModelState) {
     WorkSceneModelStateNone = 0,
@@ -17,4 +18,9 @@ typedef  NS_ENUM(NSUInteger, WorkSceneModelState) {
 };
 @interface WorkSceneModel : TWBaseViewModel
 @property (nonatomic, assign) WorkSceneModelState state;
+@property (nonatomic, assign) NSUInteger remainderSeconds;
+
+- (TWModelTimer*)currentTimer;
+- (void)startTimer;
+- (void)clearData ;
 @end

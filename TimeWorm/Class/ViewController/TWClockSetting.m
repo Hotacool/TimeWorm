@@ -12,6 +12,7 @@
 #import "TWMoreInfoPage.h"
 #import "TWTimer.h"
 #import "TWEvent.h"
+#import "TWSet.h"
 
 @interface TWClockSetting () <STClockViewDelegate, TWTimerObserver>
 
@@ -91,7 +92,7 @@
 
 #pragma mark -- STClockViewDelegate
 - (void)clockView:(STClockView *)clockView startTimerWithSeconds:(NSUInteger)seconds {
-    curTimer = [TWTimer createTimerWithName:@"clockTimer" seconds:(int)seconds];
+    curTimer = [TWTimer createTimerWithName:[TWSet currentSet].defaultTimerName seconds:(int)seconds];
     [TWTimer activeTimer:curTimer];
 
 }
