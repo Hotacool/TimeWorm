@@ -80,6 +80,9 @@
 		FA8545661DE7DA5E00A71FC3 /* HACStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8545651DE7DA5E00A71FC3 /* HACStepper.m */; };
 		FA8545691DE7E39C00A71FC3 /* HACStepperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8545681DE7E39C00A71FC3 /* HACStepperTableViewCell.m */; };
 		FA85456F1DE8163A00A71FC3 /* HACTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA85456E1DE8163A00A71FC3 /* HACTextTableViewCell.m */; };
+		FA884E991DED8247001B5654 /* MTKDeallocator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA884E8E1DED8247001B5654 /* MTKDeallocator.m */; };
+		FA884E9A1DED8247001B5654 /* MTKObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FA884E901DED8247001B5654 /* MTKObserver.m */; };
+		FA884E9B1DED8247001B5654 /* NSObject+MTKObserving.m in Sources */ = {isa = PBXBuildFile; fileRef = FA884E941DED8247001B5654 /* NSObject+MTKObserving.m */; };
 		FA8C53171D7D07C000F96ED5 /* TWUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C53161D7D07C000F96ED5 /* TWUtility.m */; };
 		FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C531A1D7D613800F96ED5 /* TWClockSetting.m */; };
 		FA8C531F1D7D6A7900F96ED5 /* STTimerRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C531E1D7D6A7900F96ED5 /* STTimerRulerView.m */; };
@@ -316,6 +319,17 @@
 		FA8545681DE7E39C00A71FC3 /* HACStepperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACStepperTableViewCell.m; sourceTree = "<group>"; };
 		FA85456D1DE8163A00A71FC3 /* HACTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACTextTableViewCell.h; sourceTree = "<group>"; };
 		FA85456E1DE8163A00A71FC3 /* HACTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACTextTableViewCell.m; sourceTree = "<group>"; };
+		FA884E8D1DED8247001B5654 /* MTKDeallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTKDeallocator.h; sourceTree = "<group>"; };
+		FA884E8E1DED8247001B5654 /* MTKDeallocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTKDeallocator.m; sourceTree = "<group>"; };
+		FA884E8F1DED8247001B5654 /* MTKObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTKObserver.h; sourceTree = "<group>"; };
+		FA884E901DED8247001B5654 /* MTKObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTKObserver.m; sourceTree = "<group>"; };
+		FA884E911DED8247001B5654 /* MTKObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTKObserving.h; sourceTree = "<group>"; };
+		FA884E921DED8247001B5654 /* MTKObservingMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTKObservingMacros.h; sourceTree = "<group>"; };
+		FA884E931DED8247001B5654 /* NSObject+MTKObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MTKObserving.h"; sourceTree = "<group>"; };
+		FA884E941DED8247001B5654 /* NSObject+MTKObserving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MTKObserving.m"; sourceTree = "<group>"; };
+		FA884E961DED8247001B5654 /* keypath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keypath.h; sourceTree = "<group>"; };
+		FA884E971DED8247001B5654 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
+		FA884E981DED8247001B5654 /* scope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scope.h; sourceTree = "<group>"; };
 		FA8C53151D7D07C000F96ED5 /* TWUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWUtility.h; sourceTree = "<group>"; };
 		FA8C53161D7D07C000F96ED5 /* TWUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWUtility.m; sourceTree = "<group>"; };
 		FA8C53191D7D613800F96ED5 /* TWClockSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWClockSetting.h; sourceTree = "<group>"; };
@@ -818,9 +832,36 @@
 			path = CommonView;
 			sourceTree = "<group>";
 		};
+		FA884E8C1DED8247001B5654 /* KVOBlock */ = {
+			isa = PBXGroup;
+			children = (
+				FA884E8D1DED8247001B5654 /* MTKDeallocator.h */,
+				FA884E8E1DED8247001B5654 /* MTKDeallocator.m */,
+				FA884E8F1DED8247001B5654 /* MTKObserver.h */,
+				FA884E901DED8247001B5654 /* MTKObserver.m */,
+				FA884E911DED8247001B5654 /* MTKObserving.h */,
+				FA884E921DED8247001B5654 /* MTKObservingMacros.h */,
+				FA884E931DED8247001B5654 /* NSObject+MTKObserving.h */,
+				FA884E941DED8247001B5654 /* NSObject+MTKObserving.m */,
+				FA884E951DED8247001B5654 /* Utilities */,
+			);
+			path = KVOBlock;
+			sourceTree = "<group>";
+		};
+		FA884E951DED8247001B5654 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FA884E961DED8247001B5654 /* keypath.h */,
+				FA884E971DED8247001B5654 /* metamacros.h */,
+				FA884E981DED8247001B5654 /* scope.h */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		FA8C53141D7D078D00F96ED5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				FA884E8C1DED8247001B5654 /* KVOBlock */,
 				FA6A02061DC0A9AB0034201E /* NSDate+CL.h */,
 				FA6A02071DC0A9AB0034201E /* NSDate+CL.m */,
 				FA6A02081DC0A9AB0034201E /* NSDictionary+CL.h */,
@@ -1191,6 +1232,7 @@
 				FA8C54DE1D7FC53400F96ED5 /* TWDBManager.m in Sources */,
 				FA4AE6A21D9264C800505B7E /* TWEvent.m in Sources */,
 				FA6A02041DC0A7120034201E /* DailyCalendarView.m in Sources */,
+				FA884E9A1DED8247001B5654 /* MTKObserver.m in Sources */,
 				FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */,
 				FA0E00061D752B100080759D /* HeroSprite.m in Sources */,
 				FAAA36781DC1A0FD001ABC6C /* RecordScene.m in Sources */,
@@ -1207,6 +1249,7 @@
 				FA0E00261D7565030080759D /* TWCommandHomeScene.m in Sources */,
 				FA8006A61D7041A30071571C /* ViewController.m in Sources */,
 				FA8C54E41D7FEAD300F96ED5 /* TWModel.m in Sources */,
+				FA884E991DED8247001B5654 /* MTKDeallocator.m in Sources */,
 				FA8C532B1D7D6EA900F96ED5 /* STTimerClockView.m in Sources */,
 				FA0EFFC81D7408650080759D /* OLImage.m in Sources */,
 				FA0E00291D756DEB0080759D /* TWCommandCommon.m in Sources */,
@@ -1250,6 +1293,7 @@
 				FA85455D1DE6F19700A71FC3 /* SetDefault.m in Sources */,
 				FA0E012B1D7954330080759D /* WorkSceneModel.m in Sources */,
 				FA0EFFE01D7420020080759D /* HomeViewControllerModel.m in Sources */,
+				FA884E9B1DED8247001B5654 /* NSObject+MTKObserving.m in Sources */,
 				FA8C53221D7D6B5400F96ED5 /* UIView+HACUtils.m in Sources */,
 				FA8C53171D7D07C000F96ED5 /* TWUtility.m in Sources */,
 				FABBBC311D86A65A004365F4 /* STPopupController+HAC.m in Sources */,

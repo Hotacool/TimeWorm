@@ -34,6 +34,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
         [self.wsm attatchCommand:NO];
         [self.wsm removeObserver:self forKeyPath:@"state"];
         [self.wsm removeObserver:self forKeyPath:@"remainderSeconds"];
+        [self.wsm removeObserver:self forKeyPath:@"errorCode"];
     }
 }
 
@@ -42,6 +43,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
         _wsm = (WorkSceneModel *)self.viewModel;
         [_wsm addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
         [_wsm addObserver:self forKeyPath:@"remainderSeconds" options:NSKeyValueObservingOptionNew context:nil];
+        [_wsm addObserver:self forKeyPath:@"errorCode" options:NSKeyValueObservingOptionNew context:nil];
         [_wsm attatchCommand:YES];
         [self setUIComponents];
     }
@@ -132,6 +134,11 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 }
 
 #pragma mark -- KVO
+- (void)registeKVO {
+    
+}
+
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"state"]) {
         switch (self.wsm.state) {
@@ -151,10 +158,6 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
                 break;
             }
             case WorkSceneModelStateEvent: {
-                if (_wsm.currentTimer.state != TWTimerStatePause) {
-                    [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"create a new timer", @"") doText:nil doBlock:nil];
-                    return;
-                }
                 [hero performAction:@"applaud" withEnd:nil];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"继续" atIndex:3];
                 [STPopupController popupViewControllerName:@"TWEventSetting" inViewController:self.ctrl];
@@ -175,6 +178,10 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
             [date updateWithHour:0 minute:_wsm.remainderSeconds/60 second:_wsm.remainderSeconds%60 weekday:1];
         }
         [self.clock setClockDate:date];
+    } else if ([keyPath isEqualToString:@"errorCode"]) {
+        if (_wsm.errorCode == WorkSceneErrorNeedNewTimer) {
+            [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"create a new timer", @"") doText:nil doBlock:nil];
+        }
     }
 }
 @end

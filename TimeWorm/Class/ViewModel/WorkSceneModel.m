@@ -18,56 +18,64 @@
     BOOL isPause;//menu是否显示的是“暂停”
 }
 
-- (void)setState:(WorkSceneModelState)state {
+- (void)switchState:(WorkSceneModelState)state {
     switch (state) {
         case WorkSceneModelStateNone: {
             break;
         }
         case WorkSceneModelStateWorking: {
-            if ([TWTimer currentTimer].state) {
-                <#statements#>
-            }
-            if ([TWTimer currentTimer].state&TWTimerStatePause) {
-                //pause->restart，stop event(complete).
+            if (self.currentTimer.state&TWTimerStatePause) {
+                // pause -> working
                 [TWEvent stopEvent:[TWEvent currentEvent]];
+            } else if (self.currentTimer.state&TWTimerStateSilent) {
+                // None(silent) -> working
+            } else {
+                self.errorCode = WorkSceneErrorNeedNewTimer;
+                return;
             }
             [TWTimer activeTimer:[TWTimer currentTimer]];
             break;
         }
         case WorkSceneModelStatePause: {
-            if (!([TWTimer currentTimer].state&TWTimerStateFlow)) {
+            if (self.currentTimer.state&TWTimerStateFlow) {
+                // flow -> pause
+                [TWTimer pauseTimer:[TWTimer currentTimer]];
+                [TWEvent createDefaultEventWithTimerId:[TWTimer currentTimer].ID];
+            } else {
+                self.errorCode = WorkSceneErrorNeedNewTimer;
                 return;
             }
-            [TWTimer pauseTimer:[TWTimer currentTimer]];
-            [TWEvent createDefaultEventWithTimerId:[TWTimer currentTimer].ID];
             break;
         }
         case WorkSceneModelStateEvent: {
-            switch ([TWTimer currentTimer].state) {
-                case TWTimerStateFlow: {
-                    [TWTimer pauseTimer:[TWTimer currentTimer]];
-                    [TWEvent createDefaultEventWithTimerId:[TWTimer currentTimer].ID];
-                    break;
-                }
-                default:
-                    break;
+            if (self.currentTimer.state&TWTimerStateFlow) {
+                // working -> event
+                [TWTimer pauseTimer:[TWTimer currentTimer]];
+                [TWEvent createDefaultEventWithTimerId:[TWTimer currentTimer].ID];
+            } else if (self.currentTimer.state&TWTimerStatePause) {
+                // pause -> event
+            } else {
+                self.errorCode = WorkSceneErrorNeedNewTimer;
+                return;
             }
             break;
         }
         case WorkSceneModelStateReset: {
-            if ([TWTimer currentTimer].state&TWTimerStateEnd) {
-                return;
+            if (self.currentTimer.state&TWTimerStateSilent) {
+                // None(silent) -> reset
+            } else if (self.currentTimer.state&TWTimerStateFlow) {
+                // working -> reset
+            } else if (self.currentTimer.state&TWTimerStatePause) {
+                // pause -> reset
+                [TWEvent stopEvent:[TWEvent currentEvent]];
+            } else {
             }
             [TWTimer resetTimer:[TWTimer currentTimer]];
-            if ([TWEvent currentEvent]&&![TWEvent currentEvent].stopDate) {
-                //previous event not complete normally, stop it.
-                [TWEvent stopEvent:[TWEvent currentEvent]];
-            }
             break;
         }
     }
     // set state
-    _state = state;
+    self.state = state;
 }
 
 - (TWModelTimer *)currentTimer {
@@ -87,7 +95,7 @@
     //TWTimer
     [TWTimer createDefaultTimer];
     [TWTimer attatchObserver2Timer:self];
-    [self setState:WorkSceneModelStateWorking];
+    [self switchState:WorkSceneModelStateWorking];
 }
 
 - (void)tickTime {
@@ -97,23 +105,26 @@
 #pragma mark -- command action
 - (void)response2workScenePause {
     DDLogInfo(@"%s", __func__);
-    if (isPause) {
-        self.state = WorkSceneModelStateWorking;
+    if (isPause && self.currentTimer.state&TWTimerStatePause) {
+        [self switchState:WorkSceneModelStateWorking];
+    } else if (!isPause && self.currentTimer.state&TWTimerStateFlow) {
+        [self switchState:WorkSceneModelStatePause];
     } else {
-        self.state = WorkSceneModelStatePause;
+        self.errorCode = WorkSceneErrorNeedNewTimer;
+        return;
     }
     isPause = isPause?NO:YES;
 }
 
 - (void)response2workSceneEvent {
     DDLogInfo(@"%s", __func__);
-    self.state = WorkSceneModelStateEvent;
+    [self switchState:WorkSceneModelStateEvent];
     isPause = YES;
 }
 
 - (void)response2workSceneReset {
     DDLogInfo(@"%s", __func__);
-    self.state = WorkSceneModelStateReset;
+    [self switchState:WorkSceneModelStateReset];
     isPause = NO;
 }
 
