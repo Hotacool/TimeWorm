@@ -70,7 +70,9 @@
 @property (nonatomic, strong)NSArray *weekArray;
 @end
 
-@implementation HACClockTimer
+@implementation HACClockTimer {
+    NSInteger curState;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self=[super initWithFrame:frame]) {
@@ -206,7 +208,7 @@
         [self setDigit:date.minute % 10 forView:self.digitViews[1]];
         [self setDigit:date.second / 10 forView:self.digitViews[2]];
         [self setDigit:date.second % 10 forView:self.digitViews[3]];
-        [self setWeekday:date.weekday];
+        [self switchInfoLabel2State:date.weekday];
         [self setColon];
     }];
 }
@@ -216,5 +218,13 @@
     [self.colonViews enumerateObjectsUsingBlock:^(UIView *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.alpha = 1;
     }];
+}
+
+- (void)switchInfoLabel2State:(NSInteger)state {
+    if (curState == state || state > self.weekArray.count || state < 1) {
+        return;
+    }
+    [self setWeekday:state];
+    curState = state;
 }
 @end

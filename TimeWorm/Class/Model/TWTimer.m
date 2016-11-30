@@ -173,14 +173,15 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
 
 - (void)timeDown{
     self.curTimer.remainderSeconds--;
-    [self.observers enumerateObjectsUsingBlock:^(id<TWTimerObserver>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [obj tickTime];
-    }];
     
     if (self.curTimer.remainderSeconds==0) {
         [TWTimer endTimer:self.curTimer];
         [self stopTime];
     }
+    [self.observers enumerateObjectsUsingBlock:^(id<TWTimerObserver>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj tickTime];
+    }];
+    
 }
 #pragma mark -- db ope
 - (void)insertNewTimer:(TWModelTimer*)timer {

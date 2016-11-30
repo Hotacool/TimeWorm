@@ -134,11 +134,6 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 }
 
 #pragma mark -- KVO
-- (void)registeKVO {
-    
-}
-
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"state"]) {
         switch (self.wsm.state) {
@@ -148,26 +143,35 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
             case WorkSceneModelStateWorking: {
                 [hero performAction:@"think" withEnd:nil];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
+                [self.clock switchInfoLabel2State:1];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"work start", @"") doText:nil doBlock:nil];
                 break;
             }
             case WorkSceneModelStatePause: {
                 [hero performAction:@"applaud" withEnd:nil];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"继续" atIndex:3];
+                [self.clock switchInfoLabel2State:2];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"pause", @"") doText:nil doBlock:nil];
                 break;
             }
             case WorkSceneModelStateEvent: {
                 [hero performAction:@"applaud" withEnd:nil];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"继续" atIndex:3];
+                [self.clock switchInfoLabel2State:2];
                 [STPopupController popupViewControllerName:@"TWEventSetting" inViewController:self.ctrl];
                 break;
             }
             case WorkSceneModelStateReset: {
                 [self.clock setCLockDefaultDate:[[HACClockDate alloc] initWithHour:0 minute:0 second:0 weekday:1]];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
+                [self.clock switchInfoLabel2State:3];
                 [STPopupController popupViewControllerName:@"TWClockSetting" inViewController:self.ctrl];
                 [hero performAction:@"think" withEnd:nil];
+                break;
+            }
+            case WorkSceneModelStateEnd: {
+                [self.clock switchInfoLabel2State:3];
+                [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"timer finish!", @"") doText:nil doBlock:nil];
                 break;
             }
         }

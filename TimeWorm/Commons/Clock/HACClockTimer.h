@@ -22,4 +22,5 @@
 @interface HACClockTimer : QBFlatButton
 - (void)setClockDate:(HACClockDate*)date ;
 - (void)setCLockDefaultDate:(HACClockDate*)date ;
+- (void)switchInfoLabel2State:(NSInteger)state ;
 @end

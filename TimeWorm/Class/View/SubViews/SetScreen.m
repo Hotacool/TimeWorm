@@ -157,6 +157,11 @@
             cell.changeBlk = ^(BOOL isOn) {
                 NSLog(@"switch value: %d", isOn);
                 [TWSet updateSetColumn:@"keepAwake" withObj:@(isOn)];
+                if (isOn) {
+                    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+                } else {
+                    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+                }
             };
         }]];
     }]];

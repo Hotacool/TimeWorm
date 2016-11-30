@@ -73,6 +73,10 @@
             [TWTimer resetTimer:[TWTimer currentTimer]];
             break;
         }
+        case WorkSceneModelStateEnd: {
+            // timer auto stop, do nothing
+            break;
+        }
     }
     // set state
     self.state = state;
@@ -100,6 +104,9 @@
 
 - (void)tickTime {
     self.remainderSeconds = [TWTimer currentTimer].remainderSeconds;
+    if (self.remainderSeconds == 0) {
+        [self switchState:WorkSceneModelStateEnd];
+    }
 }
 
 #pragma mark -- command action

@@ -42,7 +42,6 @@ static const int SetSceneSegmentCount = 4;
 }
 
 - (void)loadData {
-    [TWSet initializeTWSet];
     subViewDic = [NSMutableDictionary dictionaryWithCapacity:SetSceneSegmentCount];
     scrollSubViews = [NSMutableArray arrayWithCapacity:3];
     scrollSubViewCtrl = [NSMutableArray arrayWithCapacity:SetSceneSegmentCount];

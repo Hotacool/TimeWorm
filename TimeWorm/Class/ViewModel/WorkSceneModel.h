@@ -16,7 +16,8 @@ typedef  NS_ENUM(NSUInteger, WorkSceneModelState) {
     WorkSceneModelStateWorking,
     WorkSceneModelStatePause,
     WorkSceneModelStateEvent,
-    WorkSceneModelStateReset
+    WorkSceneModelStateReset,
+    WorkSceneModelStateEnd
 };
 @interface WorkSceneModel : TWBaseViewModel
 @property (nonatomic, assign) WorkSceneModelState state;

@@ -7,30 +7,14 @@
 //
 
 #import "AppDelegate.h"
-#import "DDTTYLogger.h"
-#import "FLEXManager.h"
-
 #import "HomeViewController.h"
-
-#import "TWCommandHomeScene.h"
-#import "TWCommandWorkScene.h"
-#import "TWCommandCommon.h"
-#import "TWDBManager.h"
+#import "AppConfigManager.h"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
-
-- (void)config {
-    //ddlog
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
-    //flex
-    [[FLEXManager sharedManager] showExplorer];
-}
 
 - (void)loadInterface {
     HomeViewController *homeVC = [[HomeViewController alloc] init];
@@ -40,22 +24,9 @@
     [self.window makeKeyAndVisible];
 }
 
-- (void)loadCommands {
-    [TWCommandCenter loadCommad:[TWCommandHomeScene new]] ;
-    [TWCommandCenter loadCommad:[TWCommandCommon new]] ;
-    [TWCommandCenter loadCommad:[TWCommandWorkScene new]];
-}
-
-- (void)loadDB {
-    [TWDBManager initializeDB];
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [self config];
-    [self loadCommands];
-    [self loadInterface];
-    [self loadDB];
+    [AppConfigManager loadConfig];
     return YES;
 }
 
