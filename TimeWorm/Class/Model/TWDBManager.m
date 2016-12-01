@@ -35,6 +35,7 @@ static FMDatabaseQueue* dbqueue;
             if ([s next]) {
                 version = [s intForColumnIndex:0];
             }
+            [s close];
             int app_ver = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] intValue];
             NSString *sqlPath;
             if (version==app_ver) {

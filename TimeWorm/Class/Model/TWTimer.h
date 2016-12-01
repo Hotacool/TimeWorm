@@ -55,6 +55,8 @@
  */
 + (BOOL)updateTimer:(TWModelTimer*)timer ;
 
++ (BOOL)endTimer:(TWModelTimer*)timer ;
+
 + (void)attatchObserver2Timer:(id<TWTimerObserver>)observer timer:(TWModelTimer*)timer ;
 
 + (void)removeObserverFromTimer:(id<TWTimerObserver>)observer timer:(TWModelTimer*)timer ;

@@ -174,7 +174,8 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
 - (void)timeDown{
     self.curTimer.remainderSeconds--;
     
-    if (self.curTimer.remainderSeconds==0) {
+    if (self.curTimer.remainderSeconds <= 0) {
+        self.curTimer.remainderSeconds = 0;
         [TWTimer endTimer:self.curTimer];
         [self stopTime];
     }

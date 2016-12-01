@@ -25,5 +25,5 @@
 @property (nonatomic, strong, readonly) QBFlatButton *timeBtn;
 
 - (void)setClockSeconds:(NSUInteger)seconds ;
-- (void)tickTime ;
+- (void)tickTime:(NSUInteger)seconds ;
 @end

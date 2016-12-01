@@ -106,6 +106,7 @@
 
 #pragma mark -- Timer
 - (void)tickTime {
-    [self.clockView tickTime];
+    int remainder = [TWTimer currentTimer].remainderSeconds <= 0 ? 0 : [TWTimer currentTimer].remainderSeconds;
+    [self.clockView tickTime:remainder];
 }
 @end

@@ -128,8 +128,8 @@
 }
 
 #pragma mark - time
-- (void)tickTime {
-    _leftSecond--;
+- (void)tickTime:(NSUInteger)seconds {
+    _leftSecond = seconds;
     
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld",_leftSecond/60,_leftSecond%60];
     

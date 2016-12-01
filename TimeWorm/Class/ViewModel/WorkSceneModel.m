@@ -9,6 +9,7 @@
 #import "WorkSceneModel.h"
 #import "TWTimer.h"
 #import "TWEvent.h"
+#import "TWSet.h"
 
 @interface WorkSceneModel() <TWTimerObserver>
 
@@ -16,6 +17,27 @@
 
 @implementation WorkSceneModel {
     BOOL isPause;//menu是否显示的是“暂停”
+    NSDate *enterBackgroundTimestamp;
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (void)setUp {
+    //receive notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(becomeActiveNotification:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(enterBackgroudNotification:)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
 }
 
 - (void)switchState:(WorkSceneModelState)state {
@@ -92,6 +114,7 @@
     if ([TWEvent currentEvent]&&![TWEvent currentEvent].stopDate) {
         [TWEvent stopEvent:[TWEvent currentEvent]];
     }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark -- timer
@@ -103,9 +126,11 @@
 }
 
 - (void)tickTime {
-    self.remainderSeconds = [TWTimer currentTimer].remainderSeconds;
-    if (self.remainderSeconds == 0) {
+    if (self.currentTimer.remainderSeconds <= 0) {
         [self switchState:WorkSceneModelStateEnd];
+        self.remainderSeconds = 0;
+    } else {
+        self.remainderSeconds = self.currentTimer.remainderSeconds;
     }
 }
 
@@ -130,11 +155,53 @@
 }
 
 - (void)response2workSceneReset {
-    DDLogInfo(@"%s", __func__);
+    sfuc
     [self switchState:WorkSceneModelStateReset];
     isPause = NO;
 }
 
-#pragma mark -- DB Ope
+#pragma mark -- 前后台
+- (void)becomeActiveNotification:(NSNotification*)notify {
+    sfuc
+    if (!enterBackgroundTimestamp) {
+        DDLogError(@"enterBackgroundTimestamp is nil");
+        return;
+    }
+    NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:enterBackgroundTimestamp];
+    int seconds = interval;
+    if ([TWSet currentSet].keepTimer) {
+        if (self.currentTimer && (self.currentTimer.state&TWTimerStateFlow)) {
+            self.currentTimer.remainderSeconds -= seconds;
+        }
+    } else {
+        // edit event
+        NSMutableString *information = [NSMutableString stringWithString:[TWEvent currentEvent].information?:@""];
+        [information appendFormat:@"\n comming back after %d seconds", seconds];
+        [TWEvent currentEvent].information = information;
+        [TWEvent updateEvent:[TWEvent currentEvent]];
+    }
+    enterBackgroundTimestamp = nil;
+    
+}
+- (void)enterBackgroudNotification:(NSNotification*)notify {
+    sfuc
+    if ([TWSet currentSet].keepTimer) {
+        enterBackgroundTimestamp = [NSDate date];
+    } else {
+        //自动生成event
+        if (self.currentTimer.state&TWTimerStateFlow) {
+            enterBackgroundTimestamp = [NSDate date];
+            // working -> event
+            [TWTimer pauseTimer:[TWTimer currentTimer]];
+            TWModelEvent *event = [TWModelEvent new];
+            event.timerId = self.currentTimer.ID;
+            event.startDate = enterBackgroundTimestamp;
+            event.name = NSLocalizedString(@"enter background", @"");
+            [TWEvent createEvent:event];
+            self.state = WorkSceneModelStatePause;
+            isPause = YES;
+        }
+    }
+}
 
 @end
