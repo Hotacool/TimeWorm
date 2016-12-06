@@ -10,6 +10,7 @@
 		0ACA595A0571E11FF194985B /* libPods-TimeWorm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D32D523FD9D5C012453596A /* libPods-TimeWorm.a */; };
 		FA0BD4351DB772430060803F /* TWEventList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4341DB772430060803F /* TWEventList.m */; };
 		FA0BD4381DB7731D0060803F /* HACFoldTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4371DB7731D0060803F /* HACFoldTableView.m */; };
+		FA0BD9AE1DF6B616002AAE3F /* TWEventDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD9AD1DF6B616002AAE3F /* TWEventDetailView.m */; };
 		FA0E00031D7528AC0080759D /* TWBaseSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00021D7528AC0080759D /* TWBaseSprite.m */; };
 		FA0E00061D752B100080759D /* HeroSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00051D752B100080759D /* HeroSprite.m */; };
 		FA0E000D1D7558300080759D /* TWCommandCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E000C1D7558300080759D /* TWCommandCenter.m */; };
@@ -189,6 +190,8 @@
 		FA0BD4341DB772430060803F /* TWEventList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEventList.m; sourceTree = "<group>"; };
 		FA0BD4361DB7731D0060803F /* HACFoldTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACFoldTableView.h; sourceTree = "<group>"; };
 		FA0BD4371DB7731D0060803F /* HACFoldTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACFoldTableView.m; sourceTree = "<group>"; };
+		FA0BD9AC1DF6B616002AAE3F /* TWEventDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEventDetailView.h; sourceTree = "<group>"; };
+		FA0BD9AD1DF6B616002AAE3F /* TWEventDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEventDetailView.m; sourceTree = "<group>"; };
 		FA0E00011D7528AC0080759D /* TWBaseSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBaseSprite.h; sourceTree = "<group>"; };
 		FA0E00021D7528AC0080759D /* TWBaseSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWBaseSprite.m; sourceTree = "<group>"; };
 		FA0E00041D752B100080759D /* HeroSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroSprite.h; sourceTree = "<group>"; };
@@ -735,6 +738,8 @@
 			children = (
 				FA75D35F1D9129D800E63CC9 /* TWTextView.h */,
 				FA75D3601D9129D800E63CC9 /* TWTextView.m */,
+				FA0BD9AC1DF6B616002AAE3F /* TWEventDetailView.h */,
+				FA0BD9AD1DF6B616002AAE3F /* TWEventDetailView.m */,
 			);
 			path = TextView;
 			sourceTree = "<group>";
@@ -1203,6 +1208,7 @@
 				FA75D2E61D8FDB2F00E63CC9 /* TWTagPage.m in Sources */,
 				FA49AA1B1DC322CA00CCC990 /* RelaxScene.m in Sources */,
 				FA8C54EA1D8016EB00F96ED5 /* TWCommandWorkScene.m in Sources */,
+				FA0BD9AE1DF6B616002AAE3F /* TWEventDetailView.m in Sources */,
 				FA8C53281D7D6E0100F96ED5 /* STClockView.m in Sources */,
 				FA0E00261D7565030080759D /* TWCommandHomeScene.m in Sources */,
 				FA8C54E41D7FEAD300F96ED5 /* TWModel.m in Sources */,

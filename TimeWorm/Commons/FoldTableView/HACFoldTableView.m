@@ -107,7 +107,6 @@ static const float HACFoldTableViewAniDuration = 0.5;
     openCellIndexPath = indexPath;
     [openCellContent removeFromSuperview];
     openCellContent.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y - self.tableView.contentOffset.y, openCellContent.frame.size.width, openCellContent.frame.size.height);
-    openCellContent.backgroundColor = [UIColor lightGrayColor];
     [openCellContent addGestureRecognizer:self.tapGesture];
     [self addSubview:openCellContent];
     
@@ -144,13 +143,14 @@ static const float HACFoldTableViewAniDuration = 0.5;
         } completion:^(BOOL finished) {
             [openCellContent removeFromSuperview];
             [cell addSubview:openCellContent];
-            openCellContent.backgroundColor = self.tableView.backgroundColor;
             [openCellContent removeGestureRecognizer:self.tapGesture];
             NSIndexPath *tmp = openCellIndexPath;
             openCellIndexPath = nil;
             openCellContent = nil;
             [openDetailView removeFromSuperview];
             openDetailView = nil;
+            // reload cell
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:tmp] withRowAnimation:UITableViewRowAnimationNone];
             if ([self.delegate respondsToSelector:@selector(tableView:didFoldAtIndexPath:)]) {
                 [self.delegate tableView:self didFoldAtIndexPath:tmp];
             }
@@ -160,6 +160,10 @@ static const float HACFoldTableViewAniDuration = 0.5;
 
 - (void)reload {
     [self.tableView reloadData];
+}
+
+- (UIView *)getOpenContent {
+    return openCellContent;
 }
 
 @end

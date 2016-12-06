@@ -36,3 +36,8 @@
 "Notification" = "Notification";
 "Account" = "Account";
 "About" = "About";
+// event default title
+"Distractions" = "Distractions";
+"Telephone" = "Telephone";
+"Meeting" = "Meeting";
+"Relax" = "Relax";

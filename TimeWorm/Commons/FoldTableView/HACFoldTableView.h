@@ -31,4 +31,5 @@
 - (void)openCellAtIndexPath:(NSIndexPath *)indexPath ;
 - (void)foldCell ;
 - (void)reload;
+- (UIView *)getOpenContent;
 @end

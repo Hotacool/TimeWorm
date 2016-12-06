@@ -35,3 +35,8 @@
 "Notification" = "消息";
 "Account" = "账户";
 "About" = "关于";
+// event default title
+"Distractions" = "干扰";
+"Telephone" = "电话";
+"Meeting" = "会议";
+"Relax" = "放松";

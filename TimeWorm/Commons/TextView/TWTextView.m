@@ -17,6 +17,7 @@
 
 @implementation TWTextView {
     BOOL showingPlaceholder;
+    NSString *_text;
 }
 
 - (instancetype)init {
@@ -75,6 +76,9 @@
 }
 
 - (NSString *)text {
+    if (showingPlaceholder) {
+        return nil;
+    }
     return self.textView.text;
 }
 
@@ -87,16 +91,29 @@
 
 - (void)setPlaceHolder:(NSString *)placeHolder {
     _placeHolder = placeHolder;
+    showingPlaceholder = YES;
     self.textView.text = _placeHolder;
+    self.textView.textColor = [UIColor lightGrayColor];
+}
+
+- (void)setText:(NSString *)text {
+    _text = text;
+    if (text.length < 1) {
+        [self setPlaceHolder:self.placeHolder];
+    } else {
+        self.textView.text = text;
+        [self.textView setTextColor:[UIColor blackColor]];
+        showingPlaceholder = NO;
+    }
 }
 
 #pragma mark - UITextView Delegate Methods
 -(void)textViewDidBeginEditing:(UITextView *)textView {
-    if(showingPlaceholder) {
+    if(showingPlaceholder && self.text.length < 1) {
         [textView setText:@""];
         [textView setTextColor:[UIColor blackColor]];
-        showingPlaceholder = NO;
     }
+    showingPlaceholder = NO;
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView {

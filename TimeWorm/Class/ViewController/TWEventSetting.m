@@ -145,7 +145,7 @@
             [self.tagEditor addTags:[TWUtility transformString2Tags:curEvent.name]];
             [cell.contentView addSubview:self.tagEditor];
         } else {
-            [self.textView.textView setText:curEvent.information];
+            [self.textView setText:curEvent.information];
             [cell.contentView addSubview:self.textView];
         }
     }
@@ -170,9 +170,10 @@
         TWTagPage *tagPage = [TWTagPage new];
         [tagPage setDefaultSelectedTags:[self.tagEditor allTags]];
         [tagPage setMaxSelectedTagNumber:self.tagEditor.maxTagsNum];
-        [tagPage setTagsArr:[NSMutableArray arrayWithArray:@[@"哈哈哈"
-                                                             ,@"呵呵呵"
-                                                             ,@"嚯嚯嚯"]]];
+        [tagPage setTagsArr:[NSMutableArray arrayWithArray:@[NSLocalizedString(@"Distractions", @"")
+                                                             ,NSLocalizedString(@"Telephone", @"")
+                                                             ,NSLocalizedString(@"Meeting", @"")
+                                                             ,NSLocalizedString(@"Relax", @"")]]];
         tagPage.delegate = self;
         [self.popupController pushViewController:tagPage animated:YES];
     }
@@ -183,10 +184,11 @@
 - (void)mkTagView:(MKTagView *)tagview sizeChange:(CGRect)newSize {
     self.tagEditor.placeHolder = [NSString stringWithFormat:@"输入标签:(%lu/%lu)",[self.tagEditor allTags].count,self.tagEditor.maxTagsNum];
     //修正cell height
-    if (newSize.size.height > 44) {
+    float cellHeight = [rowHeightArr[0] floatValue];
+    if (newSize.size.height > cellHeight) {
         [rowHeightArr replaceObjectAtIndex:0 withObject:@(newSize.size.height)];
-    } else if (newSize.size.height < 44) {
-        [rowHeightArr replaceObjectAtIndex:0 withObject:@(44)];
+    } else if (newSize.size.height < cellHeight) {
+        [rowHeightArr replaceObjectAtIndex:0 withObject:@(cellHeight)];
     }
     [self.tableView reloadData];
 }

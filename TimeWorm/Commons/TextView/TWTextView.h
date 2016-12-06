@@ -13,4 +13,6 @@
 @property (nonatomic, strong) NSString *placeHolder;
 @property (nonatomic, strong, readonly) NSString *text;
 @property (nonatomic, assign) NSUInteger maxWords;
+
+- (void)setText:(NSString *)text ;
 @end

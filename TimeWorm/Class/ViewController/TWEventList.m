@@ -12,7 +12,11 @@
 #import "TWDBManager.h"
 #import "TWModelEvent.h"
 #import "TWTimer.h"
+#import <pop/POP.h>
+#import "TWEventDetailView.h"
+#import "DateTools.h"
 
+static const NSUInteger TWEventListCellTag = 1000;
 @interface TWEventList () <HACFoldTableViewDelegate, HACFoldTableViewDataSource>
 @property (nonatomic, strong) HACFoldTableView *tableView;
 
@@ -92,23 +96,58 @@
     return eventArr.count;
 }
 - (void)tableView:(HACFoldTableView *)tableView cell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIView *content, *colorLine;
     UILabel *label;
-    if (!(label = [cell.contentView viewWithTag:1001])) {
-        label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-        label.tag = 1001;
-        label.center = cell.contentView.center;
-        [cell.contentView addSubview:label];
+    if (!(content = [cell.contentView viewWithTag:TWEventListCellTag])) {
+        content = [[UIView alloc] initWithFrame:cell.bounds];
+        content.tag = TWEventListCellTag;
+        [cell.contentView addSubview:content];
+        colorLine = [[UIView alloc] initWithFrame:CGRectZero];
+        colorLine.tag = TWEventListCellTag + 1;
+        [content addSubview:colorLine];
+        label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.tag = TWEventListCellTag + 2;
+        [content addSubview:label];
+    } else {
+        colorLine = [content viewWithTag:TWEventListCellTag + 1];
+        label = [content viewWithTag:TWEventListCellTag + 2];
     }
+    
+    colorLine.frame = CGRectMake(0, 0, 5, cell.height);
+    if (indexPath.row % 2 == 0) {
+        colorLine.backgroundColor = HmintD;
+    } else {
+        colorLine.backgroundColor = Hbluejeans;
+    }
+    label.frame = CGRectMake(colorLine.width, 0, cell.width-colorLine.width, cell.height);
+    label.font = HFont(16);
+    label.textAlignment = NSTextAlignmentLeft;
+    label.backgroundColor = Hlightgray;
     [label setText:eventArr[indexPath.row].name];
 }
 
 - (UIView*)tableView:(HACFoldTableView *)tableView detailForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIView *detailView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentSizeInPopup.width, self.contentSizeInPopup.height)];
+    TWEventDetailView *detailView = [[TWEventDetailView alloc] initWithFrame:CGRectMake(0, 0, self.contentSizeInPopup.width, self.contentSizeInPopup.height)];
     detailView.backgroundColor = Hmediumgray;
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    label.text = eventArr[indexPath.row].information;
-    label.center = detailView.center;
-    [detailView addSubview:label];
+    NSDate *sDate = eventArr[indexPath.row].startDate;
+    NSDate *eDate = eventArr[indexPath.row].stopDate;
+    NSString *sdStr;
+    NSString *edStr;
+//    if (sDate) {
+//        if ([sDate isKindOfClass:[NSString class]]) {
+//            sDate = [NSDate dateWithString:(NSString *)sDate formatString:@"yyyy-MM-dd HH:mm:ss"];
+//        }
+//        sdStr = [sDate formattedDateWithStyle:NSDateFormatterFullStyle];
+//    }
+//    if (eDate) {
+//        if ([eDate isKindOfClass:[NSString class]]) {
+//            eDate = [NSDate dateWithString:(NSString *)eDate formatString:@"yyyy-MM-dd HH:mm:ss"];
+//        }
+//        edStr = [eDate formattedDateWithStyle:NSDateFormatterFullStyle];
+//    }
+//    detailView.startTime =[@"start: " stringByAppendingString:sdStr];
+//    detailView.endTime = [@"start: " stringByAppendingString:edStr];
+    detailView.content = eventArr[indexPath.row].information;
     return detailView;
 }
 
@@ -124,6 +163,32 @@
 }
 - (void)tableView:(HACFoldTableView *)tableView didOpenAtIndexPath:(NSIndexPath *)indexPath {
     sfuc
+    UIView *content = [tableView getOpenContent];
+    UIView *colorLine = [content viewWithTag:TWEventListCellTag+1];
+    UILabel *label = [content viewWithTag:TWEventListCellTag+2];
+    if (colorLine) {
+        colorLine.backgroundColor = Hlavander;
+        POPSpringAnimation *ani = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+        ani.fromValue = [NSValue valueWithCGRect:colorLine.frame];
+        ani.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, content.width, content.height)];
+        ani.springSpeed = 6;
+        ani.springBounciness = 16;
+        [colorLine pop_addAnimation:ani forKey:@"TWEventListColorLine"];
+    }
+    if (label) {
+        CGRect tempRect = [label.text boundingRectWithSize:content.bounds.size
+                                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                                attributes:@{NSFontAttributeName: HFont(18)}
+                                                   context:nil];
+        POPSpringAnimation *ani = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+        ani.fromValue = [NSValue valueWithCGPoint:label.center];
+        ani.toValue = [NSValue valueWithCGPoint:CGPointMake(content.width/2 - tempRect.size.width/2 + label.width/2, content.height/2)];
+        ani.springSpeed = 6;
+        ani.springBounciness = 16;
+        [label pop_addAnimation:ani forKey:@"TWEventListLabel"];
+        label.backgroundColor = [UIColor clearColor];
+        label.font = HFont(18);
+    }
 }
 - (void)tableView:(HACFoldTableView *)tableView willFoldAtIndexPath:(NSIndexPath *)indexPath {
     sfuc
