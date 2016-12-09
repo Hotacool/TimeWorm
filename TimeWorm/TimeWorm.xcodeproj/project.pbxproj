@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		0ACA595A0571E11FF194985B /* libPods-TimeWorm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D32D523FD9D5C012453596A /* libPods-TimeWorm.a */; };
+		FA00DE371DFA75CB00BD3D82 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA00DE361DFA75CB00BD3D82 /* GoogleMobileAds.framework */; };
+		FA00DE9D1DFAAB8C00BD3D82 /* SKFoePlane.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00DE891DFAAB8C00BD3D82 /* SKFoePlane.m */; };
+		FA00DE9E1DFAAB8C00BD3D82 /* SKMainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00DE8B1DFAAB8C00BD3D82 /* SKMainScene.m */; };
+		FA00DE9F1DFAAB8C00BD3D82 /* SKSharedAtles.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00DE8D1DFAAB8C00BD3D82 /* SKSharedAtles.m */; };
+		FA00DEA11DFAAB8C00BD3D82 /* bullet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA00DE911DFAAB8C00BD3D82 /* bullet.mp3 */; };
+		FA00DEA21DFAAB8C00BD3D82 /* BurstAircraftPause.png in Resources */ = {isa = PBXBuildFile; fileRef = FA00DE921DFAAB8C00BD3D82 /* BurstAircraftPause.png */; };
+		FA00DEA31DFAAB8C00BD3D82 /* BurstAircraftPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA00DE931DFAAB8C00BD3D82 /* BurstAircraftPause@2x.png */; };
+		FA00DEA41DFAAB8C00BD3D82 /* enemy1_down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA00DE941DFAAB8C00BD3D82 /* enemy1_down.mp3 */; };
+		FA00DEA51DFAAB8C00BD3D82 /* enemy2_down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA00DE951DFAAB8C00BD3D82 /* enemy2_down.mp3 */; };
+		FA00DEA61DFAAB8C00BD3D82 /* enemy2_out.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA00DE961DFAAB8C00BD3D82 /* enemy2_out.mp3 */; };
+		FA00DEA71DFAAB8C00BD3D82 /* enemy3_down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA00DE971DFAAB8C00BD3D82 /* enemy3_down.mp3 */; };
+		FA00DEA81DFAAB8C00BD3D82 /* game_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA00DE981DFAAB8C00BD3D82 /* game_music.mp3 */; };
+		FA00DEA91DFAAB8C00BD3D82 /* game_over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA00DE991DFAAB8C00BD3D82 /* game_over.mp3 */; };
+		FA00DEAA1DFAAB8C00BD3D82 /* gameArts-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA00DE9A1DFAAB8C00BD3D82 /* gameArts-hd.plist */; };
+		FA00DEAB1DFAAB8C00BD3D82 /* gameArts-hd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA00DE9B1DFAAB8C00BD3D82 /* gameArts-hd@2x.png */; };
+		FA00DEAE1DFAAC6100BD3D82 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00DEAD1DFAAC6100BD3D82 /* GameView.m */; };
+		FA00DEB11DFABD5800BD3D82 /* 惊吓.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA00DEAF1DFABD5800BD3D82 /* 惊吓.gif */; };
+		FA00DEB21DFABD5800BD3D82 /* 哭.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA00DEB01DFABD5800BD3D82 /* 哭.gif */; };
 		FA0BD4351DB772430060803F /* TWEventList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4341DB772430060803F /* TWEventList.m */; };
 		FA0BD4381DB7731D0060803F /* HACFoldTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4371DB7731D0060803F /* HACFoldTableView.m */; };
 		FA0BD9AE1DF6B616002AAE3F /* TWEventDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD9AD1DF6B616002AAE3F /* TWEventDetailView.m */; };
@@ -22,15 +40,10 @@
 		FA0E00A51D76CFD70080759D /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00A41D76CFD70080759D /* images.xcassets */; };
 		FA0E00EA1D77C0AE0080759D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00EC1D77C0AE0080759D /* InfoPlist.strings */; };
 		FA0E00F11D77C2420080759D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00F31D77C2420080759D /* Localizable.strings */; };
-		FA0E010E1D77F5C80080759D /* bingo.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FA1D77F5C80080759D /* bingo.gif */; };
-		FA0E010F1D77F5C80080759D /* hi.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FB1D77F5C80080759D /* hi.gif */; };
-		FA0E01101D77F5C80080759D /* OK.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FC1D77F5C80080759D /* OK.gif */; };
-		FA0E01111D77F5C80080759D /* cry.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FD1D77F5C80080759D /* cry.gif */; };
 		FA0E01131D77F5C80080759D /* 喝水.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00FF1D77F5C80080759D /* 喝水.gif */; };
 		FA0E01141D77F5C80080759D /* 害羞.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01001D77F5C80080759D /* 害羞.gif */; };
 		FA0E01151D77F5C80080759D /* 怕.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01011D77F5C80080759D /* 怕.gif */; };
 		FA0E01161D77F5C80080759D /* 思考.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01021D77F5C80080759D /* 思考.gif */; };
-		FA0E01171D77F5C80080759D /* surprise.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01031D77F5C80080759D /* surprise.gif */; };
 		FA0E01191D77F5C80080759D /* 舌头.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01051D77F5C80080759D /* 舌头.gif */; };
 		FA0E011A1D77F5C80080759D /* 跳舞.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E01061D77F5C80080759D /* 跳舞.gif */; };
 		FA0E011E1D77F5C80080759D /* 高兴.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA0E010A1D77F5C80080759D /* 高兴.gif */; };
@@ -187,6 +200,28 @@
 		641F3ABE0873D5EF4AFF6CAA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6E57374C922AB728B7D88378 /* Pods-TimeWorm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeWorm.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-TimeWorm/Pods-TimeWorm.debug.xcconfig"; sourceTree = "<group>"; };
 		F3E9D1892B717A92451E2E4C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA00DE361DFA75CB00BD3D82 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		FA00DE881DFAAB8C00BD3D82 /* SKFoePlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKFoePlane.h; sourceTree = "<group>"; };
+		FA00DE891DFAAB8C00BD3D82 /* SKFoePlane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKFoePlane.m; sourceTree = "<group>"; };
+		FA00DE8A1DFAAB8C00BD3D82 /* SKMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKMainScene.h; sourceTree = "<group>"; };
+		FA00DE8B1DFAAB8C00BD3D82 /* SKMainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMainScene.m; sourceTree = "<group>"; };
+		FA00DE8C1DFAAB8C00BD3D82 /* SKSharedAtles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSharedAtles.h; sourceTree = "<group>"; };
+		FA00DE8D1DFAAB8C00BD3D82 /* SKSharedAtles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSharedAtles.m; sourceTree = "<group>"; };
+		FA00DE911DFAAB8C00BD3D82 /* bullet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bullet.mp3; sourceTree = "<group>"; };
+		FA00DE921DFAAB8C00BD3D82 /* BurstAircraftPause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BurstAircraftPause.png; sourceTree = "<group>"; };
+		FA00DE931DFAAB8C00BD3D82 /* BurstAircraftPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BurstAircraftPause@2x.png"; sourceTree = "<group>"; };
+		FA00DE941DFAAB8C00BD3D82 /* enemy1_down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemy1_down.mp3; sourceTree = "<group>"; };
+		FA00DE951DFAAB8C00BD3D82 /* enemy2_down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemy2_down.mp3; sourceTree = "<group>"; };
+		FA00DE961DFAAB8C00BD3D82 /* enemy2_out.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemy2_out.mp3; sourceTree = "<group>"; };
+		FA00DE971DFAAB8C00BD3D82 /* enemy3_down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemy3_down.mp3; sourceTree = "<group>"; };
+		FA00DE981DFAAB8C00BD3D82 /* game_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_music.mp3; sourceTree = "<group>"; };
+		FA00DE991DFAAB8C00BD3D82 /* game_over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_over.mp3; sourceTree = "<group>"; };
+		FA00DE9A1DFAAB8C00BD3D82 /* gameArts-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "gameArts-hd.plist"; sourceTree = "<group>"; };
+		FA00DE9B1DFAAB8C00BD3D82 /* gameArts-hd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameArts-hd@2x.png"; sourceTree = "<group>"; };
+		FA00DEAC1DFAAC6100BD3D82 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		FA00DEAD1DFAAC6100BD3D82 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		FA00DEAF1DFABD5800BD3D82 /* 惊吓.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "惊吓.gif"; sourceTree = "<group>"; };
+		FA00DEB01DFABD5800BD3D82 /* 哭.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "哭.gif"; sourceTree = "<group>"; };
 		FA0BD4331DB772430060803F /* TWEventList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEventList.h; sourceTree = "<group>"; };
 		FA0BD4341DB772430060803F /* TWEventList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEventList.m; sourceTree = "<group>"; };
 		FA0BD4361DB7731D0060803F /* HACFoldTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACFoldTableView.h; sourceTree = "<group>"; };
@@ -217,15 +252,10 @@
 		FA0E00ED1D77C0B70080759D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		FA0E00F21D77C2420080759D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA0E00F41D77C2430080759D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		FA0E00FA1D77F5C80080759D /* bingo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bingo.gif; sourceTree = "<group>"; };
-		FA0E00FB1D77F5C80080759D /* hi.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hi.gif; sourceTree = "<group>"; };
-		FA0E00FC1D77F5C80080759D /* OK.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = OK.gif; sourceTree = "<group>"; };
-		FA0E00FD1D77F5C80080759D /* cry.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = cry.gif; sourceTree = "<group>"; };
 		FA0E00FF1D77F5C80080759D /* 喝水.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "喝水.gif"; sourceTree = "<group>"; };
 		FA0E01001D77F5C80080759D /* 害羞.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "害羞.gif"; sourceTree = "<group>"; };
 		FA0E01011D77F5C80080759D /* 怕.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "怕.gif"; sourceTree = "<group>"; };
 		FA0E01021D77F5C80080759D /* 思考.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "思考.gif"; sourceTree = "<group>"; };
-		FA0E01031D77F5C80080759D /* surprise.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = surprise.gif; sourceTree = "<group>"; };
 		FA0E01051D77F5C80080759D /* 舌头.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "舌头.gif"; sourceTree = "<group>"; };
 		FA0E01061D77F5C80080759D /* 跳舞.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "跳舞.gif"; sourceTree = "<group>"; };
 		FA0E010A1D77F5C80080759D /* 高兴.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "高兴.gif"; sourceTree = "<group>"; };
@@ -443,6 +473,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA00DE371DFA75CB00BD3D82 /* GoogleMobileAds.framework in Frameworks */,
 				0ACA595A0571E11FF194985B /* libPods-TimeWorm.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,6 +499,54 @@
 				0D32D523FD9D5C012453596A /* libPods-TimeWorm.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA00DE351DFA75CB00BD3D82 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				FA00DE361DFA75CB00BD3D82 /* GoogleMobileAds.framework */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		FA00DE841DFAAB8C00BD3D82 /* 3rdGame */ = {
+			isa = PBXGroup;
+			children = (
+				FA00DE851DFAAB8C00BD3D82 /* Class */,
+				FA00DE901DFAAB8C00BD3D82 /* Resource */,
+			);
+			path = 3rdGame;
+			sourceTree = "<group>";
+		};
+		FA00DE851DFAAB8C00BD3D82 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				FA00DE881DFAAB8C00BD3D82 /* SKFoePlane.h */,
+				FA00DE891DFAAB8C00BD3D82 /* SKFoePlane.m */,
+				FA00DE8A1DFAAB8C00BD3D82 /* SKMainScene.h */,
+				FA00DE8B1DFAAB8C00BD3D82 /* SKMainScene.m */,
+				FA00DE8C1DFAAB8C00BD3D82 /* SKSharedAtles.h */,
+				FA00DE8D1DFAAB8C00BD3D82 /* SKSharedAtles.m */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		FA00DE901DFAAB8C00BD3D82 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FA00DE911DFAAB8C00BD3D82 /* bullet.mp3 */,
+				FA00DE921DFAAB8C00BD3D82 /* BurstAircraftPause.png */,
+				FA00DE931DFAAB8C00BD3D82 /* BurstAircraftPause@2x.png */,
+				FA00DE941DFAAB8C00BD3D82 /* enemy1_down.mp3 */,
+				FA00DE951DFAAB8C00BD3D82 /* enemy2_down.mp3 */,
+				FA00DE961DFAAB8C00BD3D82 /* enemy2_out.mp3 */,
+				FA00DE971DFAAB8C00BD3D82 /* enemy3_down.mp3 */,
+				FA00DE981DFAAB8C00BD3D82 /* game_music.mp3 */,
+				FA00DE991DFAAB8C00BD3D82 /* game_over.mp3 */,
+				FA00DE9A1DFAAB8C00BD3D82 /* gameArts-hd.plist */,
+				FA00DE9B1DFAAB8C00BD3D82 /* gameArts-hd@2x.png */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		FA09359D1DB7655D00F9A61C /* FoldTableView */ = {
@@ -528,15 +607,12 @@
 		FA0E00F91D77F5C80080759D /* gifs */ = {
 			isa = PBXGroup;
 			children = (
-				FA0E00FA1D77F5C80080759D /* bingo.gif */,
-				FA0E00FB1D77F5C80080759D /* hi.gif */,
-				FA0E00FC1D77F5C80080759D /* OK.gif */,
-				FA0E00FD1D77F5C80080759D /* cry.gif */,
+				FA00DEAF1DFABD5800BD3D82 /* 惊吓.gif */,
+				FA00DEB01DFABD5800BD3D82 /* 哭.gif */,
 				FA0E00FF1D77F5C80080759D /* 喝水.gif */,
 				FA0E01001D77F5C80080759D /* 害羞.gif */,
 				FA0E01011D77F5C80080759D /* 怕.gif */,
 				FA0E01021D77F5C80080759D /* 思考.gif */,
-				FA0E01031D77F5C80080759D /* surprise.gif */,
 				FA0E01051D77F5C80080759D /* 舌头.gif */,
 				FA0E01061D77F5C80080759D /* 跳舞.gif */,
 				FA0E010A1D77F5C80080759D /* 高兴.gif */,
@@ -752,11 +828,13 @@
 		FA8006921D7041A30071571C = {
 			isa = PBXGroup;
 			children = (
+				FA00DE841DFAAB8C00BD3D82 /* 3rdGame */,
 				FA0EFFCF1D7418E00080759D /* Class */,
 				FA8006B61D7049CE0071571C /* Commons */,
 				FA80069D1D7041A30071571C /* TimeWorm */,
 				FA0EFFCA1D7409410080759D /* Resource */,
 				FA80069C1D7041A30071571C /* Products */,
+				FA00DE351DFA75CB00BD3D82 /* Framework */,
 				405C84A9F5603A937EF21438 /* Pods */,
 				8AF54076D375D4C9826D42F4 /* Frameworks */,
 			);
@@ -975,6 +1053,8 @@
 				FA85455C1DE6F19700A71FC3 /* SetDefault.m */,
 				FA85455E1DE6F1AE00A71FC3 /* SetNotification.h */,
 				FA85455F1DE6F1AE00A71FC3 /* SetNotification.m */,
+				FA00DEAC1DFAAC6100BD3D82 /* GameView.h */,
+				FA00DEAD1DFAAC6100BD3D82 /* GameView.m */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1045,6 +1125,7 @@
 				FA8C53A21D7D72C000F96ED5 /* loop_0016@2x.png in Resources */,
 				FA8C53A61D7D72C000F96ED5 /* loop_0018@2x.png in Resources */,
 				FA8C538D1D7D72C000F96ED5 /* loop_0005@3x.png in Resources */,
+				FA00DEAB1DFAAB8C00BD3D82 /* gameArts-hd@2x.png in Resources */,
 				FA8C53B51D7D72C000F96ED5 /* loop_0025@3x.png in Resources */,
 				FA8C537A1D7D72C000F96ED5 /* btn_play_pressed@2x.png in Resources */,
 				FA0E011E1D77F5C80080759D /* 高兴.gif in Resources */,
@@ -1053,13 +1134,16 @@
 				FA8C53901D7D72C000F96ED5 /* loop_0007@2x.png in Resources */,
 				FA8C53A41D7D72C000F96ED5 /* loop_0017@2x.png in Resources */,
 				FA0E00A51D76CFD70080759D /* images.xcassets in Resources */,
+				FA00DEA51DFAAB8C00BD3D82 /* enemy2_down.mp3 in Resources */,
+				FA00DEA11DFAAB8C00BD3D82 /* bullet.mp3 in Resources */,
 				FA8C53851D7D72C000F96ED5 /* loop_0001@3x.png in Resources */,
+				FA00DEA71DFAAB8C00BD3D82 /* enemy3_down.mp3 in Resources */,
 				FA8C537B1D7D72C000F96ED5 /* btn_reset_disabled@2x.png in Resources */,
 				FA8C53AA1D7D72C000F96ED5 /* loop_0020@2x.png in Resources */,
 				FA8C537F1D7D72C000F96ED5 /* clock_center_red_middle_i6@2x.png in Resources */,
 				FA8006AE1D7041A30071571C /* LaunchScreen.storyboard in Resources */,
+				FA00DEA61DFAAB8C00BD3D82 /* enemy2_out.mp3 in Resources */,
 				FA8C53B81D7D72C000F96ED5 /* loop_0027@2x.png in Resources */,
-				FA0E01171D77F5C80080759D /* surprise.gif in Resources */,
 				FA8C53A51D7D72C000F96ED5 /* loop_0017@3x.png in Resources */,
 				FA8C53A31D7D72C000F96ED5 /* loop_0016@3x.png in Resources */,
 				FA8C53871D7D72C000F96ED5 /* loop_0002@3x.png in Resources */,
@@ -1069,16 +1153,18 @@
 				FA8C538B1D7D72C000F96ED5 /* loop_0004@3x.png in Resources */,
 				FA8C53B11D7D72C000F96ED5 /* loop_0023@3x.png in Resources */,
 				FA8C53931D7D72C000F96ED5 /* loop_0008@3x.png in Resources */,
+				FA00DEA91DFAAB8C00BD3D82 /* game_over.mp3 in Resources */,
 				FA8C53951D7D72C000F96ED5 /* loop_0009@3x.png in Resources */,
+				FA00DEA31DFAAB8C00BD3D82 /* BurstAircraftPause@2x.png in Resources */,
 				FA8C53811D7D72C000F96ED5 /* d15@2x.png in Resources */,
 				FA0E01131D77F5C80080759D /* 喝水.gif in Resources */,
 				FA8C53B31D7D72C000F96ED5 /* loop_0024@3x.png in Resources */,
-				FA0E01101D77F5C80080759D /* OK.gif in Resources */,
 				FA8C53BB1D7D72C000F96ED5 /* loop_0028@3x.png in Resources */,
 				FA8C53B01D7D72C000F96ED5 /* loop_0023@2x.png in Resources */,
 				FA8C53BA1D7D72C000F96ED5 /* loop_0028@2x.png in Resources */,
 				FA0E01141D77F5C80080759D /* 害羞.gif in Resources */,
 				FA8C53801D7D72C000F96ED5 /* clock_panel_white_i6@2x.png in Resources */,
+				FA00DEB21DFABD5800BD3D82 /* 哭.gif in Resources */,
 				FA8C53B61D7D72C000F96ED5 /* loop_0026@2x.png in Resources */,
 				FA8C53961D7D72C000F96ED5 /* loop_0010@2x.png in Resources */,
 				FA8C53911D7D72C000F96ED5 /* loop_0007@3x.png in Resources */,
@@ -1086,7 +1172,6 @@
 				FA0E01211D77F5C80080759D /* 鼓掌.gif in Resources */,
 				FA8C53A71D7D72C000F96ED5 /* loop_0018@3x.png in Resources */,
 				FA8C53AC1D7D72C000F96ED5 /* loop_0021@2x.png in Resources */,
-				FA0E010E1D77F5C80080759D /* bingo.gif in Resources */,
 				FA8006AB1D7041A30071571C /* Assets.xcassets in Resources */,
 				FA8C53A91D7D72C000F96ED5 /* loop_0019@3x.png in Resources */,
 				FA8C53A01D7D72C000F96ED5 /* loop_0015@2x.png in Resources */,
@@ -1105,8 +1190,7 @@
 				FA8C53C61D7DC79D00F96ED5 /* timer_ruler_i6p@3x.png in Resources */,
 				FA8C539A1D7D72C000F96ED5 /* loop_0012@2x.png in Resources */,
 				FA8C53841D7D72C000F96ED5 /* loop_0001@2x.png in Resources */,
-				FA0E01111D77F5C80080759D /* cry.gif in Resources */,
-				FA0E010F1D77F5C80080759D /* hi.gif in Resources */,
+				FA00DEA21DFAAB8C00BD3D82 /* BurstAircraftPause.png in Resources */,
 				FA8C54E11D7FE4B600F96ED5 /* db_initialize.sql in Resources */,
 				FA8C53C01D7D72C000F96ED5 /* minute_hand_i6@2x.png in Resources */,
 				FA8C53921D7D72C000F96ED5 /* loop_0008@2x.png in Resources */,
@@ -1122,6 +1206,8 @@
 				FA8C53CA1D7DC97700F96ED5 /* icon.png in Resources */,
 				FA8C53AB1D7D72C000F96ED5 /* loop_0020@3x.png in Resources */,
 				FA0E00F11D77C2420080759D /* Localizable.strings in Resources */,
+				FA00DEB11DFABD5800BD3D82 /* 惊吓.gif in Resources */,
+				FA00DEA81DFAAB8C00BD3D82 /* game_music.mp3 in Resources */,
 				FA8006A91D7041A30071571C /* Main.storyboard in Resources */,
 				FA8C53861D7D72C000F96ED5 /* loop_0002@2x.png in Resources */,
 				FA0E011A1D77F5C80080759D /* 跳舞.gif in Resources */,
@@ -1129,11 +1215,13 @@
 				FA8C53AD1D7D72C000F96ED5 /* loop_0021@3x.png in Resources */,
 				FA8C53B91D7D72C000F96ED5 /* loop_0027@3x.png in Resources */,
 				FA0E00EA1D77C0AE0080759D /* InfoPlist.strings in Resources */,
+				FA00DEA41DFAAB8C00BD3D82 /* enemy1_down.mp3 in Resources */,
 				FA0E01151D77F5C80080759D /* 怕.gif in Resources */,
 				FA8C53971D7D72C000F96ED5 /* loop_0010@3x.png in Resources */,
 				FA8C538F1D7D72C000F96ED5 /* loop_0006@3x.png in Resources */,
 				FA49AA211DC326AC00CCC990 /* RS3DSegmentedControl.bundle in Resources */,
 				FA8C53BD1D7D72C000F96ED5 /* loop_0029@3x.png in Resources */,
+				FA00DEAA1DFAAB8C00BD3D82 /* gameArts-hd.plist in Resources */,
 				FA8C53791D7D72C000F96ED5 /* btn_play_normal@2x.png in Resources */,
 				FA8C53991D7D72C000F96ED5 /* loop_0011@3x.png in Resources */,
 				FA0EFFBE1D73DA310080759D /* FontAwesome.ttf in Resources */,
@@ -1237,13 +1325,16 @@
 				FA8C54E71D7FEE3B00F96ED5 /* TWModelTimer.m in Sources */,
 				FA0BD4381DB7731D0060803F /* HACFoldTableView.m in Sources */,
 				FAFD31CD1D89407A00091C3B /* TWMoreInfoPage.m in Sources */,
+				FA00DE9E1DFAAB8C00BD3D82 /* SKMainScene.m in Sources */,
 				FA8C53251D7D6D2900F96ED5 /* UIView+STAnimation.m in Sources */,
 				FA6A02051DC0A7120034201E /* DayTitleLabel.m in Sources */,
 				FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */,
 				FA8C54FB1D81547800F96ED5 /* HACircleButton.m in Sources */,
 				FA8006A31D7041A30071571C /* AppDelegate.m in Sources */,
 				FA75D3231D90077700E63CC9 /* MKTagView.m in Sources */,
+				FA00DE9F1DFAAB8C00BD3D82 /* SKSharedAtles.m in Sources */,
 				FA0EFFFE1D7527720080759D /* HomeScene.m in Sources */,
+				FA00DE9D1DFAAB8C00BD3D82 /* SKFoePlane.m in Sources */,
 				FA8C531F1D7D6A7900F96ED5 /* STTimerRulerView.m in Sources */,
 				FA49AA2A1DC3505600CCC990 /* TWSet.m in Sources */,
 				FA49AA241DC33F6800CCC990 /* TWModelSet.m in Sources */,
@@ -1255,6 +1346,7 @@
 				FAF4B01B1DCC25A9007D545C /* SetScreen.m in Sources */,
 				FA75D3221D90077700E63CC9 /* MKTagItem.m in Sources */,
 				FA0E00611D766C8B0080759D /* QBFlatButton.m in Sources */,
+				FA00DEAE1DFAAC6100BD3D82 /* GameView.m in Sources */,
 				FA85455A1DE6ECE400A71FC3 /* HACSwitchTableViewCell.m in Sources */,
 				FA0EFFC91D7408650080759D /* OLImageView.m in Sources */,
 				FA710DDF1DEEC1D400A137C3 /* AppConfigManager.m in Sources */,
@@ -1402,6 +1494,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6E57374C922AB728B7D88378 /* Pods-TimeWorm.debug.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
 				GCC_PREFIX_HEADER = TimeWorm/PrefixHeader.pch;
 				INFOPLIST_FILE = TimeWorm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1415,6 +1511,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 471D344FA260F33915DD092A /* Pods-TimeWorm.release.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
 				GCC_PREFIX_HEADER = TimeWorm/PrefixHeader.pch;
 				INFOPLIST_FILE = TimeWorm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

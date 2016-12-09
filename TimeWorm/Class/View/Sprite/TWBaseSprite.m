@@ -71,6 +71,10 @@ const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
 }
 
 - (void)addAction:(NSString *)key withAction:(TWAction *)action {
+    if (![action.action isKindOfClass:[OLImage class]]) {
+        DDLogError(@"111");
+        return;
+    }
     if (key && action) {
         [self.actions setObject:action forKey:key];
     }
@@ -208,6 +212,10 @@ const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
 
 - (void)changeKeyframe:(CADisplayLink *)displayLink {
     OLImage *animatedImage = self.activeAction.action;
+    if (![animatedImage isKindOfClass:[OLImage class]]) {
+        DDLogError(@"animatedImage is not OLImage!!!");
+        return;
+    }
     if (self.currentFrameIndex >= [animatedImage.images count] && [animatedImage isPartial]) {
         return;
     }

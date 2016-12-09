@@ -130,15 +130,15 @@ static const NSUInteger TWEventListCellTag = 1000;
     detailView.backgroundColor = Hmediumgray;
     NSDate *sDate = eventArr[indexPath.row].startDate;
     NSDate *eDate = eventArr[indexPath.row].stopDate;
-    NSString *sdStr;
-    NSString *edStr;
-    if (sDate) {
+    NSString *sdStr = @"";
+    NSString *edStr = @"";
+    if (sDate && ![sDate isKindOfClass:[NSNull class]]) {
         if ([sDate isKindOfClass:[NSString class]]) {
             sDate = [NSDate dateWithString:(NSString *)sDate formatString:@"yyyy-MM-dd HH:mm:ss Z"];
         }
         sdStr = sDate?[sDate formattedDateWithFormat:@"yyyy/MM/dd HH:mm:ss"]:@"";
     }
-    if (eDate) {
+    if (eDate && ![eDate isKindOfClass:[NSNull class]]) {
         if ([eDate isKindOfClass:[NSString class]]) {
             eDate = [NSDate dateWithString:(NSString *)eDate formatString:@"yyyy-MM-dd HH:mm:ss Z"];
         }

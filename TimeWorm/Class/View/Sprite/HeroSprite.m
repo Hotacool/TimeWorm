@@ -22,8 +22,8 @@
     [self addAction:[[TWAction alloc] initWithKey:@"applaud" action:(OLImage*)[OLImage imageNamed:@"鼓掌"]]];
     [self addAction:[[TWAction alloc] initWithKey:@"shy" action:(OLImage*)[OLImage imageNamed:@"害羞"]]];
     [self addAction:[[TWAction alloc] initWithKey:@"drink" action:(OLImage*)[OLImage imageNamed:@"喝水"]]];
-    [self addAction:[[TWAction alloc] initWithKey:@"surprise" action:(OLImage*)[OLImage imageNamed:@"surprise"]]];
-    [self addAction:[[TWAction alloc] initWithKey:@"cry" action:(OLImage*)[OLImage imageNamed:@"cry"]]];
+    [self addAction:[[TWAction alloc] initWithKey:@"surprise" action:(OLImage*)[OLImage imageNamed:@"惊吓"]]];
+    [self addAction:[[TWAction alloc] initWithKey:@"cry" action:(OLImage*)[OLImage imageNamed:@"哭"]]];
 }
 
 - (void)think {
