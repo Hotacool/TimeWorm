@@ -11,13 +11,14 @@
 #import <pop/POP.h>
 #import "TWTimer.h"
 #import <DateTools/DateTools.h>
-#import "TWEventList.h"
+#import "TWTimerInfoPage.h"
 #import <STPopup/STPopup.h>
 
 static NSString *const RecordSceneCalendarAniCenter = @"RecordSceneCalendarAniCenter";
 static NSString *const RecordSceneTimerTableAniCenter = @"RecordSceneTimerTableAniCenter";
 static NSString *const RecordSceneTimerTableID = @"RecordSceneTimerTableID";
 static const CGFloat RecordSceneCalendarHeight = 130;
+static const CGFloat RecordSceneTableCellHeight = 44;
 @interface RecordScene () <CLWeeklyCalendarViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) CLWeeklyCalendarView *calendar;
 @property (nonatomic, strong) UITableView *timerTable;
@@ -137,9 +138,46 @@ static const CGFloat RecordSceneCalendarHeight = 130;
     return timerArr.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return RecordSceneTableCellHeight;
+}
+
+static const int RecordSceneCellTag = 1000;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:RecordSceneTimerTableID];
-    cell.text = timerArr[indexPath.row].name;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    //bind data
+    UILabel *cellTag = [cell viewWithTag:RecordSceneCellTag + 1];
+    UIView *line = [cell viewWithTag:RecordSceneCellTag + 2];
+    UILabel *titleLabel = [cell viewWithTag:RecordSceneCellTag + 3];
+    if (!cellTag) {
+        cellTag = [[UILabel alloc] initWithFrame:CGRectMake(2, 1, 40, RecordSceneTableCellHeight - 2)];
+        cellTag.tag = RecordSceneCellTag + 1;
+        cellTag.textAlignment = NSTextAlignmentCenter;
+        [cell addSubview:cellTag];
+    }
+    if (!line) {
+        line = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(cellTag.frame), 1, 2, RecordSceneTableCellHeight - 2)];
+        line.tag = RecordSceneCellTag + 2;
+        [cell addSubview:line];
+    }
+    if (!titleLabel) {
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(line.frame)+5, 1, 200, RecordSceneTableCellHeight - 2)];
+        titleLabel.tag = RecordSceneCellTag + 3;
+        titleLabel.font = HFont(16);
+        [cell addSubview:titleLabel];
+    }
+    TWModelTimer *timer = timerArr[indexPath.row];
+    cellTag.text = [NSString stringWithFormat:@"%d%@", timer.allSeconds/60, NSLocalizedString(@"m", @"")];
+    if (timer.state&TWTimerStateEnd) {
+        line.backgroundColor = HgrassD;
+    } else if (timer.state&TWTimerStateCancel) {
+        line.backgroundColor = HpinkroseD;
+    } else {
+        line.backgroundColor = HmorangeD;
+    }
+    titleLabel.text = timer.name;
+    
     return cell;
 }
 
@@ -147,7 +185,8 @@ static const CGFloat RecordSceneCalendarHeight = 130;
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     TWModelTimer *timer;
     if ((timer = timerArr[indexPath.row])) {
-        TWEventList *ret = [TWEventList new];
+        TWTimerInfoPage *ret = [TWTimerInfoPage new];
+        ret.title = NSLocalizedString(@"Timer Detail", @"");
         STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:ret];
         popupController.containerView.layer.cornerRadius = 4;
         popupController.transitionStyle = STPopupTransitionStyleSlideVertical;

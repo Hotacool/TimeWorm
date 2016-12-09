@@ -48,6 +48,7 @@
             cell.stepper.formart = @"%.0f";
             cell.stepper.autorepeat = YES;
             [cell.stepper setStepperRange:1 andMaxValue:60];
+            [cell.stepper setStepperColor:Haqua withDisableColor:Hmediumgray];
             cell.stepper.value = [TWSet currentSet].defaultTimer;
             cell.changeBlk = ^(double value) {
                 NSLog(@"stepper value: %d", (int)value);

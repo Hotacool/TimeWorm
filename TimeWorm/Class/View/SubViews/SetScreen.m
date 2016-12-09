@@ -28,126 +28,174 @@
 }
 
 - (void)setup {
-    self.title = @"Bohr";
-    
+    //主题
+    NSArray *themeArr = @[@"lavander"
+                          ,@"pinkrose"
+                          ,@"pinkroseD"
+                          ,@"lightgray"
+                          ,@"lightgrayD"];
+    //cell size
+    CGSize size = CGSizeMake(self.view.width, APPCONFIG_UI_TABLE_CELL_HEIGHT);
     SBWS(weakSelf)
     [self addSection:[BOTableViewSection sectionWithHeaderTitle:@"主题" handler:^(BOTableViewSection *section) {
         
         [section addCell:[HACPickerTableViewCell cellWithTitle:@"主页" key:@"SH" handler:^(HACPickerTableViewCell * cell) {
             cell.itemCount = 5;
+            cell.rowSize = size;
             cell.itemBlk = ^(NSUInteger index){
-                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, weakSelf.view.width, APPCONFIG_UI_TABLE_CELL_HEIGHT)];
+                UIView *itemCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+                CGFloat roundWidth = 30;
+                UIView *round = [[UIView alloc] initWithFrame:CGRectMake(itemCell.width/2-50-roundWidth, (itemCell.height-roundWidth)/2, roundWidth, roundWidth)];
+                round.layer.cornerRadius = round.width/2;
+                [itemCell addSubview:round];
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, size.height)];
+                label.center = itemCell.center;
+                label.textAlignment = NSTextAlignmentCenter;
+                label.text = themeArr[index];
+                [itemCell addSubview:label];
                 switch (index) {
                     case 0: {
-                        label.backgroundColor = HlavanderD;
+                        round.backgroundColor = HlavanderD;
                         break;
                     }
                     case 1: {
-                        label.backgroundColor = Hpinkrose;
+                        round.backgroundColor = Hpinkrose;
                         break;
                     }
                     case 2: {
-                        label.backgroundColor = HpinkroseD;
+                        round.backgroundColor = HpinkroseD;
                         break;
                     }
                     case 3: {
-                        label.backgroundColor = Hlightgray;
+                        round.backgroundColor = Hlightgray;
                         break;
                     }
                     case 4: {
-                        label.backgroundColor = HlightgrayD;
+                        round.backgroundColor = HlightgrayD;
                         break;
                     }
                     default:
                     break;
                 }
-                label.text = [NSString stringWithFormat:@"index: %ld", index];
-                label.textAlignment = NSTextAlignmentCenter;
-                return label;
+                return itemCell;
             };
+            __weak typeof(cell) weakCell = cell;
             cell.selectActionBlk = ^(NSUInteger index) {
                 NSLog(@"select at: %ld", index);
+                weakCell.detailTextLabel.text = themeArr[index];
                 [TWSet updateSetColumn:@"homeTheme" withObj:@(index)];
             };
-            [cell setSelectIndex:[TWSet currentSet].homeTheme];
+            int idx = [TWSet currentSet].homeTheme;
+            if (idx < themeArr.count) {
+                [cell setSelectIndex:idx];
+                cell.detailTextLabel.text = themeArr[idx];
+            }
         }]];
         
         [section addCell:[HACPickerTableViewCell cellWithTitle:@"工作" key:@"SW" handler:^(HACPickerTableViewCell * cell) {
             cell.itemCount = 5;
+            cell.rowSize = size;
             cell.itemBlk = ^(NSUInteger index){
-                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, weakSelf.view.width, APPCONFIG_UI_TABLE_CELL_HEIGHT)];
+                UIView *itemCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+                CGFloat roundWidth = 30;
+                UIView *round = [[UIView alloc] initWithFrame:CGRectMake(itemCell.width/2-50-roundWidth, (itemCell.height-roundWidth)/2, roundWidth, roundWidth)];
+                round.layer.cornerRadius = round.width/2;
+                [itemCell addSubview:round];
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, size.height)];
+                label.center = itemCell.center;
+                label.textAlignment = NSTextAlignmentCenter;
+                label.text = themeArr[index];
+                [itemCell addSubview:label];
                 switch (index) {
                     case 0: {
-                        label.backgroundColor = Hgrapefruit;
+                        round.backgroundColor = HlavanderD;
                         break;
                     }
                     case 1: {
-                        label.backgroundColor = Hbittersweet;
+                        round.backgroundColor = Hpinkrose;
                         break;
                     }
                     case 2: {
-                        label.backgroundColor = Hsunflower;
+                        round.backgroundColor = HpinkroseD;
                         break;
                     }
                     case 3: {
-                        label.backgroundColor = Hgrass;
+                        round.backgroundColor = Hlightgray;
                         break;
                     }
                     case 4: {
-                        label.backgroundColor = Haqua;
+                        round.backgroundColor = HlightgrayD;
                         break;
                     }
                     default:
-                    break;
+                        break;
                 }
-                label.text = [NSString stringWithFormat:@"index: %ld", index];
-                label.textAlignment = NSTextAlignmentCenter;
-                return label;
+                return itemCell;
             };
+            __weak typeof(cell) weakCell = cell;
             cell.selectActionBlk = ^(NSUInteger index) {
                 NSLog(@"select at: %ld", index);
+                weakCell.detailTextLabel.text = themeArr[index];
                 [TWSet updateSetColumn:@"workTheme" withObj:@(index)];
             };
-            [cell setSelectIndex:[TWSet currentSet].workTheme];
+            int idx = [TWSet currentSet].workTheme;
+            if (idx < themeArr.count) {
+                [cell setSelectIndex:idx];
+                cell.detailTextLabel.text = themeArr[idx];
+            }
         }]];
         
         [section addCell:[HACPickerTableViewCell cellWithTitle:@"放松" key:@"SR" handler:^(HACPickerTableViewCell * cell) {
             cell.itemCount = 5;
+            cell.rowSize = size;
             cell.itemBlk = ^(NSUInteger index){
-                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, weakSelf.view.width, APPCONFIG_UI_TABLE_CELL_HEIGHT)];
+                UIView *itemCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+                CGFloat roundWidth = 30;
+                UIView *round = [[UIView alloc] initWithFrame:CGRectMake(itemCell.width/2-50-roundWidth, (itemCell.height-roundWidth)/2, roundWidth, roundWidth)];
+                round.layer.cornerRadius = round.width/2;
+                [itemCell addSubview:round];
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, size.height)];
+                label.center = itemCell.center;
+                label.textAlignment = NSTextAlignmentCenter;
+                label.text = themeArr[index];
+                [itemCell addSubview:label];
                 switch (index) {
                     case 0: {
-                        label.backgroundColor = Hgrapefruit;
+                        round.backgroundColor = HlavanderD;
                         break;
                     }
                     case 1: {
-                        label.backgroundColor = Hbittersweet;
+                        round.backgroundColor = Hpinkrose;
                         break;
                     }
                     case 2: {
-                        label.backgroundColor = Hsunflower;
+                        round.backgroundColor = HpinkroseD;
                         break;
                     }
                     case 3: {
-                        label.backgroundColor = Hgrass;
+                        round.backgroundColor = Hlightgray;
                         break;
                     }
                     case 4: {
-                        label.backgroundColor = Haqua;
+                        round.backgroundColor = HlightgrayD;
                         break;
                     }
                     default:
-                    break;
+                        break;
                 }
-                label.text = [NSString stringWithFormat:@"index: %ld", index];
-                label.textAlignment = NSTextAlignmentCenter;
-                return label;
+                return itemCell;
             };
+            __weak typeof(cell) weakCell = cell;
             cell.selectActionBlk = ^(NSUInteger index) {
                 NSLog(@"select at: %ld", index);
+                weakCell.detailTextLabel.text = themeArr[index];
                 [TWSet updateSetColumn:@"relaxTheme" withObj:@(index)];
             };
-            [cell setSelectIndex:[TWSet currentSet].relaxTheme];
+            int idx = [TWSet currentSet].relaxTheme;
+            if (idx < themeArr.count) {
+                [cell setSelectIndex:idx];
+                cell.detailTextLabel.text = themeArr[idx];
+            }
         }]];
     }]];
     

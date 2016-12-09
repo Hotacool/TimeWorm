@@ -23,9 +23,11 @@
 
 "ClockSetMore" = "More Info";
 "Time Set" = "Time Set";
+"Timer Detail" = "Timer Detail";
 
 "Event Set" = "Event Set";
 "done" = "Done";
+"Event List" = "Event List";
 // information
 "pause" = "pause";
 "reset the timer" = "reset the timer.";
@@ -41,3 +43,6 @@
 "Telephone" = "Telephone";
 "Meeting" = "Meeting";
 "Relax" = "Relax";
+
+"e_start_date" = "开始时间: ";
+"e_end_date" = "结束时间: ";

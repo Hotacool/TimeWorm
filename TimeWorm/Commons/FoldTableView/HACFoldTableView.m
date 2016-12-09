@@ -99,12 +99,13 @@ static const float HACFoldTableViewAniDuration = 0.5;
         DDLogError(@"openCellIndexPath: %@", openCellIndexPath);
         return;
     }
-    if ([self.delegate respondsToSelector:@selector(tableView:willOpenAtIndexPath:)]) {
-        [self.delegate tableView:self willOpenAtIndexPath:indexPath];
-    }
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     openCellContent = cell.contentView;
     openCellIndexPath = indexPath;
+    if ([self.delegate respondsToSelector:@selector(tableView:willOpenAtIndexPath:)]) {
+        [self.delegate tableView:self willOpenAtIndexPath:indexPath];
+    }
+    
     [openCellContent removeFromSuperview];
     openCellContent.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y - self.tableView.contentOffset.y, openCellContent.frame.size.width, openCellContent.frame.size.height);
     [openCellContent addGestureRecognizer:self.tapGesture];

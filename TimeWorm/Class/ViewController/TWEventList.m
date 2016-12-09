@@ -29,7 +29,6 @@ static const NSUInteger TWEventListCellTag = 1000;
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.title = NSLocalizedString(@"Event Set", @"");
         self.contentSizeInPopup = TWPopViewControllerSize;
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
         
@@ -133,20 +132,20 @@ static const NSUInteger TWEventListCellTag = 1000;
     NSDate *eDate = eventArr[indexPath.row].stopDate;
     NSString *sdStr;
     NSString *edStr;
-//    if (sDate) {
-//        if ([sDate isKindOfClass:[NSString class]]) {
-//            sDate = [NSDate dateWithString:(NSString *)sDate formatString:@"yyyy-MM-dd HH:mm:ss"];
-//        }
-//        sdStr = [sDate formattedDateWithStyle:NSDateFormatterFullStyle];
-//    }
-//    if (eDate) {
-//        if ([eDate isKindOfClass:[NSString class]]) {
-//            eDate = [NSDate dateWithString:(NSString *)eDate formatString:@"yyyy-MM-dd HH:mm:ss"];
-//        }
-//        edStr = [eDate formattedDateWithStyle:NSDateFormatterFullStyle];
-//    }
-//    detailView.startTime =[@"start: " stringByAppendingString:sdStr];
-//    detailView.endTime = [@"start: " stringByAppendingString:edStr];
+    if (sDate) {
+        if ([sDate isKindOfClass:[NSString class]]) {
+            sDate = [NSDate dateWithString:(NSString *)sDate formatString:@"yyyy-MM-dd HH:mm:ss Z"];
+        }
+        sdStr = sDate?[sDate formattedDateWithFormat:@"yyyy/MM/dd HH:mm:ss"]:@"";
+    }
+    if (eDate) {
+        if ([eDate isKindOfClass:[NSString class]]) {
+            eDate = [NSDate dateWithString:(NSString *)eDate formatString:@"yyyy-MM-dd HH:mm:ss Z"];
+        }
+        edStr = eDate?[eDate formattedDateWithFormat:@"yyyy/MM/dd HH:mm:ss"]:@"";
+    }
+    detailView.startTime =[NSLocalizedString(@"e_start_date", @"") stringByAppendingString:sdStr];
+    detailView.endTime = [NSLocalizedString(@"e_end_date", @"") stringByAppendingString:edStr];
     detailView.content = eventArr[indexPath.row].information;
     return detailView;
 }
@@ -160,6 +159,19 @@ static const NSUInteger TWEventListCellTag = 1000;
 }
 - (void)tableView:(HACFoldTableView *)tableView willOpenAtIndexPath:(NSIndexPath *)indexPath {
     sfuc
+    UIView *content = [tableView getOpenContent];
+    UIView *colorLine = [content viewWithTag:TWEventListCellTag+1];
+    UILabel *label = [content viewWithTag:TWEventListCellTag+2];
+    if (colorLine) {
+        if (indexPath.row % 2 == 0) {
+            colorLine.backgroundColor = HmintD;
+        } else {
+            colorLine.backgroundColor = Hbluejeans;
+        }
+    }
+    if (label) {
+        label.backgroundColor = Hlightgray;
+    }
 }
 - (void)tableView:(HACFoldTableView *)tableView didOpenAtIndexPath:(NSIndexPath *)indexPath {
     sfuc
@@ -167,7 +179,6 @@ static const NSUInteger TWEventListCellTag = 1000;
     UIView *colorLine = [content viewWithTag:TWEventListCellTag+1];
     UILabel *label = [content viewWithTag:TWEventListCellTag+2];
     if (colorLine) {
-        colorLine.backgroundColor = Hlavander;
         POPSpringAnimation *ani = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
         ani.fromValue = [NSValue valueWithCGRect:colorLine.frame];
         ani.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, content.width, content.height)];

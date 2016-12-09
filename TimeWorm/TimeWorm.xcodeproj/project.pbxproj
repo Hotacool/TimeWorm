@@ -11,6 +11,7 @@
 		FA0BD4351DB772430060803F /* TWEventList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4341DB772430060803F /* TWEventList.m */; };
 		FA0BD4381DB7731D0060803F /* HACFoldTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4371DB7731D0060803F /* HACFoldTableView.m */; };
 		FA0BD9AE1DF6B616002AAE3F /* TWEventDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD9AD1DF6B616002AAE3F /* TWEventDetailView.m */; };
+		FA0BD9B11DF7B424002AAE3F /* TWTimerInfoPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD9B01DF7B424002AAE3F /* TWTimerInfoPage.m */; };
 		FA0E00031D7528AC0080759D /* TWBaseSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00021D7528AC0080759D /* TWBaseSprite.m */; };
 		FA0E00061D752B100080759D /* HeroSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E00051D752B100080759D /* HeroSprite.m */; };
 		FA0E000D1D7558300080759D /* TWCommandCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0E000C1D7558300080759D /* TWCommandCenter.m */; };
@@ -192,6 +193,8 @@
 		FA0BD4371DB7731D0060803F /* HACFoldTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACFoldTableView.m; sourceTree = "<group>"; };
 		FA0BD9AC1DF6B616002AAE3F /* TWEventDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEventDetailView.h; sourceTree = "<group>"; };
 		FA0BD9AD1DF6B616002AAE3F /* TWEventDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEventDetailView.m; sourceTree = "<group>"; };
+		FA0BD9AF1DF7B424002AAE3F /* TWTimerInfoPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTimerInfoPage.h; sourceTree = "<group>"; };
+		FA0BD9B01DF7B424002AAE3F /* TWTimerInfoPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTimerInfoPage.m; sourceTree = "<group>"; };
 		FA0E00011D7528AC0080759D /* TWBaseSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBaseSprite.h; sourceTree = "<group>"; };
 		FA0E00021D7528AC0080759D /* TWBaseSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWBaseSprite.m; sourceTree = "<group>"; };
 		FA0E00041D752B100080759D /* HeroSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroSprite.h; sourceTree = "<group>"; };
@@ -656,6 +659,8 @@
 				FA8C531A1D7D613800F96ED5 /* TWClockSetting.m */,
 				FAFD31CB1D89407A00091C3B /* TWMoreInfoPage.h */,
 				FAFD31CC1D89407A00091C3B /* TWMoreInfoPage.m */,
+				FA0BD9AF1DF7B424002AAE3F /* TWTimerInfoPage.h */,
+				FA0BD9B01DF7B424002AAE3F /* TWTimerInfoPage.m */,
 				FA75D2E41D8FDB2F00E63CC9 /* TWTagPage.h */,
 				FA75D2E51D8FDB2F00E63CC9 /* TWTagPage.m */,
 				FABBBC2C1D867EC1004365F4 /* TWEventSetting.h */,
@@ -1225,6 +1230,7 @@
 				FA0EFFD71D741B7E0080759D /* HomeViewController.m in Sources */,
 				FA0E01241D783B1F0080759D /* HomeSceneModel.m in Sources */,
 				FA0EFFC11D73DA310080759D /* MozTopAlertView.m in Sources */,
+				FA0BD9B11DF7B424002AAE3F /* TWTimerInfoPage.m in Sources */,
 				FA6A020A1DC0A9AB0034201E /* NSDate+CL.m in Sources */,
 				FAA68EC81DCC6F0E009F1DDC /* HACPickerTableViewCell.m in Sources */,
 				FA0E00031D7528AC0080759D /* TWBaseSprite.m in Sources */,

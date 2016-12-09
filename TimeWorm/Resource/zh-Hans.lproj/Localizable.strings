@@ -22,9 +22,11 @@
 
 "ClockSetMore" = "更多信息";
 "Time Set" = "时间设置";
+"Timer Detail" = "计时详细";
 
 "Event Set" = "事件设置";
 "done" = "完成";
+"Event List" = "事件列表";
 // information
 "pause" = "暂停";
 "reset the timer" = "重置计时器";
@@ -40,3 +42,6 @@
 "Telephone" = "电话";
 "Meeting" = "会议";
 "Relax" = "放松";
+
+"e_start_date" = "开始时间: ";
+"e_end_date" = "结束时间: ";

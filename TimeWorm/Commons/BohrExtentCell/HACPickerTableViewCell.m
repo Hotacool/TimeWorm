@@ -27,6 +27,7 @@
     self.pickerView.backgroundColor = [UIColor clearColor];
     
     self.expansionView = self.pickerView;
+    self.rowSize = CGSizeMake(self.width, 40);
 }
     
 - (CGFloat)expansionHeight {
@@ -34,8 +35,9 @@
 }
     
 - (void)settingValueDidChange {
-    self.detailTextLabel.text = [NSString stringWithFormat:@"i: %ld", self.selectIndex];
-    self.detailTextLabel.backgroundColor = self.itemBlk(self.selectIndex).backgroundColor;
+//    self.detailTextLabel.text = [NSString stringWithFormat:@"i: %ld", self.selectIndex];
+//    self.detailTextLabel.layer.cornerRadius = 2;
+//    self.detailTextLabel.backgroundColor = self.itemBlk(self.selectIndex).backgroundColor;
 }
     
 - (void)setSelectIndex:(NSUInteger)selectIndex {
@@ -54,6 +56,14 @@
     
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     return self.itemBlk(row);
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+    return self.rowSize.height;
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    return self.rowSize.width;
 }
     
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {

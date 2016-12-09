@@ -43,7 +43,7 @@
         stepperColor = [UIColor blueColor];
         stepperDisableColor = [UIColor lightGrayColor];
         repeatRate = 15.0;
-        repeatDelaySec = .3f;
+        repeatDelaySec = .8f;
         _formart = @"%.0f";
         
         // Create Buttons to change values
@@ -198,9 +198,9 @@
     }
 }
 
-- (IBAction)decreaseValue:(id)sender{
+- (void)decreaseValue:(id)sender{
     _value -= self.stepValue;
-    if (_value<=self.minimumValue) {
+    if (_value<self.minimumValue) {
         if (self.wraps) {
             _value = self.maximumValue;
         } else {
@@ -213,9 +213,9 @@
     [textLabel setText:[NSString stringWithFormat:_formart, _value]];
 }
 
-- (IBAction)increaseValue:(id)sender{
+- (void)increaseValue:(id)sender{
     _value += self.stepValue;
-    if (_value>=self.maximumValue) {
+    if (_value>self.maximumValue) {
         if (self.wraps) {
             _value = self.minimumValue;
         } else {

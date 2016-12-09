@@ -17,4 +17,5 @@ typedef void(^HACPickerTableViewCellSelectAction)(NSUInteger);
 @property (nonatomic, assign) NSUInteger itemCount;
 @property (nonatomic, strong) HACPickerTableViewCellSelectAction selectActionBlk;
 @property (nonatomic, assign) NSUInteger selectIndex;
+@property (nonatomic, assign) CGSize rowSize;
 @end

@@ -54,7 +54,9 @@ HAC_SINGLETON_IMPLEMENT(TWTimer)
         ||(timer.state&TWTimerStatePause)) {
         [[TWTimer sharedTWTimer] startTime];
         timer.state = TWTimerStateFlow;
-        timer.startDate = [NSDate date];
+        if (!timer.startDate) {
+            timer.startDate = [NSDate date];
+        }
         //db save
         [[self sharedTWTimer] updateTimer:timer];
         DDLogInfo(@"active timer: %@", timer);

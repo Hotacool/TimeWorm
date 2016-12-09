@@ -117,6 +117,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 - (void)gotoEventList:(id)sender {
     TWEventList *ret = [TWEventList new];
     STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:ret];
+    ret.title = NSLocalizedString(@"Event Set", @"");
     popupController.containerView.layer.cornerRadius = 4;
     popupController.transitionStyle = STPopupTransitionStyleSlideVertical;
     [popupController presentInViewController:self.ctrl];

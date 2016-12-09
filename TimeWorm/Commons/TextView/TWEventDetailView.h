@@ -12,4 +12,5 @@
 @property (nonatomic, copy) NSString *startTime;
 @property (nonatomic, copy) NSString *endTime;
 @property (nonatomic, copy) NSString *content;
+@property (nonatomic, strong) UIColor *seperatorColor;
 @end
