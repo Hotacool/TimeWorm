@@ -7,22 +7,30 @@
 //
 
 #import "RelaxScene.h"
-@import GoogleMobileAds;
 #import "GameView.h"
+#import "DateTools.h"
+#import "TWADHelp.h"
 
-@interface RelaxScene () <GADBannerViewDelegate>
-@property (nonatomic, strong) GADBannerView *bannerView;
+static const CGFloat RelaxSceneBannerHeight = 50;
+static const int RelaxSceneDefaultDuration = 1;
+@interface RelaxScene ()
 @property (nonatomic, strong) GameView *gameView;
 
 @end
 
-@implementation RelaxScene
+@implementation RelaxScene {
+    NSDate *enterDate;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self setUIComponents];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setUIComponents {
@@ -33,52 +41,41 @@
                                                            startPoint:CGPointMake(0.5, 0)
                                                              endPoint:CGPointMake(0.5, 1)]
                        atIndex:0];
-    //advertisements
-    [self addSubview:self.bannerView];
-    //game view
-    [self addSubview:self.gameView];
-}
-
-- (GADBannerView *)bannerView {
-    if (!_bannerView) {
-        _bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait origin:CGPointMake(0, APPCONFIG_UI_STATUSBAR_HEIGHT)];
-        _bannerView.delegate = self;
-    }
-    return _bannerView;
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gameOver) name:@"gameOverNotification" object:nil];
 }
 
 - (GameView *)gameView {
     if (!_gameView) {
-        CGFloat originY = CGRectGetMaxY(self.bannerView.frame)+2;
-        _gameView = [[GameView alloc] initWithFrame:CGRectMake(2, originY, self.width - 4, self.height - originY - 2)];
+        CGFloat originY = RelaxSceneBannerHeight+2;
+        _gameView = [[GameView alloc] initWithFrame:CGRectMake(2, originY, self.width - 4, self.height - originY - 2 - RelaxSceneBannerHeight)];
     }
     return _gameView;
 }
 
 - (void)show {
-    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-    self.bannerView.rootViewController = self.ctrl;
-    [self.bannerView loadRequest:[GADRequest request]];
+    enterDate = [NSDate date];
+    
+    //advertisements
+    UIView *bannerTop = [TWADHelp createBannerViewWithAdSize:CGSizeMake(self.width, RelaxSceneBannerHeight) ViewController:self.ctrl];
+    UIView *bannerBottom = [TWADHelp createBannerViewWithAdSize:CGSizeMake(self.width, RelaxSceneBannerHeight) ViewController:self.ctrl];
+    bannerTop.center = CGPointMake(self.width/2, 25);
+    bannerTop.center = CGPointMake(self.width/2, self.height-25);
+    [self addSubview:bannerTop];
+    [self addSubview:bannerBottom];
+    //game view
+    [self addSubview:self.gameView];
 }
 
-#pragma mark -- ad delegate
-- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
-    sfuc
-}
-- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
-    sfuc
-}
-- (void)adViewWillPresentScreen:(GADBannerView *)bannerView {
-    sfuc
-}
-- (void)adViewDidDismissScreen:(GADBannerView *)bannerView {
-    sfuc
-}
-- (void)adViewWillDismissScreen:(GADBannerView *)bannerView {
-    sfuc
-}
-- (void)adViewWillLeaveApplication:(GADBannerView *)bannerView {
-    sfuc
+- (void)gameOver {
+    if (enterDate) {
+        int minutes = [[DTTimePeriod timePeriodWithStartDate:enterDate endDate:[NSDate date]] durationInMinutes];
+        if (minutes > RelaxSceneDefaultDuration) {
+            DDLogInfo(@"start ads");
+            [TWADHelp createInterstitialAndShowInViewController:self.ctrl];
+            [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"5 mins relax!", @"") doText:nil doBlock:nil];
+        }
+    }
 }
 
 @end

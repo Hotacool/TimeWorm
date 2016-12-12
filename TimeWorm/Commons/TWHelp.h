@@ -103,6 +103,18 @@ return z##_shared_obj_name_;                   \
 
 #define TWPopViewControllerSize CGSizeMake(300, 400)
 
+#define HACObjectIsNull(_object) (_object == nil \
+|| [_object isKindOfClass:[NSNull class]])
+
+#define HACObjectIsEmpty(_object) (_object == nil \
+|| [_object isKindOfClass:[NSNull class]] \
+|| ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
+|| ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
+
+#define HACBackground(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+
+#define HACMain(block) dispatch_async(dispatch_get_main_queue(),block)
+
 #import "TWCommandCenter.h"
 #import "TWUtility.h"
 #import "UIView+HACUtils.h"
