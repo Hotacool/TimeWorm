@@ -14,6 +14,8 @@
 #import "DDTTYLogger.h"
 #import "FLEXManager.h"
 #import "TWSet.h"
+#import "HACLocalNotificationCenter.h"
+@import GoogleMobileAds;
 
 @implementation AppConfigManager
 
@@ -22,6 +24,7 @@
     [self loadCommands];
     [self loadDB];
     [self loadDefaultSet];
+    [self loadAdmob];
 }
 
 + (void)config {
@@ -29,7 +32,8 @@
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
     //flex
-    [[FLEXManager sharedManager] showExplorer];
+//    [[FLEXManager sharedManager] showExplorer];
+    [[HACLocalNotificationCenter defaultCenter] registerLocalNotification];
 }
 
 + (void)loadCommands {
@@ -50,5 +54,10 @@
     } else {
         [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     }
+}
+
++ (void)loadAdmob {
+    [GADMobileAds disableAutomatedInAppPurchaseReporting];
+    [GADMobileAds disableSDKCrashReporting];
 }
 @end

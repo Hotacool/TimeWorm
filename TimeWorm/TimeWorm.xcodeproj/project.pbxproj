@@ -186,6 +186,7 @@
 		FA8C54EA1D8016EB00F96ED5 /* TWCommandWorkScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54E91D8016EB00F96ED5 /* TWCommandWorkScene.m */; };
 		FA8C54FB1D81547800F96ED5 /* HACircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54FA1D81547800F96ED5 /* HACircleButton.m */; };
 		FA9DF23D1DFE87EA001E5A7B /* TWADHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DF23C1DFE87EA001E5A7B /* TWADHelp.m */; };
+		FA9DF3211DFFCEC4001E5A7B /* HACLocalNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DF3201DFFCEC4001E5A7B /* HACLocalNotificationCenter.m */; };
 		FAA68EC81DCC6F0E009F1DDC /* HACPickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA68EC71DCC6F0E009F1DDC /* HACPickerTableViewCell.m */; };
 		FAAA36781DC1A0FD001ABC6C /* RecordScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAA36771DC1A0FD001ABC6C /* RecordScene.m */; };
 		FABBBC2E1D867EC1004365F4 /* TWEventSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC2D1D867EC1004365F4 /* TWEventSetting.m */; };
@@ -457,6 +458,8 @@
 		FA8C54FA1D81547800F96ED5 /* HACircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACircleButton.m; sourceTree = "<group>"; };
 		FA9DF23B1DFE87EA001E5A7B /* TWADHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWADHelp.h; sourceTree = "<group>"; };
 		FA9DF23C1DFE87EA001E5A7B /* TWADHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWADHelp.m; sourceTree = "<group>"; };
+		FA9DF31F1DFFCEC4001E5A7B /* HACLocalNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACLocalNotificationCenter.h; sourceTree = "<group>"; };
+		FA9DF3201DFFCEC4001E5A7B /* HACLocalNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACLocalNotificationCenter.m; sourceTree = "<group>"; };
 		FAA68EC61DCC6F0E009F1DDC /* HACPickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACPickerTableViewCell.h; sourceTree = "<group>"; };
 		FAA68EC71DCC6F0E009F1DDC /* HACPickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACPickerTableViewCell.m; sourceTree = "<group>"; };
 		FAAA36761DC1A0FD001ABC6C /* RecordScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordScene.h; sourceTree = "<group>"; };
@@ -924,6 +927,8 @@
 				FABBBC301D86A65A004365F4 /* STPopupController+HAC.m */,
 				FA9DF23B1DFE87EA001E5A7B /* TWADHelp.h */,
 				FA9DF23C1DFE87EA001E5A7B /* TWADHelp.m */,
+				FA9DF31F1DFFCEC4001E5A7B /* HACLocalNotificationCenter.h */,
+				FA9DF3201DFFCEC4001E5A7B /* HACLocalNotificationCenter.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1355,6 +1360,7 @@
 				FA00DEAE1DFAAC6100BD3D82 /* GameView.m in Sources */,
 				FA85455A1DE6ECE400A71FC3 /* HACSwitchTableViewCell.m in Sources */,
 				FA0EFFC91D7408650080759D /* OLImageView.m in Sources */,
+				FA9DF3211DFFCEC4001E5A7B /* HACLocalNotificationCenter.m in Sources */,
 				FA710DDF1DEEC1D400A137C3 /* AppConfigManager.m in Sources */,
 				FA75D3611D9129D800E63CC9 /* TWTextView.m in Sources */,
 				FA85455D1DE6F19700A71FC3 /* SetDefault.m in Sources */,

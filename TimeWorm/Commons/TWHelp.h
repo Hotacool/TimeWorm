@@ -115,6 +115,8 @@ return z##_shared_obj_name_;                   \
 
 #define HACMain(block) dispatch_async(dispatch_get_main_queue(),block)
 
+#define HACSystemVersion [[UIDevice currentDevice] systemVersion]
+
 #import "TWCommandCenter.h"
 #import "TWUtility.h"
 #import "UIView+HACUtils.h"

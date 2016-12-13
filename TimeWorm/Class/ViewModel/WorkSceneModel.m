@@ -10,6 +10,8 @@
 #import "TWTimer.h"
 #import "TWEvent.h"
 #import "TWSet.h"
+#import "HACLocalNotificationCenter.h"
+#import "DateTools.h"
 
 @interface WorkSceneModel() <TWTimerObserver>
 
@@ -182,6 +184,8 @@
     }
     enterBackgroundTimestamp = nil;
     
+    [[HACLocalNotificationCenter defaultCenter] cancelHACLocalNotificationByType:HACLocalNotificationTypeTimer];
+    
 }
 - (void)enterBackgroudNotification:(NSNotification*)notify {
     sfuc
@@ -202,6 +206,13 @@
             isPause = YES;
         }
     }
+    HACLocalNotification *ln = [HACLocalNotification new];
+    ln.title = @"monster";
+    ln.information = @"coming...";
+    ln.type = HACLocalNotificationTypeTimer;
+    NSDate *fireDate = [[NSDate date] dateByAddingSeconds:[TWTimer currentTimer].remainderSeconds];
+    ln.fireDate = fireDate;
+    [[HACLocalNotificationCenter defaultCenter] addHACLocalNotification:ln];
 }
 
 @end
