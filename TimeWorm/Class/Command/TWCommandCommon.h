@@ -9,6 +9,7 @@
 #import "TWBaseCommand.h"
 
 static NSString *const TWCommandCommon_selectScene = @"selectScene";
+static NSString *const TWCommandCommon_tureRelax = @"tureRelax";
 @interface TWCommandCommon : TWBaseCommand
 
 @end

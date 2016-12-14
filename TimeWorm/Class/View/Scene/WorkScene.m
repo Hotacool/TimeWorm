@@ -15,6 +15,8 @@
 #import <pop/POP.h>
 #import "HomeViewController.h"
 #import "TWEventList.h"
+#import "TWCommandCommon.h"
+#import "TWSet.h"
 
 static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 @interface WorkScene ()
@@ -66,11 +68,9 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
     
     //渐变背景
     [self.layer insertSublayer:[TWUtility getCAGradientLayerWithFrame:self.bounds
-                                                               colors:@[(__bridge id)WBlue.CGColor, (__bridge id)LBlue.CGColor]
-                                                            locations:@[@(0.5f), @(1.0f)]
-                                                           startPoint:CGPointMake(0.5, 0)
-                                                             endPoint:CGPointMake(0.5, 1)]
+                                                              skinSet:[TWSet currentSet].workTheme]
                        atIndex:0];
+    
     self.event.frame = CGRectMake(self.frame.size.width - 50, self.frame.size.height - 50, 50, 50);
     [self addSubview:self.event];
 }
@@ -173,6 +173,20 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
             case WorkSceneModelStateEnd: {
                 [self.clock switchInfoLabel2State:3];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"timer finish!", @"") doText:nil doBlock:nil];
+                //当计时器大于25分钟时，结束后询问是否放松
+                if (_wsm.currentTimer.allSeconds >= 60*2) {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"success" message:@"need to relax?" preferredStyle:UIAlertControllerStyleAlert];
+                    alert.view.backgroundColor = Haqua;
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [TWCommandCenter doActionWithCommand:TWCommandCommon_tureRelax];
+                    }];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        
+                    }];
+                    [alert addAction:cancelAction];
+                    [alert addAction:okAction];
+                    [self.ctrl presentViewController:alert animated:YES completion:nil];
+                }
                 break;
             }
         }

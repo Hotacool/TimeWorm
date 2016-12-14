@@ -118,10 +118,18 @@
             break;
         }
         case TWHomeVCSceneRelax: {
+            [self.menuBtn setTransitionAniOffArr:@[@(NO)
+                                                   ,@(NO)
+                                                   ,@(NO)
+                                                   ,@(NO)]];
             [self.menuBtn setMode:HACircleButtonModeSingle];
             break;
         }
         case TWHomeVCSceneRecord: {
+            [self.menuBtn setTransitionAniOffArr:@[@(NO)
+                                                   ,@(NO)
+                                                   ,@(NO)
+                                                   ,@(NO)]];
             [self.menuBtn setMode:HACircleButtonModeSingle];
             break;
         }

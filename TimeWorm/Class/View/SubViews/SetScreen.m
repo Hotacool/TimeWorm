@@ -29,11 +29,11 @@
 
 - (void)setup {
     //主题
-    NSArray *themeArr = @[@"lavander"
-                          ,@"pinkrose"
-                          ,@"pinkroseD"
-                          ,@"lightgray"
-                          ,@"lightgrayD"];
+    NSArray *themeArr = @[@"SkyBlue"
+                          ,@"Grapefruit"
+                          ,@"Bittersweet"
+                          ,@"Sunflower"
+                          ,@"Grass"];
     //cell size
     CGSize size = CGSizeMake(self.view.width, APPCONFIG_UI_TABLE_CELL_HEIGHT);
     SBWS(weakSelf)
@@ -55,23 +55,23 @@
                 [itemCell addSubview:label];
                 switch (index) {
                     case 0: {
-                        round.backgroundColor = HlavanderD;
+                        round.backgroundColor = WBlue;
                         break;
                     }
                     case 1: {
-                        round.backgroundColor = Hpinkrose;
+                        round.backgroundColor = Hgrapefruit;
                         break;
                     }
                     case 2: {
-                        round.backgroundColor = HpinkroseD;
+                        round.backgroundColor = Hbittersweet;
                         break;
                     }
                     case 3: {
-                        round.backgroundColor = Hlightgray;
+                        round.backgroundColor = Hsunflower;
                         break;
                     }
                     case 4: {
-                        round.backgroundColor = HlightgrayD;
+                        round.backgroundColor = Hgrass;
                         break;
                     }
                     default:
@@ -108,23 +108,23 @@
                 [itemCell addSubview:label];
                 switch (index) {
                     case 0: {
-                        round.backgroundColor = HlavanderD;
+                        round.backgroundColor = WBlue;
                         break;
                     }
                     case 1: {
-                        round.backgroundColor = Hpinkrose;
+                        round.backgroundColor = Hgrapefruit;
                         break;
                     }
                     case 2: {
-                        round.backgroundColor = HpinkroseD;
+                        round.backgroundColor = Hbittersweet;
                         break;
                     }
                     case 3: {
-                        round.backgroundColor = Hlightgray;
+                        round.backgroundColor = Hsunflower;
                         break;
                     }
                     case 4: {
-                        round.backgroundColor = HlightgrayD;
+                        round.backgroundColor = Hgrass;
                         break;
                     }
                     default:
@@ -161,23 +161,23 @@
                 [itemCell addSubview:label];
                 switch (index) {
                     case 0: {
-                        round.backgroundColor = HlavanderD;
+                        round.backgroundColor = WBlue;
                         break;
                     }
                     case 1: {
-                        round.backgroundColor = Hpinkrose;
+                        round.backgroundColor = Hgrapefruit;
                         break;
                     }
                     case 2: {
-                        round.backgroundColor = HpinkroseD;
+                        round.backgroundColor = Hbittersweet;
                         break;
                     }
                     case 3: {
-                        round.backgroundColor = Hlightgray;
+                        round.backgroundColor = Hsunflower;
                         break;
                     }
                     case 4: {
-                        round.backgroundColor = HlightgrayD;
+                        round.backgroundColor = Hgrass;
                         break;
                     }
                     default:

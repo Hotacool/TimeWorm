@@ -10,6 +10,7 @@
 #import "GameView.h"
 #import "DateTools.h"
 #import "TWADHelp.h"
+#import "TWSet.h"
 
 static const CGFloat RelaxSceneBannerHeight = 50;
 static const int RelaxSceneDefaultDuration = 1;
@@ -36,10 +37,7 @@ static const int RelaxSceneDefaultDuration = 1;
 - (void)setUIComponents {
     //渐变背景
     [self.layer insertSublayer:[TWUtility getCAGradientLayerWithFrame:self.bounds
-                                                               colors:@[(__bridge id)WBlue.CGColor, (__bridge id)LBlue.CGColor]
-                                                            locations:@[@(0.5f), @(1.0f)]
-                                                           startPoint:CGPointMake(0.5, 0)
-                                                             endPoint:CGPointMake(0.5, 1)]
+                                                              skinSet:[TWSet currentSet].relaxTheme]
                        atIndex:0];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gameOver) name:@"gameOverNotification" object:nil];

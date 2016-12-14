@@ -11,4 +11,6 @@
 @interface AppConfigManager : NSObject
 
 + (void)loadConfig ;
+
++ (void)applicationWillTerminate ;
 @end

@@ -11,7 +11,8 @@
 @implementation TWCommandCommon
 
 - (NSArray<NSString *> *)commands {
-    return @[TWCommandCommon_selectScene];
+    return @[TWCommandCommon_selectScene
+             ,TWCommandCommon_tureRelax];
 }
 
 - (void)doActionWithCommand:(NSString *)command withCompleteBlock:(void (^)(id))complete {

@@ -12,6 +12,7 @@
 
 #define HACUNCenter [UNUserNotificationCenter currentNotificationCenter]
 
+#pragma mark - HACLocalNotification
 @implementation HACLocalNotification
 - (instancetype)init {
     if (self = [super init]) {
@@ -30,10 +31,27 @@
     }
     return self;
 }
+
+- (instancetype)initWithFireDate:(NSDate *)fireDate title:(NSString *)title information:(NSString *)information type:(HACLocalNotificationType)type {
+    if (HACObjectIsEmpty(title)
+        || HACObjectIsEmpty(information)
+        || HACObjectIsEmpty(fireDate)) {
+        return nil;
+    }
+    if (self = [super init]) {
+        _identifier = [NSString stringWithFormat:@"%p", self];
+        _fireDate = fireDate;
+        _title = title;
+        _information = information;
+        type = type;
+    }
+    return self;
+}
 @end
 
+#pragma mark - HACLocalNotificationCenter
 @interface HACLocalNotificationCenter () <UNUserNotificationCenterDelegate>
-
+@property (nonatomic, strong) NSMutableArray <HACLocalNotification*> *notifyArr;
 @end
 @implementation HACLocalNotificationCenter
 
@@ -42,6 +60,7 @@
     static HACLocalNotificationCenter *instance;
     dispatch_once(&onceToken, ^{
         instance = [HACLocalNotificationCenter new];
+        instance.notifyArr = [NSMutableArray array];
     });
     return instance;
 }
@@ -78,11 +97,16 @@
     if (HACObjectIsNull(notifictation)) {
         return NO;
     }
+    if ([self isContainHACLocalNotification:notifictation]) {
+        DDLogWarn(@"notification already in queue!");
+        return NO;
+    }
     if ([HACSystemVersion floatValue] >= 10.0f) {
         UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
         UNMutableNotificationContent* content = [[UNMutableNotificationContent alloc] init];
         content.title = notifictation.title;
         content.body = notifictation.information;
+        content.badge = @1;
         content.userInfo = @{@"identifier": notifictation.identifier,
                              @"title": notifictation.title,
                              @"information": notifictation.information,
@@ -99,11 +123,10 @@
         UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:notifictation.identifier
                                                                               content:content trigger:trigger];
         [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"本地通知" message:@"成功添加推送" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-            [alert addAction:cancelAction];
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+            DDLogInfo(@"add a localNotification...");
         }];
+        //add to queue
+        [self.notifyArr addObject:notifictation];
         return YES;
     } else {
         if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
@@ -121,6 +144,8 @@
                                   @"type": @(notifictation.type)};
                 UIApplication *app = [UIApplication sharedApplication];
                 [app scheduleLocalNotification:noti];
+                //add to queue
+                [self.notifyArr addObject:notifictation];
                 return YES;
             }
         }
@@ -155,14 +180,20 @@
 - (void)cancelHACLocalNotificationByType:(HACLocalNotificationType)type {
     if ([HACSystemVersion floatValue] >= 10.0) {
         NSMutableArray <NSString*>*__block arr = [NSMutableArray array];
-        [[self existHACLocalNotifications] enumerateObjectsUsingBlock:^(HACLocalNotification * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if (obj.type == type) {
-                [arr addObject:obj.identifier];
+        [HACUNCenter getPendingNotificationRequestsWithCompletionHandler:^(NSArray<UNNotificationRequest *> * _Nonnull requests) {
+            [requests enumerateObjectsUsingBlock:^(UNNotificationRequest * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                UNNotificationContent *content = obj.content;
+                HACLocalNotificationType objType = [content.userInfo[@"type"] integerValue];
+                if (objType == type) {
+                    [arr addObject:obj.identifier];
+                }
+            }];
+            
+            if (arr.count > 0) {
+                [HACUNCenter removeDeliveredNotificationsWithIdentifiers:arr];
+                DDLogInfo(@"remove localNotification count: %lu", (unsigned long)arr.count);
             }
         }];
-        if (arr.count > 0) {
-            [HACUNCenter removeDeliveredNotificationsWithIdentifiers:arr];
-        }
     } else {
         NSMutableArray *__block arr = [NSMutableArray array];
         [[[UIApplication sharedApplication] scheduledLocalNotifications] enumerateObjectsUsingBlock:^(UILocalNotification * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -187,39 +218,11 @@
     }
 }
 
-- (NSArray<HACLocalNotification*> *)existHACLocalNotifications {
-    NSMutableArray <HACLocalNotification*> *__block retArr = [NSMutableArray array];
-    if ([HACSystemVersion floatValue] >= 10.0f) {
-        [[UNUserNotificationCenter currentNotificationCenter] getPendingNotificationRequestsWithCompletionHandler:^(NSArray<UNNotificationRequest *> * _Nonnull requests) {
-            [requests enumerateObjectsUsingBlock:^(UNNotificationRequest * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                UNNotificationContent *content = obj.content;
-                HACLocalNotification *notify = [[HACLocalNotification alloc] initWithIdentifier:obj.identifier];
-                notify.title = content.title;
-                notify.information = content.body;
-                notify.type = [content.userInfo[@"type"] integerValue];
-                [retArr addObject:notify];
-            }];
-        }];
-    } else {
-        [[[UIApplication sharedApplication] scheduledLocalNotifications] enumerateObjectsUsingBlock:^(UILocalNotification * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            HACLocalNotification *notify = [[HACLocalNotification alloc] initWithIdentifier:obj.userInfo[@"identifier"]];
-            notify.title = obj.userInfo[@"title"];
-            notify.information = obj.userInfo[@"information"];
-            notify.type = [obj.userInfo[@"type"] integerValue];
-            [retArr addObject:notify];
-        }];
-    }
-    return retArr;
-}
-
-- (HACLocalNotification *)existHACLocalNotificationForIdentifier:(NSString *)identifier {
-    if (HACObjectIsNull(identifier)) {
-        return nil;
-    }
-    HACLocalNotification *__block ret;
-    [[self existHACLocalNotifications] enumerateObjectsUsingBlock:^(HACLocalNotification * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj.identifier isEqualToString:identifier]) {
-            ret = obj;
+- (BOOL)isContainHACLocalNotification:(HACLocalNotification*)notify {
+    BOOL __block ret;
+    [self.notifyArr enumerateObjectsUsingBlock:^(HACLocalNotification * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.identifier isEqualToString:notify.identifier]) {
+            ret = YES;
             *stop = YES;
         }
     }];

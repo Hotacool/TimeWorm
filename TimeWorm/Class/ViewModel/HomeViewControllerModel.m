@@ -134,6 +134,11 @@
         }
         case 5: {
             [self switchScene:TWHomeVCSceneHome];
+            break;
+        }
+        case 6: {
+            [self switchScene:TWHomeVCSceneRelax];
+            break;
         }
     }
 }
@@ -188,6 +193,11 @@
 #pragma mark -- command action
 - (void)response2selectScene {
     DDLogInfo(@"%s", __func__);
+}
+
+- (void)response2tureRelax {
+    sfuc
+    [self postMenuClickCommandWithBtnIndex:6];
 }
 
 @end

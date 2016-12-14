@@ -10,6 +10,53 @@
 
 @implementation TWUtility
 
++ (CAGradientLayer*)getCAGradientLayerWithFrame:(CGRect)frame skinSet:(int)set {
+    CAGradientLayer *gradientLayer;
+    switch (set) {
+        case 0: {
+            gradientLayer = [self getCAGradientLayerWithFrame:frame
+                                                            colors:@[(__bridge id)WBlue.CGColor, (__bridge id)LBlue.CGColor]
+                                                         locations:@[@(0.5f), @(1.0f)]
+                                                        startPoint:CGPointMake(0.5, 0)
+                                                          endPoint:CGPointMake(0.5, 1)];
+            break;
+        }
+        case 1: {
+            gradientLayer = [self getCAGradientLayerWithFrame:frame
+                                                       colors:@[(__bridge id)Hgrapefruit.CGColor, (__bridge id)HgrapefruitD.CGColor]
+                                                    locations:@[@(0.5f), @(1.0f)]
+                                                   startPoint:CGPointMake(0.5, 0)
+                                                     endPoint:CGPointMake(0.5, 1)];
+            break;
+        }
+        case 2: {
+            gradientLayer = [self getCAGradientLayerWithFrame:frame
+                                                       colors:@[(__bridge id)Hbittersweet.CGColor, (__bridge id)HbittersweetD.CGColor]
+                                                    locations:@[@(0.5f), @(1.0f)]
+                                                   startPoint:CGPointMake(0.5, 0)
+                                                     endPoint:CGPointMake(0.5, 1)];
+            break;
+        }
+        case 3: {
+            gradientLayer = [self getCAGradientLayerWithFrame:frame
+                                                       colors:@[(__bridge id)Hsunflower.CGColor, (__bridge id)HsunflowerD.CGColor]
+                                                    locations:@[@(0.5f), @(1.0f)]
+                                                   startPoint:CGPointMake(0.5, 0)
+                                                     endPoint:CGPointMake(0.5, 1)];
+            break;
+        }
+        case 4: {
+            gradientLayer = [self getCAGradientLayerWithFrame:frame
+                                                       colors:@[(__bridge id)Hgrass.CGColor, (__bridge id)HgrassD.CGColor]
+                                                    locations:@[@(0.5f), @(1.0f)]
+                                                   startPoint:CGPointMake(0.5, 0)
+                                                     endPoint:CGPointMake(0.5, 1)];
+            break;
+        }
+    }
+    return gradientLayer;
+}
+
 + (CAGradientLayer *)getCAGradientLayerWithFrame:(CGRect)frame colors:(NSArray *)colors locations:(NSArray *)locs startPoint:(CGPoint)sP endPoint:(CGPoint)eP {
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = frame;

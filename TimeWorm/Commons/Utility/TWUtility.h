@@ -10,6 +10,8 @@
 
 @interface TWUtility : NSObject
 
++ (CAGradientLayer*)getCAGradientLayerWithFrame:(CGRect)frame skinSet:(int)set ;
+
 + (CAGradientLayer*)getCAGradientLayerWithFrame:(CGRect)frame colors:(NSArray*)colors locations:(NSArray*)locs startPoint:(CGPoint)sP endPoint:(CGPoint)ep ;
 
 + (UIImage *)gradientImageWithBounds:(CGRect)bounds colors:(NSArray *)colors ;

@@ -183,14 +183,26 @@
         [TWEvent updateEvent:[TWEvent currentEvent]];
     }
     enterBackgroundTimestamp = nil;
-    
-    [[HACLocalNotificationCenter defaultCenter] cancelHACLocalNotificationByType:HACLocalNotificationTypeTimer];
+    if ([TWSet currentSet].isNotifyOn) {
+        // cancel local notification
+        [[HACLocalNotificationCenter defaultCenter] cancelHACLocalNotificationByType:HACLocalNotificationTypeTimer];
+        [[HACLocalNotificationCenter defaultCenter] cancelHACLocalNotificationByType:HACLocalNotificationTypeLeaving];
+    }
     
 }
 - (void)enterBackgroudNotification:(NSNotification*)notify {
     sfuc
+    HACLocalNotification *localNotify;
     if ([TWSet currentSet].keepTimer) {
         enterBackgroundTimestamp = [NSDate date];
+        if ([TWSet currentSet].isNotifyOn) {
+            //add local notification
+            NSDate *fireDate = [enterBackgroundTimestamp dateByAddingSeconds:[TWTimer currentTimer].remainderSeconds];
+            localNotify = [[HACLocalNotification alloc] initWithFireDate:fireDate
+                                                                   title:[TWTimer currentTimer].name
+                                                             information:NSLocalizedString(@"timer complete", @"")
+                                                                    type:HACLocalNotificationTypeTimer];
+        }
     } else {
         //自动生成event
         if (self.currentTimer.state&TWTimerStateFlow) {
@@ -204,15 +216,20 @@
             [TWEvent createEvent:event];
             self.state = WorkSceneModelStatePause;
             isPause = YES;
+            if ([TWSet currentSet].isNotifyOn) {
+                //add local notification
+                NSDate *fireDate = [enterBackgroundTimestamp dateByAddingSeconds:[TWTimer currentTimer].remainderSeconds];
+                localNotify = [[HACLocalNotification alloc] initWithFireDate:fireDate
+                                                                       title:NSLocalizedString(@"appName", @"")
+                                                                 information:NSLocalizedString(@"you have a timer not completed", @"")
+                                                                        type:HACLocalNotificationTypeLeaving];
+            }
         }
     }
-    HACLocalNotification *ln = [HACLocalNotification new];
-    ln.title = @"monster";
-    ln.information = @"coming...";
-    ln.type = HACLocalNotificationTypeTimer;
-    NSDate *fireDate = [[NSDate date] dateByAddingSeconds:[TWTimer currentTimer].remainderSeconds];
-    ln.fireDate = fireDate;
-    [[HACLocalNotificationCenter defaultCenter] addHACLocalNotification:ln];
+    // send notification to queue
+    if (localNotify) {
+        [[HACLocalNotificationCenter defaultCenter] addHACLocalNotification:localNotify];
+    }
 }
 
 @end

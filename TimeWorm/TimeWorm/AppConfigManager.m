@@ -16,6 +16,7 @@
 #import "TWSet.h"
 #import "HACLocalNotificationCenter.h"
 @import GoogleMobileAds;
+#import "DateTools.h"
 
 @implementation AppConfigManager
 
@@ -27,13 +28,23 @@
     [self loadAdmob];
 }
 
++ (void)applicationWillTerminate {
+    // 设置离开后的第二天11点提醒
+    NSDate *now = [NSDate date];
+    NSDate *fireDate = [[NSDate dateWithYear:now.year month:now.month day:now.day hour:11 minute:0 second:0] dateByAddingDays:1];
+    HACLocalNotification *localNotify = [[HACLocalNotification alloc] initWithFireDate:fireDate
+                                                           title:NSLocalizedString(@"appName", @"")
+                                                     information:NSLocalizedString(@"set timer to work~", @"")
+                                                            type:HACLocalNotificationTypePrompting];
+    [HACLNCenter addHACLocalNotification:localNotify];
+}
+
 + (void)config {
     //ddlog
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
     //flex
 //    [[FLEXManager sharedManager] showExplorer];
-    [[HACLocalNotificationCenter defaultCenter] registerLocalNotification];
 }
 
 + (void)loadCommands {
@@ -54,6 +65,13 @@
     } else {
         [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     }
+}
+
++ (void)loadLocalNotification {
+    [HACLNCenter registerLocalNotification];
+    HACBackground(^{
+        [HACLNCenter cancelAllHACLocalNotifications];
+    });
 }
 
 + (void)loadAdmob {
