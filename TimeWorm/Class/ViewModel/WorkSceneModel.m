@@ -203,6 +203,10 @@
                                                              information:NSLocalizedString(@"timer complete", @"")
                                                                     type:HACLocalNotificationTypeTimer];
         }
+        // share data for today extension
+        NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.xxxx.app"];
+        [shared setInteger:[TWTimer currentTimer].remainderSeconds forKey:@"remainderSeconds"];
+        [shared synchronize];
     } else {
         //自动生成event
         if (self.currentTimer.state&TWTimerStateFlow) {
@@ -224,6 +228,10 @@
                                                                  information:NSLocalizedString(@"you have a timer not completed", @"")
                                                                         type:HACLocalNotificationTypeLeaving];
             }
+            // share data for today extension
+            NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.xxxx.app"];
+            [shared setInteger:[TWTimer currentTimer].remainderSeconds forKey:@"remainderSeconds"];
+            [shared synchronize];
         }
     }
     // send notification to queue

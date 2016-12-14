@@ -54,4 +54,18 @@
     [AppConfigManager applicationWillTerminate];
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    NSString* prefix = @"TWWidgetApp://action=";
+    if ([[url absoluteString] rangeOfString:prefix].location != NSNotFound) {
+        NSString* action = [[url absoluteString] substringFromIndex:prefix.length];
+        if ([action isEqualToString:@"GotoHomePage"]) {
+            DDLogInfo(@"GotoHomePage");
+        }
+        else if([action isEqualToString:@"GotoOtherPage"]) {
+            DDLogInfo(@"GotoOtherPage");
+        }
+    }
+    return  YES;
+}
+
 @end
