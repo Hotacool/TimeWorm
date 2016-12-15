@@ -105,4 +105,14 @@
     }
     return nil;
 }
+
++ (void)shareAppgroupData:(NSDictionary *)dic {
+    if (HACObjectIsEmpty(dic)) {
+        return;
+    }
+    // share data for today extension
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.TimeWorm"];
+    [shared setObject:dic forKey:@"TWUserDic"];
+    [shared synchronize];
+}
 @end

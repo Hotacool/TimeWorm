@@ -204,9 +204,9 @@
                                                                     type:HACLocalNotificationTypeTimer];
         }
         // share data for today extension
-        NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.xxxx.app"];
-        [shared setInteger:[TWTimer currentTimer].remainderSeconds forKey:@"remainderSeconds"];
-        [shared synchronize];
+        [TWUtility shareAppgroupData:@{@"remainderSeconds": @([TWTimer currentTimer].remainderSeconds)
+                                       ,@"state":@1
+                                       ,@"start":[TWTimer currentTimer].startDate}];
     } else {
         //自动生成event
         if (self.currentTimer.state&TWTimerStateFlow) {
@@ -229,9 +229,9 @@
                                                                         type:HACLocalNotificationTypeLeaving];
             }
             // share data for today extension
-            NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.xxxx.app"];
-            [shared setInteger:[TWTimer currentTimer].remainderSeconds forKey:@"remainderSeconds"];
-            [shared synchronize];
+            [TWUtility shareAppgroupData:@{@"remainderSeconds": @([TWTimer currentTimer].remainderSeconds)
+                                           ,@"state":@2
+                                           ,@"start":[TWTimer currentTimer].startDate}];
         }
     }
     // send notification to queue

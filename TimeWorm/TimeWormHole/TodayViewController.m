@@ -8,9 +8,10 @@
 
 #import "TodayViewController.h"
 #import <NotificationCenter/NotificationCenter.h>
+#import "TWTimerBoard.h"
 
 @interface TodayViewController () <NCWidgetProviding>
-@property (nonatomic, strong) UILabel *numberLabel;
+@property (nonatomic, strong) TWTimerBoard *timeBoard;
 @end
 
 @implementation TodayViewController
@@ -22,10 +23,10 @@
                                              selector:@selector(userDefaultsDidChange:)
                                                  name:NSUserDefaultsDidChangeNotification
                                                object:nil];
-    
-    self.preferredContentSize = CGSizeMake(0, 200);
-    self.numberLabel.text = @"0";
-    [self.view addSubview:self.numberLabel];
+    self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeCompact;
+    self.preferredContentSize = CGSizeMake(0, 110);
+    [self.view addSubview:self.timeBoard];
+    self.view.backgroundColor = [UIColor clearColor];
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMe:)];
     [self.view addGestureRecognizer:gesture];
 }
@@ -40,9 +41,17 @@
 }
 
 - (void)updateNumberLabelText {
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.ABC0408"];
-    NSInteger number = [defaults integerForKey:@"remainderSeconds"];
-    self.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)number];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.TimeWorm"];
+    id obj = [defaults objectForKey:@"TWUserDic"];
+    if ([obj isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *userDic = obj;
+        NSUInteger state = [[userDic objectForKey:@"state"] integerValue];
+        NSDate *startDate = [userDic objectForKey:@"start"];
+        NSUInteger seconds = [[userDic objectForKey:@"remainderSeconds"] integerValue];
+        [self.timeBoard setSeconds:seconds];
+        [self.timeBoard setState:state];
+        [self.timeBoard setStartDate:startDate];
+    }
 }
 
 - (void)tapMe:(UITapGestureRecognizer*)gesture {
@@ -56,11 +65,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UILabel *)numberLabel {
-    if (!_numberLabel) {
-        _numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, self.preferredContentSize.height)];
+- (TWTimerBoard *)timeBoard {
+    if (!_timeBoard) {
+        _timeBoard = [[TWTimerBoard alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 110)];
     }
-    return _numberLabel;
+    return _timeBoard;
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
@@ -75,6 +84,15 @@
 
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets {
     return UIEdgeInsetsZero;
+}
+
+- (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize
+{
+    if (activeDisplayMode == NCWidgetDisplayModeCompact) {
+        self.preferredContentSize = maxSize;
+    } else if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
+        self.preferredContentSize = CGSizeMake(0, 400);
+    }
 }
 
 @end
