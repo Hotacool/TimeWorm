@@ -205,8 +205,10 @@
         }
         // share data for today extension
         [TWUtility shareAppgroupData:@{@"remainderSeconds": @([TWTimer currentTimer].remainderSeconds)
-                                       ,@"state":@1
-                                       ,@"start":[TWTimer currentTimer].startDate}];
+                                       ,@"timerId":@([TWTimer currentTimer].ID)
+                                       ,@"state":@([TWTimer currentTimer].state)
+                                       ,@"start":[TWTimer currentTimer].startDate
+                                       ,@"enterBack":enterBackgroundTimestamp}];
     } else {
         //自动生成event
         if (self.currentTimer.state&TWTimerStateFlow) {
@@ -230,8 +232,10 @@
             }
             // share data for today extension
             [TWUtility shareAppgroupData:@{@"remainderSeconds": @([TWTimer currentTimer].remainderSeconds)
-                                           ,@"state":@2
-                                           ,@"start":[TWTimer currentTimer].startDate}];
+                                           ,@"timerId":@([TWTimer currentTimer].ID)
+                                           ,@"state":@([TWTimer currentTimer].state)
+                                           ,@"start":[TWTimer currentTimer].startDate
+                                           ,@"enterBack":enterBackgroundTimestamp}];
         }
     }
     // send notification to queue

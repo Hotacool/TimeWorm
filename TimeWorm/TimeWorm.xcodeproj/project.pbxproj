@@ -66,6 +66,7 @@
 		FA0EFFFE1D7527720080759D /* HomeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFFB1D7527720080759D /* HomeScene.m */; };
 		FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFFD1D7527720080759D /* TWBaseScene.m */; };
 		FA1586F51E029F7600E0B722 /* TWTimerBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1586F41E029F7600E0B722 /* TWTimerBoard.m */; };
+		FA15870B1E038CAB00E0B722 /* TWShareDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15870A1E038CAB00E0B722 /* TWShareDataModel.m */; };
 		FA49AA181DC314DF00CCC990 /* SetScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA171DC314DF00CCC990 /* SetScene.m */; };
 		FA49AA1B1DC322CA00CCC990 /* RelaxScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA1A1DC322CA00CCC990 /* RelaxScene.m */; };
 		FA49AA1F1DC3266700CCC990 /* RS3DSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA1E1DC3266700CCC990 /* RS3DSegmentedControl.m */; };
@@ -326,6 +327,8 @@
 		FA0EFFFD1D7527720080759D /* TWBaseScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWBaseScene.m; sourceTree = "<group>"; };
 		FA1586F31E029F7600E0B722 /* TWTimerBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTimerBoard.h; sourceTree = "<group>"; };
 		FA1586F41E029F7600E0B722 /* TWTimerBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTimerBoard.m; sourceTree = "<group>"; };
+		FA1587091E038CAB00E0B722 /* TWShareDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWShareDataModel.h; sourceTree = "<group>"; };
+		FA15870A1E038CAB00E0B722 /* TWShareDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWShareDataModel.m; sourceTree = "<group>"; };
 		FA49AA161DC314DF00CCC990 /* SetScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetScene.h; sourceTree = "<group>"; };
 		FA49AA171DC314DF00CCC990 /* SetScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetScene.m; sourceTree = "<group>"; };
 		FA49AA191DC322CA00CCC990 /* RelaxScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelaxScene.h; sourceTree = "<group>"; };
@@ -1096,6 +1099,8 @@
 				FA9DF4011E0138D9001E5A7B /* TodayViewController.m */,
 				FA1586F31E029F7600E0B722 /* TWTimerBoard.h */,
 				FA1586F41E029F7600E0B722 /* TWTimerBoard.m */,
+				FA1587091E038CAB00E0B722 /* TWShareDataModel.h */,
+				FA15870A1E038CAB00E0B722 /* TWShareDataModel.m */,
 				FA9DF4061E0138D9001E5A7B /* Info.plist */,
 			);
 			path = TimeWormHole;
@@ -1485,6 +1490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA9DF4021E0138D9001E5A7B /* TodayViewController.m in Sources */,
+				FA15870B1E038CAB00E0B722 /* TWShareDataModel.m in Sources */,
 				FA1586F51E029F7600E0B722 /* TWTimerBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

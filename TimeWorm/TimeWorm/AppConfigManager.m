@@ -14,6 +14,7 @@
 #import "DDTTYLogger.h"
 #import "FLEXManager.h"
 #import "TWSet.h"
+#import "TWTimer.h"
 #import "HACLocalNotificationCenter.h"
 @import GoogleMobileAds;
 #import "DateTools.h"
@@ -28,7 +29,19 @@
     [self loadAdmob];
 }
 
++ (void)applicationDidEnterBackground:(UIApplication *)application {
+    // update today extension data
+    if (([TWTimer currentTimer] && [TWTimer currentTimer].state&TWTimerStateCancel)
+        || ![TWTimer currentTimer]) {
+        [TWUtility shareAppgroupData:@{@"state": @0}];
+    }
+}
+
 + (void)applicationWillTerminate {
+    // update today extension data
+    [TWUtility shareAppgroupData:@{@"state": @0}];
+    // 取消所有通知
+    [HACLNCenter cancelAllHACLocalNotifications];
     // 设置离开后的第二天11点提醒
     NSDate *now = [NSDate date];
     NSDate *fireDate = [[NSDate dateWithYear:now.year month:now.month day:now.day hour:11 minute:0 second:0] dateByAddingDays:1];
@@ -37,6 +50,20 @@
                                                      information:NSLocalizedString(@"set timer to work~", @"")
                                                             type:HACLocalNotificationTypePrompting];
     [HACLNCenter addHACLocalNotification:localNotify];
+}
+
++ (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    NSString* prefix = @"TWWidgetApp://timerId=";
+    if ([[url absoluteString] rangeOfString:prefix].location != NSNotFound) {
+        NSString* timerId = [[url absoluteString] substringFromIndex:prefix.length];
+        NSUInteger identifir = [timerId integerValue];
+        if ([TWTimer currentTimer] && identifir != [TWTimer currentTimer].ID) {
+            [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"Timer has been discarded.", @"") doText:nil doBlock:nil];
+        } else if (![TWTimer currentTimer]) {
+            [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"set a new timer.", @"") doText:nil doBlock:nil];
+        }
+    }
+    return YES;
 }
 
 + (void)config {

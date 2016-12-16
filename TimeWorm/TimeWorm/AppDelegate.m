@@ -39,6 +39,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [AppConfigManager applicationDidEnterBackground:application];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -55,17 +56,7 @@
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    NSString* prefix = @"TWWidgetApp://action=";
-    if ([[url absoluteString] rangeOfString:prefix].location != NSNotFound) {
-        NSString* action = [[url absoluteString] substringFromIndex:prefix.length];
-        if ([action isEqualToString:@"GotoHomePage"]) {
-            DDLogInfo(@"GotoHomePage");
-        }
-        else if([action isEqualToString:@"GotoOtherPage"]) {
-            DDLogInfo(@"GotoOtherPage");
-        }
-    }
-    return  YES;
+    return  [AppConfigManager application:app openURL:url options:options];
 }
 
 @end
