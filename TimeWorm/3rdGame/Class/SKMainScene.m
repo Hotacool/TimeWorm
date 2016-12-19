@@ -49,6 +49,10 @@ typedef NS_ENUM(uint32_t, SKRoleCategory){
     [self firingBullets];
 }
 
+- (void)clear {
+    [self removeAllActions];
+}
+
 - (void)initPhysicsWorld{
     self.physicsWorld.contactDelegate = self;
     self.physicsWorld.gravity = CGVectorMake(0,0);

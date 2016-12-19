@@ -12,6 +12,7 @@
 #import "SetScreen.h"
 #import "SetDefault.h"
 #import "SetNotification.h"
+#import "SetAbout.h"
 #import "TWSet.h"
 
 static NSString *const SetSceneSegmentAniCenter = @"RecordSceneCalendarAniCenter";
@@ -205,41 +206,9 @@ static const int SetSceneSegmentCount = 4;
             view = ctrl.view;
         }
         else {
-            NSString *str = @"人生若只如初见，何事秋风悲画扇。\n等闲变却故人心，却道故人心易变。\n骊山语罢清宵半，泪雨霖铃终不怨。\n何如薄幸锦衣郎，比翼连枝当日愿。";
-            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
-            [attrStr addAttribute:NSFontAttributeName
-                            value:[UIFont systemFontOfSize:30.0f]
-                            range:NSMakeRange(0, 3)];
-            [attrStr addAttribute:NSForegroundColorAttributeName
-                            value:[UIColor redColor]
-                            range:NSMakeRange(17, 7)];
-            [attrStr addAttribute:NSUnderlineStyleAttributeName
-                            value:[NSNumber numberWithInteger:NSUnderlineStyleSingle]
-                            range:NSMakeRange(8, 7)];
-            NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
-            //行间距
-            paragraph.lineSpacing = 10;
-            //段落间距
-            paragraph.paragraphSpacing = 20;
-            //对齐方式
-            paragraph.alignment = NSTextAlignmentLeft;
-            //指定段落开始的缩进像素
-            paragraph.firstLineHeadIndent = 30;
-            //调整全部文字的缩进像素
-            paragraph.headIndent = 10;
-            [attrStr addAttribute:NSParagraphStyleAttributeName
-                            value:paragraph
-                            range:NSMakeRange(0, [str length])];
-            
-            
-            view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.setScrollView.width, self.setScrollView.height)];
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, view.width, view.height)];
-            label.center = view.center;
-            [view addSubview:label];
-            label.textAlignment = NSTextAlignmentLeft;
-            label.numberOfLines = 0;
-            label.attributedText = attrStr;
-            view.backgroundColor = Hdarkgray;
+            UIViewController *ctrl = [SetAbout new];
+            [scrollSubViewCtrl addObject:ctrl];
+            view = ctrl.view;
         }
         view.tag = index;
         [subViewDic setObject:view forKey:@(index)];

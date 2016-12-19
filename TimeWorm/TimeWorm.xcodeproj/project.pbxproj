@@ -67,6 +67,18 @@
 		FA0EFFFF1D7527720080759D /* TWBaseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0EFFFD1D7527720080759D /* TWBaseScene.m */; };
 		FA1586F51E029F7600E0B722 /* TWTimerBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1586F41E029F7600E0B722 /* TWTimerBoard.m */; };
 		FA15870B1E038CAB00E0B722 /* TWShareDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15870A1E038CAB00E0B722 /* TWShareDataModel.m */; };
+		FA1587121E03D23900E0B722 /* SetAbout.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1587111E03D23900E0B722 /* SetAbout.m */; };
+		FA1587181E03F17900E0B722 /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1587151E03F17900E0B722 /* EAIntroPage.m */; };
+		FA1587191E03F17900E0B722 /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1587171E03F17900E0B722 /* EAIntroView.m */; };
+		FA1587211E0506A600E0B722 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15871B1E0506A600E0B722 /* 1.png */; };
+		FA1587221E0506A600E0B722 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15871C1E0506A600E0B722 /* 2.png */; };
+		FA1587231E0506A600E0B722 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15871D1E0506A600E0B722 /* 3.png */; };
+		FA1587241E0506A600E0B722 /* femalecodertocat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15871E1E0506A600E0B722 /* femalecodertocat@2x.png */; };
+		FA1587251E0506A600E0B722 /* original@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15871F1E0506A600E0B722 /* original@2x.png */; };
+		FA1587261E0506A600E0B722 /* supportcat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1587201E0506A600E0B722 /* supportcat@2x.png */; };
+		FA1587291E050D4E00E0B722 /* TWIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1587281E050D4E00E0B722 /* TWIntroPage.m */; };
+		FA15872C1E06C4DD00E0B722 /* pp.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA15872B1E06C4DD00E0B722 /* pp.wav */; };
+		FA15872F1E06C52300E0B722 /* TWAudioHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15872E1E06C52300E0B722 /* TWAudioHelp.m */; };
 		FA49AA181DC314DF00CCC990 /* SetScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA171DC314DF00CCC990 /* SetScene.m */; };
 		FA49AA1B1DC322CA00CCC990 /* RelaxScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA1A1DC322CA00CCC990 /* RelaxScene.m */; };
 		FA49AA1F1DC3266700CCC990 /* RS3DSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA1E1DC3266700CCC990 /* RS3DSegmentedControl.m */; };
@@ -329,6 +341,23 @@
 		FA1586F41E029F7600E0B722 /* TWTimerBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTimerBoard.m; sourceTree = "<group>"; };
 		FA1587091E038CAB00E0B722 /* TWShareDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWShareDataModel.h; sourceTree = "<group>"; };
 		FA15870A1E038CAB00E0B722 /* TWShareDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWShareDataModel.m; sourceTree = "<group>"; };
+		FA1587101E03D23900E0B722 /* SetAbout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetAbout.h; sourceTree = "<group>"; };
+		FA1587111E03D23900E0B722 /* SetAbout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetAbout.m; sourceTree = "<group>"; };
+		FA1587141E03F17900E0B722 /* EAIntroPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroPage.h; sourceTree = "<group>"; };
+		FA1587151E03F17900E0B722 /* EAIntroPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroPage.m; sourceTree = "<group>"; };
+		FA1587161E03F17900E0B722 /* EAIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroView.h; sourceTree = "<group>"; };
+		FA1587171E03F17900E0B722 /* EAIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroView.m; sourceTree = "<group>"; };
+		FA15871B1E0506A600E0B722 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		FA15871C1E0506A600E0B722 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		FA15871D1E0506A600E0B722 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		FA15871E1E0506A600E0B722 /* femalecodertocat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "femalecodertocat@2x.png"; sourceTree = "<group>"; };
+		FA15871F1E0506A600E0B722 /* original@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "original@2x.png"; sourceTree = "<group>"; };
+		FA1587201E0506A600E0B722 /* supportcat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "supportcat@2x.png"; sourceTree = "<group>"; };
+		FA1587271E050D4E00E0B722 /* TWIntroPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWIntroPage.h; sourceTree = "<group>"; };
+		FA1587281E050D4E00E0B722 /* TWIntroPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWIntroPage.m; sourceTree = "<group>"; };
+		FA15872B1E06C4DD00E0B722 /* pp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pp.wav; sourceTree = "<group>"; };
+		FA15872D1E06C52300E0B722 /* TWAudioHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWAudioHelp.h; sourceTree = "<group>"; };
+		FA15872E1E06C52300E0B722 /* TWAudioHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWAudioHelp.m; sourceTree = "<group>"; };
 		FA49AA161DC314DF00CCC990 /* SetScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetScene.h; sourceTree = "<group>"; };
 		FA49AA171DC314DF00CCC990 /* SetScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetScene.m; sourceTree = "<group>"; };
 		FA49AA191DC322CA00CCC990 /* RelaxScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelaxScene.h; sourceTree = "<group>"; };
@@ -724,6 +753,8 @@
 		FA0EFFCA1D7409410080759D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FA15872A1E06C4DD00E0B722 /* music */,
+				FA15871A1E0506A600E0B722 /* Intro */,
 				FA49AA201DC326AC00CCC990 /* RS3DSegmentedControl.bundle */,
 				FA8C54DF1D7FE4B600F96ED5 /* sql */,
 				FA8C532C1D7D72C000F96ED5 /* TimerClock */,
@@ -836,6 +867,38 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
+		FA1587131E03F17900E0B722 /* EAIntroView */ = {
+			isa = PBXGroup;
+			children = (
+				FA1587141E03F17900E0B722 /* EAIntroPage.h */,
+				FA1587151E03F17900E0B722 /* EAIntroPage.m */,
+				FA1587161E03F17900E0B722 /* EAIntroView.h */,
+				FA1587171E03F17900E0B722 /* EAIntroView.m */,
+			);
+			path = EAIntroView;
+			sourceTree = "<group>";
+		};
+		FA15871A1E0506A600E0B722 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				FA15871B1E0506A600E0B722 /* 1.png */,
+				FA15871C1E0506A600E0B722 /* 2.png */,
+				FA15871D1E0506A600E0B722 /* 3.png */,
+				FA15871E1E0506A600E0B722 /* femalecodertocat@2x.png */,
+				FA15871F1E0506A600E0B722 /* original@2x.png */,
+				FA1587201E0506A600E0B722 /* supportcat@2x.png */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		FA15872A1E06C4DD00E0B722 /* music */ = {
+			isa = PBXGroup;
+			children = (
+				FA15872B1E06C4DD00E0B722 /* pp.wav */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
 		FA49AA1C1DC3266700CCC990 /* RS3DSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -936,6 +999,7 @@
 		FA8006B61D7049CE0071571C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				FA1587131E03F17900E0B722 /* EAIntroView */,
 				FA8545631DE7DA4300A71FC3 /* CommonView */,
 				FAA68EC51DCC6F0E009F1DDC /* BohrExtentCell */,
 				FA49AA1C1DC3266700CCC990 /* RS3DSegmentedControl */,
@@ -960,6 +1024,8 @@
 			children = (
 				FA8545641DE7DA5E00A71FC3 /* HACStepper.h */,
 				FA8545651DE7DA5E00A71FC3 /* HACStepper.m */,
+				FA1587271E050D4E00E0B722 /* TWIntroPage.h */,
+				FA1587281E050D4E00E0B722 /* TWIntroPage.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -979,6 +1045,8 @@
 				FABBBC301D86A65A004365F4 /* STPopupController+HAC.m */,
 				FA9DF23B1DFE87EA001E5A7B /* TWADHelp.h */,
 				FA9DF23C1DFE87EA001E5A7B /* TWADHelp.m */,
+				FA15872D1E06C52300E0B722 /* TWAudioHelp.h */,
+				FA15872E1E06C52300E0B722 /* TWAudioHelp.m */,
 				FA9DF31F1DFFCEC4001E5A7B /* HACLocalNotificationCenter.h */,
 				FA9DF3201DFFCEC4001E5A7B /* HACLocalNotificationCenter.m */,
 			);
@@ -1130,6 +1198,8 @@
 				FA85455C1DE6F19700A71FC3 /* SetDefault.m */,
 				FA85455E1DE6F1AE00A71FC3 /* SetNotification.h */,
 				FA85455F1DE6F1AE00A71FC3 /* SetNotification.m */,
+				FA1587101E03D23900E0B722 /* SetAbout.h */,
+				FA1587111E03D23900E0B722 /* SetAbout.m */,
 				FA00DEAC1DFAAC6100BD3D82 /* GameView.h */,
 				FA00DEAD1DFAAC6100BD3D82 /* GameView.m */,
 			);
@@ -1251,6 +1321,7 @@
 				FA8C53851D7D72C000F96ED5 /* loop_0001@3x.png in Resources */,
 				FA00DEA71DFAAB8C00BD3D82 /* enemy3_down.mp3 in Resources */,
 				FA8C537B1D7D72C000F96ED5 /* btn_reset_disabled@2x.png in Resources */,
+				FA1587241E0506A600E0B722 /* femalecodertocat@2x.png in Resources */,
 				FA8C53AA1D7D72C000F96ED5 /* loop_0020@2x.png in Resources */,
 				FA8C537F1D7D72C000F96ED5 /* clock_center_red_middle_i6@2x.png in Resources */,
 				FA8006AE1D7041A30071571C /* LaunchScreen.storyboard in Resources */,
@@ -1273,11 +1344,13 @@
 				FA8C53B31D7D72C000F96ED5 /* loop_0024@3x.png in Resources */,
 				FA8C53BB1D7D72C000F96ED5 /* loop_0028@3x.png in Resources */,
 				FA8C53B01D7D72C000F96ED5 /* loop_0023@2x.png in Resources */,
+				FA1587221E0506A600E0B722 /* 2.png in Resources */,
 				FA8C53BA1D7D72C000F96ED5 /* loop_0028@2x.png in Resources */,
 				FA0E01141D77F5C80080759D /* 害羞.gif in Resources */,
 				FA8C53801D7D72C000F96ED5 /* clock_panel_white_i6@2x.png in Resources */,
 				FA00DEB21DFABD5800BD3D82 /* 哭.gif in Resources */,
 				FA8C53B61D7D72C000F96ED5 /* loop_0026@2x.png in Resources */,
+				FA1587211E0506A600E0B722 /* 1.png in Resources */,
 				FA8C53961D7D72C000F96ED5 /* loop_0010@2x.png in Resources */,
 				FA8C53911D7D72C000F96ED5 /* loop_0007@3x.png in Resources */,
 				FA8C53B21D7D72C000F96ED5 /* loop_0024@2x.png in Resources */,
@@ -1286,6 +1359,7 @@
 				FA8C53AC1D7D72C000F96ED5 /* loop_0021@2x.png in Resources */,
 				FA8006AB1D7041A30071571C /* Assets.xcassets in Resources */,
 				FA8C53A91D7D72C000F96ED5 /* loop_0019@3x.png in Resources */,
+				FA1587231E0506A600E0B722 /* 3.png in Resources */,
 				FA8C53A01D7D72C000F96ED5 /* loop_0015@2x.png in Resources */,
 				FA8C538C1D7D72C000F96ED5 /* loop_0005@2x.png in Resources */,
 				FA8C53A81D7D72C000F96ED5 /* loop_0019@2x.png in Resources */,
@@ -1294,11 +1368,13 @@
 				FA8C539D1D7D72C000F96ED5 /* loop_0013@3x.png in Resources */,
 				FA8C53BF1D7D72C000F96ED5 /* loop_0030@3x.png in Resources */,
 				FA0E01191D77F5C80080759D /* 舌头.gif in Resources */,
+				FA1587251E0506A600E0B722 /* original@2x.png in Resources */,
 				FA8C53AF1D7D72C000F96ED5 /* loop_0022@3x.png in Resources */,
 				FA8C53C31D7D72C000F96ED5 /* timer_ruler_i6@2x.png in Resources */,
 				FA8C539E1D7D72C000F96ED5 /* loop_0014@2x.png in Resources */,
 				FA8C537E1D7D72C000F96ED5 /* clock_center_i6@2x.png in Resources */,
 				FA8C53C11D7D72C000F96ED5 /* minute_hand_shadow_i6@2x.png in Resources */,
+				FA1587261E0506A600E0B722 /* supportcat@2x.png in Resources */,
 				FA8C53C61D7DC79D00F96ED5 /* timer_ruler_i6p@3x.png in Resources */,
 				FA8C539A1D7D72C000F96ED5 /* loop_0012@2x.png in Resources */,
 				FA8C53841D7D72C000F96ED5 /* loop_0001@2x.png in Resources */,
@@ -1331,6 +1407,7 @@
 				FA0E01151D77F5C80080759D /* 怕.gif in Resources */,
 				FA8C53971D7D72C000F96ED5 /* loop_0010@3x.png in Resources */,
 				FA8C538F1D7D72C000F96ED5 /* loop_0006@3x.png in Resources */,
+				FA15872C1E06C4DD00E0B722 /* pp.wav in Resources */,
 				FA49AA211DC326AC00CCC990 /* RS3DSegmentedControl.bundle in Resources */,
 				FA8C53BD1D7D72C000F96ED5 /* loop_0029@3x.png in Resources */,
 				FA00DEAA1DFAAB8C00BD3D82 /* gameArts-hd.plist in Resources */,
@@ -1431,6 +1508,8 @@
 				FA0E00231D755F0E0080759D /* TWBaseCommand.m in Sources */,
 				FA6A020B1DC0A9AB0034201E /* NSDictionary+CL.m in Sources */,
 				FA85456F1DE8163A00A71FC3 /* HACTextTableViewCell.m in Sources */,
+				FA15872F1E06C52300E0B722 /* TWAudioHelp.m in Sources */,
+				FA1587291E050D4E00E0B722 /* TWIntroPage.m in Sources */,
 				FA4AE69F1D9263D400505B7E /* TWModelEvent.m in Sources */,
 				FA49AA181DC314DF00CCC990 /* SetScene.m in Sources */,
 				FA0E01321D7963170080759D /* HACClockTimer.m in Sources */,
@@ -1445,6 +1524,7 @@
 				FA0BD4381DB7731D0060803F /* HACFoldTableView.m in Sources */,
 				FAFD31CD1D89407A00091C3B /* TWMoreInfoPage.m in Sources */,
 				FA00DE9E1DFAAB8C00BD3D82 /* SKMainScene.m in Sources */,
+				FA1587121E03D23900E0B722 /* SetAbout.m in Sources */,
 				FA8C53251D7D6D2900F96ED5 /* UIView+STAnimation.m in Sources */,
 				FA6A02051DC0A7120034201E /* DayTitleLabel.m in Sources */,
 				FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */,
@@ -1461,6 +1541,7 @@
 				FA8545661DE7DA5E00A71FC3 /* HACStepper.m in Sources */,
 				FA0EFFDA1D741CA60080759D /* TWBaseViewController.m in Sources */,
 				FA8006A01D7041A30071571C /* main.m in Sources */,
+				FA1587181E03F17900E0B722 /* EAIntroPage.m in Sources */,
 				FA8545601DE6F1AE00A71FC3 /* SetNotification.m in Sources */,
 				FAF4B01B1DCC25A9007D545C /* SetScreen.m in Sources */,
 				FA9DF23D1DFE87EA001E5A7B /* TWADHelp.m in Sources */,
@@ -1472,6 +1553,7 @@
 				FA9DF3211DFFCEC4001E5A7B /* HACLocalNotificationCenter.m in Sources */,
 				FA710DDF1DEEC1D400A137C3 /* AppConfigManager.m in Sources */,
 				FA75D3611D9129D800E63CC9 /* TWTextView.m in Sources */,
+				FA1587191E03F17900E0B722 /* EAIntroView.m in Sources */,
 				FA85455D1DE6F19700A71FC3 /* SetDefault.m in Sources */,
 				FA0E012B1D7954330080759D /* WorkSceneModel.m in Sources */,
 				FA0EFFE01D7420020080759D /* HomeViewControllerModel.m in Sources */,

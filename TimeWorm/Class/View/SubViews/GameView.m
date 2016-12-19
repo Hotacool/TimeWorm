@@ -20,6 +20,10 @@
     return self;
 }
 
+- (void)dealloc {
+    DDLogInfo(@"GameView disappear...");
+}
+
 - (void)setUp {
     self.showsFPS = YES;
     self.showsNodeCount = YES;

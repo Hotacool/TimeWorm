@@ -17,6 +17,7 @@
 #import "TWEventList.h"
 #import "TWCommandCommon.h"
 #import "TWSet.h"
+#import "TWAudioHelp.h"
 
 static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 @interface WorkScene ()
@@ -173,6 +174,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
             case WorkSceneModelStateEnd: {
                 [self.clock switchInfoLabel2State:3];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"timer finish!", @"") doText:nil doBlock:nil];
+                [TWAudioHelp playTimerComplete];
                 //当计时器大于25分钟时，结束后询问是否放松
                 if (_wsm.currentTimer.allSeconds >= 60*2) {
                     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"success" message:@"need to relax?" preferredStyle:UIAlertControllerStyleAlert];

@@ -18,11 +18,13 @@
 #import "HACLocalNotificationCenter.h"
 @import GoogleMobileAds;
 #import "DateTools.h"
+#import "TWIntroPage.h"
 
 @implementation AppConfigManager
 
 + (void)loadConfig {
     [self config];
+    [self loadGuide];
     [self loadCommands];
     [self loadDB];
     [self loadDefaultSet];
@@ -71,7 +73,12 @@
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
     //flex
-//    [[FLEXManager sharedManager] showExplorer];
+    [[FLEXManager sharedManager] showExplorer];
+}
+
++ (void)loadGuide {
+    //根据版本号来判断是否需要显示引导页，一般来说每更新一个版本引导页都会有相应的修改
+    [TWIntroPage launchShowIntro];
 }
 
 + (void)loadCommands {

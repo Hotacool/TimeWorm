@@ -26,8 +26,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [AppConfigManager loadConfig];
     [self loadInterface];
+    [AppConfigManager loadConfig];
     return YES;
 }
 

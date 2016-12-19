@@ -29,4 +29,5 @@
     SKAction *_bigFoePlaneBlowupAction;
 }
 
+- (void)clear;
 @end
