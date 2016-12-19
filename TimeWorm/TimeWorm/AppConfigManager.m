@@ -24,6 +24,7 @@
 
 + (void)loadConfig {
     [self config];
+    [self loadLocalNotification];
     [self loadGuide];
     [self loadCommands];
     [self loadDB];

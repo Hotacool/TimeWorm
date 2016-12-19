@@ -79,6 +79,11 @@
 		FA1587291E050D4E00E0B722 /* TWIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1587281E050D4E00E0B722 /* TWIntroPage.m */; };
 		FA15872C1E06C4DD00E0B722 /* pp.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA15872B1E06C4DD00E0B722 /* pp.wav */; };
 		FA15872F1E06C52300E0B722 /* TWAudioHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = FA15872E1E06C52300E0B722 /* TWAudioHelp.m */; };
+		FA1587481E07AA2000E0B722 /* TWPaopaoVew.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1587471E07AA2000E0B722 /* TWPaopaoVew.m */; };
+		FA15874D1E07BA3400E0B722 /* paopao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15874B1E07BA3400E0B722 /* paopao@2x.png */; };
+		FA15874E1E07BA3400E0B722 /* paopao@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA15874C1E07BA3400E0B722 /* paopao@3x.png */; };
+		FA1587511E07CD6600E0B722 /* mm.json in Resources */ = {isa = PBXBuildFile; fileRef = FA1587501E07CD6600E0B722 /* mm.json */; };
+		FA1587541E07D01E00E0B722 /* TWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1587531E07D01E00E0B722 /* TWConstants.m */; };
 		FA49AA181DC314DF00CCC990 /* SetScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA171DC314DF00CCC990 /* SetScene.m */; };
 		FA49AA1B1DC322CA00CCC990 /* RelaxScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA1A1DC322CA00CCC990 /* RelaxScene.m */; };
 		FA49AA1F1DC3266700CCC990 /* RS3DSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA1E1DC3266700CCC990 /* RS3DSegmentedControl.m */; };
@@ -358,6 +363,13 @@
 		FA15872B1E06C4DD00E0B722 /* pp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pp.wav; sourceTree = "<group>"; };
 		FA15872D1E06C52300E0B722 /* TWAudioHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWAudioHelp.h; sourceTree = "<group>"; };
 		FA15872E1E06C52300E0B722 /* TWAudioHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWAudioHelp.m; sourceTree = "<group>"; };
+		FA1587461E07AA2000E0B722 /* TWPaopaoVew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPaopaoVew.h; sourceTree = "<group>"; };
+		FA1587471E07AA2000E0B722 /* TWPaopaoVew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPaopaoVew.m; sourceTree = "<group>"; };
+		FA15874B1E07BA3400E0B722 /* paopao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paopao@2x.png"; sourceTree = "<group>"; };
+		FA15874C1E07BA3400E0B722 /* paopao@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paopao@3x.png"; sourceTree = "<group>"; };
+		FA1587501E07CD6600E0B722 /* mm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mm.json; sourceTree = "<group>"; };
+		FA1587521E07D01E00E0B722 /* TWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWConstants.h; sourceTree = "<group>"; };
+		FA1587531E07D01E00E0B722 /* TWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWConstants.m; sourceTree = "<group>"; };
 		FA49AA161DC314DF00CCC990 /* SetScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetScene.h; sourceTree = "<group>"; };
 		FA49AA171DC314DF00CCC990 /* SetScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetScene.m; sourceTree = "<group>"; };
 		FA49AA191DC322CA00CCC990 /* RelaxScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelaxScene.h; sourceTree = "<group>"; };
@@ -753,6 +765,8 @@
 		FA0EFFCA1D7409410080759D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FA15874F1E07CD6600E0B722 /* Sets */,
+				FA1587431E07A95D00E0B722 /* img */,
 				FA15872A1E06C4DD00E0B722 /* music */,
 				FA15871A1E0506A600E0B722 /* Intro */,
 				FA49AA201DC326AC00CCC990 /* RS3DSegmentedControl.bundle */,
@@ -788,6 +802,8 @@
 				FA4AE6A11D9264C800505B7E /* TWEvent.m */,
 				FA49AA281DC3505600CCC990 /* TWSet.h */,
 				FA49AA291DC3505600CCC990 /* TWSet.m */,
+				FA1587521E07D01E00E0B722 /* TWConstants.h */,
+				FA1587531E07D01E00E0B722 /* TWConstants.m */,
 				FA8C54E21D7FEAD300F96ED5 /* TWModel.h */,
 				FA8C54E31D7FEAD300F96ED5 /* TWModel.m */,
 				FA8C54E51D7FEE3B00F96ED5 /* TWModelTimer.h */,
@@ -897,6 +913,23 @@
 				FA15872B1E06C4DD00E0B722 /* pp.wav */,
 			);
 			path = music;
+			sourceTree = "<group>";
+		};
+		FA1587431E07A95D00E0B722 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				FA15874B1E07BA3400E0B722 /* paopao@2x.png */,
+				FA15874C1E07BA3400E0B722 /* paopao@3x.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		FA15874F1E07CD6600E0B722 /* Sets */ = {
+			isa = PBXGroup;
+			children = (
+				FA1587501E07CD6600E0B722 /* mm.json */,
+			);
+			path = Sets;
 			sourceTree = "<group>";
 		};
 		FA49AA1C1DC3266700CCC990 /* RS3DSegmentedControl */ = {
@@ -1026,6 +1059,8 @@
 				FA8545651DE7DA5E00A71FC3 /* HACStepper.m */,
 				FA1587271E050D4E00E0B722 /* TWIntroPage.h */,
 				FA1587281E050D4E00E0B722 /* TWIntroPage.m */,
+				FA1587461E07AA2000E0B722 /* TWPaopaoVew.h */,
+				FA1587471E07AA2000E0B722 /* TWPaopaoVew.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -1318,9 +1353,11 @@
 				FA0E00A51D76CFD70080759D /* images.xcassets in Resources */,
 				FA00DEA51DFAAB8C00BD3D82 /* enemy2_down.mp3 in Resources */,
 				FA00DEA11DFAAB8C00BD3D82 /* bullet.mp3 in Resources */,
+				FA15874E1E07BA3400E0B722 /* paopao@3x.png in Resources */,
 				FA8C53851D7D72C000F96ED5 /* loop_0001@3x.png in Resources */,
 				FA00DEA71DFAAB8C00BD3D82 /* enemy3_down.mp3 in Resources */,
 				FA8C537B1D7D72C000F96ED5 /* btn_reset_disabled@2x.png in Resources */,
+				FA15874D1E07BA3400E0B722 /* paopao@2x.png in Resources */,
 				FA1587241E0506A600E0B722 /* femalecodertocat@2x.png in Resources */,
 				FA8C53AA1D7D72C000F96ED5 /* loop_0020@2x.png in Resources */,
 				FA8C537F1D7D72C000F96ED5 /* clock_center_red_middle_i6@2x.png in Resources */,
@@ -1391,6 +1428,7 @@
 				FA8C53831D7D72C000F96ED5 /* degree_i6@2x.png in Resources */,
 				FA8C537D1D7D72C000F96ED5 /* btn_reset_pressed@2x.png in Resources */,
 				FA8C539B1D7D72C000F96ED5 /* loop_0012@3x.png in Resources */,
+				FA1587511E07CD6600E0B722 /* mm.json in Resources */,
 				FA8C53CA1D7DC97700F96ED5 /* icon.png in Resources */,
 				FA8C53AB1D7D72C000F96ED5 /* loop_0020@3x.png in Resources */,
 				FA0E00F11D77C2420080759D /* Localizable.strings in Resources */,
@@ -1486,6 +1524,7 @@
 				FA4AE6A21D9264C800505B7E /* TWEvent.m in Sources */,
 				FA6A02041DC0A7120034201E /* DailyCalendarView.m in Sources */,
 				FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */,
+				FA1587541E07D01E00E0B722 /* TWConstants.m in Sources */,
 				FA0E00061D752B100080759D /* HeroSprite.m in Sources */,
 				FAAA36781DC1A0FD001ABC6C /* RecordScene.m in Sources */,
 				FA8545691DE7E39C00A71FC3 /* HACStepperTableViewCell.m in Sources */,
@@ -1527,6 +1566,7 @@
 				FA1587121E03D23900E0B722 /* SetAbout.m in Sources */,
 				FA8C53251D7D6D2900F96ED5 /* UIView+STAnimation.m in Sources */,
 				FA6A02051DC0A7120034201E /* DayTitleLabel.m in Sources */,
+				FA1587481E07AA2000E0B722 /* TWPaopaoVew.m in Sources */,
 				FA0EFFBD1D73DA310080759D /* FAImageView.m in Sources */,
 				FA8C54FB1D81547800F96ED5 /* HACircleButton.m in Sources */,
 				FA8006A31D7041A30071571C /* AppDelegate.m in Sources */,

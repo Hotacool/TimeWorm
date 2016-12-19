@@ -15,5 +15,6 @@ typedef  NS_ENUM(NSUInteger, HomeSceneModelState) {
 
 @interface HomeSceneModel : TWBaseViewModel
 @property (nonatomic, assign) HomeSceneModelState state;
+@property (nonatomic, strong) NSArray *messageList;
 
 @end

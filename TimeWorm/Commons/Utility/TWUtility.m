@@ -115,4 +115,17 @@
     [shared setObject:dic forKey:@"TWUserDic"];
     [shared synchronize];
 }
+
++ (id)readJsonName:(NSString*)name {
+    NSError*error;
+    //获取文件路径
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:name ofType:@"json"];
+    
+    //根据文件路径读取数据
+    NSData *jdata = [[NSData alloc] initWithContentsOfFile:filePath];
+    
+    //格式化成json数据
+    id jsonDic = [NSJSONSerialization JSONObjectWithData:jdata options:kNilOptions error:&error];
+    return jsonDic;
+}
 @end

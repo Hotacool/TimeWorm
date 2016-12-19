@@ -159,13 +159,13 @@ static NSInteger TWEditorViewTag = 1;
         TWTagPage *tagPage = [TWTagPage new];
         [tagPage setDefaultSelectedTags:[self.tagEditor allTags]];
         [tagPage setMaxSelectedTagNumber:self.tagEditor.maxTagsNum];
-        [tagPage setTagsArr:[NSMutableArray arrayWithArray:@[@"哈哈哈"
-                                                            ,@"呵呵呵"
-                                                            ,@"嚯嚯嚯"
-                                                            ,@"咻咻咻"
-                                                            ,@"嘶嘶嘶"
-                                                            ,@"叭叭叭"
-                                                             ,@"噗噗噗"]]];
+        [tagPage setTagsArr:[NSMutableArray arrayWithArray:@[@"工作"
+                                                            ,@"学习"
+                                                            ,@"游戏"
+                                                            ,@"睡觉"
+                                                            ,@"发呆"
+                                                            ,@"吃饭"
+                                                             ,@"劳动"]]];
         tagPage.delegate = self;
         [self.popupController pushViewController:tagPage animated:YES];
     }

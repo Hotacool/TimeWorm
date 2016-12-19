@@ -12,6 +12,7 @@
 #import "RecordScene.h"
 #import "SetScene.h"
 #import "RelaxScene.h"
+#import "TWConstants.h"
 
 @interface HomeViewControllerModel () {
     NSString *_title;
@@ -29,6 +30,7 @@
         _title = @"Home";
         _scene = TWHomeVCSceneHome;
         _currentScene = [self createScene:_scene];
+        [TWConstants initializeConstrants];
     }
     return self;
 }

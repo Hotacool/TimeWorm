@@ -21,4 +21,6 @@
 + (NSArray<NSString*>*)transformString2Tags:(NSString*)str ;
 #pragma mark - user defaults
 + (void)shareAppgroupData:(NSDictionary*)dic ;
+#pragma mark - local file
++ (id)readJsonName:(NSString*)name ;
 @end

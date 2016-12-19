@@ -7,6 +7,7 @@
 //
 
 #import "HomeSceneModel.h"
+#import "TWConstants.h"
 
 @implementation HomeSceneModel {
     NSTimer *timer;
@@ -17,6 +18,18 @@
         
     }
     return self;
+}
+
+- (NSArray *)messageList {
+    if (!_messageList) {
+        id msg = [TWConstants getMessageList];
+        if ([msg isKindOfClass:[NSArray class]]) {
+            _messageList = msg;
+        } else if ([msg isKindOfClass:[NSDictionary class]]) {
+            _messageList = [((NSDictionary*)msg) allValues];
+        }
+    }
+    return _messageList;
 }
 
 - (void)setState:(HomeSceneModelState)state {
