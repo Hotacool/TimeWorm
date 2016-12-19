@@ -27,13 +27,6 @@
         self.contentSizeInPopup = TWPopViewControllerSize;
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
         
-//        tagsArr = [NSMutableArray arrayWithArray:@[@"哈哈哈"
-//                                                   ,@"呵呵呵"
-//                                                   ,@"嚯嚯嚯"
-//                                                   ,@"咻咻咻"
-//                                                   ,@"嘶嘶嘶"
-//                                                   ,@"叭叭叭"
-//                                                   ,@"噗噗噗"]];
         selectedTags = [NSMutableSet set];
     }
     return self;
@@ -134,4 +127,10 @@
     [tableView reloadData];
 }
 
+#pragma mark - gesture
+- (void)directionChangedFrom:(TWSwipeVCDirection)from to:(TWSwipeVCDirection)to {
+    if (from == TWSwipeVCDirectionNone && to == TWSwipeVCDirectionLeft) {
+        [self.popupController popViewControllerAnimated:YES];
+    }
+}
 @end

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Hotacool. All rights reserved.
 //
 
-#import "TWBaseViewController.h"
+#import "TWSwipeViewController.h"
 
 @class TWTagPage;
 @protocol TWTagPageDelegate <NSObject>
@@ -16,7 +16,7 @@
 
 @end
 
-@interface TWTagPage : TWBaseViewController
+@interface TWTagPage : TWSwipeViewController
 @property (nonatomic, strong, readonly) NSMutableArray <NSString*>*tagsArr;
 @property (nonatomic, strong, readonly) NSMutableSet <NSString*>*selectedTags;
 @property (nonatomic, weak) id<TWTagPageDelegate> delegate;

@@ -32,6 +32,10 @@
     [self loadAdmob];
 }
 
++ (void)applicationDidBecomeActive:(UIApplication *)application {
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
+
 + (void)applicationDidEnterBackground:(UIApplication *)application {
     // update today extension data
     if (([TWTimer currentTimer] && [TWTimer currentTimer].state&TWTimerStateCancel)

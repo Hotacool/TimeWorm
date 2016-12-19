@@ -207,5 +207,10 @@ static const NSUInteger TWEventListCellTag = 1000;
 - (void)tableView:(HACFoldTableView *)tableView didFoldAtIndexPath:(NSIndexPath *)indexPath {
     sfuc
 }
-
+#pragma mark - gesture
+- (void)directionChangedFrom:(TWSwipeVCDirection)from to:(TWSwipeVCDirection)to {
+    if (from == TWSwipeVCDirectionNone && to == TWSwipeVCDirectionLeft) {
+        [self.popupController popViewControllerAnimated:YES];
+    }
+}
 @end

@@ -26,6 +26,7 @@
 		FA00DEAE1DFAAC6100BD3D82 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00DEAD1DFAAC6100BD3D82 /* GameView.m */; };
 		FA00DEB11DFABD5800BD3D82 /* 惊吓.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA00DEAF1DFABD5800BD3D82 /* 惊吓.gif */; };
 		FA00DEB21DFABD5800BD3D82 /* 哭.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA00DEB01DFABD5800BD3D82 /* 哭.gif */; };
+		FA0A66661E07F38E00BB3C5D /* TWSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A66651E07F38E00BB3C5D /* TWSwipeViewController.m */; };
 		FA0BD4351DB772430060803F /* TWEventList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4341DB772430060803F /* TWEventList.m */; };
 		FA0BD4381DB7731D0060803F /* HACFoldTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4371DB7731D0060803F /* HACFoldTableView.m */; };
 		FA0BD9AE1DF6B616002AAE3F /* TWEventDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD9AD1DF6B616002AAE3F /* TWEventDetailView.m */; };
@@ -270,6 +271,8 @@
 		FA00DEAD1DFAAC6100BD3D82 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
 		FA00DEAF1DFABD5800BD3D82 /* 惊吓.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "惊吓.gif"; sourceTree = "<group>"; };
 		FA00DEB01DFABD5800BD3D82 /* 哭.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "哭.gif"; sourceTree = "<group>"; };
+		FA0A66641E07F38E00BB3C5D /* TWSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSwipeViewController.h; sourceTree = "<group>"; };
+		FA0A66651E07F38E00BB3C5D /* TWSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSwipeViewController.m; sourceTree = "<group>"; };
 		FA0BD4331DB772430060803F /* TWEventList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEventList.h; sourceTree = "<group>"; };
 		FA0BD4341DB772430060803F /* TWEventList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEventList.m; sourceTree = "<group>"; };
 		FA0BD4361DB7731D0060803F /* HACFoldTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACFoldTableView.h; sourceTree = "<group>"; };
@@ -831,6 +834,8 @@
 			children = (
 				FA0EFFD81D741CA60080759D /* TWBaseViewController.h */,
 				FA0EFFD91D741CA60080759D /* TWBaseViewController.m */,
+				FA0A66641E07F38E00BB3C5D /* TWSwipeViewController.h */,
+				FA0A66651E07F38E00BB3C5D /* TWSwipeViewController.m */,
 				FA0EFFD51D741B7E0080759D /* HomeViewController.h */,
 				FA0EFFD61D741B7E0080759D /* HomeViewController.m */,
 				FA8C53191D7D613800F96ED5 /* TWClockSetting.h */,
@@ -1604,6 +1609,7 @@
 				FA0E01271D7924DB0080759D /* WorkScene.m in Sources */,
 				FA0EFFDD1D741CE40080759D /* TWBaseViewModel.m in Sources */,
 				FA0EFFC01D73DA310080759D /* UIFont+FontAwesome.m in Sources */,
+				FA0A66661E07F38E00BB3C5D /* TWSwipeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

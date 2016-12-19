@@ -12,6 +12,7 @@
 
 + (void)loadConfig ;
 
++ (void)applicationDidBecomeActive:(UIApplication *)application;
 + (void)applicationDidEnterBackground:(UIApplication *)application ;
 + (void)applicationWillTerminate ;
 + (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options ;

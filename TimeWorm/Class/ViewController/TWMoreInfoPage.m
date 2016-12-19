@@ -201,4 +201,10 @@ static NSInteger TWEditorViewTag = 1;
         [self.tagEditor removeTag:tag];
     }
 }
+#pragma mark - gesture
+- (void)directionChangedFrom:(TWSwipeVCDirection)from to:(TWSwipeVCDirection)to {
+    if (from == TWSwipeVCDirectionNone && to == TWSwipeVCDirectionLeft) {
+        [self.popupController popViewControllerAnimated:YES];
+    }
+}
 @end

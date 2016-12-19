@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Hotacool. All rights reserved.
 //
 
-#import "TWBaseViewController.h"
+#import "TWSwipeViewController.h"
 #import "TWModelTimer.h"
-@interface TWEventList : TWBaseViewController
+@interface TWEventList : TWSwipeViewController
 
 - (void)bindTimer:(TWModelTimer *)timer;
 @end
