@@ -20,4 +20,6 @@
 @property (nonatomic, strong) NSString *defaultEventName;
 @property (nonatomic, assign) BOOL keepTimer;
 @property (nonatomic, assign) BOOL isNotifyOn;
+@property (nonatomic, assign) BOOL continueWork;
+@property (nonatomic, assign) BOOL isVoiceOn;
 @end

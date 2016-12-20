@@ -10,9 +10,11 @@
 
 @implementation TWCommandWorkScene
 - (NSArray<NSString *> *)commands {
-    return @[WorkSceneCommand_pause
+    return @[WorkSceneCommand_start
+             ,WorkSceneCommand_pause
              ,WorkSceneCommand_event
-             ,WorkSceneCommand_reset];
+             ,WorkSceneCommand_reset
+             ,WorkSceneCommand_none];
 }
 
 - (void)doActionWithCommand:(NSString *)command withCompleteBlock:(void (^)(id))complete {

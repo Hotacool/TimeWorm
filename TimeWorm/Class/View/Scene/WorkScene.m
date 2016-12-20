@@ -18,6 +18,7 @@
 #import "TWCommandCommon.h"
 #import "TWSet.h"
 #import "TWAudioHelp.h"
+#import "GUAAlertView.h"
 
 static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 @interface WorkScene ()
@@ -140,6 +141,9 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
     if ([keyPath isEqualToString:@"state"]) {
         switch (self.wsm.state) {
             case WorkSceneModelStateNone: {
+                [self.clock setCLockDefaultDate:[[HACClockDate alloc] initWithHour:0 minute:0 second:0 weekday:1]];
+                [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
+                [self.clock switchInfoLabel2State:3];
                 break;
             }
             case WorkSceneModelStateWorking: {
@@ -175,19 +179,34 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
                 [self.clock switchInfoLabel2State:3];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"timer finish!", @"") doText:nil doBlock:nil];
                 [TWAudioHelp playTimerComplete];
-                //当计时器大于25分钟时，结束后询问是否放松
-                if (_wsm.currentTimer.allSeconds >= 60*2) {
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"success" message:@"need to relax?" preferredStyle:UIAlertControllerStyleAlert];
-                    alert.view.backgroundColor = Haqua;
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                        [TWCommandCenter doActionWithCommand:TWCommandCommon_tureRelax];
-                    }];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                        
-                    }];
-                    [alert addAction:cancelAction];
-                    [alert addAction:okAction];
-                    [self.ctrl presentViewController:alert animated:YES completion:nil];
+                
+                if ([TWSet currentSet].continueWork) {//连续计时
+                    GUAAlertView *v = [GUAAlertView alertViewWithTitle:@"success"
+                                                               message:@"continue a new timer?"
+                                                           buttonTitle:@"OK"
+                                                   buttonTouchedAction:^{
+                                                       DDLogInfo(@"touched");
+                                                       // continue to start a new timer
+                                                       [self.wsm startTimer];
+                                                   } dismissAction:^{
+                                                       DDLogInfo(@"dismiss");
+                                                   }];
+                    [v setAlertBackgroudColor:Haqua];
+                    [v show];
+                } else {
+                    //当计时器大于25分钟时，结束后询问是否放松
+                    if (_wsm.currentTimer.allSeconds >= 60*25) {
+                        GUAAlertView *v = [GUAAlertView alertViewWithTitle:@"success"
+                                                                   message:@"need to relax?"
+                                                               buttonTitle:@"OK"
+                                                       buttonTouchedAction:^{
+                                                           [TWCommandCenter doActionWithCommand:TWCommandCommon_tureRelax];
+                                                       } dismissAction:^{
+                                                           DDLogInfo(@"dismiss");
+                                                       }];
+                        [v setAlertBackgroudColor:Haqua];
+                        [v show];
+                    }
                 }
                 break;
             }

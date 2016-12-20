@@ -8,10 +8,14 @@
 
 #import "TWAudioHelp.h"
 #import <AudioToolbox/AudioServices.h>
+#import "TWSet.h"
 
 @implementation TWAudioHelp
 
 + (void)playTimerComplete {
+    if (![TWSet currentSet].isVoiceOn) {
+        return;
+    }
     static SystemSoundID soundID;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{        

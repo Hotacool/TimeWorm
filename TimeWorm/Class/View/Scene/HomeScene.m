@@ -100,7 +100,7 @@
 - (void)showMessage {
     if (_hsm.messageList) {
         int count = (int)_hsm.messageList.count;
-        int random = (int)(0 + (arc4random() % (count*2-0)));
+        int random = (int)(0 + (arc4random() % (count+2-0)));
         if (random > count-1) {
             self.paopao.hidden = YES;
         } else {

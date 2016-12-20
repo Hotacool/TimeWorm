@@ -8,6 +8,8 @@
 
 #import "TWBaseCommand.h"
 
+static NSString *const WorkSceneCommand_none = @"workSceneNone";
+static NSString *const WorkSceneCommand_start = @"workSceneStart";
 static NSString *const WorkSceneCommand_pause = @"workScenePause";
 static NSString *const WorkSceneCommand_event = @"workSceneEvent";
 static NSString *const WorkSceneCommand_reset = @"workSceneReset";

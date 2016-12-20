@@ -75,6 +75,22 @@
                 [TWSet updateSetColumn:@"defaultEventName" withObj:input];
             };
         }]];
+        
+        [section addCell:[HACSwitchTableViewCell cellWithTitle:@"声音" key:nil handler:^(HACSwitchTableViewCell * cell) {
+            cell.defaultSwitchValue = [TWSet currentSet].isVoiceOn;
+            cell.changeBlk = ^(BOOL isOn) {
+                NSLog(@"switch value: %d", isOn);
+                [TWSet updateSetColumn:@"isVoiceOn" withObj:@(isOn)];
+            };
+        }]];
+        
+        [section addCell:[HACSwitchTableViewCell cellWithTitle:@"连续计时" key:nil handler:^(HACSwitchTableViewCell * cell) {
+            cell.defaultSwitchValue = [TWSet currentSet].continueWork;
+            cell.changeBlk = ^(BOOL isOn) {
+                NSLog(@"switch value: %d", isOn);
+                [TWSet updateSetColumn:@"continueWork" withObj:@(isOn)];
+            };
+        }]];
     }]];
     
 }

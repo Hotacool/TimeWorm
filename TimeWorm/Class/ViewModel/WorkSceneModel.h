@@ -26,5 +26,6 @@ typedef  NS_ENUM(NSUInteger, WorkSceneModelState) {
 
 - (TWModelTimer*)currentTimer;
 - (void)startTimer;
+- (void)stopTimer;
 - (void)clearData ;
 @end

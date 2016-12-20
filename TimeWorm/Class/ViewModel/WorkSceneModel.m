@@ -40,11 +40,18 @@
                                              selector:@selector(enterBackgroudNotification:)
                                                  name:UIApplicationDidEnterBackgroundNotification
                                                object:nil];
+    [TWTimer attatchObserver2Timer:self];
 }
 
 - (void)switchState:(WorkSceneModelState)state {
     switch (state) {
         case WorkSceneModelStateNone: {
+            if (self.currentTimer) {
+                [TWTimer cancelTimer:self.currentTimer];
+                if ([TWEvent currentEvent]&&![TWEvent currentEvent].stopDate) {
+                    [TWEvent stopEvent:[TWEvent currentEvent]];
+                }
+            }
             break;
         }
         case WorkSceneModelStateWorking: {
@@ -123,8 +130,19 @@
 - (void)startTimer {
     //TWTimer
     [TWTimer createDefaultTimer];
-    [TWTimer attatchObserver2Timer:self];
     [self switchState:WorkSceneModelStateWorking];
+}
+
+- (void)stopTimer {
+    if (self.currentTimer
+        && !(self.currentTimer.state&TWTimerStateEnd)
+        && !(self.currentTimer.state&TWTimerStateCancel)) {
+        [TWTimer cancelTimer:self.currentTimer];
+        if ([TWEvent currentEvent]
+            && ![TWEvent currentEvent].stopDate) {
+            [TWEvent stopEvent:[TWEvent currentEvent]];
+        }
+    }
 }
 
 - (void)tickTime {
@@ -137,8 +155,14 @@
 }
 
 #pragma mark -- command action
+- (void)response2workSceneStart {
+    sfuc
+    [self switchState:WorkSceneModelStateWorking];
+    isPause = NO;
+}
+
 - (void)response2workScenePause {
-    DDLogInfo(@"%s", __func__);
+    sfuc
     if (isPause && self.currentTimer.state&TWTimerStatePause) {
         [self switchState:WorkSceneModelStateWorking];
     } else if (!isPause && self.currentTimer.state&TWTimerStateFlow) {
@@ -151,7 +175,7 @@
 }
 
 - (void)response2workSceneEvent {
-    DDLogInfo(@"%s", __func__);
+    sfuc
     [self switchState:WorkSceneModelStateEvent];
     isPause = YES;
 }
@@ -159,6 +183,12 @@
 - (void)response2workSceneReset {
     sfuc
     [self switchState:WorkSceneModelStateReset];
+    isPause = NO;
+}
+
+- (void)response2workSceneNone {
+    sfuc
+    [self switchState:WorkSceneModelStateNone];
     isPause = NO;
 }
 

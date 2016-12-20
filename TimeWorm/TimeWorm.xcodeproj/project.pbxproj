@@ -27,6 +27,7 @@
 		FA00DEB11DFABD5800BD3D82 /* 惊吓.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA00DEAF1DFABD5800BD3D82 /* 惊吓.gif */; };
 		FA00DEB21DFABD5800BD3D82 /* 哭.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA00DEB01DFABD5800BD3D82 /* 哭.gif */; };
 		FA0A66661E07F38E00BB3C5D /* TWSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A66651E07F38E00BB3C5D /* TWSwipeViewController.m */; };
+		FA0A666A1E08DA2000BB3C5D /* GUAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A66691E08DA2000BB3C5D /* GUAAlertView.m */; };
 		FA0BD4351DB772430060803F /* TWEventList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4341DB772430060803F /* TWEventList.m */; };
 		FA0BD4381DB7731D0060803F /* HACFoldTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4371DB7731D0060803F /* HACFoldTableView.m */; };
 		FA0BD9AE1DF6B616002AAE3F /* TWEventDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD9AD1DF6B616002AAE3F /* TWEventDetailView.m */; };
@@ -273,6 +274,8 @@
 		FA00DEB01DFABD5800BD3D82 /* 哭.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "哭.gif"; sourceTree = "<group>"; };
 		FA0A66641E07F38E00BB3C5D /* TWSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSwipeViewController.h; sourceTree = "<group>"; };
 		FA0A66651E07F38E00BB3C5D /* TWSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSwipeViewController.m; sourceTree = "<group>"; };
+		FA0A66681E08DA2000BB3C5D /* GUAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUAAlertView.h; sourceTree = "<group>"; };
+		FA0A66691E08DA2000BB3C5D /* GUAAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUAAlertView.m; sourceTree = "<group>"; };
 		FA0BD4331DB772430060803F /* TWEventList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEventList.h; sourceTree = "<group>"; };
 		FA0BD4341DB772430060803F /* TWEventList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEventList.m; sourceTree = "<group>"; };
 		FA0BD4361DB7731D0060803F /* HACFoldTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACFoldTableView.h; sourceTree = "<group>"; };
@@ -657,6 +660,15 @@
 			path = FoldTableView;
 			sourceTree = "<group>";
 		};
+		FA0A66671E08DA2000BB3C5D /* GUAAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				FA0A66681E08DA2000BB3C5D /* GUAAlertView.h */,
+				FA0A66691E08DA2000BB3C5D /* GUAAlertView.m */,
+			);
+			path = GUAAlertView;
+			sourceTree = "<group>";
+		};
 		FA0E00001D7527B80080759D /* Sprite */ = {
 			isa = PBXGroup;
 			children = (
@@ -1037,6 +1049,7 @@
 		FA8006B61D7049CE0071571C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				FA0A66671E08DA2000BB3C5D /* GUAAlertView */,
 				FA1587131E03F17900E0B722 /* EAIntroView */,
 				FA8545631DE7DA4300A71FC3 /* CommonView */,
 				FAA68EC51DCC6F0E009F1DDC /* BohrExtentCell */,
@@ -1594,6 +1607,7 @@
 				FA0E00611D766C8B0080759D /* QBFlatButton.m in Sources */,
 				FA00DEAE1DFAAC6100BD3D82 /* GameView.m in Sources */,
 				FA85455A1DE6ECE400A71FC3 /* HACSwitchTableViewCell.m in Sources */,
+				FA0A666A1E08DA2000BB3C5D /* GUAAlertView.m in Sources */,
 				FA0EFFC91D7408650080759D /* OLImageView.m in Sources */,
 				FA9DF3211DFFCEC4001E5A7B /* HACLocalNotificationCenter.m in Sources */,
 				FA710DDF1DEEC1D400A137C3 /* AppConfigManager.m in Sources */,

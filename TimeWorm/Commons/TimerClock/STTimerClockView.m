@@ -139,7 +139,6 @@
     }
     if (_leftSecond == 0){
         [self stopTime];
-        [[[UIAlertView alloc] initWithTitle:@"倒计时时间到了！" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"好的", nil] show];
     }
 }
 

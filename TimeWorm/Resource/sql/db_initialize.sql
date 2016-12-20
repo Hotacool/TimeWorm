@@ -32,6 +32,8 @@ CREATE TABLE `TWSet` (
 	'defaultTimerInf'	TEXT,
     'defaultEventName'	TEXT,
 	`keepTimer`	boolean,
+    `continueWork`	boolean,
+    `isVoiceOn`     boolean,
 	`isNotifyOn`	boolean
 );
 

@@ -13,6 +13,7 @@
 #import "TWTimer.h"
 #import "TWEvent.h"
 #import "TWSet.h"
+#import "TWCommandWorkScene.h"
 
 @interface TWClockSetting () <STClockViewDelegate, TWTimerObserver>
 
@@ -53,7 +54,15 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [TWTimer attatchObserver2Timer:self];
-    [self.clockView setClockSeconds:curTimer.remainderSeconds];
+    int seconds = 0;
+    if (curTimer) {
+        if (curTimer.state&TWTimerStateFlow
+            || curTimer.state&TWTimerStatePause
+            || curTimer.state&TWTimerStateSilent) {
+            seconds = curTimer.remainderSeconds;
+        }
+    }
+    [self.clockView setClockSeconds:seconds];
     [self.clockView transitionToShow:nil];
 }
 
@@ -94,7 +103,7 @@
 - (void)clockView:(STClockView *)clockView startTimerWithSeconds:(NSUInteger)seconds {
     curTimer = [TWTimer createTimerWithName:[TWSet currentSet].defaultTimerName seconds:(int)seconds];
     [TWTimer activeTimer:curTimer];
-
+    [TWCommandCenter doActionWithCommand:WorkSceneCommand_start];
 }
 
 - (void)stopTimerOfClockView:(STClockView *)clockView {
@@ -102,6 +111,7 @@
     if ([TWEvent currentEvent]&&![TWEvent currentEvent].stopDate) {
         [TWEvent stopEvent:[TWEvent currentEvent]];
     }
+    [TWCommandCenter doActionWithCommand:WorkSceneCommand_none];
 }
 
 #pragma mark -- Timer
