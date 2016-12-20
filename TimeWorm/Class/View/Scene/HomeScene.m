@@ -11,6 +11,7 @@
 #import "HomeSceneModel.h"
 #import "TWSet.h"
 #import "TWPaopaoVew.h"
+#import "TWTipsViewController.h"
 
 @interface HomeScene ()
 @property (nonatomic, strong) NSTimer *timer;
@@ -116,8 +117,18 @@
 - (TWPaopaoVew *)paopao {
     if (!_paopao) {
         _paopao = [[TWPaopaoVew alloc] initWithFrame:CGRectMake(0, 0, self.width-20, 150)];
+        UITapGestureRecognizer *tapPao = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPaopao:)];
+        [_paopao addGestureRecognizer:tapPao];
     }
     return _paopao;
+}
+
+- (void)tapPaopao:(id)sender {
+    TWTipsViewController *tipVC = [[TWTipsViewController alloc] init];
+    tipVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.ctrl presentViewController:tipVC animated:YES completion:^{
+       // pause
+    }];
 }
 
 #pragma mark -- KVO

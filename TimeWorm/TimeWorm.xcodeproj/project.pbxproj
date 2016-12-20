@@ -28,6 +28,8 @@
 		FA00DEB21DFABD5800BD3D82 /* 哭.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA00DEB01DFABD5800BD3D82 /* 哭.gif */; };
 		FA0A66661E07F38E00BB3C5D /* TWSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A66651E07F38E00BB3C5D /* TWSwipeViewController.m */; };
 		FA0A666A1E08DA2000BB3C5D /* GUAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A66691E08DA2000BB3C5D /* GUAAlertView.m */; };
+		FA0A666D1E09352400BB3C5D /* JNExpandableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A666C1E09352400BB3C5D /* JNExpandableTableView.m */; };
+		FA0A66701E09368000BB3C5D /* TWTipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A666F1E09368000BB3C5D /* TWTipsViewController.m */; };
 		FA0BD4351DB772430060803F /* TWEventList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4341DB772430060803F /* TWEventList.m */; };
 		FA0BD4381DB7731D0060803F /* HACFoldTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4371DB7731D0060803F /* HACFoldTableView.m */; };
 		FA0BD9AE1DF6B616002AAE3F /* TWEventDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD9AD1DF6B616002AAE3F /* TWEventDetailView.m */; };
@@ -276,6 +278,10 @@
 		FA0A66651E07F38E00BB3C5D /* TWSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSwipeViewController.m; sourceTree = "<group>"; };
 		FA0A66681E08DA2000BB3C5D /* GUAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUAAlertView.h; sourceTree = "<group>"; };
 		FA0A66691E08DA2000BB3C5D /* GUAAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUAAlertView.m; sourceTree = "<group>"; };
+		FA0A666B1E09352400BB3C5D /* JNExpandableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JNExpandableTableView.h; sourceTree = "<group>"; };
+		FA0A666C1E09352400BB3C5D /* JNExpandableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JNExpandableTableView.m; sourceTree = "<group>"; };
+		FA0A666E1E09368000BB3C5D /* TWTipsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTipsViewController.h; sourceTree = "<group>"; };
+		FA0A666F1E09368000BB3C5D /* TWTipsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTipsViewController.m; sourceTree = "<group>"; };
 		FA0BD4331DB772430060803F /* TWEventList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEventList.h; sourceTree = "<group>"; };
 		FA0BD4341DB772430060803F /* TWEventList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEventList.m; sourceTree = "<group>"; };
 		FA0BD4361DB7731D0060803F /* HACFoldTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACFoldTableView.h; sourceTree = "<group>"; };
@@ -656,6 +662,8 @@
 			children = (
 				FA0BD4361DB7731D0060803F /* HACFoldTableView.h */,
 				FA0BD4371DB7731D0060803F /* HACFoldTableView.m */,
+				FA0A666B1E09352400BB3C5D /* JNExpandableTableView.h */,
+				FA0A666C1E09352400BB3C5D /* JNExpandableTableView.m */,
 			);
 			path = FoldTableView;
 			sourceTree = "<group>";
@@ -862,6 +870,8 @@
 				FABBBC2D1D867EC1004365F4 /* TWEventSetting.m */,
 				FA0BD4331DB772430060803F /* TWEventList.h */,
 				FA0BD4341DB772430060803F /* TWEventList.m */,
+				FA0A666E1E09368000BB3C5D /* TWTipsViewController.h */,
+				FA0A666F1E09368000BB3C5D /* TWTipsViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1541,6 +1551,7 @@
 				FA8C54DE1D7FC53400F96ED5 /* TWDBManager.m in Sources */,
 				FA4AE6A21D9264C800505B7E /* TWEvent.m in Sources */,
 				FA6A02041DC0A7120034201E /* DailyCalendarView.m in Sources */,
+				FA0A66701E09368000BB3C5D /* TWTipsViewController.m in Sources */,
 				FA8C531B1D7D613800F96ED5 /* TWClockSetting.m in Sources */,
 				FA1587541E07D01E00E0B722 /* TWConstants.m in Sources */,
 				FA0E00061D752B100080759D /* HeroSprite.m in Sources */,
@@ -1573,6 +1584,7 @@
 				FA0EFFD71D741B7E0080759D /* HomeViewController.m in Sources */,
 				FA0E01241D783B1F0080759D /* HomeSceneModel.m in Sources */,
 				FA0EFFC11D73DA310080759D /* MozTopAlertView.m in Sources */,
+				FA0A666D1E09352400BB3C5D /* JNExpandableTableView.m in Sources */,
 				FA0BD9B11DF7B424002AAE3F /* TWTimerInfoPage.m in Sources */,
 				FA6A020A1DC0A9AB0034201E /* NSDate+CL.m in Sources */,
 				FAA68EC81DCC6F0E009F1DDC /* HACPickerTableViewCell.m in Sources */,
