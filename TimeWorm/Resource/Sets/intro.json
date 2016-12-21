@@ -1,0 +1,42 @@
+{
+    "1":{
+        "title":"title001",
+        "image":"intro1",
+        "content":"The last 10 years have been about building a world that is mobile-first. In the next 10 years, we will shift to a world that is AI-first."
+    },
+    "2":{
+        "title":"title002",
+        "image":"intro2",
+        "content":"From Amazon and Facebook to Google and Microsoft, leaders of the world’s most influential technology firms are highlighting their enthusiasm for Artificial Intelligence (AI). But what is AI? Why is it important? And why now? While there is growing interest in AI, the field is understood mainly by specialists. Our goal for this primer is to make this important field accessible to a broader audience."
+    },
+    "3":{
+        "title":"title003",
+        "image":"",
+        "content":"We’ll begin by explaining the meaning of ‘AI’ and key terms including ‘machine learning’. "
+    },
+    "4":{
+        "title":"title004",
+        "image":"intro2",
+        "content":"We’ll illustrate how one of the most productive areas of AI, called ‘deep learning’, works."
+    },
+    "5":{
+        "title":"title005",
+        "image":"",
+        "content":"We’ll explore the problems that AI solves and why they matter. And we’ll get behind the headlines to see why AI, which was invented in the 1950s, is coming of age today."
+    },
+    "6":{
+        "title":"title003",
+        "image":"intro1",
+        "content":"As venture capitalists, we look for emerging trends that will create value for consumers and companies. We believe AI is an evolution in computing as, or more, important than the shifts to mobile or cloud computing. "
+    },
+    "7":{
+        "title":"title004",
+        "image":"intro2",
+        "content":"We’ll illustrate how one of the most productive areas of AI, called ‘deep learning’, works."
+    },
+    "8":{
+        "title":"title005",
+        "image":"intro1",
+        "content":"We’ll explore the problems that AI solves and why they matter. And we’ll get behind the headlines to see why AI, which was invented in the 1950s, is coming of age today."
+    },
+}

@@ -13,13 +13,14 @@
 #import "SetDefault.h"
 #import "SetNotification.h"
 #import "SetAbout.h"
+#import "SetHelp.h"
 #import "TWSet.h"
 
 static NSString *const SetSceneSegmentAniCenter = @"RecordSceneCalendarAniCenter";
 static NSString *const SetSceneSetTableAniCenter = @"RecordSceneTimerTableAniCenter";
 static NSString *const SetSceneSetTableID = @"RecordSceneTimerTableID";
 static const CGFloat SetSceneSegmentHeight = 80;
-static const int SetSceneSegmentCount = 4;
+static const int SetSceneSegmentCount = 5;
 @interface SetScene () <RS3DSegmentedControlDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) RS3DSegmentedControl *segment;
 @property (nonatomic, strong) UIScrollView *setScrollView;
@@ -138,6 +139,8 @@ static const int SetSceneSegmentCount = 4;
         case 2:
             return NSLocalizedString(@"Notification", @"");
         case 3:
+            return NSLocalizedString(@"Help", @"");
+        case 4:
             return NSLocalizedString(@"About", @"");
             
         default:
@@ -202,6 +205,10 @@ static const int SetSceneSegmentCount = 4;
             view = ctrl.view;
         } else if (index == 2) {
             UIViewController *ctrl = [SetNotification new];
+            [scrollSubViewCtrl addObject:ctrl];
+            view = ctrl.view;
+        } else if (index == 3) {
+            UIViewController *ctrl = [SetHelp new];
             [scrollSubViewCtrl addObject:ctrl];
             view = ctrl.view;
         }

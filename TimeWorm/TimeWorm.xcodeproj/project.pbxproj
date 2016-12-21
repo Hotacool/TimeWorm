@@ -96,6 +96,11 @@
 		FA49AA2A1DC3505600CCC990 /* TWSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FA49AA291DC3505600CCC990 /* TWSet.m */; };
 		FA4AE69F1D9263D400505B7E /* TWModelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4AE69E1D9263D400505B7E /* TWModelEvent.m */; };
 		FA4AE6A21D9264C800505B7E /* TWEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4AE6A11D9264C800505B7E /* TWEvent.m */; };
+		FA5D75171E0A4D7A00F1A6B7 /* TWTipsExpandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D75151E0A4D7A00F1A6B7 /* TWTipsExpandCell.m */; };
+		FA5D751A1E0A5E1400F1A6B7 /* intro1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5D75191E0A5E1400F1A6B7 /* intro1.png */; };
+		FA5D751E1E0A6B6000F1A6B7 /* intro.json in Resources */ = {isa = PBXBuildFile; fileRef = FA5D751D1E0A6B6000F1A6B7 /* intro.json */; };
+		FA5D75201E0A770800F1A6B7 /* intro2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5D751F1E0A770800F1A6B7 /* intro2.png */; };
+		FA5D75231E0A79DB00F1A6B7 /* SetHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D75221E0A79DB00F1A6B7 /* SetHelp.m */; };
 		FA6A02031DC0A7120034201E /* CLWeeklyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */; };
 		FA6A02041DC0A7120034201E /* DailyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02001DC0A7120034201E /* DailyCalendarView.m */; };
 		FA6A02051DC0A7120034201E /* DayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02021DC0A7120034201E /* DayTitleLabel.m */; };
@@ -397,6 +402,13 @@
 		FA4AE69E1D9263D400505B7E /* TWModelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWModelEvent.m; sourceTree = "<group>"; };
 		FA4AE6A01D9264C800505B7E /* TWEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEvent.h; sourceTree = "<group>"; };
 		FA4AE6A11D9264C800505B7E /* TWEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEvent.m; sourceTree = "<group>"; };
+		FA5D75141E0A4D7A00F1A6B7 /* TWTipsExpandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTipsExpandCell.h; sourceTree = "<group>"; };
+		FA5D75151E0A4D7A00F1A6B7 /* TWTipsExpandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTipsExpandCell.m; sourceTree = "<group>"; };
+		FA5D75191E0A5E1400F1A6B7 /* intro1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intro1.png; sourceTree = "<group>"; };
+		FA5D751D1E0A6B6000F1A6B7 /* intro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro.json; sourceTree = "<group>"; };
+		FA5D751F1E0A770800F1A6B7 /* intro2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intro2.png; sourceTree = "<group>"; };
+		FA5D75211E0A79DB00F1A6B7 /* SetHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetHelp.h; sourceTree = "<group>"; };
+		FA5D75221E0A79DB00F1A6B7 /* SetHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetHelp.m; sourceTree = "<group>"; };
 		FA6A01FD1DC0A7120034201E /* CLWeeklyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLWeeklyCalendarView.h; sourceTree = "<group>"; };
 		FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLWeeklyCalendarView.m; sourceTree = "<group>"; };
 		FA6A01FF1DC0A7120034201E /* DailyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCalendarView.h; sourceTree = "<group>"; };
@@ -947,6 +959,8 @@
 			children = (
 				FA15874B1E07BA3400E0B722 /* paopao@2x.png */,
 				FA15874C1E07BA3400E0B722 /* paopao@3x.png */,
+				FA5D75191E0A5E1400F1A6B7 /* intro1.png */,
+				FA5D751F1E0A770800F1A6B7 /* intro2.png */,
 			);
 			path = img;
 			sourceTree = "<group>";
@@ -954,6 +968,7 @@
 		FA15874F1E07CD6600E0B722 /* Sets */ = {
 			isa = PBXGroup;
 			children = (
+				FA5D751D1E0A6B6000F1A6B7 /* intro.json */,
 				FA1587501E07CD6600E0B722 /* mm.json */,
 			);
 			path = Sets;
@@ -1089,6 +1104,8 @@
 				FA1587281E050D4E00E0B722 /* TWIntroPage.m */,
 				FA1587461E07AA2000E0B722 /* TWPaopaoVew.h */,
 				FA1587471E07AA2000E0B722 /* TWPaopaoVew.m */,
+				FA5D75141E0A4D7A00F1A6B7 /* TWTipsExpandCell.h */,
+				FA5D75151E0A4D7A00F1A6B7 /* TWTipsExpandCell.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -1261,6 +1278,8 @@
 				FA85455C1DE6F19700A71FC3 /* SetDefault.m */,
 				FA85455E1DE6F1AE00A71FC3 /* SetNotification.h */,
 				FA85455F1DE6F1AE00A71FC3 /* SetNotification.m */,
+				FA5D75211E0A79DB00F1A6B7 /* SetHelp.h */,
+				FA5D75221E0A79DB00F1A6B7 /* SetHelp.m */,
 				FA1587101E03D23900E0B722 /* SetAbout.h */,
 				FA1587111E03D23900E0B722 /* SetAbout.m */,
 				FA00DEAC1DFAAC6100BD3D82 /* GameView.h */,
@@ -1385,6 +1404,7 @@
 				FA8C53851D7D72C000F96ED5 /* loop_0001@3x.png in Resources */,
 				FA00DEA71DFAAB8C00BD3D82 /* enemy3_down.mp3 in Resources */,
 				FA8C537B1D7D72C000F96ED5 /* btn_reset_disabled@2x.png in Resources */,
+				FA5D75201E0A770800F1A6B7 /* intro2.png in Resources */,
 				FA15874D1E07BA3400E0B722 /* paopao@2x.png in Resources */,
 				FA1587241E0506A600E0B722 /* femalecodertocat@2x.png in Resources */,
 				FA8C53AA1D7D72C000F96ED5 /* loop_0020@2x.png in Resources */,
@@ -1393,6 +1413,7 @@
 				FA00DEA61DFAAB8C00BD3D82 /* enemy2_out.mp3 in Resources */,
 				FA8C53B81D7D72C000F96ED5 /* loop_0027@2x.png in Resources */,
 				FA8C53A51D7D72C000F96ED5 /* loop_0017@3x.png in Resources */,
+				FA5D751E1E0A6B6000F1A6B7 /* intro.json in Resources */,
 				FA8C53A31D7D72C000F96ED5 /* loop_0016@3x.png in Resources */,
 				FA8C53871D7D72C000F96ED5 /* loop_0002@3x.png in Resources */,
 				FA8C53891D7D72C000F96ED5 /* loop_0003@3x.png in Resources */,
@@ -1466,6 +1487,7 @@
 				FA8C53861D7D72C000F96ED5 /* loop_0002@2x.png in Resources */,
 				FA0E011A1D77F5C80080759D /* 跳舞.gif in Resources */,
 				FA8C53941D7D72C000F96ED5 /* loop_0009@2x.png in Resources */,
+				FA5D751A1E0A5E1400F1A6B7 /* intro1.png in Resources */,
 				FA8C53AD1D7D72C000F96ED5 /* loop_0021@3x.png in Resources */,
 				FA8C53B91D7D72C000F96ED5 /* loop_0027@3x.png in Resources */,
 				FA0E00EA1D77C0AE0080759D /* InfoPlist.strings in Resources */,
@@ -1607,6 +1629,7 @@
 				FA8C531F1D7D6A7900F96ED5 /* STTimerRulerView.m in Sources */,
 				FA49AA2A1DC3505600CCC990 /* TWSet.m in Sources */,
 				FA49AA241DC33F6800CCC990 /* TWModelSet.m in Sources */,
+				FA5D75171E0A4D7A00F1A6B7 /* TWTipsExpandCell.m in Sources */,
 				FA0BD4351DB772430060803F /* TWEventList.m in Sources */,
 				FA8545661DE7DA5E00A71FC3 /* HACStepper.m in Sources */,
 				FA0EFFDA1D741CA60080759D /* TWBaseViewController.m in Sources */,
@@ -1618,6 +1641,7 @@
 				FA75D3221D90077700E63CC9 /* MKTagItem.m in Sources */,
 				FA0E00611D766C8B0080759D /* QBFlatButton.m in Sources */,
 				FA00DEAE1DFAAC6100BD3D82 /* GameView.m in Sources */,
+				FA5D75231E0A79DB00F1A6B7 /* SetHelp.m in Sources */,
 				FA85455A1DE6ECE400A71FC3 /* HACSwitchTableViewCell.m in Sources */,
 				FA0A666A1E08DA2000BB3C5D /* GUAAlertView.m in Sources */,
 				FA0EFFC91D7408650080759D /* OLImageView.m in Sources */,

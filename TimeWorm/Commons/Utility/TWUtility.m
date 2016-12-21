@@ -10,6 +10,15 @@
 
 @implementation TWUtility
 
++ (void)jump2Tips {
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    if ([rootVC isKindOfClass:NSClassFromString(@"HomeViewController")]) {
+        UIViewController *tipsVC = [[NSClassFromString(@"TWTipsViewController") alloc] init];
+        tipsVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [rootVC presentViewController:tipsVC animated:YES completion:nil];
+    }
+}
+
 + (CAGradientLayer*)getCAGradientLayerWithFrame:(CGRect)frame skinSet:(int)set {
     CAGradientLayer *gradientLayer;
     switch (set) {

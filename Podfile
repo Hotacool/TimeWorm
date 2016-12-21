@@ -11,4 +11,5 @@ target 'TimeWorm' do
 	pod 'pop', '~> 1.0'
 	pod 'iCarousel'
 	pod 'Bohr'
+    pod 'JSONModel'
 end

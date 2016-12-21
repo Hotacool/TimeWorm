@@ -10,6 +10,7 @@
 
 @interface TWUtility : NSObject
 
++ (void)jump2Tips ;
 #pragma mark - skin
 + (CAGradientLayer*)getCAGradientLayerWithFrame:(CGRect)frame skinSet:(int)set ;
 
