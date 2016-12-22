@@ -10,11 +10,14 @@
 
 typedef  NS_ENUM(NSUInteger, HomeSceneModelState) {
     HomeSceneModelStateNone = 0,
-    HomeSceneModelStateWaiting
+    HomeSceneModelStateApothegm,
+    HomeSceneModelStateNormal,
+    HomeSceneModelStateAction
 };
 
 @interface HomeSceneModel : TWBaseViewModel
 @property (nonatomic, assign) HomeSceneModelState state;
 @property (nonatomic, strong) NSArray *messageList;
 
+- (void)spriteActionStopped;
 @end

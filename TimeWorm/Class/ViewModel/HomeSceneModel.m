@@ -10,7 +10,6 @@
 #import "TWConstants.h"
 
 @implementation HomeSceneModel {
-    NSTimer *timer;
 }
 
 - (instancetype)init {
@@ -33,29 +32,34 @@
 }
 
 - (void)setState:(HomeSceneModelState)state {
+    switch (state) {
+        case HomeSceneModelStateNone: {
+            break;
+        }
+        case HomeSceneModelStateApothegm: {
+            break;
+        }
+        case HomeSceneModelStateNormal: {
+            break;
+        }
+        case HomeSceneModelStateAction: {
+            break;
+        }
+    }
     _state = state;
-    if (state == HomeSceneModelStateWaiting) {
-        [self addTimer];
-    } else if (state == HomeSceneModelStateNone) {
-        [self removeTimer];
-    }
+//    if (state == HomeSceneModelStateWaiting) {
+//        [self addTimer];
+//    } else if (state == HomeSceneModelStateNone) {
+//        [self removeTimer];
+//    }
 }
 
-- (void)addTimer {
-    [self removeTimer];
-    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerFire:) userInfo:nil repeats:NO];
-}
-
-- (void)removeTimer {
-    if (timer&&timer.isValid) {
-        [timer invalidate];
-        timer = nil;
-    }
-}
-
-- (void)timerFire:(NSTimer*)timer {
-    if (self.state == HomeSceneModelStateWaiting) {
-        [self setValue:@(HomeSceneModelStateNone) forKey:@"state"];
+- (void)spriteActionStopped {
+    sfuc
+    if (self.state == HomeSceneModelStateApothegm) {
+        [self setValue:@(HomeSceneModelStateNormal) forKey:@"state"];
+    } else if (self.state == HomeSceneModelStateAction) {
+        [self setValue:@(HomeSceneModelStateNormal) forKey:@"state"];
     }
 }
 @end

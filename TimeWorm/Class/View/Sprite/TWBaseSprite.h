@@ -10,6 +10,11 @@
 #import "OLImage.h"
 
 @class TWBaseScene;
+@class TWBaseSprite;
+@protocol TWBaseSpriteDelegate <NSObject>
+- (void)sprite:(TWBaseSprite*)sprite willDoAction:(NSString*)actionKey ;
+- (void)sprite:(TWBaseSprite*)sprite willStopAction:(NSString*)actionKey ;
+@end
 
 @interface TWAction : NSObject
 @property (nonatomic, copy) NSString *key;
@@ -24,6 +29,7 @@
 @property (nonatomic, strong, readonly) NSString *performAction;
 @property (nonatomic, strong, readonly) CALayer *contentLayer;
 @property (nonatomic, weak) TWBaseScene *scene;
+@property (nonatomic, weak) id<TWBaseSpriteDelegate> delegate;
 
 - (instancetype)initWithSize:(CGSize)size position:(CGPoint)position ;
 - (void)addAction:(NSString*)key withAction:(TWAction*)action ;

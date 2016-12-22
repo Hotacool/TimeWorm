@@ -18,12 +18,12 @@
 }
 
 - (void)setUpActions {
-    [self addAction:[[TWAction alloc] initWithKey:@"think" action:(OLImage*)[OLImage imageNamed:@"思考"]]];
-    [self addAction:[[TWAction alloc] initWithKey:@"applaud" action:(OLImage*)[OLImage imageNamed:@"鼓掌"]]];
-    [self addAction:[[TWAction alloc] initWithKey:@"shy" action:(OLImage*)[OLImage imageNamed:@"害羞"]]];
-    [self addAction:[[TWAction alloc] initWithKey:@"drink" action:(OLImage*)[OLImage imageNamed:@"喝水"]]];
-    [self addAction:[[TWAction alloc] initWithKey:@"surprise" action:(OLImage*)[OLImage imageNamed:@"惊吓"]]];
-    [self addAction:[[TWAction alloc] initWithKey:@"cry" action:(OLImage*)[OLImage imageNamed:@"哭"]]];
+    [self addAction:[[TWAction alloc] initWithKey:@"think" action:(OLImage*)[OLImage imageNamed:@"f001.gif"]]];
+    [self addAction:[[TWAction alloc] initWithKey:@"applaud" action:(OLImage*)[OLImage imageNamed:@"f002.gif"]]];
+    [self addAction:[[TWAction alloc] initWithKey:@"shy" action:(OLImage*)[OLImage imageNamed:@"f003.gif"]]];
+    [self addAction:[[TWAction alloc] initWithKey:@"drink" action:(OLImage*)[OLImage imageNamed:@"f004.gif"]]];
+    [self addAction:[[TWAction alloc] initWithKey:@"surprise" action:(OLImage*)[OLImage imageNamed:@"neko003.gif"]]];
+    [self addAction:[[TWAction alloc] initWithKey:@"cry" action:(OLImage*)[OLImage imageNamed:@"neko004.gif"]]];
 }
 
 - (void)think {

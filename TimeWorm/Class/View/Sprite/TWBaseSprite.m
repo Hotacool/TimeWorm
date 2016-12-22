@@ -89,6 +89,9 @@ const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
 - (void)performAction:(NSString *)key withEnd:(void (^)(void))block {
     if (key) {
         if ([self.actions.allKeys containsObject:key]) {
+            if ([self.delegate respondsToSelector:@selector(sprite:willDoAction:)]) {
+                [self.delegate sprite:self willDoAction:key];
+            }
             self.performAction = key;
             [self startAnimating];
         }
@@ -226,6 +229,9 @@ const NSTimeInterval kABCSpriteMaxTimeStep = 1; // note: To avoid spiral-o-death
         if (++self.currentFrameIndex >= [animatedImage.images count] && ![animatedImage isPartial]) {
             if (--self.loopCountdown == 0) {
 //                [self stopAnimating];
+                if ([self.delegate respondsToSelector:@selector(sprite:willStopAction:)]) {
+                    [self.delegate sprite:self willStopAction:self.performAction];
+                }
                 [self showDefaultAction];
                 return;
             }
