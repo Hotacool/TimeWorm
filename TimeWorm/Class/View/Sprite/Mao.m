@@ -23,21 +23,6 @@
     [self addAction:[[TWAction alloc] initWithKey:@"maodie" action:(OLImage*)[OLImage imageNamed:@"maodie.gif"]]];
     [self addAction:[[TWAction alloc] initWithKey:@"maolove" action:(OLImage*)[OLImage imageNamed:@"maolove.gif"]]];
     [self addAction:[[TWAction alloc] initWithKey:@"susi" action:(OLImage*)[OLImage imageNamed:@"susi.gif"]]];
-}
-
-- (void)yaowei {
-    [self performAction:@"yaowei" withLoopCount:5 end:nil];
-}
-- (void)happy {
-    [self performAction:@"happy" withLoopCount:5 end:nil];
-}
-- (void)maodie {
-    [self performAction:@"maodie" withLoopCount:5 end:nil];
-}
-- (void)maolove {
-    [self performAction:@"maolove" withLoopCount:5 end:nil];
-}
-- (void)susi {
-    [self performAction:@"susi" withLoopCount:5 end:nil];
+    [self addAction:[[TWAction alloc] initWithKey:@"sleepy" action:(OLImage*)[OLImage imageNamed:@"sleepy.gif"]]];
 }
 @end

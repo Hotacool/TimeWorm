@@ -7,7 +7,7 @@
 //
 
 #import "WorkScene.h"
-#import "HeroSprite.h"
+#import "Neko.h"
 #import "WorkSceneModel.h"
 #import "HACClockTimer.h"
 #import "TWModelTimer.h"
@@ -29,7 +29,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 @end
 
 @implementation WorkScene {
-    HeroSprite *hero;
+    Neko *neko;
     HACClockDate *date;
 }
 
@@ -57,8 +57,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 - (void)show {
     [self.wsm setState:WorkSceneModelStateNone];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self addSprite:hero];
-        [hero doRandomActionWithLoopCount:5];
+        [neko doRandomStopActionWithLoopCount:1];
         [self showClock];
         //自动启动
         [_wsm startTimer];
@@ -66,8 +65,8 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 }
 
 - (void)setUIComponents {
-    hero = [[HeroSprite alloc] initWithSize:CGSizeMake(200, 200) position:CGPointMake(self.frame.size.width/2, self.frame.size.height/2 - 20)];
-    
+    neko = [[Neko alloc] initWithSize:CGSizeMake(200, 200) position:CGPointMake(self.frame.size.width/2, self.frame.size.height/2 - 20)];
+    [self addSprite:neko];
     //渐变背景
     [self.layer insertSublayer:[TWUtility getCAGradientLayerWithFrame:self.bounds
                                                               skinSet:[TWSet currentSet].workTheme]
@@ -147,21 +146,21 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
                 break;
             }
             case WorkSceneModelStateWorking: {
-                [hero performAction:@"think" withEnd:nil];
+                [neko doRandomWorkActionWithLoopCount:INTMAX_MAX];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
                 [self.clock switchInfoLabel2State:1];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"work start", @"") doText:nil doBlock:nil];
                 break;
             }
             case WorkSceneModelStatePause: {
-                [hero performAction:@"applaud" withEnd:nil];
+                [neko doRandomPauseActionWithLoopCount:INTMAX_MAX];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"继续" atIndex:3];
                 [self.clock switchInfoLabel2State:2];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"pause", @"") doText:nil doBlock:nil];
                 break;
             }
             case WorkSceneModelStateEvent: {
-                [hero performAction:@"applaud" withEnd:nil];
+                [neko doRandomPauseActionWithLoopCount:INTMAX_MAX];
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"继续" atIndex:3];
                 [self.clock switchInfoLabel2State:2];
                 [STPopupController popupViewControllerName:@"TWEventSetting" inViewController:self.ctrl];
@@ -172,13 +171,14 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
                 [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
                 [self.clock switchInfoLabel2State:3];
                 [STPopupController popupViewControllerName:@"TWClockSetting" inViewController:self.ctrl];
-                [hero performAction:@"think" withEnd:nil];
+                [neko doRandomStopActionWithLoopCount:INTMAX_MAX];
                 break;
             }
             case WorkSceneModelStateEnd: {
                 [self.clock switchInfoLabel2State:3];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"timer finish!", @"") doText:nil doBlock:nil];
                 [TWAudioHelp playTimerComplete];
+                [neko doRandomStopActionWithLoopCount:INTMAX_MAX];
                 
                 if ([TWSet currentSet].continueWork) {//连续计时
                     GUAAlertView *v = [GUAAlertView alertViewWithTitle:@"success"

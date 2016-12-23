@@ -10,4 +10,9 @@
 
 @interface Neko : TWBaseSprite
 
+- (NSString *)doRandomWorkActionWithLoopCount:(NSUInteger)count ;
+
+- (NSString *)doRandomPauseActionWithLoopCount:(NSUInteger)count ;
+
+- (NSString *)doRandomStopActionWithLoopCount:(NSUInteger)count ;
 @end

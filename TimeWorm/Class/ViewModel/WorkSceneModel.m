@@ -60,6 +60,8 @@
                 [TWEvent stopEvent:[TWEvent currentEvent]];
             } else if (self.currentTimer.state&TWTimerStateSilent) {
                 // None(silent) -> working
+            } else if (self.currentTimer.state&TWTimerStateFlow) {
+                // has already been flowing. maybe from outside such as clock seting page
             } else {
                 self.errorCode = WorkSceneErrorNeedNewTimer;
                 return;

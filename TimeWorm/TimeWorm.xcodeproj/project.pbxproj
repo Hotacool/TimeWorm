@@ -119,6 +119,7 @@
 		FA5D759B1E0BCAF500F1A6B7 /* maolove.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA5D75961E0BCAF500F1A6B7 /* maolove.gif */; };
 		FA5D759C1E0BCAF500F1A6B7 /* susi.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA5D75971E0BCAF500F1A6B7 /* susi.gif */; };
 		FA5D759D1E0BCAF500F1A6B7 /* yaowei.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA5D75981E0BCAF500F1A6B7 /* yaowei.gif */; };
+		FA66EAE01E0CBE9300C8C7A6 /* sleepy.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA66EADF1E0CBE9300C8C7A6 /* sleepy.gif */; };
 		FA6A02031DC0A7120034201E /* CLWeeklyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */; };
 		FA6A02041DC0A7120034201E /* DailyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02001DC0A7120034201E /* DailyCalendarView.m */; };
 		FA6A02051DC0A7120034201E /* DayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02021DC0A7120034201E /* DayTitleLabel.m */; };
@@ -448,6 +449,7 @@
 		FA5D75961E0BCAF500F1A6B7 /* maolove.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = maolove.gif; sourceTree = "<group>"; };
 		FA5D75971E0BCAF500F1A6B7 /* susi.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = susi.gif; sourceTree = "<group>"; };
 		FA5D75981E0BCAF500F1A6B7 /* yaowei.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yaowei.gif; sourceTree = "<group>"; };
+		FA66EADF1E0CBE9300C8C7A6 /* sleepy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sleepy.gif; sourceTree = "<group>"; };
 		FA6A01FD1DC0A7120034201E /* CLWeeklyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLWeeklyCalendarView.h; sourceTree = "<group>"; };
 		FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLWeeklyCalendarView.m; sourceTree = "<group>"; };
 		FA6A01FF1DC0A7120034201E /* DailyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCalendarView.h; sourceTree = "<group>"; };
@@ -1058,6 +1060,7 @@
 		FA5D75931E0BCAF500F1A6B7 /* mao */ = {
 			isa = PBXGroup;
 			children = (
+				FA66EADF1E0CBE9300C8C7A6 /* sleepy.gif */,
 				FA5D75941E0BCAF500F1A6B7 /* happy.gif */,
 				FA5D75951E0BCAF500F1A6B7 /* maodie.gif */,
 				FA5D75961E0BCAF500F1A6B7 /* maolove.gif */,
@@ -1517,6 +1520,7 @@
 				FA0E01131D77F5C80080759D /* 喝水.gif in Resources */,
 				FA5D75821E0BB69D00F1A6B7 /* f001.gif in Resources */,
 				FA8C53B31D7D72C000F96ED5 /* loop_0024@3x.png in Resources */,
+				FA66EAE01E0CBE9300C8C7A6 /* sleepy.gif in Resources */,
 				FA8C53BB1D7D72C000F96ED5 /* loop_0028@3x.png in Resources */,
 				FA8C53B01D7D72C000F96ED5 /* loop_0023@2x.png in Resources */,
 				FA1587221E0506A600E0B722 /* 2.png in Resources */,
