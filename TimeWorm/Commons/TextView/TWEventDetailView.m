@@ -49,6 +49,10 @@ static const NSUInteger TWEventDetailViewFont = 14;
 }
 
 - (void)setContent:(NSString *)content {
+    //注：fmdb读取空值默认设置为'(null)'
+    if ([content isEqualToString:@"(null)"]) {
+        content = @"";
+    }
     _content = content;
     if (!ctLabel) {
         ctLabel = [[UILabel alloc] initWithFrame:CGRectZero];

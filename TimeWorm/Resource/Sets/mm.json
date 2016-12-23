@@ -1,6 +1,22 @@
 {
-    "1": "Sometimes, a group of HITs is posted. If a batch comes up and it's lunchtime, or I have a doctor's appointment, or my dog needs to go out, said Milland, I drop everything and do it. I'm literally chained to my computer.",
-    "2": "The incident was both jarring and typical of the chaotic life at the fast growing Los Angeles tech startup.",
-    "3": "The number of active workers, who live across the globe, is estimated to run between 15,000 and 20,000 per month",
-    "4": "data categorization"
+    "1": {
+        "content": "计时器退到后台时还可以继续计时，如果开启了通知，计时完成时会收到通知提示。想知道如何设置，请到‘Tips’中查看",
+        "className": "TWTipsViewController"
+    },
+    "2": {
+        "content": "Sometimes, a group of HITs is posted. If a batch comes up and it's lunchtime, or I have a doctor's appointment, or my dog needs to go out, said Milland, I drop everything and do it. I'm literally chained to my computer.",
+        "className": ""
+    },
+    "3": {
+        "content": "Jump:The incident was both jarring and typical of the chaotic life at the fast growing Los Angeles tech startup.",
+        "className": "TWTipsViewController"
+    },
+    "4": {
+        "content": "data categorization",
+        "className": ""
+    },
+    "5": {
+        "content": "Jump:The number of active workers, who live across the globe, is estimated to run between 15,000 and 20,000 per month",
+        "className": "TWTipsViewController"
+    },
 }

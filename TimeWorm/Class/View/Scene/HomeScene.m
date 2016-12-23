@@ -11,7 +11,6 @@
 #import "HomeSceneModel.h"
 #import "TWSet.h"
 #import "TWPaopaoVew.h"
-#import "TWTipsViewController.h"
 #import "FirstMan.h"
 #import "Mao.h"
 
@@ -89,18 +88,11 @@
 }
 
 - (void)showMessage {
-    if (_hsm.messageList) {
-        int count = (int)_hsm.messageList.count;
-        int random = (int)(0 + (arc4random() % (count+2-0)));
-        if (random > count-1) {
-            self.paopao.hidden = YES;
-        } else {
-            NSString *showMsg = _hsm.messageList[random];
-            if (!HACObjectIsEmpty(showMsg)) {
-                self.paopao.hidden = NO;
-                self.paopao.text = showMsg;
-            }
-        }
+    if ([self.hsm createRandomMessageToShow]) {
+        self.paopao.text = self.hsm.currentMessage.message;
+        self.paopao.hidden = NO;
+    } else {
+        self.paopao.hidden = YES;
     }
 }
 
@@ -115,11 +107,20 @@
 }
 
 - (void)tapPaopao:(id)sender {
-    TWTipsViewController *tipVC = [[TWTipsViewController alloc] init];
-    tipVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self.ctrl presentViewController:tipVC animated:YES completion:^{
-       // pause
-    }];
+    NSString *className = self.hsm.currentMessage.dispatchClassName;
+    if (HACObjectIsEmpty(className)) {
+        return;
+    }
+    Class class = NSClassFromString(className);
+    if (class) {
+        UIViewController *tipVC = [[class alloc] init];
+        tipVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self.ctrl presentViewController:tipVC animated:YES completion:^{
+            // pause
+        }];
+    } else {
+        DDLogError(@"no class: %@", className);
+    }
 }
 
 #pragma mark - sprite delegate

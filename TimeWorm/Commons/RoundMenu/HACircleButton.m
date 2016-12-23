@@ -223,7 +223,7 @@
     
     [SmallButton.layer addAnimation:ButtonScaleBigCABasicAnimation forKey:@"ButtonScaleBigCABasicAnimation"];
     
-    BackgroundView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
+//    BackgroundView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
     CABasicAnimation *BackgroundViewScaleBigCABasicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     BackgroundViewScaleBigCABasicAnimation.duration = 0.1f;
     BackgroundViewScaleBigCABasicAnimation.autoreverses = NO;

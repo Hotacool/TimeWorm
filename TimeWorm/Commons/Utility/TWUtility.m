@@ -93,6 +93,33 @@
     return gradientBG;
 }
 
++ (UIColor *)getColorBySkinSet:(int)set {
+    UIColor *retColor;
+    switch (set) {
+        case 0: {
+            retColor = WBlue;
+            break;
+        }
+        case 1: {
+            retColor = Hgrapefruit;
+            break;
+        }
+        case 2: {
+            retColor = Hbittersweet;
+            break;
+        }
+        case 3: {
+            retColor = Hsunflower;
+            break;
+        }
+        case 4: {
+            retColor = Hgrass;
+            break;
+        }
+    }
+    return retColor;
+}
+
 #pragma mark -- tool method
 + (NSString*)transformTags2String:(NSArray<NSString*>*)tags {
     NSMutableString __block *ret;

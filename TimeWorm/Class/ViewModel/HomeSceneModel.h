@@ -15,9 +15,19 @@ typedef  NS_ENUM(NSUInteger, HomeSceneModelState) {
     HomeSceneModelStateAction
 };
 
+@interface HomeScenePpMsg : NSObject
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSString *dispatchClassName;
+
+@end
+
 @interface HomeSceneModel : TWBaseViewModel
 @property (nonatomic, assign) HomeSceneModelState state;
-@property (nonatomic, strong) NSArray *messageList;
+@property (nonatomic, strong) NSMutableArray <HomeScenePpMsg*>*messageList;
 
 - (void)spriteActionStopped;
+
+- (HomeScenePpMsg*)createRandomMessageToShow ;
+
+- (HomeScenePpMsg*)currentMessage;
 @end

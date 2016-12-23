@@ -134,7 +134,7 @@ static NSInteger TWEditorViewTag = 1;
             [self.tagEditor addTags:[TWUtility transformString2Tags:curTimer.name]];
             [cell.contentView addSubview:self.tagEditor];
         } else {
-            [self.textView.textView setText:curTimer.information];
+            [self.textView setText:curTimer.information];
             [cell.contentView addSubview:self.textView];
         }
     }

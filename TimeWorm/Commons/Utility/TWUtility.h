@@ -17,6 +17,8 @@
 + (CAGradientLayer*)getCAGradientLayerWithFrame:(CGRect)frame colors:(NSArray*)colors locations:(NSArray*)locs startPoint:(CGPoint)sP endPoint:(CGPoint)ep ;
 
 + (UIImage *)gradientImageWithBounds:(CGRect)bounds colors:(NSArray *)colors ;
+
++ (UIColor*)getColorBySkinSet:(int)set ;
 #pragma mark - string format
 + (NSString*)transformTags2String:(NSArray<NSString*>*)tags ;
 + (NSArray<NSString*>*)transformString2Tags:(NSString*)str ;

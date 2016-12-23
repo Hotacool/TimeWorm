@@ -9,9 +9,13 @@
 #import "TWTipsViewController.h"
 #import "JNExpandableTableView.h"
 #import "TWTipsExpandCell.h"
+#import "TWSet.h"
 
 static NSString * const TWTipsCellIdentifier = @"TWTipsCellIdentifier";
 static NSString * const TWTipsExpandCellIdentifier = @"TWTipsExpandCellIdentifier";
+static const CGFloat TWTipsCellIconHeight = 25.f;
+static const CGFloat TWTipsCellLabelHeight = 30.f;
+static const CGFloat TWTipsCellHeight = 44.f;
 @interface TWTipsViewController () <JNExpandableTableViewDelegate, JNExpandableTableViewDataSource>
 @property (nonatomic, strong) JNExpandableTableView *tableView;
 
@@ -29,7 +33,13 @@ static NSString * const TWTipsExpandCellIdentifier = @"TWTipsExpandCellIdentifie
     UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, APPCONFIG_UI_SCREEN_FWIDTH, APPCONFIG_UI_STATUSBAR_HEIGHT+APPCONFIG_UI_NAVIGATIONBAR_HEIGHT)];
     navBar.translucent = NO;
     [navBar setTintColor:[UIColor whiteColor]];
-    [navBar setBarTintColor:HdarkgrayD];
+    [navBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil]];
+    UIColor *barColor = [TWUtility getColorBySkinSet:[TWSet currentSet].homeTheme];
+    if (barColor) {
+        [navBar setBarTintColor:barColor];
+    } else {
+        [navBar setBarTintColor:HdarkgrayD];
+    }
     UINavigationItem *backItem = [[UINavigationItem alloc] initWithTitle:@"Tips"];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStyleDone target:self action:@selector(backToHome)];
     backItem.rightBarButtonItem = backBtn;
@@ -105,7 +115,7 @@ static NSString * const TWTipsExpandCellIdentifier = @"TWTipsExpandCellIdentifie
             return [TWTipsExpandCell heightWithSize:CGSizeMake(self.tableView.width, APPCONFIG_UI_SCREEN_FHEIGHT) Text:text hasImage:!HACObjectIsEmpty(imageName)];
         }
     }
-    return 44.0f;
+    return TWTipsCellHeight;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -114,14 +124,12 @@ static NSString * const TWTipsExpandCellIdentifier = @"TWTipsExpandCellIdentifie
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
+    //实际选中indexpath转化为一级或二级indexpath
     NSIndexPath * adjustedIndexPath = [self.tableView adjustedIndexPathFromTable:indexPath];
     NSDictionary *dic = dataDicArr[adjustedIndexPath.row];
-    NSString *text = dic[@"content"];
-    NSString *imageName = dic[@"image"];
-    NSString *title = dic[@"title"];
     if ([self.tableView.expandedContentIndexPath isEqual:indexPath]) {
+        NSString *text = dic[@"content"];
+        NSString *imageName = dic[@"image"];
         TWTipsExpandCell *cell = [tableView dequeueReusableCellWithIdentifier:TWTipsExpandCellIdentifier];
         if (!cell) {
             cell = [[TWTipsExpandCell alloc] init];
@@ -134,12 +142,28 @@ static NSString * const TWTipsExpandCellIdentifier = @"TWTipsExpandCellIdentifie
         return cell;
         
     } else {
+        NSString *title = dic[@"title"];
         static NSString *CellIdentifier = @"Cell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        UIImageView *imageView;
+        UILabel *nameLabel;
         if (!cell) {
             cell = [[UITableViewCell alloc] init];
+            imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tips_help"]];
+            imageView.frame = CGRectMake(10, TWTipsCellHeight/2 - TWTipsCellIconHeight/2, TWTipsCellIconHeight, TWTipsCellIconHeight);
+            imageView.tag = 1001;
+            [cell addSubview:imageView];
+            nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame)+5, TWTipsCellHeight/2 - TWTipsCellLabelHeight/2, cell.width, TWTipsCellLabelHeight)];
+            nameLabel.tag = 1002;
+            nameLabel.font = HFont(18);
+            nameLabel.textAlignment = NSTextAlignmentLeft;
+            [nameLabel setAdjustsFontSizeToFitWidth:YES];
+            [cell addSubview:nameLabel];
+        } else {
+            imageView = [cell viewWithTag:1001];
+            nameLabel = [cell viewWithTag:1002];
         }
-        cell.textLabel.text = title;
+        nameLabel.text = title;
         
         return cell;
     }

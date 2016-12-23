@@ -120,6 +120,8 @@
 		FA5D759C1E0BCAF500F1A6B7 /* susi.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA5D75971E0BCAF500F1A6B7 /* susi.gif */; };
 		FA5D759D1E0BCAF500F1A6B7 /* yaowei.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA5D75981E0BCAF500F1A6B7 /* yaowei.gif */; };
 		FA66EAE01E0CBE9300C8C7A6 /* sleepy.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA66EADF1E0CBE9300C8C7A6 /* sleepy.gif */; };
+		FA66EAE31E0D0E2E00C8C7A6 /* tips_help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EAE11E0D0E2E00C8C7A6 /* tips_help@2x.png */; };
+		FA66EAE41E0D0E2E00C8C7A6 /* tips_help@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EAE21E0D0E2E00C8C7A6 /* tips_help@3x.png */; };
 		FA6A02031DC0A7120034201E /* CLWeeklyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */; };
 		FA6A02041DC0A7120034201E /* DailyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02001DC0A7120034201E /* DailyCalendarView.m */; };
 		FA6A02051DC0A7120034201E /* DayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02021DC0A7120034201E /* DayTitleLabel.m */; };
@@ -450,6 +452,8 @@
 		FA5D75971E0BCAF500F1A6B7 /* susi.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = susi.gif; sourceTree = "<group>"; };
 		FA5D75981E0BCAF500F1A6B7 /* yaowei.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yaowei.gif; sourceTree = "<group>"; };
 		FA66EADF1E0CBE9300C8C7A6 /* sleepy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sleepy.gif; sourceTree = "<group>"; };
+		FA66EAE11E0D0E2E00C8C7A6 /* tips_help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tips_help@2x.png"; sourceTree = "<group>"; };
+		FA66EAE21E0D0E2E00C8C7A6 /* tips_help@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tips_help@3x.png"; sourceTree = "<group>"; };
 		FA6A01FD1DC0A7120034201E /* CLWeeklyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLWeeklyCalendarView.h; sourceTree = "<group>"; };
 		FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLWeeklyCalendarView.m; sourceTree = "<group>"; };
 		FA6A01FF1DC0A7120034201E /* DailyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCalendarView.h; sourceTree = "<group>"; };
@@ -1007,6 +1011,8 @@
 		FA1587431E07A95D00E0B722 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				FA66EAE11E0D0E2E00C8C7A6 /* tips_help@2x.png */,
+				FA66EAE21E0D0E2E00C8C7A6 /* tips_help@3x.png */,
 				FA15874B1E07BA3400E0B722 /* paopao@2x.png */,
 				FA15874C1E07BA3400E0B722 /* paopao@3x.png */,
 				FA5D75191E0A5E1400F1A6B7 /* intro1.png */,
@@ -1516,6 +1522,7 @@
 				FA8C53951D7D72C000F96ED5 /* loop_0009@3x.png in Resources */,
 				FA00DEA31DFAAB8C00BD3D82 /* BurstAircraftPause@2x.png in Resources */,
 				FA5D759D1E0BCAF500F1A6B7 /* yaowei.gif in Resources */,
+				FA66EAE31E0D0E2E00C8C7A6 /* tips_help@2x.png in Resources */,
 				FA8C53811D7D72C000F96ED5 /* d15@2x.png in Resources */,
 				FA0E01131D77F5C80080759D /* 喝水.gif in Resources */,
 				FA5D75821E0BB69D00F1A6B7 /* f001.gif in Resources */,
@@ -1595,6 +1602,7 @@
 				FA0E00EA1D77C0AE0080759D /* InfoPlist.strings in Resources */,
 				FA00DEA41DFAAB8C00BD3D82 /* enemy1_down.mp3 in Resources */,
 				FA0E01151D77F5C80080759D /* 怕.gif in Resources */,
+				FA66EAE41E0D0E2E00C8C7A6 /* tips_help@3x.png in Resources */,
 				FA8C53971D7D72C000F96ED5 /* loop_0010@3x.png in Resources */,
 				FA8C538F1D7D72C000F96ED5 /* loop_0006@3x.png in Resources */,
 				FA5D759B1E0BCAF500F1A6B7 /* maolove.gif in Resources */,
