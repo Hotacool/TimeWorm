@@ -30,7 +30,7 @@
 
 + (void)loadMessageList {
     if (!twcons->messageList) {
-        twcons->messageList = [TWUtility readJsonName:@"mm"];
+        twcons->messageList = [TWUtility readJsonName:@"tips"];
     }
 }
 
