@@ -210,7 +210,7 @@
     } else {
         // edit event
         NSMutableString *information = [NSMutableString stringWithString:[TWEvent currentEvent].information?:@""];
-        [information appendFormat:@"\n comming back after %d seconds", seconds];
+        [information appendFormat:NSLocalizedString(@"Back after seconds", @""), seconds];
         [TWEvent currentEvent].information = information;
         [TWEvent updateEvent:[TWEvent currentEvent]];
     }
@@ -232,7 +232,7 @@
             NSDate *fireDate = [enterBackgroundTimestamp dateByAddingSeconds:[TWTimer currentTimer].remainderSeconds];
             localNotify = [[HACLocalNotification alloc] initWithFireDate:fireDate
                                                                    title:[TWTimer currentTimer].name
-                                                             information:NSLocalizedString(@"timer complete", @"")
+                                                             information:NSLocalizedString(@"Mission complete!", @"")
                                                                     type:HACLocalNotificationTypeTimer];
         }
         // share data for today extension
@@ -250,7 +250,7 @@
             TWModelEvent *event = [TWModelEvent new];
             event.timerId = self.currentTimer.ID;
             event.startDate = enterBackgroundTimestamp;
-            event.name = NSLocalizedString(@"enter background", @"");
+            event.name = NSLocalizedString(@"Enter background", @"");
             [TWEvent createEvent:event];
             self.state = WorkSceneModelStatePause;
             isPause = YES;
@@ -259,7 +259,7 @@
                 NSDate *fireDate = [enterBackgroundTimestamp dateByAddingSeconds:[TWTimer currentTimer].remainderSeconds];
                 localNotify = [[HACLocalNotification alloc] initWithFireDate:fireDate
                                                                        title:NSLocalizedString(@"appName", @"")
-                                                                 information:NSLocalizedString(@"you have a timer not completed", @"")
+                                                                 information:NSLocalizedString(@"Mission not complete", @"")
                                                                         type:HACLocalNotificationTypeLeaving];
             }
             // share data for today extension

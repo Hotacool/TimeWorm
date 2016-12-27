@@ -54,7 +54,7 @@
     NSDate *fireDate = [[NSDate dateWithYear:now.year month:now.month day:now.day hour:11 minute:0 second:0] dateByAddingDays:1];
     HACLocalNotification *localNotify = [[HACLocalNotification alloc] initWithFireDate:fireDate
                                                            title:NSLocalizedString(@"appName", @"")
-                                                     information:NSLocalizedString(@"set timer to work~", @"")
+                                                     information:NSLocalizedString(@"Leave too long", @"")
                                                             type:HACLocalNotificationTypePrompting];
     [HACLNCenter addHACLocalNotification:localNotify];
 }
@@ -65,9 +65,9 @@
         NSString* timerId = [[url absoluteString] substringFromIndex:prefix.length];
         NSUInteger identifir = [timerId integerValue];
         if ([TWTimer currentTimer] && identifir != [TWTimer currentTimer].ID) {
-            [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"Timer has been discarded.", @"") doText:nil doBlock:nil];
+            [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"Mission lost", @"") doText:nil doBlock:nil];
         } else if (![TWTimer currentTimer]) {
-            [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"set a new timer.", @"") doText:nil doBlock:nil];
+            [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"Create a new Mission!", @"") doText:nil doBlock:nil];
         }
     }
     return YES;

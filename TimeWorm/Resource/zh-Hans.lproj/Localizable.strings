@@ -51,7 +51,7 @@
 "Start a new Mission?" = "开始新任务?";
 "OK" = "好";
 "Go to relax?" = "休息一会儿?";
-"Create a new Mission!" = "创建新任务!";
+"Create a new Mission!" = "请创建新任务!";
 "Continue" = "继续";
 "Relax %d mins" = "已休息%d分钟";
 "Theme" = "主题";
@@ -91,3 +91,9 @@
 "Cannot select more" = "无法选择更多";
 "Event has been closed" = "事件已关闭";
 "Back" = "返回";
+"appName" = "猫奴";
+"Leave too long" = "离开太久，快回来看看你的🐱吧~";
+"Mission lost" = "任务已丢失";
+"Back after seconds" = "失踪%d秒";
+"Enter background" = "失踪";
+"Mission not complete" = "你还有任务未完成";
