@@ -39,6 +39,7 @@ static const float HACFoldTableViewAniDuration = 0.5;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:HACFoldTableViewCellID];
+        _tableView.tableFooterView = [UIView new];
     }
     return _tableView;
 }
@@ -48,6 +49,11 @@ static const float HACFoldTableViewAniDuration = 0.5;
         _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognize:)];
     }
     return _tapGesture;
+}
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    [super setBackgroundColor:backgroundColor];
+    self.tableView.backgroundColor = backgroundColor;
 }
 
 #pragma mark -- table delegate & datasource

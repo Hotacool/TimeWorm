@@ -114,6 +114,14 @@
 		FA66EAE41E0D0E2E00C8C7A6 /* tips_help@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EAE21E0D0E2E00C8C7A6 /* tips_help@3x.png */; };
 		FA66EB331E12317900C8C7A6 /* eventlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB311E12317900C8C7A6 /* eventlist@2x.png */; };
 		FA66EB341E12317900C8C7A6 /* eventlist@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB321E12317900C8C7A6 /* eventlist@3x.png */; };
+		FA66EB3D1E124E0100C8C7A6 /* MissionCancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB371E124E0100C8C7A6 /* MissionCancel@2x.png */; };
+		FA66EB3E1E124E0100C8C7A6 /* MissionCancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB381E124E0100C8C7A6 /* MissionCancel@3x.png */; };
+		FA66EB3F1E124E0100C8C7A6 /* MissionComplete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB391E124E0100C8C7A6 /* MissionComplete@2x.png */; };
+		FA66EB401E124E0100C8C7A6 /* MissionComplete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB3A1E124E0100C8C7A6 /* MissionComplete@3x.png */; };
+		FA66EB411E124E0100C8C7A6 /* MissionException@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB3B1E124E0100C8C7A6 /* MissionException@2x.png */; };
+		FA66EB421E124E0100C8C7A6 /* MissionException@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB3C1E124E0100C8C7A6 /* MissionException@3x.png */; };
+		FA66EB451E1267D800C8C7A6 /* event@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB431E1267D800C8C7A6 /* event@2x.png */; };
+		FA66EB461E1267D800C8C7A6 /* event@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB441E1267D800C8C7A6 /* event@3x.png */; };
 		FA6A02031DC0A7120034201E /* CLWeeklyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */; };
 		FA6A02041DC0A7120034201E /* DailyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02001DC0A7120034201E /* DailyCalendarView.m */; };
 		FA6A02051DC0A7120034201E /* DayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02021DC0A7120034201E /* DayTitleLabel.m */; };
@@ -437,6 +445,14 @@
 		FA66EAE21E0D0E2E00C8C7A6 /* tips_help@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tips_help@3x.png"; sourceTree = "<group>"; };
 		FA66EB311E12317900C8C7A6 /* eventlist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eventlist@2x.png"; sourceTree = "<group>"; };
 		FA66EB321E12317900C8C7A6 /* eventlist@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eventlist@3x.png"; sourceTree = "<group>"; };
+		FA66EB371E124E0100C8C7A6 /* MissionCancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MissionCancel@2x.png"; sourceTree = "<group>"; };
+		FA66EB381E124E0100C8C7A6 /* MissionCancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MissionCancel@3x.png"; sourceTree = "<group>"; };
+		FA66EB391E124E0100C8C7A6 /* MissionComplete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MissionComplete@2x.png"; sourceTree = "<group>"; };
+		FA66EB3A1E124E0100C8C7A6 /* MissionComplete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MissionComplete@3x.png"; sourceTree = "<group>"; };
+		FA66EB3B1E124E0100C8C7A6 /* MissionException@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MissionException@2x.png"; sourceTree = "<group>"; };
+		FA66EB3C1E124E0100C8C7A6 /* MissionException@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MissionException@3x.png"; sourceTree = "<group>"; };
+		FA66EB431E1267D800C8C7A6 /* event@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event@2x.png"; sourceTree = "<group>"; };
+		FA66EB441E1267D800C8C7A6 /* event@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event@3x.png"; sourceTree = "<group>"; };
 		FA6A01FD1DC0A7120034201E /* CLWeeklyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLWeeklyCalendarView.h; sourceTree = "<group>"; };
 		FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLWeeklyCalendarView.m; sourceTree = "<group>"; };
 		FA6A01FF1DC0A7120034201E /* DailyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCalendarView.h; sourceTree = "<group>"; };
@@ -983,6 +999,8 @@
 		FA1587431E07A95D00E0B722 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				FA66EB431E1267D800C8C7A6 /* event@2x.png */,
+				FA66EB441E1267D800C8C7A6 /* event@3x.png */,
 				FA66EB311E12317900C8C7A6 /* eventlist@2x.png */,
 				FA66EB321E12317900C8C7A6 /* eventlist@3x.png */,
 				FA66EAE11E0D0E2E00C8C7A6 /* tips_help@2x.png */,
@@ -991,6 +1009,12 @@
 				FA15874C1E07BA3400E0B722 /* paopao@3x.png */,
 				FA5D75191E0A5E1400F1A6B7 /* intro1.png */,
 				FA5D751F1E0A770800F1A6B7 /* intro2.png */,
+				FA66EB371E124E0100C8C7A6 /* MissionCancel@2x.png */,
+				FA66EB381E124E0100C8C7A6 /* MissionCancel@3x.png */,
+				FA66EB391E124E0100C8C7A6 /* MissionComplete@2x.png */,
+				FA66EB3A1E124E0100C8C7A6 /* MissionComplete@3x.png */,
+				FA66EB3B1E124E0100C8C7A6 /* MissionException@2x.png */,
+				FA66EB3C1E124E0100C8C7A6 /* MissionException@3x.png */,
 			);
 			path = img;
 			sourceTree = "<group>";
@@ -1465,6 +1489,7 @@
 				FA8C539C1D7D72C000F96ED5 /* loop_0013@2x.png in Resources */,
 				FA8C53901D7D72C000F96ED5 /* loop_0007@2x.png in Resources */,
 				FA8C53A41D7D72C000F96ED5 /* loop_0017@2x.png in Resources */,
+				FA66EB411E124E0100C8C7A6 /* MissionException@2x.png in Resources */,
 				FA0E00A51D76CFD70080759D /* images.xcassets in Resources */,
 				FA00DEA51DFAAB8C00BD3D82 /* enemy2_down.mp3 in Resources */,
 				FA00DEA11DFAAB8C00BD3D82 /* bullet.mp3 in Resources */,
@@ -1489,9 +1514,12 @@
 				FA8C53891D7D72C000F96ED5 /* loop_0003@3x.png in Resources */,
 				FA8C538E1D7D72C000F96ED5 /* loop_0006@2x.png in Resources */,
 				FA8C53AE1D7D72C000F96ED5 /* loop_0022@2x.png in Resources */,
+				FA66EB3D1E124E0100C8C7A6 /* MissionCancel@2x.png in Resources */,
 				FA8C538B1D7D72C000F96ED5 /* loop_0004@3x.png in Resources */,
 				FA5D758F1E0BC2B700F1A6B7 /* f005.gif in Resources */,
+				FA66EB3F1E124E0100C8C7A6 /* MissionComplete@2x.png in Resources */,
 				FA8C53B11D7D72C000F96ED5 /* loop_0023@3x.png in Resources */,
+				FA66EB461E1267D800C8C7A6 /* event@3x.png in Resources */,
 				FA8C53931D7D72C000F96ED5 /* loop_0008@3x.png in Resources */,
 				FA00DEA91DFAAB8C00BD3D82 /* game_over.mp3 in Resources */,
 				FA8C53951D7D72C000F96ED5 /* loop_0009@3x.png in Resources */,
@@ -1499,6 +1527,7 @@
 				FA5D759D1E0BCAF500F1A6B7 /* yaowei.gif in Resources */,
 				FA66EAE31E0D0E2E00C8C7A6 /* tips_help@2x.png in Resources */,
 				FA8C53811D7D72C000F96ED5 /* d15@2x.png in Resources */,
+				FA66EB3E1E124E0100C8C7A6 /* MissionCancel@3x.png in Resources */,
 				FA5D75821E0BB69D00F1A6B7 /* f001.gif in Resources */,
 				FA8C53B31D7D72C000F96ED5 /* loop_0024@3x.png in Resources */,
 				FA66EAE01E0CBE9300C8C7A6 /* sleepy.gif in Resources */,
@@ -1531,6 +1560,7 @@
 				FA8C53C31D7D72C000F96ED5 /* timer_ruler_i6@2x.png in Resources */,
 				FA8C539E1D7D72C000F96ED5 /* loop_0014@2x.png in Resources */,
 				FA8C537E1D7D72C000F96ED5 /* clock_center_i6@2x.png in Resources */,
+				FA66EB401E124E0100C8C7A6 /* MissionComplete@3x.png in Resources */,
 				FA5D759A1E0BCAF500F1A6B7 /* maodie.gif in Resources */,
 				FA8C53C11D7D72C000F96ED5 /* minute_hand_shadow_i6@2x.png in Resources */,
 				FA1587261E0506A600E0B722 /* supportcat@2x.png in Resources */,
@@ -1552,6 +1582,7 @@
 				FA8C53831D7D72C000F96ED5 /* degree_i6@2x.png in Resources */,
 				FA8C537D1D7D72C000F96ED5 /* btn_reset_pressed@2x.png in Resources */,
 				FA8C539B1D7D72C000F96ED5 /* loop_0012@3x.png in Resources */,
+				FA66EB421E124E0100C8C7A6 /* MissionException@3x.png in Resources */,
 				FA1587511E07CD6600E0B722 /* tips.json in Resources */,
 				FA5D75991E0BCAF500F1A6B7 /* happy.gif in Resources */,
 				FA8C53CA1D7DC97700F96ED5 /* icon.png in Resources */,
@@ -1579,6 +1610,7 @@
 				FA00DEAA1DFAAB8C00BD3D82 /* gameArts-hd.plist in Resources */,
 				FA8C53791D7D72C000F96ED5 /* btn_play_normal@2x.png in Resources */,
 				FA8C53991D7D72C000F96ED5 /* loop_0011@3x.png in Resources */,
+				FA66EB451E1267D800C8C7A6 /* event@2x.png in Resources */,
 				FA0EFFBE1D73DA310080759D /* FontAwesome.ttf in Resources */,
 				FA8C53981D7D72C000F96ED5 /* loop_0011@2x.png in Resources */,
 				FA8C53C21D7D72C000F96ED5 /* ruler_top_shadow@2x.png in Resources */,

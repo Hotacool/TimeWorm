@@ -12,10 +12,12 @@
 #import "TWEventDetailView.h"
 #import "DateTools.h"
 
+static const CGFloat TWTimerInfoPageTitleCellHeight = 40.f;
 @interface TWTimerInfoPage ()
 @property (nonatomic, strong) UIView *colorTag;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UIImageView *stateIcon;
 @property (nonatomic, strong) TWEventDetailView *detailView;
 
 @end
@@ -42,11 +44,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = Hlightgray;
+    self.view.backgroundColor = Haqua;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Event List", @"") style:UIBarButtonItemStylePlain target:self action:@selector(gotoEventList:)];
-    [self.view addSubview:self.colorTag];
-    [self.view addSubview:self.titleLabel];
-    [self.view addSubview:self.timeLabel];
+    UIView *titleCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentSizeInPopup.width, TWTimerInfoPageTitleCellHeight)];
+    titleCell.backgroundColor = Hlightgray;
+    [self.view addSubview:titleCell];
+    CGRect rect = CGRectMake(0, 0, 0, TWTimerInfoPageTitleCellHeight);
+    rect.origin.x = 2;
+    rect.size.width = 40;
+    self.timeLabel.frame = rect;
+    rect.origin.x = CGRectGetMaxX(self.timeLabel.frame);
+    rect.size.width = 4;
+    self.colorTag.frame = rect;
+    rect.origin.x = CGRectGetMaxX(self.colorTag.frame)+4;
+    rect.size.width = self.contentSizeInPopup.width - rect.origin.x - TWTimerInfoPageTitleCellHeight-10;
+    self.titleLabel.frame = rect;
+    rect.origin.x = CGRectGetMaxX(self.titleLabel.frame);
+    rect.origin.y = (TWTimerInfoPageTitleCellHeight - 25)/2;
+    rect.size.height = 25;
+    rect.size.width = 25;
+    self.stateIcon.frame = rect;
+    
+    [titleCell addSubview:self.colorTag];
+    [titleCell addSubview:self.titleLabel];
+    [titleCell addSubview:self.timeLabel];
+    [titleCell addSubview:self.stateIcon];
     [self.view addSubview:self.detailView];
 }
 
@@ -64,14 +86,17 @@
     switch (curTimer.state) {
         case TWTimerStateEnd: {
             self.colorTag.backgroundColor = HgrassD;
+            self.stateIcon.image = [UIImage imageNamed:@"MissionComplete"];
             break;
         }
         case TWTimerStateCancel: {
             self.colorTag.backgroundColor = HpinkroseD;
+            self.stateIcon.image = [UIImage imageNamed:@"MissionCancel"];
             break;
         }
         default: {
             self.colorTag.backgroundColor = HmorangeD;
+            self.stateIcon.image = [UIImage imageNamed:@"MissionException"];
             break;
         }
     }
@@ -103,14 +128,14 @@
 
 - (UIView *)colorTag {
     if (!_colorTag) {
-        _colorTag = [[UIView alloc] initWithFrame:CGRectMake(2, 0, 6, 40)];
+        _colorTag = [[UIView alloc] initWithFrame:CGRectZero];
     }
     return _colorTag;
 }
 
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.contentSizeInPopup.width - 60, 40)];
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _titleLabel.textAlignment = NSTextAlignmentLeft;
         _titleLabel.font = HFont(15);
         [_titleLabel setAdjustsFontSizeToFitWidth:YES];
@@ -120,15 +145,24 @@
 
 - (UILabel *)timeLabel {
     if (!_timeLabel) {
-        _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.titleLabel.frame), 0, 40, 40)];
+        _timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _timeLabel.textAlignment = NSTextAlignmentCenter;
         [_timeLabel setAdjustsFontSizeToFitWidth:YES];
     }
     return _timeLabel;
 }
 
+- (UIImageView *)stateIcon {
+    if (!_stateIcon) {
+        _stateIcon = [[UIImageView alloc] init];
+    }
+    return _stateIcon;
+}
+
 - (TWEventDetailView *)detailView {
     if (!_detailView) {
         _detailView = [[TWEventDetailView alloc] initWithFrame:CGRectMake(0, 40, self.contentSizeInPopup.width, self.contentSizeInPopup.height-40)];
+        _detailView.backgroundColor = Hclear;
     }
     return _detailView;
 }

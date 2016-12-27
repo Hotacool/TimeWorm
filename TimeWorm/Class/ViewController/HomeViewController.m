@@ -173,7 +173,7 @@
 }
 
 - (void)popupViewNavigationBarInit {
-    [STPopupNavigationBar appearance].barTintColor = Hdarkgray;
+    [STPopupNavigationBar appearance].barTintColor = HdarkgrayD;
     [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
     [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
     [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18],

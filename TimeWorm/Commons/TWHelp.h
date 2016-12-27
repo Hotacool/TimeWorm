@@ -32,6 +32,7 @@
 #define WBlue RGB(100, 190, 250)
 #define LBlue RGB(175, 235, 230)
 
+#define Hclear        [UIColor clearColor]
 #define Hgrapefruit   RGB_HEX(0xED5565)
 #define HgrapefruitD  RGB_HEX(0xDA4453)
 #define Hbittersweet  RGB_HEX(0xFC6E51)
