@@ -23,7 +23,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.title = @"tag select";
+        self.title = NSLocalizedString(@"Tag select", @"");
         self.contentSizeInPopup = TWPopViewControllerSize;
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
         
@@ -111,7 +111,7 @@
     NSString *item = tagsArr[indexPath.row];
     if (![selectedTags containsObject:item]) {
         if (selectedTags.count + diffTagsNum >= maxTagsNum) {
-            [MozTopAlertView showOnWindowWithType:MozAlertTypeError text:NSLocalizedString(@"cannot select more", @"") doText:nil doBlock:nil];
+            [MozTopAlertView showOnWindowWithType:MozAlertTypeError text:NSLocalizedString(@"Cannot select more", @"") doText:nil doBlock:nil];
             return;
         }
         [selectedTags addObject:item];

@@ -71,7 +71,7 @@ static const int RelaxSceneDefaultDuration = 1;
         if (minutes > RelaxSceneDefaultDuration) {
             DDLogInfo(@"start ads");
             [TWADHelp createInterstitialAndShowInViewController:self.ctrl];
-            NSString *msg = [NSString stringWithFormat:@"Relax %d mins", minutes];
+            NSString *msg = [NSString stringWithFormat:NSLocalizedString(@"Relax %d mins", @""), minutes];
             [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:msg doText:nil doBlock:nil];
         }
     }

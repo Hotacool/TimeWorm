@@ -52,7 +52,7 @@
     UIButton *button = [[UIButton alloc]init];
     [button setBounds:CGRectMake(0,0,200,30)];
     [button setCenter:backgroundView.center];
-    [button setTitle:@"重新开始" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"Start a new game", @"") forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button.layer setBorderWidth:2.0];
     [button.layer setCornerRadius:15.0];
@@ -72,7 +72,7 @@
     
     UIButton *button1 = [[UIButton alloc]init];
     [button1 setFrame:CGRectMake(CGRectGetWidth(self.frame) / 2 - 100,50,200,30)];
-    [button1 setTitle:@"继续" forState:UIControlStateNormal];
+    [button1 setTitle:NSLocalizedString(@"Continue", @"") forState:UIControlStateNormal];
     [button1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button1.layer setBorderWidth:2.0];
     [button1.layer setCornerRadius:15.0];
@@ -82,7 +82,7 @@
     
     UIButton *button2 = [[UIButton alloc]init];
     [button2 setFrame:CGRectMake(CGRectGetWidth(self.frame) / 2 - 100,100,200,30)];
-    [button2 setTitle:@"重新开始" forState:UIControlStateNormal];
+    [button2 setTitle:NSLocalizedString(@"Start a new game", @"") forState:UIControlStateNormal];
     [button2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button2.layer setBorderWidth:2.0];
     [button2.layer setCornerRadius:15.0];

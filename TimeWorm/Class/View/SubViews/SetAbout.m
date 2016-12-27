@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSString *str = @"Time Worm\nv0.1.1.1216_alpha\n故事发生在人鬼共生的年代，原本属于阴界的魑魅魍魉，潜藏在人类的恐慌中伺机而动，阳界的秩序岌岌可危。\nAuthor: Hotacool";
+    NSString *str = NSLocalizedString(@"About detail", @"");
     NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
     [attrStr addAttribute:NSFontAttributeName
                     value:[UIFont systemFontOfSize:20.0f]
@@ -30,10 +30,10 @@
                     range:NSMakeRange(10, str.length-10)];
     [attrStr addAttribute:NSFontAttributeName
                     value:[UIFont systemFontOfSize:10.0f]
-                    range:NSMakeRange(10, 17)];
+                    range:NSMakeRange(10, str.length-10-16)];
     [attrStr addAttribute:NSFontAttributeName
                     value:[UIFont systemFontOfSize:14.0f]
-                    range:NSMakeRange(28, str.length-28)];
+                    range:NSMakeRange(str.length-16, 16)];
     NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
     //行间距
     paragraph.lineSpacing = 10;
@@ -47,7 +47,7 @@
     CGRect rect = [attrStr boundingRectWithSize:CGSizeMake(self.view.width-10, self.view.height)
                                         options:NSStringDrawingUsesLineFragmentOrigin
                                         context:nil];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, rect.size.width, rect.size.height)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, self.view.width-10, rect.size.height)];
     [self.view addSubview:label];
     label.numberOfLines = 0;
     label.attributedText = attrStr;
@@ -63,7 +63,7 @@
     [maiAttrStr addAttribute:NSUnderlineStyleAttributeName
                     value:[NSNumber numberWithInteger:NSUnderlineStyleSingle]
                     range:NSMakeRange(0, str.length)];
-    UILabel *mailLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(label.frame), rect.size.width, 20)];
+    UILabel *mailLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(label.frame), label.width, 20)];
     mailLabel.userInteractionEnabled = YES;
     [self.view addSubview:mailLabel];
     mailLabel.numberOfLines = 1;

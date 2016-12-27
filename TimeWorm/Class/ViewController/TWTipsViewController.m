@@ -40,8 +40,8 @@ static const CGFloat TWTipsCellHeight = 44.f;
     } else {
         [navBar setBarTintColor:HdarkgrayD];
     }
-    UINavigationItem *backItem = [[UINavigationItem alloc] initWithTitle:@"Tips"];
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStyleDone target:self action:@selector(backToHome)];
+    UINavigationItem *backItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"Tips", @"")];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", @"") style:UIBarButtonItemStyleDone target:self action:@selector(backToHome)];
     backItem.rightBarButtonItem = backBtn;
     [navBar pushNavigationItem:backItem animated:YES];
     [self.view addSubview:navBar];

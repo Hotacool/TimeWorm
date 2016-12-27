@@ -37,8 +37,8 @@
         self.contentSizeInPopup = TWPopViewControllerSize;
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
         
-        headerArr = @[@"Title"
-                      , @"description"];
+        headerArr = @[NSLocalizedString(@"Title", @"")
+                      , NSLocalizedString(@"Information", @"")];
         rowHeightArr = [NSMutableArray arrayWithArray:@[@(44)
                                                         ,@(150)]];
         headerHeightArr = [NSMutableArray arrayWithArray:@[@(40)
@@ -94,7 +94,7 @@
         _tagEditor.delegate = self;
         _tagEditor.maxTagsNum = 1;
         _tagEditor.maxWordsNum = 15;
-        _tagEditor.placeHolder = @"输入标签0/1";
+        _tagEditor.placeHolder = [NSString stringWithFormat:NSLocalizedString(@"Input tags", @""),0, 1];
         _tagEditor.backgroundColor = [UIColor whiteColor];
         _tagEditor.frame = CGRectMake(0, 0, self.contentSizeInPopup.width-50, 0);
     }
@@ -104,7 +104,7 @@
 - (TWTextView *)textView {
     if (!_textView) {
         _textView = [[TWTextView alloc] initWithFrame:CGRectMake(0, 0, self.contentSizeInPopup.width, 150)];
-        _textView.placeHolder = @"最多输入100个字符";
+        _textView.placeHolder = NSLocalizedString(@"At most 100 words", @"");
         _textView.maxWords = 100;
     }
     return _textView;
@@ -117,7 +117,7 @@
         if ([TWEvent updateEvent:curEvent]) {
             [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"done", @"") doText:nil doBlock:nil];
         } else {
-            [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"event has been stoped.", @"") doText:nil doBlock:nil];
+            [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"Event has been closed", @"") doText:nil doBlock:nil];
         }
     }
 }
@@ -182,7 +182,7 @@
 #pragma mark - delegate functions
 
 - (void)mkTagView:(MKTagView *)tagview sizeChange:(CGRect)newSize {
-    self.tagEditor.placeHolder = [NSString stringWithFormat:@"输入标签:(%lu/%lu)",[self.tagEditor allTags].count,self.tagEditor.maxTagsNum];
+    self.tagEditor.placeHolder = [NSString stringWithFormat:NSLocalizedString(@"Input tags", @""),[self.tagEditor allTags].count,self.tagEditor.maxTagsNum];
     //修正cell height
     float cellHeight = [rowHeightArr[0] floatValue];
     if (newSize.size.height > cellHeight) {

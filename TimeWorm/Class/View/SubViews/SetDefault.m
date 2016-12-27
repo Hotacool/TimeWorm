@@ -31,18 +31,16 @@
 - (void)setup {
     self.title = @"Bohr";
     
-    SBWS(weakSelf)
-    [self addSection:[BOTableViewSection sectionWithHeaderTitle:@"后台" handler:^(BOTableViewSection *section) {
-        [section addCell:[HACSwitchTableViewCell cellWithTitle:@"后台保持" key:nil handler:^(HACSwitchTableViewCell * cell) {
+    [self addSection:[BOTableViewSection sectionWithHeaderTitle:NSLocalizedString(@"Background", @"") handler:^(BOTableViewSection *section) {
+        [section addCell:[HACSwitchTableViewCell cellWithTitle:NSLocalizedString(@"Keep timing", @"") key:nil handler:^(HACSwitchTableViewCell * cell) {
             cell.defaultSwitchValue = [TWSet currentSet].keepTimer;
             cell.changeBlk = ^(BOOL isOn) {
-                NSLog(@"switch value: %d", isOn);
                 [TWSet updateSetColumn:@"keepTimer" withObj:@(isOn)];
             };
         }]];
     }]];
-    [self addSection:[BOTableViewSection sectionWithHeaderTitle:@"计时器" handler:^(BOTableViewSection *section) {
-        [section addCell:[HACStepperTableViewCell cellWithTitle:@"默认时长" key:nil handler:^(HACStepperTableViewCell * cell) {
+    [self addSection:[BOTableViewSection sectionWithHeaderTitle:NSLocalizedString(@"Mission", @"") handler:^(BOTableViewSection *section) {
+        [section addCell:[HACStepperTableViewCell cellWithTitle:NSLocalizedString(@"Default time", @"") key:nil handler:^(HACStepperTableViewCell * cell) {
             cell.stepper.wraps = YES;
             cell.stepper.continuous = NO;
             cell.stepper.formart = @"%.0f";
@@ -51,43 +49,38 @@
             [cell.stepper setStepperColor:Haqua withDisableColor:Hmediumgray];
             cell.stepper.value = [TWSet currentSet].defaultTimer;
             cell.changeBlk = ^(double value) {
-                NSLog(@"stepper value: %d", (int)value);
                 [TWSet updateSetColumn:@"defaultTimer" withObj:@((int)value)];
             };
         }]];
         
-        [section addCell:[HACTextTableViewCell cellWithTitle:@"计时名称" key:nil handler:^(HACTextTableViewCell * cell) {
+        [section addCell:[HACTextTableViewCell cellWithTitle:NSLocalizedString(@"Mission name", @"") key:nil handler:^(HACTextTableViewCell * cell) {
             cell.minimumTextLength = 2;
             cell.maximumTextLength = 10;
             cell.defaultValue = [TWSet currentSet].defaultTimerName;
             cell.changeBlk = ^(NSString *input) {
-                NSLog(@"timer name value: %@", input);
                 [TWSet updateSetColumn:@"defaultTimerName" withObj:input];
             };
         }]];
         
-        [section addCell:[HACTextTableViewCell cellWithTitle:@"事件名称" key:nil handler:^(HACTextTableViewCell * cell) {
+        [section addCell:[HACTextTableViewCell cellWithTitle:NSLocalizedString(@"Event name", @"") key:nil handler:^(HACTextTableViewCell * cell) {
             cell.minimumTextLength = 2;
             cell.maximumTextLength = 10;
             cell.defaultValue = [TWSet currentSet].defaultEventName;
             cell.changeBlk = ^(NSString *input) {
-                NSLog(@"timer name value: %@", input);
                 [TWSet updateSetColumn:@"defaultEventName" withObj:input];
             };
         }]];
         
-        [section addCell:[HACSwitchTableViewCell cellWithTitle:@"声音" key:nil handler:^(HACSwitchTableViewCell * cell) {
+        [section addCell:[HACSwitchTableViewCell cellWithTitle:NSLocalizedString(@"Voice", @"") key:nil handler:^(HACSwitchTableViewCell * cell) {
             cell.defaultSwitchValue = [TWSet currentSet].isVoiceOn;
             cell.changeBlk = ^(BOOL isOn) {
-                NSLog(@"switch value: %d", isOn);
                 [TWSet updateSetColumn:@"isVoiceOn" withObj:@(isOn)];
             };
         }]];
         
-        [section addCell:[HACSwitchTableViewCell cellWithTitle:@"连续计时" key:nil handler:^(HACSwitchTableViewCell * cell) {
+        [section addCell:[HACSwitchTableViewCell cellWithTitle:NSLocalizedString(@"Next mission", @"") key:nil handler:^(HACSwitchTableViewCell * cell) {
             cell.defaultSwitchValue = [TWSet currentSet].continueWork;
             cell.changeBlk = ^(BOOL isOn) {
-                NSLog(@"switch value: %d", isOn);
                 [TWSet updateSetColumn:@"continueWork" withObj:@(isOn)];
             };
         }]];

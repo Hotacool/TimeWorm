@@ -35,8 +35,8 @@ static NSInteger TWEditorViewTag = 1;
         self.contentSizeInPopup = TWPopViewControllerSize;
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
         
-        headerArr = @[@"Title"
-                      , @"Information"];
+        headerArr = @[NSLocalizedString(@"Title", @"")
+                      , NSLocalizedString(@"Information", @"")];
         rowHeightArr = [NSMutableArray arrayWithArray:@[@(44)
                                                         ,@(150)]];
         headerHeightArr = [NSMutableArray arrayWithArray:@[@(40)
@@ -82,7 +82,7 @@ static NSInteger TWEditorViewTag = 1;
         _tagEditor.delegate = self;
         _tagEditor.maxTagsNum = 5;
         _tagEditor.maxWordsNum = 15;
-        _tagEditor.placeHolder = @"输入标签(0/5)";
+        _tagEditor.placeHolder = [NSString stringWithFormat:NSLocalizedString(@"Input tags", @""),0,5];
         _tagEditor.tag = TWEditorViewTag;
         _tagEditor.backgroundColor = [UIColor whiteColor];
         _tagEditor.frame = CGRectMake(0, 0, self.contentSizeInPopup.width-50, 0);
@@ -93,7 +93,7 @@ static NSInteger TWEditorViewTag = 1;
 - (TWTextView *)textView {
     if (!_textView) {
         _textView = [[TWTextView alloc] initWithFrame:CGRectMake(0, 0, self.contentSizeInPopup.width, 150)];
-        _textView.placeHolder = @"最多输入100个字符";
+        _textView.placeHolder = NSLocalizedString(@"At most 100 words", @"");
         _textView.maxWords = 100;
     }
     return _textView;
@@ -105,7 +105,7 @@ static NSInteger TWEditorViewTag = 1;
     timer.name = [TWUtility transformTags2String:[self.tagEditor allTags]];
     timer.information = self.textView.text;
     if (![TWTimer updateTimer:timer]) {
-        [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"Timer cannot be changed.", @"") doText:nil doBlock:nil];
+        [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"Cannot be changed", @"") doText:nil doBlock:nil];
     } else {
         [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"done", @"") doText:nil doBlock:nil];
     }
@@ -159,13 +159,13 @@ static NSInteger TWEditorViewTag = 1;
         TWTagPage *tagPage = [TWTagPage new];
         [tagPage setDefaultSelectedTags:[self.tagEditor allTags]];
         [tagPage setMaxSelectedTagNumber:self.tagEditor.maxTagsNum];
-        [tagPage setTagsArr:[NSMutableArray arrayWithArray:@[@"工作"
-                                                            ,@"学习"
-                                                            ,@"游戏"
-                                                            ,@"睡觉"
-                                                            ,@"发呆"
-                                                            ,@"吃饭"
-                                                             ,@"劳动"]]];
+        [tagPage setTagsArr:[NSMutableArray arrayWithArray:@[NSLocalizedString(@"MissionTag0", @"")
+                                                            ,NSLocalizedString(@"MissionTag1", @"")
+                                                            ,NSLocalizedString(@"MissionTag2", @"")
+                                                            ,NSLocalizedString(@"MissionTag3", @"")
+                                                            ,NSLocalizedString(@"MissionTag4", @"")
+                                                            ,NSLocalizedString(@"MissionTag5", @"")
+                                                            ,NSLocalizedString(@"MissionTag6", @"")]]];
         tagPage.delegate = self;
         [self.popupController pushViewController:tagPage animated:YES];
     }
@@ -174,7 +174,7 @@ static NSInteger TWEditorViewTag = 1;
 #pragma mark - delegate functions
 
 - (void)mkTagView:(MKTagView *)tagview sizeChange:(CGRect)newSize {
-    self.tagEditor.placeHolder = [NSString stringWithFormat:@"输入标签:(%lu/%lu)",[self.tagEditor allTags].count,self.tagEditor.maxTagsNum];
+    self.tagEditor.placeHolder = [NSString stringWithFormat:NSLocalizedString(@"Input tags", @""),[self.tagEditor allTags].count,self.tagEditor.maxTagsNum];
     //修正cell height
     if (newSize.size.height > 44) {
         [rowHeightArr replaceObjectAtIndex:0 withObject:@(newSize.size.height)];

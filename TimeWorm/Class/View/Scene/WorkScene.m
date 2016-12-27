@@ -72,7 +72,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
                                                               skinSet:[TWSet currentSet].workTheme]
                        atIndex:0];
     
-    self.event.frame = CGRectMake(self.frame.size.width - 50, self.frame.size.height - 50, 50, 50);
+    self.event.frame = CGRectMake(self.frame.size.width - 60, self.frame.size.height - 60, 50, 50);
     [self addSubview:self.event];
 }
 
@@ -109,7 +109,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
 - (UIButton *)event {
     if (!_event) {
         _event = [[UIButton alloc] init];
-        [_event setImage:[UIImage imageNamed:@"CalenderRound"] forState:UIControlStateNormal];
+        [_event setImage:[UIImage imageNamed:@"eventlist"] forState:UIControlStateNormal];
         [_event addTarget:self action:@selector(gotoEventList:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _event;
@@ -141,34 +141,34 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
         switch (self.wsm.state) {
             case WorkSceneModelStateNone: {
                 [self.clock setCLockDefaultDate:[[HACClockDate alloc] initWithHour:0 minute:0 second:0 weekday:1]];
-                [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
+                [(HomeViewController*)self.ctrl changeMenuButtonText:NSLocalizedString(@"pause", @"") atIndex:3];
                 [self.clock switchInfoLabel2State:3];
                 break;
             }
             case WorkSceneModelStateWorking: {
                 [neko doRandomWorkActionWithLoopCount:INTMAX_MAX];
-                [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
+                [(HomeViewController*)self.ctrl changeMenuButtonText:NSLocalizedString(@"pause", @"") atIndex:3];
                 [self.clock switchInfoLabel2State:1];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeInfo text:NSLocalizedString(@"work start", @"") doText:nil doBlock:nil];
                 break;
             }
             case WorkSceneModelStatePause: {
                 [neko doRandomPauseActionWithLoopCount:INTMAX_MAX];
-                [(HomeViewController*)self.ctrl changeMenuButtonText:@"继续" atIndex:3];
+                [(HomeViewController*)self.ctrl changeMenuButtonText:NSLocalizedString(@"Continue", @"") atIndex:3];
                 [self.clock switchInfoLabel2State:2];
                 [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"pause", @"") doText:nil doBlock:nil];
                 break;
             }
             case WorkSceneModelStateEvent: {
                 [neko doRandomPauseActionWithLoopCount:INTMAX_MAX];
-                [(HomeViewController*)self.ctrl changeMenuButtonText:@"继续" atIndex:3];
+                [(HomeViewController*)self.ctrl changeMenuButtonText:NSLocalizedString(@"Continue", @"") atIndex:3];
                 [self.clock switchInfoLabel2State:2];
                 [STPopupController popupViewControllerName:@"TWEventSetting" inViewController:self.ctrl];
                 break;
             }
             case WorkSceneModelStateReset: {
                 [self.clock setCLockDefaultDate:[[HACClockDate alloc] initWithHour:0 minute:0 second:0 weekday:1]];
-                [(HomeViewController*)self.ctrl changeMenuButtonText:@"暂停" atIndex:3];
+                [(HomeViewController*)self.ctrl changeMenuButtonText:NSLocalizedString(@"pause", @"") atIndex:3];
                 [self.clock switchInfoLabel2State:3];
                 [STPopupController popupViewControllerName:@"TWClockSetting" inViewController:self.ctrl];
                 [neko doRandomStopActionWithLoopCount:INTMAX_MAX];
@@ -176,14 +176,14 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
             }
             case WorkSceneModelStateEnd: {
                 [self.clock switchInfoLabel2State:3];
-                [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"timer finish!", @"") doText:nil doBlock:nil];
+                [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"Mission complete!", @"") doText:nil doBlock:nil];
                 [TWAudioHelp playTimerComplete];
                 [neko doRandomStopActionWithLoopCount:INTMAX_MAX];
                 
                 if ([TWSet currentSet].continueWork) {//连续计时
-                    GUAAlertView *v = [GUAAlertView alertViewWithTitle:@"success"
-                                                               message:@"continue a new timer?"
-                                                           buttonTitle:@"OK"
+                    GUAAlertView *v = [GUAAlertView alertViewWithTitle:NSLocalizedString(@"Complete!", @"")
+                                                               message:NSLocalizedString(@"Start a new Mission?", @"")
+                                                           buttonTitle:NSLocalizedString(@"OK", @"")
                                                    buttonTouchedAction:^{
                                                        DDLogInfo(@"touched");
                                                        // continue to start a new timer
@@ -196,9 +196,9 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
                 } else {
                     //当计时器大于25分钟时，结束后询问是否放松
                     if (_wsm.currentTimer.allSeconds >= 60*25) {
-                        GUAAlertView *v = [GUAAlertView alertViewWithTitle:@"success"
-                                                                   message:@"need to relax?"
-                                                               buttonTitle:@"OK"
+                        GUAAlertView *v = [GUAAlertView alertViewWithTitle:NSLocalizedString(@"Complete!", @"")
+                                                                   message:NSLocalizedString(@"Go to relax?", @"")
+                                                               buttonTitle:NSLocalizedString(@"OK", @"")
                                                        buttonTouchedAction:^{
                                                            [TWCommandCenter doActionWithCommand:TWCommandCommon_tureRelax];
                                                        } dismissAction:^{
@@ -220,7 +220,7 @@ static NSString *const WorkSceneClockAniCenter = @"WorkSceneClockAniCenter";
         [self.clock setClockDate:date];
     } else if ([keyPath isEqualToString:@"errorCode"]) {
         if (_wsm.errorCode == WorkSceneErrorNeedNewTimer) {
-            [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"create a new timer", @"") doText:nil doBlock:nil];
+            [MozTopAlertView showOnWindowWithType:MozAlertTypeWarning text:NSLocalizedString(@"Create a new Mission!", @"") doText:nil doBlock:nil];
         }
     }
 }

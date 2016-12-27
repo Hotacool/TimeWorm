@@ -7,7 +7,6 @@
 //
 
 #import "HomeScene.h"
-#import "HeroSprite.h"
 #import "HomeSceneModel.h"
 #import "TWSet.h"
 #import "TWPaopaoVew.h"

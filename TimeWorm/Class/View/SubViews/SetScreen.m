@@ -36,10 +36,9 @@
                           ,@"Grass"];
     //cell size
     CGSize size = CGSizeMake(self.view.width, APPCONFIG_UI_TABLE_CELL_HEIGHT);
-    SBWS(weakSelf)
-    [self addSection:[BOTableViewSection sectionWithHeaderTitle:@"主题" handler:^(BOTableViewSection *section) {
+    [self addSection:[BOTableViewSection sectionWithHeaderTitle:NSLocalizedString(@"Theme", @"") handler:^(BOTableViewSection *section) {
         
-        [section addCell:[HACPickerTableViewCell cellWithTitle:@"主页" key:@"SH" handler:^(HACPickerTableViewCell * cell) {
+        [section addCell:[HACPickerTableViewCell cellWithTitle:NSLocalizedString(@"Home", @"") key:@"SH" handler:^(HACPickerTableViewCell * cell) {
             cell.itemCount = 5;
             cell.rowSize = size;
             cell.itemBlk = ^(NSUInteger index){
@@ -81,7 +80,6 @@
             };
             __weak typeof(cell) weakCell = cell;
             cell.selectActionBlk = ^(NSUInteger index) {
-                NSLog(@"select at: %ld", index);
                 weakCell.detailTextLabel.text = themeArr[index];
                 [TWSet updateSetColumn:@"homeTheme" withObj:@(index)];
             };
@@ -92,7 +90,7 @@
             }
         }]];
         
-        [section addCell:[HACPickerTableViewCell cellWithTitle:@"工作" key:@"SW" handler:^(HACPickerTableViewCell * cell) {
+        [section addCell:[HACPickerTableViewCell cellWithTitle:NSLocalizedString(@"Work", @"") key:@"SW" handler:^(HACPickerTableViewCell * cell) {
             cell.itemCount = 5;
             cell.rowSize = size;
             cell.itemBlk = ^(NSUInteger index){
@@ -134,7 +132,6 @@
             };
             __weak typeof(cell) weakCell = cell;
             cell.selectActionBlk = ^(NSUInteger index) {
-                NSLog(@"select at: %ld", index);
                 weakCell.detailTextLabel.text = themeArr[index];
                 [TWSet updateSetColumn:@"workTheme" withObj:@(index)];
             };
@@ -145,7 +142,7 @@
             }
         }]];
         
-        [section addCell:[HACPickerTableViewCell cellWithTitle:@"放松" key:@"SR" handler:^(HACPickerTableViewCell * cell) {
+        [section addCell:[HACPickerTableViewCell cellWithTitle:NSLocalizedString(@"Relax", @"") key:@"SR" handler:^(HACPickerTableViewCell * cell) {
             cell.itemCount = 5;
             cell.rowSize = size;
             cell.itemBlk = ^(NSUInteger index){
@@ -187,7 +184,6 @@
             };
             __weak typeof(cell) weakCell = cell;
             cell.selectActionBlk = ^(NSUInteger index) {
-                NSLog(@"select at: %ld", index);
                 weakCell.detailTextLabel.text = themeArr[index];
                 [TWSet updateSetColumn:@"relaxTheme" withObj:@(index)];
             };
@@ -199,8 +195,8 @@
         }]];
     }]];
     
-    [self addSection:[BOTableViewSection sectionWithHeaderTitle:@"屏幕" handler:^(BOTableViewSection *section) {
-        [section addCell:[HACSwitchTableViewCell cellWithTitle:@"屏幕常亮" key:nil handler:^(HACSwitchTableViewCell * cell) {
+    [self addSection:[BOTableViewSection sectionWithHeaderTitle:NSLocalizedString(@"sScreen", @"") handler:^(BOTableViewSection *section) {
+        [section addCell:[HACSwitchTableViewCell cellWithTitle:NSLocalizedString(@"Keep bright", @"") key:nil handler:^(HACSwitchTableViewCell * cell) {
             cell.defaultSwitchValue = [TWSet currentSet].keepAwake;
             cell.changeBlk = ^(BOOL isOn) {
                 NSLog(@"switch value: %d", isOn);

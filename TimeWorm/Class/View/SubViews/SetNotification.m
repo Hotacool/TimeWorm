@@ -30,8 +30,8 @@
     self.title = @"Bohr";
     
     SBWS(weakSelf)
-    [self addSection:[BOTableViewSection sectionWithHeaderTitle:@"通知" handler:^(BOTableViewSection *section) {
-        [section addCell:[HACSwitchTableViewCell cellWithTitle:@"开启通知" key:nil handler:^(HACSwitchTableViewCell * cell) {
+    [self addSection:[BOTableViewSection sectionWithHeaderTitle:NSLocalizedString(@"Notification", @"") handler:^(BOTableViewSection *section) {
+        [section addCell:[HACSwitchTableViewCell cellWithTitle:NSLocalizedString(@"Allow", @"") key:nil handler:^(HACSwitchTableViewCell * cell) {
             cell.defaultSwitchValue = [TWSet currentSet].isNotifyOn;
             cell.changeBlk = ^(BOOL isOn) {
                 NSLog(@"switch value: %d", isOn);

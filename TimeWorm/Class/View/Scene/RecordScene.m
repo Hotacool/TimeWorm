@@ -186,7 +186,7 @@ static const int RecordSceneCellTag = 1000;
     TWModelTimer *timer;
     if ((timer = timerArr[indexPath.row])) {
         TWTimerInfoPage *ret = [TWTimerInfoPage new];
-        ret.title = NSLocalizedString(@"Timer Detail", @"");
+        ret.title = NSLocalizedString(@"Mission Detail", @"");
         STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:ret];
         popupController.containerView.layer.cornerRadius = 4;
         popupController.transitionStyle = STPopupTransitionStyleSlideVertical;

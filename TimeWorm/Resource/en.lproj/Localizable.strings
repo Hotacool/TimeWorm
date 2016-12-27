@@ -23,14 +23,14 @@
 
 "ClockSetMore" = "More Info";
 "Time Set" = "Time Set";
-"Timer Detail" = "Timer Detail";
+"Mission Detail" = "Mission Detail";
 
 "Event Set" = "Event Set";
 "done" = "Done";
 "Event List" = "Event List";
 // information
-"pause" = "pause";
-"reset the timer" = "reset the timer.";
+"pause" = "Pause";
+"reset the timer" = "Reset the timer.";
 "work start" = "Work Start";
 // set
 "Screen" = "Screen";
@@ -44,5 +44,51 @@
 "Meeting" = "Meeting";
 "Relax" = "Relax";
 
-"e_start_date" = "开始时间: ";
-"e_end_date" = "结束时间: ";
+"e_start_date" = "start: ";
+"e_end_date"   = "  end: ";
+
+"Mission complete!" = "Mission complete!";
+"Complete!" = "Complete!";
+"Start a new Mission?" = "Start a new Mission?";
+"OK" = "OK";
+"Go to relax?" = "Go to relax?";
+"Create a new Mission!" = "Create a new Mission!";
+"Continue" = "Continue";
+"Relax %d mins" = "Relax %d mins";
+"Theme" = "Theme";
+"Home" = "Home";
+"Work" = "Work";
+"Relax" = "Relax";
+"sScreen" = "sScreen";
+"Keep bright" = "Keep bright";
+"Background" = "Background";
+"Keep timing" = "Keep timing";
+"Mission" = "Mission";
+"Default time" = "Default time";
+"Mission name" = "Mission name";
+"Event name" = "Event name";
+"Voice" = "Voice";
+"Next mission" = "Next mission";
+"Notification" = "Notification";
+"Allow" = "Allow";
+"Help" = "Help";
+"Tips" = "Tips";
+"Introduction" = "Guidance";
+"About detail" = "Nekotukai\nv0.1.1.1227_alpha\nThanks for downloading.orz。\nLet me know problems you encountered.\nI cherish every suggestion you give.\nPlease click advertisements for more times if you like using me(●ﾟωﾟ●)\nAuthor: Hotacool";
+"Start a new game" = "Start a new game";
+"Title" = "Title";
+"Information" = "Information";
+"Cannot be changed" = "Cannot be changed";
+"Input tags" = "Tag input:(%lu/%lu)";
+"At most 100 words" = "At most 100 words";
+"MissionTag0" = "Working";
+"MissionTag1" = "Learning";
+"MissionTag2" = "In a daze";
+"MissionTag3" = "Sleeping";
+"MissionTag4" = "Eating";
+"MissionTag5" = "Housework";
+"MissionTag6" = "Game";
+"Tag select" = "Select Tag";
+"Cannot select more" = "Cannot select more";
+"Event has been closed" = "Event has been closed";
+"Back" = "Back";

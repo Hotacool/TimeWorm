@@ -22,7 +22,7 @@
 
 "ClockSetMore" = "更多信息";
 "Time Set" = "时间设置";
-"Timer Detail" = "计时详细";
+"Mission Detail" = "任务详细";
 
 "Event Set" = "事件设置";
 "done" = "完成";
@@ -45,3 +45,49 @@
 
 "e_start_date" = "开始时间: ";
 "e_end_date" = "结束时间: ";
+
+"Mission complete!" = "任务完成!";
+"Complete!" = "完成!";
+"Start a new Mission?" = "开始新任务?";
+"OK" = "好";
+"Go to relax?" = "休息一会儿?";
+"Create a new Mission!" = "创建新任务!";
+"Continue" = "继续";
+"Relax %d mins" = "已休息%d分钟";
+"Theme" = "主题";
+"Home" = "主页";
+"Work" = "工作";
+"Relax" = "休息";
+"sScreen" = "屏幕";
+"Keep bright" = "屏幕常亮";
+"Background" = "后台";
+"Keep timing" = "后台保持";
+"Mission" = "任务";
+"Default time" = "默认时长";
+"Mission name" = "任务名称";
+"Event name" = "事件名称";
+"Voice" = "声音";
+"Next mission" = "连续任务";
+"Notification" = "通知";
+"Allow" = "开启";
+"Help" = "帮助";
+"Tips" = "小贴士";
+"Introduction" = "引导";
+"About detail" = "Nekotukai\nv0.1.1.1227_alpha\n感谢下载使用orz。\n欢迎您反馈使用中遇到的问题\n我会珍视您每一份建议\n休息的话可以多点点广告 (●ﾟωﾟ●)\nAuthor: Hotacool";
+"Start a new game" = "重新开始";
+"Title" = "名称";
+"Information" = "信息";
+"Cannot be changed" = "无法修改";
+"Input tags" = "输入标签:(%lu/%lu)";
+"At most 100 words" = "最多输入100个字符";
+"MissionTag0" = "工作";
+"MissionTag1" = "学习";
+"MissionTag2" = "发呆";
+"MissionTag3" = "睡觉";
+"MissionTag4" = "吃饭";
+"MissionTag5" = "劳动";
+"MissionTag6" = "游戏";
+"Tag select" = "选择标签";
+"Cannot select more" = "无法选择更多";
+"Event has been closed" = "事件已关闭";
+"Back" = "返回";

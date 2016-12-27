@@ -27,13 +27,13 @@
 
 - (void)setup {
     self.title = @"SetHelp";
-    [self addSection:[BOTableViewSection sectionWithHeaderTitle:@"帮助" handler:^(BOTableViewSection *section) {
-        [section addCell:[BOButtonTableViewCell cellWithTitle:@"Tips" key:nil handler:^(BOButtonTableViewCell* cell) {
+    [self addSection:[BOTableViewSection sectionWithHeaderTitle:NSLocalizedString(@"Help", @"") handler:^(BOTableViewSection *section) {
+        [section addCell:[BOButtonTableViewCell cellWithTitle:NSLocalizedString(@"Tips", @"") key:nil handler:^(BOButtonTableViewCell* cell) {
             cell.actionBlock = ^{
                 [TWUtility jump2Tips];
             };
         }]];
-        [section addCell:[BOButtonTableViewCell cellWithTitle:@"引导" key:nil handler:^(BOButtonTableViewCell* cell) {
+        [section addCell:[BOButtonTableViewCell cellWithTitle:NSLocalizedString(@"Introduction", @"") key:nil handler:^(BOButtonTableViewCell* cell) {
             cell.actionBlock = ^{                
                 UIWindow *window = [UIApplication sharedApplication].keyWindow;
                 if (window) {
