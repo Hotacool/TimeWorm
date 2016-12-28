@@ -12,16 +12,15 @@
 #define RGB(r, g, b) RGB_A(r, g, b, 1)
 #define RGB_HEX(__h__) RGB((__h__ >> 16) & 0xFF, (__h__ >> 8) & 0xFF, __h__ & 0xFF)
 #define WBlue RGB(100, 190, 250)
-#define Hbittersweet  RGB_HEX(0xFC6E51)
-#define Hdarkgray     RGB_HEX(0x656D78)
-
-static const CGFloat TWTimerBoardStateBarWidth = 20.f;
+#define Hmediumgray   RGB_HEX(0xCCD1D9)
+#define HmediumgrayD  RGB_HEX(0xAAB2BD)
 
 @implementation TWTimerBoard {
     UIView *stateBar;
     UILabel *startDateLabel;
     UILabel *timeLabel;
-    
+    UIImageView *stateIcon;
+    UILabel *tNameLabel;
     
 }
 
@@ -33,20 +32,32 @@ static const CGFloat TWTimerBoardStateBarWidth = 20.f;
 }
 
 - (void)setUp {
-    stateBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, TWTimerBoardStateBarWidth, self.frame.size.height)];
+    stateBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 30)];
     [self addSubview:stateBar];
-    startDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(TWTimerBoardStateBarWidth, 0, self.frame.size.width - TWTimerBoardStateBarWidth, 30)];
+    startDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(stateBar.frame.size.width-120, 0, 120, stateBar.frame.size.height)];
     startDateLabel.textAlignment = NSTextAlignmentCenter;
     startDateLabel.font = [UIFont systemFontOfSize:12];
-    startDateLabel.text = NSLocalizedString(@"start: ", @"");
+    startDateLabel.text = @"";
     startDateLabel.backgroundColor = [UIColor clearColor];
-    [self addSubview:startDateLabel];
-    timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(TWTimerBoardStateBarWidth, 0, self.frame.size.width - TWTimerBoardStateBarWidth, self.frame.size.height - startDateLabel.frame.size.height)];
-    timeLabel.textAlignment = NSTextAlignmentCenter;
+    startDateLabel.textColor = Hmediumgray;
+    [stateBar addSubview:startDateLabel];
+    stateIcon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2, 25, 25)];
+    stateIcon.backgroundColor = [UIColor grayColor];
+    [stateBar addSubview:stateIcon];
+    tNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(stateIcon.frame)+4, 0, 180, stateBar.frame.size.height)];
+    tNameLabel.font = [UIFont systemFontOfSize:16];
+    tNameLabel.textAlignment = NSTextAlignmentLeft;
+    [stateBar addSubview:tNameLabel];
+    
+    timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(stateBar.frame), self.frame.size.width-20, self.frame.size.height - stateBar.frame.size.height)];
+    timeLabel.textAlignment = NSTextAlignmentLeft;
     timeLabel.font = [UIFont systemFontOfSize:50];
     timeLabel.text = NSLocalizedString(@"00:00", @"");
     timeLabel.backgroundColor = [UIColor clearColor];
+    timeLabel.textColor = Hmediumgray;
     [self addSubview:timeLabel];
+    
+    
     
     [self setState:TWTimerBoardStateNone];
 }
@@ -55,16 +66,16 @@ static const CGFloat TWTimerBoardStateBarWidth = 20.f;
     _state = state;
     switch (state) {
         case TWTimerBoardStateNone: {
-            stateBar.backgroundColor = Hdarkgray;
-            startDateLabel.text = @"";
+            stateIcon.image = [UIImage imageNamed:@"missionStop"];
+            startDateLabel.text = NSLocalizedString(@"None mission", @"");
             break;
         }
         case TWTimerBoardStateFlow: {
-            stateBar.backgroundColor = WBlue;
+            stateIcon.image = [UIImage imageNamed:@"missionPlay"];
             break;
         }
         case TWTimerBoardStatePause: {
-            stateBar.backgroundColor = Hbittersweet;
+            stateIcon.image = [UIImage imageNamed:@"missionPause"];
             break;
         }
     }
@@ -95,6 +106,11 @@ static const CGFloat TWTimerBoardStateBarWidth = 20.f;
     NSDateFormatter *dateformatter=[[NSDateFormatter alloc] init];
     [dateformatter setDateFormat:@"MM/dd HH:mm:ss"];
     NSString * dateStr=[dateformatter stringFromDate:startDate];
-    startDateLabel.text = [NSString stringWithFormat:@"start: %@", dateStr];
+    startDateLabel.text = [NSString stringWithFormat:@"%@", dateStr];
+}
+
+- (void)setName:(NSString *)name {
+    _name = name;
+    tNameLabel.text = name;
 }
 @end

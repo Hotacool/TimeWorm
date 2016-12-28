@@ -43,7 +43,7 @@
         _fireDate = fireDate;
         _title = title;
         _information = information;
-        type = type;
+        _type = type;
     }
     return self;
 }
@@ -190,7 +190,7 @@
             }];
             
             if (arr.count > 0) {
-                [HACUNCenter removeDeliveredNotificationsWithIdentifiers:arr];
+                [HACUNCenter removePendingNotificationRequestsWithIdentifiers:arr];
                 DDLogInfo(@"remove localNotification count: %lu", (unsigned long)arr.count);
             }
         }];

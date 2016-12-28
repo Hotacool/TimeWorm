@@ -34,7 +34,6 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self updateNumberLabelText];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -44,13 +43,10 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
     [self updateData];
 }
 
-- (void)userDefaultsDidChange:(NSNotification *)notification {
-    [self updateNumberLabelText];
-}
-
 - (void)updateNumberLabelText {
     [self refreshData];
     if (self.shareData) {
+        self.timeBoard.name = self.shareData.timerName;
         if (self.shareData.state == 2) {
             [self.timeBoard setState:TWTimerBoardStateFlow];
             [self.timeBoard setSeconds:self.shareData.seconds];
@@ -70,7 +66,6 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
 }
 
 - (void)tapMe:(UITapGestureRecognizer*)gesture {
-    NSLog(@"%s", __func__);
     NSString *urlStr = [NSString stringWithFormat:@"TWWidgetApp://timerId=%@", self.shareData.identifier];
     [self.extensionContext openURL:[NSURL URLWithString:urlStr] completionHandler:^(BOOL success) {
     }];
@@ -143,7 +138,7 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
     // If an error is encountered, use NCUpdateResultFailed
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
-
+    [self updateNumberLabelText];
     completionHandler(NCUpdateResultNewData);
 }
 

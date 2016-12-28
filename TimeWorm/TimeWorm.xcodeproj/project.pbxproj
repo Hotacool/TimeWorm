@@ -122,6 +122,20 @@
 		FA66EB421E124E0100C8C7A6 /* MissionException@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB3C1E124E0100C8C7A6 /* MissionException@3x.png */; };
 		FA66EB451E1267D800C8C7A6 /* event@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB431E1267D800C8C7A6 /* event@2x.png */; };
 		FA66EB461E1267D800C8C7A6 /* event@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB441E1267D800C8C7A6 /* event@3x.png */; };
+		FA66EB641E138DDA00C8C7A6 /* missionPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB5E1E138DDA00C8C7A6 /* missionPause@2x.png */; };
+		FA66EB651E138DDA00C8C7A6 /* missionPause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB5F1E138DDA00C8C7A6 /* missionPause@3x.png */; };
+		FA66EB661E138DDA00C8C7A6 /* missionPlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB601E138DDA00C8C7A6 /* missionPlay@2x.png */; };
+		FA66EB671E138DDA00C8C7A6 /* missionPlay@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB611E138DDA00C8C7A6 /* missionPlay@3x.png */; };
+		FA66EB681E138DDA00C8C7A6 /* missionStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB621E138DDA00C8C7A6 /* missionStop@2x.png */; };
+		FA66EB691E138DDA00C8C7A6 /* missionStop@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB631E138DDA00C8C7A6 /* missionStop@3x.png */; };
+		FA66EB6A1E138DE300C8C7A6 /* missionPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB5E1E138DDA00C8C7A6 /* missionPause@2x.png */; };
+		FA66EB6B1E138DE300C8C7A6 /* missionPause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB5F1E138DDA00C8C7A6 /* missionPause@3x.png */; };
+		FA66EB6C1E138DE300C8C7A6 /* missionPlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB601E138DDA00C8C7A6 /* missionPlay@2x.png */; };
+		FA66EB6D1E138DE300C8C7A6 /* missionPlay@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB611E138DDA00C8C7A6 /* missionPlay@3x.png */; };
+		FA66EB6E1E138DE300C8C7A6 /* missionStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB621E138DDA00C8C7A6 /* missionStop@2x.png */; };
+		FA66EB6F1E138DE300C8C7A6 /* missionStop@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA66EB631E138DDA00C8C7A6 /* missionStop@3x.png */; };
+		FA66EB701E13A77600C8C7A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA0E00F31D77C2420080759D /* Localizable.strings */; };
+		FA66EB731E13B2D100C8C7A6 /* TWNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA66EB721E13B2D100C8C7A6 /* TWNotificationManager.m */; };
 		FA6A02031DC0A7120034201E /* CLWeeklyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */; };
 		FA6A02041DC0A7120034201E /* DailyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02001DC0A7120034201E /* DailyCalendarView.m */; };
 		FA6A02051DC0A7120034201E /* DayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6A02021DC0A7120034201E /* DayTitleLabel.m */; };
@@ -453,6 +467,14 @@
 		FA66EB3C1E124E0100C8C7A6 /* MissionException@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MissionException@3x.png"; sourceTree = "<group>"; };
 		FA66EB431E1267D800C8C7A6 /* event@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event@2x.png"; sourceTree = "<group>"; };
 		FA66EB441E1267D800C8C7A6 /* event@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event@3x.png"; sourceTree = "<group>"; };
+		FA66EB5E1E138DDA00C8C7A6 /* missionPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missionPause@2x.png"; sourceTree = "<group>"; };
+		FA66EB5F1E138DDA00C8C7A6 /* missionPause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missionPause@3x.png"; sourceTree = "<group>"; };
+		FA66EB601E138DDA00C8C7A6 /* missionPlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missionPlay@2x.png"; sourceTree = "<group>"; };
+		FA66EB611E138DDA00C8C7A6 /* missionPlay@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missionPlay@3x.png"; sourceTree = "<group>"; };
+		FA66EB621E138DDA00C8C7A6 /* missionStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missionStop@2x.png"; sourceTree = "<group>"; };
+		FA66EB631E138DDA00C8C7A6 /* missionStop@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missionStop@3x.png"; sourceTree = "<group>"; };
+		FA66EB711E13B2D100C8C7A6 /* TWNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWNotificationManager.h; sourceTree = "<group>"; };
+		FA66EB721E13B2D100C8C7A6 /* TWNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWNotificationManager.m; sourceTree = "<group>"; };
 		FA6A01FD1DC0A7120034201E /* CLWeeklyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLWeeklyCalendarView.h; sourceTree = "<group>"; };
 		FA6A01FE1DC0A7120034201E /* CLWeeklyCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLWeeklyCalendarView.m; sourceTree = "<group>"; };
 		FA6A01FF1DC0A7120034201E /* DailyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCalendarView.h; sourceTree = "<group>"; };
@@ -1015,6 +1037,12 @@
 				FA66EB3A1E124E0100C8C7A6 /* MissionComplete@3x.png */,
 				FA66EB3B1E124E0100C8C7A6 /* MissionException@2x.png */,
 				FA66EB3C1E124E0100C8C7A6 /* MissionException@3x.png */,
+				FA66EB5E1E138DDA00C8C7A6 /* missionPause@2x.png */,
+				FA66EB5F1E138DDA00C8C7A6 /* missionPause@3x.png */,
+				FA66EB601E138DDA00C8C7A6 /* missionPlay@2x.png */,
+				FA66EB611E138DDA00C8C7A6 /* missionPlay@3x.png */,
+				FA66EB621E138DDA00C8C7A6 /* missionStop@2x.png */,
+				FA66EB631E138DDA00C8C7A6 /* missionStop@3x.png */,
 			);
 			path = img;
 			sourceTree = "<group>";
@@ -1220,6 +1248,8 @@
 				FA15872E1E06C52300E0B722 /* TWAudioHelp.m */,
 				FA9DF31F1DFFCEC4001E5A7B /* HACLocalNotificationCenter.h */,
 				FA9DF3201DFFCEC4001E5A7B /* HACLocalNotificationCenter.m */,
+				FA66EB711E13B2D100C8C7A6 /* TWNotificationManager.h */,
+				FA66EB721E13B2D100C8C7A6 /* TWNotificationManager.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1481,8 +1511,10 @@
 				FA8C53A61D7D72C000F96ED5 /* loop_0018@2x.png in Resources */,
 				FA8C538D1D7D72C000F96ED5 /* loop_0005@3x.png in Resources */,
 				FA66EB331E12317900C8C7A6 /* eventlist@2x.png in Resources */,
+				FA66EB661E138DDA00C8C7A6 /* missionPlay@2x.png in Resources */,
 				FA00DEAB1DFAAB8C00BD3D82 /* gameArts-hd@2x.png in Resources */,
 				FA8C53B51D7D72C000F96ED5 /* loop_0025@3x.png in Resources */,
+				FA66EB691E138DDA00C8C7A6 /* missionStop@3x.png in Resources */,
 				FA8C537A1D7D72C000F96ED5 /* btn_play_pressed@2x.png in Resources */,
 				FA0E011E1D77F5C80080759D /* 高兴.gif in Resources */,
 				FA8C53821D7D72C000F96ED5 /* d60@2x.png in Resources */,
@@ -1518,6 +1550,7 @@
 				FA8C538B1D7D72C000F96ED5 /* loop_0004@3x.png in Resources */,
 				FA5D758F1E0BC2B700F1A6B7 /* f005.gif in Resources */,
 				FA66EB3F1E124E0100C8C7A6 /* MissionComplete@2x.png in Resources */,
+				FA66EB671E138DDA00C8C7A6 /* missionPlay@3x.png in Resources */,
 				FA8C53B11D7D72C000F96ED5 /* loop_0023@3x.png in Resources */,
 				FA66EB461E1267D800C8C7A6 /* event@3x.png in Resources */,
 				FA8C53931D7D72C000F96ED5 /* loop_0008@3x.png in Resources */,
@@ -1529,6 +1562,7 @@
 				FA8C53811D7D72C000F96ED5 /* d15@2x.png in Resources */,
 				FA66EB3E1E124E0100C8C7A6 /* MissionCancel@3x.png in Resources */,
 				FA5D75821E0BB69D00F1A6B7 /* f001.gif in Resources */,
+				FA66EB681E138DDA00C8C7A6 /* missionStop@2x.png in Resources */,
 				FA8C53B31D7D72C000F96ED5 /* loop_0024@3x.png in Resources */,
 				FA66EAE01E0CBE9300C8C7A6 /* sleepy.gif in Resources */,
 				FA8C53BB1D7D72C000F96ED5 /* loop_0028@3x.png in Resources */,
@@ -1581,6 +1615,7 @@
 				FA5D759C1E0BCAF500F1A6B7 /* susi.gif in Resources */,
 				FA8C53831D7D72C000F96ED5 /* degree_i6@2x.png in Resources */,
 				FA8C537D1D7D72C000F96ED5 /* btn_reset_pressed@2x.png in Resources */,
+				FA66EB651E138DDA00C8C7A6 /* missionPause@3x.png in Resources */,
 				FA8C539B1D7D72C000F96ED5 /* loop_0012@3x.png in Resources */,
 				FA66EB421E124E0100C8C7A6 /* MissionException@3x.png in Resources */,
 				FA1587511E07CD6600E0B722 /* tips.json in Resources */,
@@ -1608,6 +1643,7 @@
 				FA49AA211DC326AC00CCC990 /* RS3DSegmentedControl.bundle in Resources */,
 				FA8C53BD1D7D72C000F96ED5 /* loop_0029@3x.png in Resources */,
 				FA00DEAA1DFAAB8C00BD3D82 /* gameArts-hd.plist in Resources */,
+				FA66EB641E138DDA00C8C7A6 /* missionPause@2x.png in Resources */,
 				FA8C53791D7D72C000F96ED5 /* btn_play_normal@2x.png in Resources */,
 				FA8C53991D7D72C000F96ED5 /* loop_0011@3x.png in Resources */,
 				FA66EB451E1267D800C8C7A6 /* event@2x.png in Resources */,
@@ -1622,6 +1658,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA66EB6D1E138DE300C8C7A6 /* missionPlay@3x.png in Resources */,
+				FA66EB6C1E138DE300C8C7A6 /* missionPlay@2x.png in Resources */,
+				FA66EB6F1E138DE300C8C7A6 /* missionStop@3x.png in Resources */,
+				FA66EB701E13A77600C8C7A6 /* Localizable.strings in Resources */,
+				FA66EB6A1E138DE300C8C7A6 /* missionPause@2x.png in Resources */,
+				FA66EB6E1E138DE300C8C7A6 /* missionStop@2x.png in Resources */,
+				FA66EB6B1E138DE300C8C7A6 /* missionPause@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1758,6 +1801,7 @@
 				FA0EFFC91D7408650080759D /* OLImageView.m in Sources */,
 				FA9DF3211DFFCEC4001E5A7B /* HACLocalNotificationCenter.m in Sources */,
 				FA710DDF1DEEC1D400A137C3 /* AppConfigManager.m in Sources */,
+				FA66EB731E13B2D100C8C7A6 /* TWNotificationManager.m in Sources */,
 				FA75D3611D9129D800E63CC9 /* TWTextView.m in Sources */,
 				FA1587191E03F17900E0B722 /* EAIntroView.m in Sources */,
 				FA85455D1DE6F19700A71FC3 /* SetDefault.m in Sources */,

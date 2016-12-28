@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, assign) NSUInteger seconds;
 @property (nonatomic, strong) NSDate *enterBack;
+@property (nonatomic, copy) NSString *timerName;
 
 - (instancetype)initWithUserDic:(NSDictionary*)userDic ;
 

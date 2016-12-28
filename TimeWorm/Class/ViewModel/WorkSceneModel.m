@@ -10,8 +10,8 @@
 #import "TWTimer.h"
 #import "TWEvent.h"
 #import "TWSet.h"
-#import "HACLocalNotificationCenter.h"
 #import "DateTools.h"
+#import "TWNotificationManager.h"
 
 @interface WorkSceneModel() <TWTimerObserver>
 
@@ -19,7 +19,6 @@
 
 @implementation WorkSceneModel {
     BOOL isPause;//menu是否显示的是“暂停”
-    NSDate *enterBackgroundTimestamp;
 }
 
 - (instancetype)init {
@@ -32,13 +31,8 @@
 - (void)setUp {
     //receive notification
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(becomeActiveNotification:)
-                                                 name:UIApplicationDidBecomeActiveNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(enterBackgroudNotification:)
-                                                 name:UIApplicationDidEnterBackgroundNotification
+                                                 name:kTWApplicationDidEnterBackgroundNotification
                                                object:nil];
     [TWTimer attatchObserver2Timer:self];
 }
@@ -196,83 +190,13 @@
 
 #pragma mark -- 前后台
 - (void)becomeActiveNotification:(NSNotification*)notify {
-    sfuc
-    if (!enterBackgroundTimestamp) {
-        DDLogError(@"enterBackgroundTimestamp is nil");
-        return;
-    }
-    NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:enterBackgroundTimestamp];
-    int seconds = interval;
-    if ([TWSet currentSet].keepTimer) {
-        if (self.currentTimer && (self.currentTimer.state&TWTimerStateFlow)) {
-            self.currentTimer.remainderSeconds -= seconds;
-        }
-    } else {
-        // edit event
-        NSMutableString *information = [NSMutableString stringWithString:[TWEvent currentEvent].information?:@""];
-        [information appendFormat:NSLocalizedString(@"Back after seconds", @""), seconds];
-        [TWEvent currentEvent].information = information;
-        [TWEvent updateEvent:[TWEvent currentEvent]];
-    }
-    enterBackgroundTimestamp = nil;
-    if ([TWSet currentSet].isNotifyOn) {
-        // cancel local notification
-        [[HACLocalNotificationCenter defaultCenter] cancelHACLocalNotificationByType:HACLocalNotificationTypeTimer];
-        [[HACLocalNotificationCenter defaultCenter] cancelHACLocalNotificationByType:HACLocalNotificationTypeLeaving];
-    }
-    
 }
 - (void)enterBackgroudNotification:(NSNotification*)notify {
     sfuc
-    HACLocalNotification *localNotify;
-    if ([TWSet currentSet].keepTimer) {
-        enterBackgroundTimestamp = [NSDate date];
-        if ([TWSet currentSet].isNotifyOn) {
-            //add local notification
-            NSDate *fireDate = [enterBackgroundTimestamp dateByAddingSeconds:[TWTimer currentTimer].remainderSeconds];
-            localNotify = [[HACLocalNotification alloc] initWithFireDate:fireDate
-                                                                   title:[TWTimer currentTimer].name
-                                                             information:NSLocalizedString(@"Mission complete!", @"")
-                                                                    type:HACLocalNotificationTypeTimer];
-        }
-        // share data for today extension
-        [TWUtility shareAppgroupData:@{@"remainderSeconds": @([TWTimer currentTimer].remainderSeconds)
-                                       ,@"timerId":@([TWTimer currentTimer].ID)
-                                       ,@"state":@([TWTimer currentTimer].state)
-                                       ,@"start":[TWTimer currentTimer].startDate
-                                       ,@"enterBack":enterBackgroundTimestamp}];
-    } else {
-        //自动生成event
-        if (self.currentTimer.state&TWTimerStateFlow) {
-            enterBackgroundTimestamp = [NSDate date];
-            // working -> event
-            [TWTimer pauseTimer:[TWTimer currentTimer]];
-            TWModelEvent *event = [TWModelEvent new];
-            event.timerId = self.currentTimer.ID;
-            event.startDate = enterBackgroundTimestamp;
-            event.name = NSLocalizedString(@"Enter background", @"");
-            [TWEvent createEvent:event];
-            self.state = WorkSceneModelStatePause;
-            isPause = YES;
-            if ([TWSet currentSet].isNotifyOn) {
-                //add local notification
-                NSDate *fireDate = [enterBackgroundTimestamp dateByAddingSeconds:[TWTimer currentTimer].remainderSeconds];
-                localNotify = [[HACLocalNotification alloc] initWithFireDate:fireDate
-                                                                       title:NSLocalizedString(@"appName", @"")
-                                                                 information:NSLocalizedString(@"Mission not complete", @"")
-                                                                        type:HACLocalNotificationTypeLeaving];
-            }
-            // share data for today extension
-            [TWUtility shareAppgroupData:@{@"remainderSeconds": @([TWTimer currentTimer].remainderSeconds)
-                                           ,@"timerId":@([TWTimer currentTimer].ID)
-                                           ,@"state":@([TWTimer currentTimer].state)
-                                           ,@"start":[TWTimer currentTimer].startDate
-                                           ,@"enterBack":enterBackgroundTimestamp}];
-        }
-    }
-    // send notification to queue
-    if (localNotify) {
-        [[HACLocalNotificationCenter defaultCenter] addHACLocalNotification:localNotify];
+    if (self.currentTimer.state&TWTimerStateFlow
+        && ![TWSet currentSet].keepTimer) {
+        self.state = WorkSceneModelStatePause;
+        isPause = YES;
     }
 }
 
