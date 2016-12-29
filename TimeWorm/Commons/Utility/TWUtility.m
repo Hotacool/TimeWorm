@@ -147,7 +147,7 @@
         return;
     }
     // share data for today extension
-    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.TimeWorm"];
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.hotacool"];
     [shared setObject:dic forKey:@"TWUserDic"];
     [shared synchronize];
 }

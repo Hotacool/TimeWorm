@@ -77,7 +77,7 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
 }
 
 - (void)refreshData {
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.TimeWorm"];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.hotacool"];
     id obj = [defaults objectForKey:@"TWUserDic"];
     if ([obj isKindOfClass:[NSDictionary class]]) {
         self.shareData = [[TWShareDataModel alloc] initWithUserDic:obj];
@@ -98,7 +98,7 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
     if (!self.shareData) {
         return;
     }
-    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.TimeWorm"];
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.hotacool"];
     [shared setObject:[self.shareData userDic]
                forKey:@"TWUserDic"];
     [shared synchronize];
