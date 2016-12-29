@@ -118,8 +118,15 @@ return z##_shared_obj_name_;                   \
 
 #define HACSystemVersion [[UIDevice currentDevice] systemVersion]
 
+#define NSNotifyCenter [NSNotificationCenter defaultCenter]
+
 #import "TWCommandCenter.h"
 #import "TWUtility.h"
 #import "UIView+HACUtils.h"
 #import "MozTopAlertView.h"
 #endif /* TWHelp_h */
+
+// extern constants
+extern NSString * const kTWApplicationDidEnterBackgroundNotification;
+extern NSString * const kTWIntroPageDidShowNotification;
+extern NSString * const kTWIntroPageDidDismissNotification;

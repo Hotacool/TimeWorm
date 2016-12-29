@@ -13,6 +13,7 @@
 #import "OLImageView.h"
 #import <STPopup/STPopup.h>
 #import <pop/POP.h>
+#import "TWConstants.h"
 
 @interface HomeViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) HomeViewControllerModel *hvm;
@@ -28,7 +29,6 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.hvm = (HomeViewControllerModel*)self.viewModel;
-        [self.hvm addObserver:self forKeyPath:@"scene" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -47,14 +47,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = RGB_HEX(0xC3F8C8);
-    //加载场景
-    [self loadScene];
+    // 非首次打开显示intro page情况下，直接显示home scene；否则intro page关闭后加载
+    if (![TWConstants isIntroPageShowing]) {
+        [self loadScene];
+        //kvo
+        [self.hvm addObserver:self forKeyPath:@"scene" options:NSKeyValueObservingOptionNew context:nil];
+    } else {
+        [NSNotifyCenter addObserver:self selector:@selector(introDidFinished:) name:kTWIntroPageDidDismissNotification object:nil];
+    }
     //初始化弹出界面navigationBar
     [self popupViewNavigationBarInit];
     //加载菜单按钮
     [self.view addSubview:self.menuBtn];
     [self raiseMenu:YES];
-    [self.menuBtn addObserver:self forKeyPath:@"isActive" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -178,6 +183,14 @@
     [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
     [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18],
                                                                NSForegroundColorAttributeName: [UIColor whiteColor] };
+}
+
+#pragma mark -- notification
+- (void)introDidFinished:(NSNotification*)notification {
+    //加载场景
+    [self loadScene];
+    //kvo
+    [self.hvm addObserver:self forKeyPath:@"scene" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 #pragma mark -- KVO

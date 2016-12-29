@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
-extern NSString * const kTWApplicationDidEnterBackgroundNotification;
 @interface TWNotificationManager : NSObject
 
 HAC_SINGLETON_DEFINE(TWNotificationManager)

@@ -42,4 +42,6 @@
 - (void)setSize:(CGSize)size ;
 - (void)setPosition:(CGPoint)position ;
 - (NSString *)doRandomActionWithLoopCount:(NSUInteger)count;
+
+-(int)getRandomNumber:(int)from to:(int)to ;
 @end
