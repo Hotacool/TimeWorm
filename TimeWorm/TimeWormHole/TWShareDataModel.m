@@ -7,7 +7,7 @@
 //
 
 #import "TWShareDataModel.h"
-
+typedef NSString*(^sssb)(BOOL);
 @implementation TWShareDataModel
 
 - (instancetype)initWithUserDic:(NSDictionary *)userDic {

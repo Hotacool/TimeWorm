@@ -11,7 +11,8 @@
 typedef NS_ENUM(NSUInteger, TWTimerBoardState) {
     TWTimerBoardStateNone,
     TWTimerBoardStateFlow,
-    TWTimerBoardStatePause
+    TWTimerBoardStatePause,
+    TWTimerBoardStateEnd
 };
 
 @interface TWTimerBoard : UIView

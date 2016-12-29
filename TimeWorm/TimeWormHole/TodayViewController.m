@@ -52,8 +52,13 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
             [self.timeBoard setSeconds:self.shareData.seconds];
             [self.timeBoard setStartDate:self.shareData.startDate];
             [self startTickTimer];
-        } else if (self.shareData.state == 4 || self.shareData.state == 8) {
+        } else if (self.shareData.state == 4) {
             [self.timeBoard setState:TWTimerBoardStatePause];
+            [self.timeBoard setSeconds:self.shareData.seconds];
+            [self.timeBoard setStartDate:self.shareData.startDate];
+            [self stopTickTimer];
+        } else if (self.shareData.state == 8) {
+            [self.timeBoard setState:TWTimerBoardStateEnd];
             [self.timeBoard setSeconds:self.shareData.seconds];
             [self.timeBoard setStartDate:self.shareData.startDate];
             [self stopTickTimer];

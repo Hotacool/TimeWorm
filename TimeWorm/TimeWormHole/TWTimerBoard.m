@@ -78,6 +78,10 @@
             stateIcon.image = [UIImage imageNamed:@"missionPause"];
             break;
         }
+        case TWTimerBoardStateEnd: {
+            stateIcon.image = [UIImage imageNamed:@"missionStop"];
+            break;
+        }
     }
 }
 
