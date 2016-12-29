@@ -241,7 +241,6 @@
 		FA8C53C21D7D72C000F96ED5 /* ruler_top_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8C53761D7D72C000F96ED5 /* ruler_top_shadow@2x.png */; };
 		FA8C53C31D7D72C000F96ED5 /* timer_ruler_i6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8C53771D7D72C000F96ED5 /* timer_ruler_i6@2x.png */; };
 		FA8C53C61D7DC79D00F96ED5 /* timer_ruler_i6p@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8C53C51D7DC79D00F96ED5 /* timer_ruler_i6p@3x.png */; };
-		FA8C53CA1D7DC97700F96ED5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8C53C91D7DC97700F96ED5 /* icon.png */; };
 		FA8C54DE1D7FC53400F96ED5 /* TWDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54DD1D7FC53400F96ED5 /* TWDBManager.m */; };
 		FA8C54E11D7FE4B600F96ED5 /* db_initialize.sql in Resources */ = {isa = PBXBuildFile; fileRef = FA8C54E01D7FE4B600F96ED5 /* db_initialize.sql */; };
 		FA8C54E41D7FEAD300F96ED5 /* TWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C54E31D7FEAD300F96ED5 /* TWModel.m */; };
@@ -608,7 +607,6 @@
 		FA8C53761D7D72C000F96ED5 /* ruler_top_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ruler_top_shadow@2x.png"; sourceTree = "<group>"; };
 		FA8C53771D7D72C000F96ED5 /* timer_ruler_i6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timer_ruler_i6@2x.png"; sourceTree = "<group>"; };
 		FA8C53C51D7DC79D00F96ED5 /* timer_ruler_i6p@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timer_ruler_i6p@3x.png"; sourceTree = "<group>"; };
-		FA8C53C91D7DC97700F96ED5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Resource/icon.png; sourceTree = SOURCE_ROOT; };
 		FA8C54DC1D7FC53400F96ED5 /* TWDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWDBManager.h; sourceTree = "<group>"; };
 		FA8C54DD1D7FC53400F96ED5 /* TWDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWDBManager.m; sourceTree = "<group>"; };
 		FA8C54E01D7FE4B600F96ED5 /* db_initialize.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = db_initialize.sql; sourceTree = "<group>"; };
@@ -1183,7 +1181,6 @@
 		FA80069E1D7041A30071571C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FA8C53C91D7DC97700F96ED5 /* icon.png */,
 				FA8006B51D7043930071571C /* PrefixHeader.pch */,
 				FA80069F1D7041A30071571C /* main.m */,
 			);
@@ -1620,7 +1617,6 @@
 				FA66EB421E124E0100C8C7A6 /* MissionException@3x.png in Resources */,
 				FA1587511E07CD6600E0B722 /* tips.json in Resources */,
 				FA5D75991E0BCAF500F1A6B7 /* happy.gif in Resources */,
-				FA8C53CA1D7DC97700F96ED5 /* icon.png in Resources */,
 				FA5D75861E0BB6D800F1A6B7 /* f003.gif in Resources */,
 				FA8C53AB1D7D72C000F96ED5 /* loop_0020@3x.png in Resources */,
 				FA0E00F11D77C2420080759D /* Localizable.strings in Resources */,
@@ -1967,6 +1963,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6E57374C922AB728B7D88378 /* Pods-TimeWorm.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = TimeWorm/TimeWorm.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1985,6 +1983,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 471D344FA260F33915DD092A /* Pods-TimeWorm.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = TimeWorm/TimeWorm.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
