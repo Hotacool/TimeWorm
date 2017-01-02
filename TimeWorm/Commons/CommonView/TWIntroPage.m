@@ -20,24 +20,30 @@ HAC_SINGLETON_IMPLEMENT(TWIntroPage)
 
 + (UIView*)showIntroPageInView:(UIView*)view {
     EAIntroPage *page1 = [EAIntroPage page];
-    page1.title = @"周 边";
-    page1.desc = @"饿了？无聊了？寂寞了？刷周边。列表＋地图，周边吃喝玩乐信息大汇总。总有一家适合你";
+    page1.title = @"趣味首页";
+    page1.desc = @"这里有猫在等你";
     page1.bgImage = [UIImage imageNamed:@"2"];
-    page1.titleImage = [UIImage imageNamed:@"original"];
+    page1.titleImage = [UIImage imageNamed:@"intro1"];
     
     EAIntroPage *page2 = [EAIntroPage page];
-    page2.title = @"详情＋收藏";
-    page2.desc = @"点击商户，查看商家详情。看评分，听评论，有图有真相。满意商家就收藏，下次还来容易找";
+    page2.title = @"工作页面";
+    page2.desc = @"有猫陪你做任务，打断事件实时跟踪";
     page2.bgImage = [UIImage imageNamed:@"2"];
-    page2.titleImage = [UIImage imageNamed:@"supportcat"];
+    page2.titleImage = [UIImage imageNamed:@"intro2"];
     
     EAIntroPage *page3 = [EAIntroPage page];
-    page3.title = @"导航";
-    page3.desc = @"好地方，方便去。点击详细地图，公交／步行／自驾行，条条大路通罗马。";
+    page3.title = @"记录界面";
+    page3.desc = @"任务、事件，有猫帮你详细记录";
     page3.bgImage = [UIImage imageNamed:@"2"];
-    page3.titleImage = [UIImage imageNamed:@"femalecodertocat"];
+    page3.titleImage = [UIImage imageNamed:@"intro3"];
     
-    EAIntroView *intro = [[EAIntroView alloc] initWithFrame:CGRectMake(0, 0, APPCONFIG_UI_SCREEN_SIZE.width, APPCONFIG_UI_SCREEN_SIZE.height) andPages:@[page1,page2,page3]];
+    EAIntroPage *page4 = [EAIntroPage page];
+    page4.title = @"休息界面";
+    page4.desc = @"休息时间，有猫陪你打飞机";
+    page4.bgImage = [UIImage imageNamed:@"2"];
+    page4.titleImage = [UIImage imageNamed:@"intro4"];
+    
+    EAIntroView *intro = [[EAIntroView alloc] initWithFrame:CGRectMake(0, 0, APPCONFIG_UI_SCREEN_SIZE.width, APPCONFIG_UI_SCREEN_SIZE.height) andPages:@[page1,page2,page3,page4]];
     intro.delegate = [TWIntroPage sharedTWIntroPage];
     [intro showInView:view animateDuration:0.0];
     

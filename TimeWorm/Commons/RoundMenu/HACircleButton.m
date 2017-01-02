@@ -494,7 +494,7 @@
      {
          if (weakSelf.isPerformingTouchUpInsideAnimation) {
              weakSelf.isPerformingTouchUpInsideAnimation = NO;
-             [weakSelf addLoadingViewWithImage:[OLImage imageNamed:@"跳舞"]];
+             [weakSelf addLoadingViewWithImage:[OLImage imageNamed:@"pangmao.gif"]];
          }
      }];
     [SmallButton.layer addAnimation:animGroup forKey:@"ButtonScaleAnimation"];
@@ -537,7 +537,7 @@
     if (self.isPerformingTouchUpInsideAnimation) {
         self.isPerformingTouchUpInsideAnimation = NO;
     }
-    [self addLoadingViewWithImage:[OLImage imageNamed:@"高兴"]];
+    [self addLoadingViewWithImage:[OLImage imageNamed:@"pangmao.gif"]];
     
     CABasicAnimation *ButtonScaleSmallCABasicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     ButtonScaleSmallCABasicAnimation.duration = 0.2f;

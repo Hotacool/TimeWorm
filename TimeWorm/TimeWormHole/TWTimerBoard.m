@@ -42,7 +42,7 @@
     startDateLabel.textColor = Hmediumgray;
     [stateBar addSubview:startDateLabel];
     stateIcon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2, 25, 25)];
-    stateIcon.backgroundColor = [UIColor grayColor];
+    stateIcon.backgroundColor = [UIColor clearColor];
     [stateBar addSubview:stateIcon];
     tNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(stateIcon.frame)+4, 0, 180, stateBar.frame.size.height)];
     tNameLabel.font = [UIFont systemFontOfSize:16];
@@ -66,7 +66,7 @@
     _state = state;
     switch (state) {
         case TWTimerBoardStateNone: {
-            stateIcon.image = [UIImage imageNamed:@"missionStop"];
+            stateIcon.image = [UIImage imageNamed:@"missionEject"];
             startDateLabel.text = NSLocalizedString(@"None mission", @"");
             break;
         }

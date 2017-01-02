@@ -19,7 +19,6 @@
 
 - (void)setUpActions {
     [self addAction:[[TWAction alloc] initWithKey:@"yaowei" action:(OLImage*)[OLImage imageNamed:@"yaowei.gif"]]];
-    [self addAction:[[TWAction alloc] initWithKey:@"happy" action:(OLImage*)[OLImage imageNamed:@"happy.gif"]]];
     [self addAction:[[TWAction alloc] initWithKey:@"maodie" action:(OLImage*)[OLImage imageNamed:@"maodie.gif"]]];
     [self addAction:[[TWAction alloc] initWithKey:@"maolove" action:(OLImage*)[OLImage imageNamed:@"maolove.gif"]]];
     [self addAction:[[TWAction alloc] initWithKey:@"susi" action:(OLImage*)[OLImage imageNamed:@"susi.gif"]]];

@@ -168,6 +168,10 @@ static const CGFloat TWTipsCellHeight = 44.f;
         return cell;
     }
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
 #pragma mark JNExpandableTableView DataSource
 - (BOOL)tableView:(JNExpandableTableView *)tableView canExpand:(NSIndexPath *)indexPath
 {

@@ -94,7 +94,7 @@
 - (void)loadUIComponents {
     switch (self.hvm.scene) {
         case TWHomeVCSceneHome: {
-            NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"MarkRound"],nil];
+            NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"pacman"],[UIImage imageNamed:@"Sets"],[UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"MarkRound"],nil];
             menuTextArray = [NSArray arrayWithObjects:
                                   NSLocalizedString(@"menuBtn2", @""),
                                   NSLocalizedString(@"menuBtn4", @""),
@@ -109,11 +109,12 @@
             break;
         }
         case TWHomeVCSceneWork: {
+            NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"setEvent"],[UIImage imageNamed:@"missionStop"],[UIImage imageNamed:@"missionReset"],[UIImage imageNamed:@"missionPause"],nil];
             menuTextArray = @[NSLocalizedString(@"wMenuBtn2", @"")
                               ,NSLocalizedString(@"wMenuBtn4", @"")
                               ,NSLocalizedString(@"wMenuBtn3", @"")
                               ,NSLocalizedString(@"wMenuBtn1", @"")];
-            [self.menuBtn setImageArray:nil
+            [self.menuBtn setImageArray:IconArray
                            andTextArray:menuTextArray];
             [self.menuBtn setTransitionAniOffArr:@[@(YES)
                                                    ,@(NO)
@@ -149,7 +150,7 @@
 
 - (HACircleButton *)menuBtn {
     if (!_menuBtn) {
-        NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"SendRound"],[UIImage imageNamed:@"CompleteRound"],[UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"MarkRound"],nil];
+        NSArray *IconArray = [NSArray arrayWithObjects: [UIImage imageNamed:@"pacman"],[UIImage imageNamed:@"Sets"],[UIImage imageNamed:@"CalenderRound"],[UIImage imageNamed:@"MarkRound"],nil];
         menuTextArray = [NSArray arrayWithObjects:
                          NSLocalizedString(@"menuBtn2", @""),
                          NSLocalizedString(@"menuBtn4", @""),
@@ -162,7 +163,7 @@
                                 [NSString stringWithFormat:@"ButtonOne"],
                                 nil];
         _menuBtn = [[HACircleButton alloc] initWithCenterPoint:CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height )
-                                                                ButtonIcon:[UIImage imageNamed:@"send"]
+                                                                ButtonIcon:[UIImage imageNamed:@"compass"]
                                                                SmallRadius:30.0f
                                                                  BigRadius:100
                                                               ButtonNumber:4
