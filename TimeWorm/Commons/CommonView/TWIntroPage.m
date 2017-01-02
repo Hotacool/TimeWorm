@@ -9,7 +9,14 @@
 #import "TWIntroPage.h"
 #import "EAIntroView.h"
 
+NSString *const kTWIntroPageDidDismissNotification = @"kTWIntroPageDidDismissNotification";
+NSString *const kTWIntroPageDidShowNotification = @"kTWIntroPageDidShowNotification";
+
+@interface TWIntroPage () <EAIntroDelegate>
+@end
 @implementation TWIntroPage
+
+HAC_SINGLETON_IMPLEMENT(TWIntroPage)
 
 + (UIView*)showIntroPageInView:(UIView*)view {
     EAIntroPage *page1 = [EAIntroPage page];
@@ -31,7 +38,10 @@
     page3.titleImage = [UIImage imageNamed:@"femalecodertocat"];
     
     EAIntroView *intro = [[EAIntroView alloc] initWithFrame:CGRectMake(0, 0, APPCONFIG_UI_SCREEN_SIZE.width, APPCONFIG_UI_SCREEN_SIZE.height) andPages:@[page1,page2,page3]];
+    intro.delegate = [TWIntroPage sharedTWIntroPage];
     [intro showInView:view animateDuration:0.0];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTWIntroPageDidDismissNotification object:nil];
     return intro;
 }
 
@@ -56,4 +66,8 @@
     [userDefaults synchronize];
 }
 
+#pragma mark -- EAIntroDelegate
+- (void)introDidFinish {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTWIntroPageDidDismissNotification object:nil];
+}
 @end

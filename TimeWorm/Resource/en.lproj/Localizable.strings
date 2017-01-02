@@ -93,3 +93,9 @@
 "Event has been closed" = "Event has been closed";
 "Back" = "Back";
 "appName" = "Nekotukai";
+"Leave too long" = "";
+"Mission lost" = "";
+"Back after seconds" = "Lost %d sec";
+"Enter background" = "Lost";
+"Mission not complete" = "";
+"None mission" = "";

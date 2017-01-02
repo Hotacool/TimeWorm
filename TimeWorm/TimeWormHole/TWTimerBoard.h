@@ -11,11 +11,13 @@
 typedef NS_ENUM(NSUInteger, TWTimerBoardState) {
     TWTimerBoardStateNone,
     TWTimerBoardStateFlow,
-    TWTimerBoardStatePause
+    TWTimerBoardStatePause,
+    TWTimerBoardStateEnd
 };
 
 @interface TWTimerBoard : UIView
 @property (nonatomic, assign) TWTimerBoardState state;
 @property (nonatomic, assign) NSUInteger seconds;
 @property (nonatomic, strong) NSDate *startDate;
+@property (nonatomic, copy) NSString *name;
 @end

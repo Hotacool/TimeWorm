@@ -46,7 +46,7 @@ static const CGFloat TWTimerInfoPageTitleCellHeight = 40.f;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = Haqua;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Event List", @"") style:UIBarButtonItemStylePlain target:self action:@selector(gotoEventList:)];
-    UIView *titleCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentSizeInPopup.width, TWTimerInfoPageTitleCellHeight)];
+    UIView *titleCell = [[UIView alloc] initWithFrame:CGRectMake(0, 5, self.contentSizeInPopup.width, TWTimerInfoPageTitleCellHeight)];
     titleCell.backgroundColor = Hlightgray;
     [self.view addSubview:titleCell];
     CGRect rect = CGRectMake(0, 0, 0, TWTimerInfoPageTitleCellHeight);
@@ -69,6 +69,8 @@ static const CGFloat TWTimerInfoPageTitleCellHeight = 40.f;
     [titleCell addSubview:self.titleLabel];
     [titleCell addSubview:self.timeLabel];
     [titleCell addSubview:self.stateIcon];
+    CGFloat detailY = CGRectGetMaxY(titleCell.frame)+2;
+    self.detailView.frame = CGRectMake(0, detailY, self.contentSizeInPopup.width, self.contentSizeInPopup.height - detailY-2);
     [self.view addSubview:self.detailView];
 }
 

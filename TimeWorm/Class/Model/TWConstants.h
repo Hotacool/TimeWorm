@@ -13,4 +13,6 @@
 + (void)initializeConstrants ;
 
 + (id)getMessageList;
+
++ (BOOL)isIntroPageShowing;
 @end

@@ -24,23 +24,19 @@
     [self addAction:[[TWAction alloc] initWithKey:@"flagpenguin" action:(OLImage*)[OLImage imageNamed:@"f005.gif"]]];
 }
 
-- (void)whalecome {
-    [self performAction:@"whalecome" withLoopCount:5 end:nil];
-}
-
-- (void)lazypanda {
-    [self performAction:@"lazypanda" withLoopCount:5 end:nil];
-}
-
-- (void)fightpenguin {
-    [self performAction:@"fightpenguin" withLoopCount:5 end:nil];
-}
-
-- (void)rainpenguin {
-    [self performAction:@"rainpenguin" withLoopCount:5 end:nil];
-}
-
-- (void)flagpenguin {
-    [self performAction:@"flagpenguin" withLoopCount:5 end:nil];
+// override
+- (NSString *)doRandomActionWithLoopCount:(NSUInteger)count {
+    NSString *actionKey;
+    do {
+        int rdIdx = [self getRandomNumber:0 to:(int)self.actions.count];
+        actionKey = self.actions.allKeys[rdIdx];
+    } while ([actionKey isEqualToString:self.performAction]);
+    if ([actionKey isEqualToString:@"whalecome"]) {
+        count = 2;
+    } else if ([actionKey isEqualToString:@"lazypanda"]) {
+        count = 5;
+    }
+    [self performAction:actionKey withLoopCount:count end:nil];
+    return actionKey;
 }
 @end

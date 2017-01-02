@@ -1,42 +1,27 @@
 {
     "1":{
-        "title":"title001",
-        "image":"intro1",
-        "content":"The last 10 years have been about building a world that is mobile-first. In the next 10 years, we will shift to a world that is AI-first."
+        "title":"如何获取帮助",
+        "image":"tip5",
+        "content":"从主页面，点击四象按钮到'设定'界面，划到帮助一栏就可打开'小贴士'和'引导'了。"
     },
     "2":{
-        "title":"title002",
-        "image":"intro2",
-        "content":"From Amazon and Facebook to Google and Microsoft, leaders of the world’s most influential technology firms are highlighting their enthusiasm for Artificial Intelligence (AI). But what is AI? Why is it important? And why now? While there is growing interest in AI, the field is understood mainly by specialists. Our goal for this primer is to make this important field accessible to a broader audience."
+        "title":"自定义任务时间",
+        "image":"tip1",
+        "content":"如果想自定义任务时间，可以在工作页面，直接点击图中时间看板，即会弹出选择时钟，拉取小拉环，自由的选择任务时间吧。值得一提的是，如果想设定每次打开的默认任务时间，请到设定页面设置。"
     },
     "3":{
-        "title":"title003",
-        "image":"",
-        "content":"We’ll begin by explaining the meaning of ‘AI’ and key terms including ‘machine learning’. "
+        "title":"查看当前任务的打断事件",
+        "image":"tip2",
+        "content":"在工作页面下方，有一个铃铛图标，点击即可打开事件列表了。 "
     },
     "4":{
-        "title":"title004",
-        "image":"intro2",
-        "content":"We’ll illustrate how one of the most productive areas of AI, called ‘deep learning’, works."
+        "title":"查看每日任务情况",
+        "image":"tip3",
+        "content":"每日任务情况都被详细的记录在'记录'页面，滑动图中黑色时间轴，选取日期，查看当日任务完成情况吧。"
     },
     "5":{
-        "title":"title005",
-        "image":"",
-        "content":"We’ll explore the problems that AI solves and why they matter. And we’ll get behind the headlines to see why AI, which was invented in the 1950s, is coming of age today."
-    },
-    "6":{
-        "title":"title003",
-        "image":"intro1",
-        "content":"As venture capitalists, we look for emerging trends that will create value for consumers and companies. We believe AI is an evolution in computing as, or more, important than the shifts to mobile or cloud computing. "
-    },
-    "7":{
-        "title":"title004",
-        "image":"intro2",
-        "content":"We’ll illustrate how one of the most productive areas of AI, called ‘deep learning’, works."
-    },
-    "8":{
-        "title":"title005",
-        "image":"intro1",
-        "content":"We’ll explore the problems that AI solves and why they matter. And we’ll get behind the headlines to see why AI, which was invented in the 1950s, is coming of age today."
+        "title":"颜色的意义",
+        "image":"tip4",
+        "content":"有猫用了很多不同的鲜艳颜色，绝不是提高视觉冲击力那么简单。图中任务用不同颜色标记，绿色代表正常完成，粉红表示被取消，褐色表示非正常结束(提前退出应用)。快去寻找一下颜色的奥秘吧。"
     },
 }

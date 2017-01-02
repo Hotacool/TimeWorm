@@ -11,6 +11,7 @@
 #define twcons [TWConstants shareInstance]
 @implementation TWConstants {
     id messageList;
+    BOOL introPageShow;
 }
 
 + (instancetype)shareInstance {
@@ -23,6 +24,8 @@
 }
 
 + (void)initializeConstrants {
+    [NSNotifyCenter addObserver:twcons selector:@selector(introPageShow:) name:kTWIntroPageDidShowNotification object:nil];
+    [NSNotifyCenter addObserver:twcons selector:@selector(introDidFinished:) name:kTWIntroPageDidDismissNotification object:nil];
     HACBackground(^{
         [self loadMessageList];
     });
@@ -34,8 +37,22 @@
     }
 }
 
+#pragma mark -- out api
 + (id)getMessageList {
     [self loadMessageList];
     return twcons->messageList;
+}
+
++ (BOOL)isIntroPageShowing {
+    return twcons->introPageShow;
+}
+
+#pragma mark -- private
+- (void)introPageShow:(id)n {
+    introPageShow = YES;
+}
+
+- (void)introDidFinished:(id)n {
+    introPageShow = NO;
 }
 @end

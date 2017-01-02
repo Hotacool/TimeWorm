@@ -34,7 +34,6 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self updateNumberLabelText];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -44,20 +43,22 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
     [self updateData];
 }
 
-- (void)userDefaultsDidChange:(NSNotification *)notification {
-    [self updateNumberLabelText];
-}
-
 - (void)updateNumberLabelText {
     [self refreshData];
     if (self.shareData) {
+        self.timeBoard.name = self.shareData.timerName;
         if (self.shareData.state == 2) {
             [self.timeBoard setState:TWTimerBoardStateFlow];
             [self.timeBoard setSeconds:self.shareData.seconds];
             [self.timeBoard setStartDate:self.shareData.startDate];
             [self startTickTimer];
-        } else if (self.shareData.state == 4 || self.shareData.state == 8) {
+        } else if (self.shareData.state == 4) {
             [self.timeBoard setState:TWTimerBoardStatePause];
+            [self.timeBoard setSeconds:self.shareData.seconds];
+            [self.timeBoard setStartDate:self.shareData.startDate];
+            [self stopTickTimer];
+        } else if (self.shareData.state == 8) {
+            [self.timeBoard setState:TWTimerBoardStateEnd];
             [self.timeBoard setSeconds:self.shareData.seconds];
             [self.timeBoard setStartDate:self.shareData.startDate];
             [self stopTickTimer];
@@ -70,7 +71,6 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
 }
 
 - (void)tapMe:(UITapGestureRecognizer*)gesture {
-    NSLog(@"%s", __func__);
     NSString *urlStr = [NSString stringWithFormat:@"TWWidgetApp://timerId=%@", self.shareData.identifier];
     [self.extensionContext openURL:[NSURL URLWithString:urlStr] completionHandler:^(BOOL success) {
     }];
@@ -82,7 +82,7 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
 }
 
 - (void)refreshData {
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.TimeWorm"];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.hotacool"];
     id obj = [defaults objectForKey:@"TWUserDic"];
     if ([obj isKindOfClass:[NSDictionary class]]) {
         self.shareData = [[TWShareDataModel alloc] initWithUserDic:obj];
@@ -103,7 +103,7 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
     if (!self.shareData) {
         return;
     }
-    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.TimeWorm"];
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.hotacool"];
     [shared setObject:[self.shareData userDic]
                forKey:@"TWUserDic"];
     [shared synchronize];
@@ -143,7 +143,7 @@ static const CGFloat TodayViewDefaultHeightIniOS10 = 110;
     // If an error is encountered, use NCUpdateResultFailed
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
-
+    [self updateNumberLabelText];
     completionHandler(NCUpdateResultNewData);
 }
 

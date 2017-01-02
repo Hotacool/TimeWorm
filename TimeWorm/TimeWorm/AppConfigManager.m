@@ -19,6 +19,7 @@
 @import GoogleMobileAds;
 #import "DateTools.h"
 #import "TWIntroPage.h"
+#import "TWNotificationManager.h"
 
 @implementation AppConfigManager
 
@@ -30,33 +31,20 @@
     [self loadDB];
     [self loadDefaultSet];
     [self loadAdmob];
+    [TWNotificationManager load];
 }
 
 + (void)applicationDidBecomeActive:(UIApplication *)application {
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    [[TWNotificationManager sharedTWNotificationManager] applicationDidBecomeActive:application];
 }
 
 + (void)applicationDidEnterBackground:(UIApplication *)application {
-    // update today extension data
-    if (([TWTimer currentTimer] && [TWTimer currentTimer].state&TWTimerStateCancel)
-        || ![TWTimer currentTimer]) {
-        [TWUtility shareAppgroupData:@{@"state": @0}];
-    }
+    [[TWNotificationManager sharedTWNotificationManager] applicationDidEnterBackground:application];
 }
 
 + (void)applicationWillTerminate {
-    // update today extension data
-    [TWUtility shareAppgroupData:@{@"state": @0}];
-    // 取消所有通知
-    [HACLNCenter cancelAllHACLocalNotifications];
-    // 设置离开后的第二天11点提醒
-    NSDate *now = [NSDate date];
-    NSDate *fireDate = [[NSDate dateWithYear:now.year month:now.month day:now.day hour:11 minute:0 second:0] dateByAddingDays:1];
-    HACLocalNotification *localNotify = [[HACLocalNotification alloc] initWithFireDate:fireDate
-                                                           title:NSLocalizedString(@"appName", @"")
-                                                     information:NSLocalizedString(@"Leave too long", @"")
-                                                            type:HACLocalNotificationTypePrompting];
-    [HACLNCenter addHACLocalNotification:localNotify];
+    [[TWNotificationManager sharedTWNotificationManager] applicationWillTerminate];
 }
 
 + (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {

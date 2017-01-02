@@ -9,9 +9,4 @@
 #import "TWBaseSprite.h"
 
 @interface FirstMan : TWBaseSprite
-- (void)whalecome;
-- (void)lazypanda;
-- (void)fightpenguin;
-- (void)rainpenguin;
-- (void)flagpenguin;
 @end
