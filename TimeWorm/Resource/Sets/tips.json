@@ -4,19 +4,39 @@
         "className": "TWTipsViewController"
     },
     "2": {
-        "content": "Sometimes, a group of HITs is posted. If a batch comes up and it's lunchtime, or I have a doctor's appointment, or my dog needs to go out, said Milland, I drop everything and do it. I'm literally chained to my computer.",
-        "className": ""
-    },
-    "3": {
-        "content": "Jump:The incident was both jarring and typical of the chaotic life at the fast growing Los Angeles tech startup.",
+        "content": "在Widget中添加时光虫，任务时间一目了然。设置方法请移步‘Tips’",
         "className": "TWTipsViewController"
     },
+    "3": {
+        "content": "时间是是个奇妙的东西，去年还在一起过光棍节的俩哥们儿，今年就一起过情人节了！",
+        "className": ""
+    },
     "4": {
-        "content": "data categorization",
+        "content": "送牛奶的人在客户门口发现了一张便条，上面写着：你今日不必送牛奶了，就是说明日你不必送牛奶了，因为这是我昨日写的。",
         "className": ""
     },
     "5": {
-        "content": "Jump:The number of active workers, who live across the globe, is estimated to run between 15,000 and 20,000 per month",
+        "content": "一寸光阴一寸金，寸金难买寸光阴。",
+        "className": ""
+    },
+    "6": {
+        "content": "时间就像海绵里的水，只要愿挤，总还是有的。--鲁迅",
         "className": "TWTipsViewController"
+    },
+    "7": {
+        "content": "时间最不偏私,给任何人都是二十四小时；时间也是偏私,给任何人都不是二十四小时。--赫胥黎",
+        "className": "TWTipsViewController"
+    },
+    "8": {
+        "content": "奥斯卡在一家饭店里吃饭时喝了很多酒，当他突然看见电扇转动时便惊叫起来：“上帝呀，时间怎么走得这么快呀！”",
+        "className": ""
+    },
+    "9": {
+        "content": "前往记录页面，查看每日任务完成情况。",
+        "className": ""
+    },
+    "10": {
+        "content": "业精于勤，荒于嬉，行成于思，毁于随",
+        "className": ""
     },
 }
