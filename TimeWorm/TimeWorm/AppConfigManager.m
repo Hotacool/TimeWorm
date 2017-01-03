@@ -12,7 +12,7 @@
 #import "TWCommandCommon.h"
 #import "TWDBManager.h"
 #import "DDTTYLogger.h"
-#import "FLEXManager.h"
+//#import "FLEXManager.h"
 #import "TWSet.h"
 #import "TWTimer.h"
 #import "HACLocalNotificationCenter.h"
@@ -66,7 +66,7 @@
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
     //flex
-    [[FLEXManager sharedManager] showExplorer];
+//    [[FLEXManager sharedManager] showExplorer];
 }
 
 + (void)loadGuide {
