@@ -30,9 +30,9 @@ HAC_SINGLETON_IMPLEMENT(TWSet)
                                    ,@0
                                    ,@YES
                                    ,@15
-                                   ,@"timer"
-                                   ,@"a new timer"
-                                   ,@"event"
+                                   ,NSLocalizedString(@"MissionTag0", @"")
+                                   ,NSLocalizedString(@"Mission Detail", @"")
+                                   ,NSLocalizedString(@"Distractions", @"")
                                    ,@YES
                                    ,@YES
                                    ,@NO

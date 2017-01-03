@@ -11,7 +11,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-@implementation GameView
+@implementation GameView {
+    SKMainScene * scene;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -22,6 +24,7 @@
 
 - (void)dealloc {
     DDLogInfo(@"GameView disappear...");
+    [scene clear];
 }
 
 - (void)setUp {
@@ -29,7 +32,7 @@
     self.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [SKMainScene sceneWithSize:self.bounds.size];
+    scene = [SKMainScene sceneWithSize:self.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
