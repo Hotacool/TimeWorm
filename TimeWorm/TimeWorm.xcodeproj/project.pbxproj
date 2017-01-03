@@ -46,6 +46,7 @@
 		FA0BBC361E1AA58C00BD1BEA /* intro2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0BBC2E1E1AA58600BD1BEA /* intro2@2x.png */; };
 		FA0BBC371E1AA58C00BD1BEA /* intro3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0BBC2F1E1AA58600BD1BEA /* intro3@2x.png */; };
 		FA0BBC381E1AA58C00BD1BEA /* intro4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0BBC301E1AA58600BD1BEA /* intro4@2x.png */; };
+		FA0BBC3B1E1B4DA400BD1BEA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA0BBC3D1E1B4DA400BD1BEA /* Localizable.strings */; };
 		FA0BD4351DB772430060803F /* TWEventList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4341DB772430060803F /* TWEventList.m */; };
 		FA0BD4381DB7731D0060803F /* HACFoldTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD4371DB7731D0060803F /* HACFoldTableView.m */; };
 		FA0BD9AE1DF6B616002AAE3F /* TWEventDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0BD9AD1DF6B616002AAE3F /* TWEventDetailView.m */; };
@@ -346,6 +347,8 @@
 		FA0BBC2E1E1AA58600BD1BEA /* intro2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro2@2x.png"; sourceTree = "<group>"; };
 		FA0BBC2F1E1AA58600BD1BEA /* intro3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro3@2x.png"; sourceTree = "<group>"; };
 		FA0BBC301E1AA58600BD1BEA /* intro4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro4@2x.png"; sourceTree = "<group>"; };
+		FA0BBC3C1E1B4DA400BD1BEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA0BBC3E1E1B4DA700BD1BEA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FA0BD4331DB772430060803F /* TWEventList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEventList.h; sourceTree = "<group>"; };
 		FA0BD4341DB772430060803F /* TWEventList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEventList.m; sourceTree = "<group>"; };
 		FA0BD4361DB7731D0060803F /* HACFoldTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACFoldTableView.h; sourceTree = "<group>"; };
@@ -1395,6 +1398,7 @@
 				FA15870A1E038CAB00E0B722 /* TWShareDataModel.m */,
 				FA9DF4061E0138D9001E5A7B /* Info.plist */,
 				FA0BBC081E16664E00BD1BEA /* InfoPlist.strings */,
+				FA0BBC3D1E1B4DA400BD1BEA /* Localizable.strings */,
 			);
 			path = TimeWormHole;
 			sourceTree = "<group>";
@@ -1693,6 +1697,7 @@
 				FA0BBC061E16664E00BD1BEA /* InfoPlist.strings in Resources */,
 				FA66EB6C1E138DE300C8C7A6 /* missionPlay@2x.png in Resources */,
 				FA66EB6F1E138DE300C8C7A6 /* missionStop@3x.png in Resources */,
+				FA0BBC3B1E1B4DA400BD1BEA /* Localizable.strings in Resources */,
 				FA66EB6A1E138DE300C8C7A6 /* missionPause@2x.png in Resources */,
 				FA0BBC101E1A910A00BD1BEA /* missionEject@2x.png in Resources */,
 				FA66EB6E1E138DE300C8C7A6 /* missionStop@2x.png in Resources */,
@@ -1879,6 +1884,15 @@
 				FA0BBC0A1E16665200BD1BEA /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FA0BBC3D1E1B4DA400BD1BEA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA0BBC3C1E1B4DA400BD1BEA /* en */,
+				FA0BBC3E1E1B4DA700BD1BEA /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		FA0E00EC1D77C0AE0080759D /* InfoPlist.strings */ = {
